@@ -12,6 +12,11 @@ get_meta <- function(id){
                        )
   message("Retrieving meta data for table '",id, "'")
   meta_top <- resolve_resource(url)
+  
+  #exclude data sets
+  meta_idx = !(meta_top$name %in% c("TypedDataSet", "UntypedDataSet"))
+  meta_top <- meta_top[meta_idx,]
+  
   meta <- lapply(meta_top$url, resolve_resource)
   names(meta) <- meta_top$name
   meta

@@ -1,3 +1,5 @@
 BASEURL = "http://opendata.cbs.nl"
 API = "ODataApi/odata"
-#BULK = ""
+BULK = "ODataFeed/odata"
+
+CATALOG = ""
