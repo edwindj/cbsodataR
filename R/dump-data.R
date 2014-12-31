@@ -1,3 +1,5 @@
+#' Gets all data from a cbs table.
+#' 
 #' Gets all data via bulk download. Dumps the data in (international) csv format.
 #' @param table id of cbs open data table
 #' @param path of data file, defaults to "<id>/data.csv"
@@ -17,7 +19,11 @@ dump_data <- function(id, path=file.path(id, "data.csv")){
   cat("Reading...")
   res <- jsonlite::fromJSON(url)
   cat("\rWriting...")
-  write.table(res$value, file=data_file, row.names=FALSE, sep=",")
+  write.table( res$value, 
+               file=data_file, 
+               row.names=FALSE, 
+               na="",
+               sep=",")
   url <- res$nextLink
 
   while(!is.null(url)){
@@ -29,6 +35,7 @@ dump_data <- function(id, path=file.path(id, "data.csv")){
                , file=data_file
                , row.names=FALSE
                , col.names = FALSE
+               , na=""
                , sep=","
                )
     url <- res$nextLink

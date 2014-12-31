@@ -4,13 +4,15 @@
 \alias{dump_meta}
 \title{Dumps the meta data into a directory}
 \usage{
-dump_meta(id, dir = id)
+dump_meta(id, dir = id, ...)
 }
 \arguments{
 \item{id}{Id of CBS open data table}
 
 \item{dir}{Directory in which data should be stored.
 By default it creates a sub directory with the name of the id}
+
+\item{...}{not used}
 }
 \description{
 Dumps the meta data into a directory

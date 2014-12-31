@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-meta.R
 \name{get_meta}
 \alias{get_meta}
-\title{gets a cbs metadata}
+\title{gets metadata of a cbs table}
 \usage{
 get_meta(id)
 }
@@ -10,6 +10,6 @@ get_meta(id)
 \item{id}{internal id of CBS table}
 }
 \description{
-gets a cbs metadata
+gets metadata of a cbs table
 }
 

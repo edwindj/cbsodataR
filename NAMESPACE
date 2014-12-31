@@ -3,5 +3,8 @@
 export(dump_data)
 export(dump_meta)
 export(get_meta)
+export(get_tables)
+export(get_themes)
 importFrom(jsonlite,fromJSON)
+importFrom(utils,URLencode)
 importFrom(whisker,whisker.render)

@@ -8,7 +8,7 @@ update_levels <- function(node, parent="parent", child="child"){
   pa <- as.character(node[[parent]])
   ch <- as.character(node[[child]])
   
-  levs <- sort(unique(c(pa, ch)))
+  levs <- sort(unique(c(pa, ch)))   
   # let them use the same levels...
   node[[parent]] <- factor(node[[parent]], levels = levs)
   node[[child]] <- factor(node[[child]], levels = levs)

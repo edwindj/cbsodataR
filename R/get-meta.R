@@ -1,4 +1,4 @@
-#' gets a cbs metadata
+#' gets metadata of a cbs table
 #' @param id internal id of CBS table
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
@@ -11,7 +11,7 @@ get_meta <- function(id){
                              )
                        )
   message("Retrieving meta data for table '",id, "'")
-  meta_top <- resolve_resource(url)
+  meta_top <- resolve_resource(url, "Retrieving meta data")
   
   #exclude data sets
   meta_idx = !(meta_top$name %in% c("TypedDataSet", "UntypedDataSet"))
@@ -21,13 +21,6 @@ get_meta <- function(id){
   names(meta) <- meta_top$name
   meta
 }
-
-#' @importFrom jsonlite fromJSON
-resolve_resource <- function(url){
-  cat(".")
-  jsonlite::fromJSON(url)$value
-}
-
 
 ### testing
 #meta <- get_meta("81819NED")
