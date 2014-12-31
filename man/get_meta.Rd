@@ -4,10 +4,12 @@
 \alias{get_meta}
 \title{gets metadata of a cbs table}
 \usage{
-get_meta(id)
+get_meta(id, cache = FALSE)
 }
 \arguments{
 \item{id}{internal id of CBS table}
+
+\item{cache}{should the result be cached?}
 }
 \description{
 gets metadata of a cbs table

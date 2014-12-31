@@ -2,7 +2,7 @@
 % Please edit documentation in R/dump-data.R
 \name{dump_data}
 \alias{dump_data}
-\title{Gets all data via bulk download. Dumps the data in (international) csv format.}
+\title{Gets all data from a cbs table.}
 \usage{
 dump_data(id, path = file.path(id, "data.csv"))
 }
