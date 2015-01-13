@@ -1,4 +1,4 @@
-Package: cbsopendata
+Package: cbsodata
 Type: Package
 Title: Gets meta data and data from Statistics Netherlands (CBS) opendata api
 Version: 0.1
