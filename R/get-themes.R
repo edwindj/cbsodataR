@@ -11,12 +11,7 @@ get_themes <- function(...){
                              , filter = filter
                              )
                        )
-
-  filter <- get_filter(...)
-  if (nchar(filter)){
-    url <- paste0(url, "&$filter=", filter)
-  }
-  
+  url <- paste0(url, get_query(..., select=select))  
   themes <- resolve_resource(url, "Retrieving themes from ")
   themes
 }

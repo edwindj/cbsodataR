@@ -3,14 +3,17 @@
 #' Gets all data via bulk download. Dumps the data in (international) csv format.
 #' @param table id of cbs open data table
 #' @param path of data file, defaults to "<id>/data.csv"
+#' @param ... optional filter statements to select rows of the data, e.g.
+#' @param select optional names of columns to be returned.
 #' @export
-dump_data <- function(id, path=file.path(id, "data.csv")){
+dump_data <- function(id, path=file.path(id, "data.csv", ..., select=NULL)){
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/TypedDataSet?$format=json"
                         , list( BASEURL = BASEURL
                                 , BULK = BULK
                                 , id = id
                         )
   )
+  url <- paste0(url, get_query(..., select=select))
   dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
   data_file <- file(path, open = "wt")  
   

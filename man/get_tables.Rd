@@ -4,10 +4,13 @@
 \alias{get_tables}
 \title{gets list of all cbs tables}
 \usage{
-get_tables(...)
+get_tables(..., select = NULL)
 }
 \arguments{
-\item{id}{Identifier of CBS table}
+\item{...}{filter statement to select rows, e.g. Language="nl"}
+
+\item{select}{\code{character} columns to be returned, by default all columns
+will be returned.}
 }
 \description{
 gets list of all cbs tables
