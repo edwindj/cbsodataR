@@ -24,7 +24,7 @@ dump_data <- function(id, path=file.path(id, "data.csv")){
                row.names=FALSE, 
                na="",
                sep=",")
-  url <- res$nextLink
+  url <- res$odata.nextLink
 
   while(!is.null(url)){
     skip <- gsub(".+skip=(\\w+)", "\\1", url)
@@ -38,8 +38,8 @@ dump_data <- function(id, path=file.path(id, "data.csv")){
                , na=""
                , sep=","
                )
-    url <- res$nextLink
-    break
+    url <- res$odata.nextLink
+    #break
   }
   close(data_file)
   message("Done!")
