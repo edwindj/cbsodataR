@@ -6,7 +6,7 @@
 #' @param ... optional filter statements to select rows of the data, e.g.
 #' @param select optional names of columns to be returned.
 #' @export
-dump_data <- function(id, path=file.path(id, "data.csv", ..., select=NULL)){
+dump_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/TypedDataSet?$format=json"
                         , list( BASEURL = BASEURL
                                 , BULK = BULK
@@ -14,6 +14,7 @@ dump_data <- function(id, path=file.path(id, "data.csv", ..., select=NULL)){
                         )
   )
   url <- paste0(url, get_query(..., select=select))
+  
   dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
   data_file <- file(path, open = "wt")  
   
