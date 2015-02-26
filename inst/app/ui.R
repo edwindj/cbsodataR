@@ -10,7 +10,11 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      selectizeInput("table", "Table:", c("Loading..."))
+      selectizeInput("table"
+                    , "Table:"
+                    , c("Loading...")
+                    , options = list()
+                    )
     ),
     
     # Show a plot of the generated distribution

@@ -22,8 +22,9 @@ dump_meta <- function(id, dir=id, ...){
   }
 }
 
+#' @importFrom yaml as.yaml
 write_yaml <- function(x, name){
-  file_name <- paste0(n, ".yml")
+  file_name <- paste0(name, ".yml")
   message("Writing ", file_name, "...")
   writeLines(yaml::as.yaml(x), con=file_name)
 }

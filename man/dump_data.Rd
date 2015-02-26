@@ -4,12 +4,12 @@
 \alias{dump_data}
 \title{Gets all data from a cbs table.}
 \usage{
-dump_data(id, path = file.path(id, "data.csv", ..., select = NULL))
+dump_data(id, path = file.path(id, "data.csv"), ..., select = NULL)
 }
 \arguments{
-\item{path}{of data file, defaults to "<id>/data.csv"}
+\item{id}{of cbs open data table}
 
-\item{table}{id of cbs open data table}
+\item{path}{of data file, defaults to "<id>/data.csv"}
 
 \item{...}{optional filter statements to select rows of the data, e.g.}
 

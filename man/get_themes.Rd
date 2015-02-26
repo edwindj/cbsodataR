@@ -4,10 +4,12 @@
 \alias{get_themes}
 \title{gets list of all cbs themes}
 \usage{
-get_themes(...)
+get_themes(..., select = NULL)
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_themes(ID=10)}}
+
+\item{select}{\code{character} vector with names of wanted properties. default is all}
 }
 \description{
 Returns a list of all cbs themes.

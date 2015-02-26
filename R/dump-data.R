@@ -1,7 +1,7 @@
 #' Gets all data from a cbs table.
 #' 
 #' Gets all data via bulk download. Dumps the data in (international) csv format.
-#' @param table id of cbs open data table
+#' @param id of cbs open data table
 #' @param path of data file, defaults to "<id>/data.csv"
 #' @param ... optional filter statements to select rows of the data, e.g.
 #' @param select optional names of columns to be returned.
