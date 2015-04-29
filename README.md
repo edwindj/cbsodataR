@@ -17,3 +17,15 @@ devtools::install_github("edwindj/cbsodata.R")
 
 # Usage
 
+Retrieve list a tables.
+```
+tables <- get_tables(Language="en")
+```
+
+Use the `Identifier` from tables to retrieve table information
+
+```
+
+```
+
+

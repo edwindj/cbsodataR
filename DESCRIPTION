@@ -8,3 +8,5 @@ Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 Description: Gets meta data and data from Statistics Netherlands (CBS) opendata api
 License: GPL-2
 Imports: whisker, jsonlite, yaml
+Suggests: knitr
+VignetteBuilder: knitr

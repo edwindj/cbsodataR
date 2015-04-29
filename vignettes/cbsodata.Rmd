@@ -1,0 +1,25 @@
+---
+title: "cbsodata, all data of Statistics Netherlands (CBS)"
+author: "Edwin de Jonge"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+Statistics Netherlands (CBS) is the office that produces all official statistics of the Netherlands. 
+
+For long SN has put its data online in its online database 
+[StatLine](http://statline.cbs.nl/Statweb/?LA=en).
+Since 2014 this data base has an open data web API based on the OData protocol.
+The *cbsodata* package allows for retrieving data right into R. 
+
+## Catalog
+
+## Table information
+
+## Data download
+
+## Bulk download

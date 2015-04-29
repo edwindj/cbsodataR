@@ -1,4 +1,11 @@
-#' gets list of all cbs tables
+#' Retrieve a data.frame with requested cbs tables
+#' 
+#' \code{get_tables} by default a list of all tables and all columns will be retrieved.
+#' You can restrict the query by supplying multiple filter statements or by specifying the
+#' columns that should be returned.
+#' 
+#' \note{get_tables will cache results, so subsequent calls will be much faster.}
+#' 
 #' @param ... filter statement to select rows, e.g. Language="nl"
 #' @param select \code{character} columns to be returned, by default all columns
 #' will be returned.

@@ -10,7 +10,7 @@ resolve_resource <- function(url, ..., cache=TRUE){
     }
   }
   
-  cat("\n", ... , url)
+  message(...," ", url)
   res <- jsonlite::fromJSON(url)$value
   
   if (isTRUE(cache)){
