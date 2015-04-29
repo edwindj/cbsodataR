@@ -1,8 +1,9 @@
 # CBS odata with R
 
 Retrieve data from the open data interface of Statistics Netherlands (cbs.nl) with *R*.
+For more information see http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm (Dutch)
 
-__Note: This is a free time project and not an official Statistics Netherlands package__
+__Note: This R package is not an official Statistics Netherlands package__
 
 
 # Installation
