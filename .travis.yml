@@ -3,6 +3,10 @@ language: r
 warnings_are_errors: false
 sudo: required
 
+r_packages:
+  - dplyr
+  - rmarkdown
+
 notifications:
   email:
     on_success: change
