@@ -12,7 +12,7 @@ __Note: This is a spare time project and not an official Statistics Netherlands 
 `cbsodata` is not available from CRAN but can installed using `devtools`.
 
 ```S
-devtools::install_github("edwindj/cbsodata.R")
+devtools::install_github("edwindj/cbsodataR")
 ```
 
 # Usage
