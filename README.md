@@ -19,13 +19,32 @@ devtools::install_github("edwindj/cbsodata.R")
 
 Retrieve list a tables.
 ```
-tables <- get_tables(Language="en")
+> tables <- get_table_list(Language="en")
 ```
 
 Use the `Identifier` from tables to retrieve table information
 
 ```
+> get_meta('71509ENG')
 
+71509ENG: 'Yield apples and pears', 2013
+  FruitFarmingRegions: 'Fruit farming regions'
+  Periods: 'Periods' 
 ```
 
+Or download data
 
+``` 
+> get_data('71509ENG') %>% select(2:5) %>% head
+
+Source: local data frame [6 x 4]
+
+  FruitFarmingRegions Periods TotalAppleVarieties_1 CoxSOrangePippin_2
+1   Total Netherlands    1997                   420                 43
+2   Total Netherlands    1998                   518                 40
+3   Total Netherlands    1999                   568                 39
+4   Total Netherlands    2000                   461                 27
+5   Total Netherlands    2001                   408                 30
+6   Total Netherlands    2002                   354                 17
+
+```
