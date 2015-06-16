@@ -1,4 +1,4 @@
-Package: cbsodata
+Package: cbsodataR
 Type: Package
 Title: Download Data from Statistics Netherlands (CBS) OpenData API
 Version: 0.1.0.9000

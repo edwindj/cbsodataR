@@ -1,9 +1,9 @@
 # CBS odata with R
 
-[![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodata.R.png?branch=master)](https://travis-ci.org/edwindj/cbsodata.R)
+[![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 
 Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) of Statistics Netherlands (cbs.nl) with *R*.
-The OData description 
+The OData description is in Dutch (Google translate to the rescue...)
 
 __Note: This is a spare time project and not an official Statistics Netherlands package__
 
@@ -12,7 +12,7 @@ __Note: This is a spare time project and not an official Statistics Netherlands 
 `cbsodata` is not available from CRAN but can installed using `devtools`.
 
 ```S
-devtools::install_github("edwindj/cbsodata.R")
+devtools::install_github("edwindj/cbsodataR")
 ```
 
 # Usage
