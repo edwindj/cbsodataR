@@ -8,6 +8,11 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+```{r init, echo=FALSE, message=FALSE}
+library(dplyr, quietly = T)
+library(cbsodata)
+```
+
 
 Statistics Netherlands (CBS) is the office that produces all official statistics of the Netherlands. 
 
@@ -20,11 +25,42 @@ The *cbsodata* package allows for retrieving data right into R.
 
 A list of tables can be retrieved using the `get_table_list` function.
 
-```{r get_table_list}
+```{r get_table_list, message=FALSE}
 tables <- get_table_list(Language="en") # retrieve only enlgish tables
-head(tables)
+
+tables %>% 
+  select(Identifier, ShortTitle) %>% 
+  head 
+```
+
+Using an "Identifier" from `get_table_list` information on the table can be retrieve with `get_meta` 
+
+```{r get_meta, message=FALSE}
+m <- get_meta('71509ENG')
+m
+```
+The meta object contains all metadata properties of cbsodata (see the original documentation for that) in the form
+of data.frames
+
+```{r, meta2}
+names(m)
 ```
 
 ## Data download
 
-## Bulk download
+With `get_data` data can be retrieved. By default all data for this table will be downloaded in a temporary directory.
+```{r, get_data2, message=FALSE}
+get_data('71509ENG') %>% 
+  select(2:5) %>% 
+  head
+```
+
+The data will be automatically recoded with titles for the categories. If needed the original data can be retained with 
+`recode=FALSE`
+
+```{r, get_data, message=FALSE}
+get_data('71509ENG', recode = FALSE) %>% 
+  select(2:5) %>% 
+  head
+```
+

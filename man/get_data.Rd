@@ -20,15 +20,9 @@ directory}
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of tables
 can be retrieved with \code{\link{get_table_list}}.
-}
-\details{
 Optionaly the data can be filtered on category values.
-e.g.
-\code{get_data(id, Period=c('2014', 2015'), Country=c('NL'))}
-where \code{Period} and \code{Country} are dimensions of
 }
 \note{
-All data for this table are downloaded using
-\code{\link{download_table}}.
+All data are downloaded using \code{\link{download_table}}
 }
 

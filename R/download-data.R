@@ -19,9 +19,7 @@ download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
   
   # retrieve data
   message("Retrieving data from table '", id ,"'")
-  cat("Reading...")
   res <- jsonlite::fromJSON(url)
-  cat("\rWriting...")
   write.table( res$value, 
                file=data_file, 
                row.names=FALSE, 
@@ -31,9 +29,9 @@ download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
 
   while(!is.null(url)){
     skip <- gsub(".+skip=(\\w+)", "\\1", url)
-    cat("\rReading...(",skip,")")
+    message("Reading...")
     res <- jsonlite::fromJSON(url)
-    cat("\rWriting...(",skip,")")
+    message("Writing...")
     write.table( res$value
                , file=data_file
                , row.names=FALSE

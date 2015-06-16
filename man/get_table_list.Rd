@@ -17,7 +17,7 @@ will be returned.}
 You can restrict the query by supplying multiple filter statements or by specifying the
 columns that should be returned.
 }
-\details{
-\note{get_table_list will cache results, so subsequent calls will be much faster.}
+\note{
+\code{get_table_list} will cache results, so subsequent calls will be much faster.
 }
 
