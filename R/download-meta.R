@@ -3,6 +3,7 @@
 #' @param dir Directory in which data should be stored. 
 #' By default it creates a sub directory with the name of the id
 #' @param ... not used
+#' @return meta data object
 download_meta <- function(id, dir=id, ...){
   dir.create(path=dir, showWarnings = FALSE, recursive = TRUE)
   oldwd <- setwd(dir)

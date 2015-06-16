@@ -5,9 +5,9 @@ Version: 0.1.0.9000
 Date: 2014-12-18
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-Description: Data and meta data from Statistics Netherlands (CBS) can be 
-  browsed and downloaded
+Description: The data and meta data from the opendata API of Statistics Netherlands 
+   (www.cbs.nl) can be browsed and downloaded.
 License: GPL-2
 Imports: whisker, jsonlite, yaml
-Suggests: knitr
+Suggests: knitr, dplyr
 VignetteBuilder: knitr

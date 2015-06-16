@@ -2,13 +2,14 @@
 #' 
 #' @param id Identifier of CBS table (can be retrieved from \code{\link{get_table_list}})
 #' @param dir Directory where table should be downloaded
+#' @param ... Parameters passed on to \code{\link{download_data}}
 #' @export
 #'
 download_table <- function(id, dir=id, ...){
   #TODO add untyped vs typed download
   meta <- download_meta(id=id, dir=dir)
 
-  download_data(id=id, path=file.path(dir, "data.csv"))
+  download_data(id=id, path=file.path(dir, "data.csv"), ...)
   meta$directory <- dir
   # maybe we should generate a yaml or datapackage.json file?
   invisible(meta)

@@ -14,6 +14,9 @@ By default it creates a sub directory with the name of the id}
 
 \item{...}{not used}
 }
+\value{
+meta data object
+}
 \description{
 Dumps the meta data into a directory
 }

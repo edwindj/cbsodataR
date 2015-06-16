@@ -10,6 +10,8 @@ download_table(id, dir = id, ...)
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link{get_table_list}})}
 
 \item{dir}{Directory where table should be downloaded}
+
+\item{...}{Parameters passed on to \code{\link{download_data}}}
 }
 \description{
 Download a table from statistics Netherlands
