@@ -22,7 +22,9 @@ get_meta <- function(id, cache=FALSE){
   
   meta <- lapply(meta_top$url, resolve_resource, "Retrieving ", url, cache=cache)
   names(meta) <- meta_top$name
-  meta
+  structure( meta
+           , class="cbs_table"
+           )
 }
 
 ### testing

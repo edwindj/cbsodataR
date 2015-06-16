@@ -5,9 +5,8 @@
 #' @param path of data file, defaults to "<id>/data.csv"
 #' @param ... optional filter statements to select rows of the data, e.g.
 #' @param select optional names of columns to be returned.
-#' @export
-dump_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
-  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/TypedDataSet?$format=json"
+download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
+  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/UntypedDataSet?$format=json"
                         , list( BASEURL = BASEURL
                                 , BULK = BULK
                                 , id = id
@@ -50,8 +49,8 @@ dump_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
 }
 
 #testing
-#dump_data("81819NED")
+#download_data("81819NED")
 
 
 ## big table
-#dump_data("70072ned")
+#download_data("70072ned")

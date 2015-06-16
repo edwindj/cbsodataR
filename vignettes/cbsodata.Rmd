@@ -16,9 +16,14 @@ For long SN has put its data online in its online database
 Since 2014 this data base has an open data web API based on the OData protocol.
 The *cbsodata* package allows for retrieving data right into R. 
 
-## Catalog
-
 ## Table information
+
+A list of tables can be retrieved using the `get_table_list` function.
+
+```{r get_table_list}
+tables <- get_table_list(Language="en") # retrieve only enlgish tables
+head(tables)
+```
 
 ## Data download
 
