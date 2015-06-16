@@ -1,7 +1,7 @@
 Package: cbsodata
 Type: Package
-Title: Gets meta data and data from Statistics Netherlands (CBS) opendata api
-Version: 0.1
+Title: Download Data from Statistics Netherlands (CBS) OpenData API
+Version: 0.1.0.9000
 Date: 2014-12-18
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
