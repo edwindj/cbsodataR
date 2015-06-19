@@ -2,8 +2,7 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 
-Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) of Statistics Netherlands (cbs.nl) with *R*.
-The OData description is in Dutch (Google translate to the rescue...)
+Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) (dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
 __Note: This is a spare time project and not an official Statistics Netherlands package__
 
