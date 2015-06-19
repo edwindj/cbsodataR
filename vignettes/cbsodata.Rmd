@@ -1,5 +1,5 @@
 ---
-title: "cbsodata, all data of Statistics Netherlands (CBS)"
+title: "cbsodataR, all data of Statistics Netherlands (CBS)"
 author: "Edwin de Jonge"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -63,4 +63,17 @@ get_data('71509ENG', recode = FALSE) %>%
   select(2:5) %>% 
   head
 ```
+
+## Select and filter
+
+It is possible restrict the download using filter statements
+
+```{r, get_data3, message=FALSE}
+  get_data('71509ENG', Periods='2000JJ00') %>% 
+  select(2:5) %>% 
+  head
+```
+
+
+
 

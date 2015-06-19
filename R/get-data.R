@@ -14,8 +14,8 @@
 #' directory
 #' @export
 get_data <- function(id, ..., recode=TRUE, dir=tempdir()){
-  meta <- download_table(id, ..., dir=dir)
-  data <- read.csv(file.path(dir, "data.csv")) 
+  meta <- download_table(id, ..., dir=dir, cache=TRUE)
+  data <- read.csv(file.path(dir, "data.csv"))
   
   if (recode){
     
