@@ -1,4 +1,4 @@
-# CBS odata with R
+# Statistics Netherlands (www.cbs.nl) opendata API client for R
 
 [![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 
