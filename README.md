@@ -4,8 +4,6 @@
 
 Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) (dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
-__Note: This is a spare time project and not an official Statistics Netherlands package__
-
 # Installation
 
 `cbsodata` is not available from CRAN but can installed using `devtools`.
