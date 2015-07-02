@@ -50,7 +50,7 @@ get_meta_from_dir <- function(dir){
 
 
 #dump_meta("81819NED")
-get_meta_from_dir("D:/data/StatLine/00370/")
+#get_meta_from_dir("D:/data/StatLine/00370/")
 
 ### testing
 #meta <- get_meta("81819NED")
