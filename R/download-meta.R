@@ -3,13 +3,14 @@
 #' @param dir Directory in which data should be stored. 
 #' By default it creates a sub directory with the name of the id
 #' @param ... not used
+#' @param cache Should meta data be cached?
 #' @return meta data object
-download_meta <- function(id, dir=id, ...){
+download_meta <- function(id, dir=id, ..., cache=FALSE){
   dir.create(path=dir, showWarnings = FALSE, recursive = TRUE)
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd))
   
-  meta <- get_meta(id)
+  meta <- get_meta(id, cache = cache)
   
   for (n in names(meta)){
     file_name <- paste0(n, ".csv")

@@ -4,14 +4,16 @@
 \alias{download_table}
 \title{Download a table from statistics Netherlands}
 \usage{
-download_table(id, dir = id, ...)
+download_table(id, ..., dir = id, cache = FALSE)
 }
 \arguments{
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link{get_table_list}})}
 
+\item{...}{Parameters passed on to \code{\link{download_data}}}
+
 \item{dir}{Directory where table should be downloaded}
 
-\item{...}{Parameters passed on to \code{\link{download_data}}}
+\item{cache}{If metadata is cached use that, otherwise download meta data}
 }
 \description{
 Download a table from statistics Netherlands

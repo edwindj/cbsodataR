@@ -19,12 +19,14 @@ download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
   
   # retrieve data
   message("Retrieving data from table '", id ,"'")
+  url <- URLencode(url)
   res <- jsonlite::fromJSON(url)
   write.table( res$value, 
                file=data_file, 
                row.names=FALSE, 
                na="",
-               sep=",")
+               sep=","
+             )
   url <- res$odata.nextLink
 
   while(!is.null(url)){
