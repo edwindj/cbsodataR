@@ -12,7 +12,13 @@ as.cbs_table <- function(id, ...){
 #' @export
 print.cbs_table <- function(x, ...){
   ti <- x$TableInfos
-  cat(ti$Identifier, ": '", ti$ShortTitle, "', ", ti$Period,"\n", sep="")
+  cat(ti$Identifier, ": '", ti$ShortTitle, "', ", ti$Period, sep="")
+  
+  if (!is.null(x$directory)){
+    cat(" ('",x$directory,"')", sep="")
+  }
+  cat("\n")
+  
   dp <- x$DataProperties
   dims <- dp[grep("Dimension", dp$Type),]
   

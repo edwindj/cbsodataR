@@ -27,5 +27,30 @@ get_meta <- function(id, cache=FALSE){
            )
 }
 
+#' Load meta data from a downloaded table
+#' 
+#' @param dir Directory where data was downloaded
+#' @return cbs_table object with meta data
+#' @export
+get_meta_from_dir <- function(dir){
+  wd <- setwd(dir)
+  on.exit(setwd(wd))
+  
+  meta_files <- list.files(".", "*.csv")
+  meta_files <- meta_files[meta_files != "data.csv"]
+  
+  meta <- lapply(meta_files, read.csv)
+  names(meta) <- sub("\\.csv$","", meta_files)
+  meta$directory <- dir
+  structure( meta
+             , class="cbs_table"
+  )
+}
+### testing
+
+
+#dump_meta("81819NED")
+#get_meta_from_dir("D:/data/StatLine/00370/")
+
 ### testing
 #meta <- get_meta("81819NED")

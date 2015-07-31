@@ -24,7 +24,3 @@ download_meta <- function(id, dir=id, ..., cache=FALSE){
   invisible(meta)
 }
 
-### testing
-
-
-#dump_meta("81819NED")
