@@ -20,7 +20,6 @@ get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA
   data <- read.csv(file.path(dir, "data.csv"), colClasses="character")
   
   if (recode){
-    
     dims <- names(data)[names(data) %in% names(meta)]
     for (d in dims){
       x <- as.factor(data[[d]])
