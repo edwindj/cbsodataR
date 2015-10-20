@@ -4,12 +4,15 @@
 \alias{get_themes}
 \title{gets list of all cbs themes}
 \usage{
-get_themes(..., select = NULL)
+get_themes(..., select = NULL, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_themes(ID=10)}}
 
 \item{select}{\code{character} vector with names of wanted properties. default is all}
+
+\item{base_url}{optionally specify a different server. Useful for
+third party data services implementing the same protocal.}
 }
 \description{
 Returns a list of all cbs themes.

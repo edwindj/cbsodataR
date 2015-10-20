@@ -12,10 +12,12 @@
 #' or with their key?
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
 #' @export
-get_data <- function(id, ..., recode=TRUE, dir=tempdir()){
-  meta <- download_table(id, ..., dir=dir, cache=TRUE)
-  data <- read.csv(file.path(dir, "data.csv"))
+get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA){
+  meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)
+  data <- read.csv(file.path(dir, "data.csv"), colClasses="character")
   
   if (recode){
     
@@ -26,7 +28,8 @@ get_data <- function(id, ..., recode=TRUE, dir=tempdir()){
       levels(x) <- dim$Title[match(levels(x), dim$Key)]
       data[[d]] <- x
     }
-    #TODO recode column names from meta$DataProperties
+    # TODO recode column names from meta$DataProperties and
+    # convert columns to correct type.
   }
   
   class(data) <- c('tbl', 'tbl_df', 'data.frame')

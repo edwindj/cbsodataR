@@ -9,12 +9,14 @@
 #' @param ... filter statement to select rows, e.g. Language="nl"
 #' @param select \code{character} columns to be returned, by default all columns
 #' will be returned.
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' @export
-get_table_list <- function(..., select=NULL){
+get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"
-                       , list( BASEURL = BASEURL
+                       , list( BASEURL = base_url
                              , CATALOG = CATALOG
                              )
                        )

@@ -4,7 +4,7 @@
 \alias{get_data}
 \title{Get data from Statistics Netherlands (CBS)}
 \usage{
-get_data(id, ..., recode = TRUE, dir = tempdir())
+get_data(id, ..., recode = TRUE, dir = tempdir(), base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link{get_table_list}}}
@@ -16,6 +16,9 @@ or with their key?}
 
 \item{dir}{Directory where the table should be downloaded. Defaults to temporary
 directory}
+
+\item{base_url}{optionally specify a different server. Useful for
+third party data services implementing the same protocal.}
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of tables

@@ -4,12 +4,15 @@
 \alias{get_meta}
 \title{gets metadata of a cbs table}
 \usage{
-get_meta(id, cache = FALSE)
+get_meta(id, cache = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{internal id of CBS table}
 
 \item{cache}{should the result be cached?}
+
+\item{base_url}{optionally specify a different server. Useful for
+third party data services implementing the same protocal.}
 }
 \description{
 gets metadata of a cbs table

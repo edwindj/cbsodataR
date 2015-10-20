@@ -4,13 +4,14 @@
 #' @param dir Directory where table should be downloaded
 #' @param ... Parameters passed on to \code{\link{download_data}}
 #' @param cache If metadata is cached use that, otherwise download meta data
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
 #' @export
-#'
-download_table <- function(id, ..., dir=id, cache=FALSE){
+download_table <- function(id, ..., dir=id, cache=FALSE, base_url = CBSOPENDATA){
   #TODO add untyped vs typed download
-  meta <- download_meta(id=id, dir=dir, cache=cache)
+  meta <- download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
 
-  download_data(id=id, path=file.path(dir, "data.csv"), ...)
+  download_data(id=id, path=file.path(dir, "data.csv"), ..., base_url = base_url)
   meta$directory <- dir
   # maybe we should generate a yaml or datapackage.json file?
   invisible(meta)

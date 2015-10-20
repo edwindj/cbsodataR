@@ -5,11 +5,14 @@
 #' @param path of data file, defaults to "<id>/data.csv"
 #' @param ... optional filter statements to select rows of the data, e.g.
 #' @param select optional names of columns to be returned.
-download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL){
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
+download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL,
+                          base_url = CBSOPENDATA){
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/UntypedDataSet?$format=json"
-                        , list( BASEURL = BASEURL
-                                , BULK = BULK
-                                , id = id
+                        , list( BASEURL = base_url
+                              , BULK = BULK
+                              , id = id
                         )
   )
   url <- paste0(url, get_query(..., select=select))

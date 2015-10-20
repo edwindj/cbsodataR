@@ -1,12 +1,14 @@
 #' gets metadata of a cbs table
 #' @param id internal id of CBS table
 #' @param cache should the result be cached?
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' @export
-get_meta <- function(id, cache=FALSE){
+get_meta <- function(id, cache=FALSE, base_url = CBSOPENDATA){
   url <- whisker.render("{{BASEURL}}/{{API}}/{{id}}"
-                       , list( BASEURL = BASEURL
+                       , list( BASEURL = base_url
                              , API = API
                              , id = id
                              )
@@ -38,8 +40,8 @@ get_meta_from_dir <- function(dir){
   
   meta_files <- list.files(".", "*.csv")
   meta_files <- meta_files[meta_files != "data.csv"]
-  
-  meta <- lapply(meta_files, read.csv)
+      
+  meta <- lapply(meta_files, read.csv, colClasses="character")
   names(meta) <- sub("\\.csv$","", meta_files)
   meta$directory <- dir
   structure( meta

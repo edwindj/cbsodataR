@@ -4,7 +4,7 @@
 \alias{download_meta}
 \title{Dumps the meta data into a directory}
 \usage{
-download_meta(id, dir = id, ..., cache = FALSE)
+download_meta(id, dir = id, ..., cache = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{Id of CBS open data table}
@@ -15,6 +15,9 @@ By default it creates a sub directory with the name of the id}
 \item{...}{not used}
 
 \item{cache}{Should meta data be cached?}
+
+\item{base_url}{optionally allow to specify a different server. Useful for
+third party data services implementing the same protocal.}
 }
 \value{
 meta data object

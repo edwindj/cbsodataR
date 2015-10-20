@@ -5,12 +5,14 @@
 #' @param ... not used
 #' @param cache Should meta data be cached?
 #' @return meta data object
-download_meta <- function(id, dir=id, ..., cache=FALSE){
+#' @param base_url optionally allow to specify a different server. Useful for
+#' third party data services implementing the same protocal.
+download_meta <- function(id, dir=id, ..., cache=FALSE, base_url = CBSOPENDATA){
   dir.create(path=dir, showWarnings = FALSE, recursive = TRUE)
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd))
   
-  meta <- get_meta(id, cache = cache)
+  meta <- get_meta(id, cache = cache, base_url = base_url)
   
   for (n in names(meta)){
     file_name <- paste0(n, ".csv")

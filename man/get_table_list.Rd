@@ -4,13 +4,16 @@
 \alias{get_table_list}
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
-get_table_list(..., select = NULL)
+get_table_list(..., select = NULL, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{...}{filter statement to select rows, e.g. Language="nl"}
 
 \item{select}{\code{character} columns to be returned, by default all columns
 will be returned.}
+
+\item{base_url}{optionally specify a different server. Useful for
+third party data services implementing the same protocal.}
 }
 \description{
 \code{get_table_list} by default a list of all tables and all columns will be retrieved.
