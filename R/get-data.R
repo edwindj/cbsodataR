@@ -31,7 +31,9 @@ get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA
     columns <- meta$DataProperties
     
     m <- match(columns$Key, colnames(data), nomatch = 0)
-    colnames(data)[m] <- columns$Title[m > 0]
+    
+    # can cause duplicated names!
+    #colnames(data)[m] <- columns$Title[m > 0]
     
     # TODO recode column names from meta$DataProperties and
     # convert columns to correct type.
