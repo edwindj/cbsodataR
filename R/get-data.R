@@ -9,7 +9,8 @@
 #' @param id Identifier of table, can be found in \code{\link{get_table_list}}
 #' @param ... optional filter statemenets
 #' @param recode Should the categories of the table be recoded with their title
-#' or with their key?
+#' (TRUE) or with their key (FALSE)? Should column names be coded with title (TRUE)
+#' or key (FALSE) 
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
 #' @param base_url optionally specify a different server. Useful for
@@ -27,6 +28,11 @@ get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA
       levels(x) <- dim$Title[match(levels(x), dim$Key)]
       data[[d]] <- x
     }
+    columns <- meta$DataProperties
+    
+    m <- match(columns$Key, colnames(data), nomatch = 0)
+    colnames(data)[m] <- columns$Title[m > 0]
+    
     # TODO recode column names from meta$DataProperties and
     # convert columns to correct type.
   }
