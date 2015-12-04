@@ -14,7 +14,7 @@
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
+#' third party data services implementing the same protocol.
 #' @export
 get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA){
   meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)

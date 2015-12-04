@@ -1,3 +1,4 @@
+#'@importFrom utils View
 #'@docType package
 NULL
 
