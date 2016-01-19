@@ -8,7 +8,12 @@ Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfer
 
 # Installation
 
-`cbsodata` is not available from CRAN but can installed using `devtools`.
+From CRAN
+```S
+install.packages("cbsodataR")
+``` 
+
+The latest development version of `cbsodata` can installed using `devtools`.
 
 ```S
 devtools::install_github("edwindj/cbsodataR")
