@@ -11,9 +11,20 @@
 #' will be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
+#' @return \code{data.frame} with identifiers, titles and descriptions of tables
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' @export
+#' @examples 
+#' \dontrun{
+#' 
+#' # get list of english tables
+#' tables_en <- get_table_list(Language="en")
+#'
+#' # get list of dutch tables
+#' tables_nl <- get_table_list(Language="nl")
+#' View(tables_nl)
+#' }
 get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"
                        , list( BASEURL = base_url

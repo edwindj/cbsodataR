@@ -21,12 +21,25 @@ directory}
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
 }
+\value{
+\code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.
+}
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of tables
 can be retrieved with \code{\link{get_table_list}}. 
-Optionaly the data can be filtered on category values.
+Optionaly the data can be filtered on category values. 
+The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
+Rows with values that are not part of the character vector are not returned. Note that the values
+have to be raw (un-recoded) values.
 }
 \note{
 All data are downloaded using \code{\link{download_table}}
+}
+\examples{
+\dontrun{
+
+# get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
+ get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+}
 }
 

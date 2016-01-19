@@ -2,19 +2,23 @@
 % Please edit documentation in R/get-meta.R
 \name{get_meta}
 \alias{get_meta}
-\title{gets metadata of a cbs table}
+\title{Get metadata of a cbs table}
 \usage{
 get_meta(id, cache = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
-\item{id}{internal id of CBS table}
+\item{id}{internal id of CBS table, can be retrieved with \code{\link{get_table_list}}}
 
-\item{cache}{should the result be cached?}
+\item{cache}{should the result be cached? C}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}
 }
+\value{
+cbs_table object containing serveral \code{data.frames} with meta data.
+}
 \description{
-gets metadata of a cbs table
+Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) may improve
+the performance considerably. The meta data of a CBS table is
 }
 

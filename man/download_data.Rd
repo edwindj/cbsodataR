@@ -12,7 +12,7 @@ download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
 
 \item{path}{of data file, defaults to "<id>/data.csv"}
 
-\item{...}{optional filter statements to select rows of the data, e.g.}
+\item{...}{optional filter statements to select rows of the data,}
 
 \item{select}{optional names of columns to be returned.}
 
@@ -20,6 +20,6 @@ download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
 third party data services implementing the same protocal.}
 }
 \description{
-Gets all data via bulk download. Dumps the data in (international) csv format.
+Gets all data via bulk download. \code{download_data} dumps the data in (international) csv format.
 }
 

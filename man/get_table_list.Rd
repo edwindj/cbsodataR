@@ -15,6 +15,9 @@ will be returned.}
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}
 }
+\value{
+\code{data.frame} with identifiers, titles and descriptions of tables
+}
 \description{
 \code{get_table_list} by default a list of all tables and all columns will be retrieved.
 You can restrict the query by supplying multiple filter statements or by specifying the
@@ -22,5 +25,16 @@ columns that should be returned.
 }
 \note{
 \code{get_table_list} will cache results, so subsequent calls will be much faster.
+}
+\examples{
+\dontrun{
+
+# get list of english tables
+tables_en <- get_table_list(Language="en")
+
+# get list of dutch tables
+tables_nl <- get_table_list(Language="nl")
+View(tables_nl)
+}
 }
 
