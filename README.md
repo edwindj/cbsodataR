@@ -1,6 +1,7 @@
 # Statistics Netherlands (www.cbs.nl) opendata API client for R
 
 [![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://cran.r-project.org/web/packages/cbsodataR)
+![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR)
 [![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
 
