@@ -15,7 +15,7 @@ Imports:
     whisker,
     jsonlite,
     yaml, 
-    utils
+    utils, httr
 Suggests:
     knitr,
     rmarkdown,

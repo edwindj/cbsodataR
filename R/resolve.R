@@ -11,7 +11,15 @@ resolve_resource <- function(url, ..., cache=TRUE){
   }
   
   message(...," ", url)
-  res <- jsonlite::fromJSON(url)$value
+  od <- httr::GET(url, httr::accept_json())
+  httr::stop_for_status(od, task = httr::http_status(od)$message)
+  # if (httr::http_error(od)){
+  #   warning(httr::http_status(od))
+  #   return(NULL)
+  # }
+  
+  res <- httr::content(od, "text", encoding="UTF-8")
+  res <- jsonlite::fromJSON(res)$value
   
   if (isTRUE(cache)){
     cache_add(url, res)
