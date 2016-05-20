@@ -25,10 +25,10 @@ shinyUI(fluidPage(
                 , uiOutput("buildquery")
                 #, textOutput("rquery")
                 , verbatimTextOutput("rquery")
-                ),
-        tabPanel( "table list",       
-                         dataTableOutput("table_list")
                 )
+        # ,tabPanel( "table list",       
+        #                  dataTableOutput("table_list")
+        #         )
       )      
     )
   )

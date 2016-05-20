@@ -38,6 +38,10 @@ shinyServer(function(input, output, session){
     }
   })
   
+  if (!interactive()){
+    session$onSessionEnded(q)
+  }
+  
 
   choices = tables$Identifier
   names(choices) = tables$Title
@@ -96,16 +100,18 @@ renderSelect <- function(id, label, categories){
   selectizeInput( inputid
                 , label
                 , choices = choices
-                #, options = list(Placeholder="Select")
+                , options = list(Placeholder="Select categories...")
                 , multiple=TRUE
                 )
 }
 
 library(whisker)
 format_char <- function(x){
-  fc <- x %>% as.character %>% shQuote %>% paste0(collapse =",")
+  fc <- x %>% as.character %>% paste0("'",.,"'", collapse =",")
   if (length(x) > 1){
     fc <-   paste0("c(", fc, ")")
+  } else if (length(x) == 0){
+    return("")
   }
   fc
 }
@@ -114,7 +120,7 @@ get_query <- function(q, id){
   q <- sapply(q, format_char, simplify = FALSE)
   q <- q[sapply(q, nchar) > 0]
   if (length(q)){
-    whisker::whisker.render("get_data('{{id}}',\n{{query}}", list(
+    whisker::whisker.render("get_data('{{id}}',\n{{query}})", list(
       id    = id,
       query = paste0('\t', names(q),"=",q, collapse = ",\n")
   ))
@@ -124,4 +130,4 @@ get_query <- function(q, id){
 }
 
 
-format_char(c("a", "b"))
+#format_char(c("a", "b"))
