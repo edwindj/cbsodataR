@@ -16,15 +16,18 @@ shinyUI(fluidPage(
         div(
           "table id: ", shiny::textOutput("id")
         )
+        , uiOutput("buildquery")
       )
     ),
     
     mainPanel(
       tabsetPanel(
         tabPanel( "query"
-                , uiOutput("buildquery")
                 #, textOutput("rquery")
                 , verbatimTextOutput("rquery")
+                ),
+        tabPanel("data"
+                , dataTableOutput('data')
                 )
         # ,tabPanel( "table list",       
         #                  dataTableOutput("table_list")
