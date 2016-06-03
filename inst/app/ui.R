@@ -17,6 +17,7 @@ shinyUI(fluidPage(
           "table id: ", shiny::textOutput("id")
         )
         , uiOutput("buildquery")
+        , actionButton("getData", "Get Data")
       )
     ),
     

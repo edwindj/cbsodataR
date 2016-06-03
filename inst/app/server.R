@@ -54,9 +54,23 @@ shinyServer(function(input, output, session){
   
   output$buildquery <- renderUI(renderBuildQuery(table_info$meta))
   
+  query_text <- reactive(
+    get_query(reactiveValuesToList(query), table_info$id)
+  )
+  
   output$rquery <- renderText({
-     get_query(reactiveValuesToList(query), table_info$id)
-   })
+    query_text()
+  })
+  
+  cbs_data <- reactive({
+    qry <- query_text()
+    if (input$getData){
+      .data <- eval(parse(text=qry))
+      return(.data)
+    } 
+  })
+  
+  output$data <- renderDataTable(cbs_data())
 
 })
 
@@ -117,6 +131,9 @@ format_char <- function(x){
 }
 
 get_query <- function(q, id){
+  dims <- names(q)
+  dims <- dims[dims != "select"]
+  q$select <- c(dims, q$select)
   q <- sapply(q, format_char, simplify = FALSE)
   q <- q[sapply(q, nchar) > 0]
   if (length(q)){
