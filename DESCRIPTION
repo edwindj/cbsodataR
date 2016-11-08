@@ -19,6 +19,7 @@ Imports:
 Suggests:
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    shiny
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
