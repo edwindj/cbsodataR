@@ -1,4 +1,5 @@
-#'@importFrom utils read.csv write.csv write.table
+#'@importFrom utils read.csv write.csv write.table View
+#'@import httr
 #'@docType package
 NULL
 

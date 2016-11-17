@@ -1,11 +1,11 @@
 Package: cbsodataR
 Type: Package
 Title: Statistics Netherlands (CBS) Open Data API Client
-Version: 0.2.1
+Version: 0.2.2.9000
 Date: 2016-01-19
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-Description: The data and meta data from Statistics
+Description: The data and meta data from Statisticsx
     Netherlands (www.cbs.nl) can be browsed and downloaded. The client uses
     the open data API of Statistics Netherlands.
 License: GPL-2
@@ -15,10 +15,11 @@ Imports:
     whisker,
     jsonlite,
     yaml, 
-    utils
+    utils, httr
 Suggests:
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    shiny
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1

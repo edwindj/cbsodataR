@@ -11,10 +11,23 @@ resolve_resource <- function(url, ..., cache=TRUE){
   }
   
   message(...," ", url)
-  res <- jsonlite::fromJSON(url)$value
+  # od <- httr::GET(url, httr::accept_json())
+  # httr::stop_for_status(od, task = httr::http_status(od)$message)
+  # res <- httr::content(od, "text", encoding="UTF-8")
+  # res <- jsonlite::fromJSON(res)$value
+  res <- get_json(url)$value
   
   if (isTRUE(cache)){
     cache_add(url, res)
   }
   res
+}
+
+
+get_json <- function(url){
+  print(url)
+  od <- httr::GET(url, httr::accept_json())
+  httr::stop_for_status(od, task = httr::http_status(od)$message)
+  res <- httr::content(od, "text", encoding="UTF-8")
+  jsonlite::fromJSON(res)
 }

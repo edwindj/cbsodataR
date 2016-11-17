@@ -30,6 +30,23 @@ get_themes <- function(..., select=NULL, base_url = CBSOPENDATA){
   themes
 }
 
+#' Get a the list of tables connected to themes
+#' @export
+#' @param ... Use this to add a filter to the query e.g. \code{get_tables_themes(ID=10)}.  
+#' @param select \code{character} vector with names of wanted properties. default is all
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocal.
+#' @return A \code{data.frame} with various properties of SN/CBS themes.
+get_tables_themes <- function(..., select=NULL, base_url = CBSOPENDATA){
+  url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables_Themes?$format=json"
+                        , list( BASEURL = base_url
+                                , CATALOG = CATALOG
+                        )
+  )
+  url <- paste0(url, get_query(..., select=select))  
+  table_themes <- resolve_resource(url, "Retrieving themes from ")
+  table_themes
+}
 
 
 ## testing
