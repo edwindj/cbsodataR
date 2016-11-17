@@ -16,20 +16,20 @@ install.packages("cbsodataR")
 
 The latest development version of `cbsodata` can installed using `devtools`.
 
-```S
+```R
 devtools::install_github("edwindj/cbsodataR")
 ```
 
 # Usage
 
 Retrieve list a tables.
-```
+```R
 > tables <- get_table_list(Language="en")
 ```
 
 Use the `Identifier` from tables to retrieve table information
 
-```
+```R
 > get_meta('71509ENG')
 
 71509ENG: 'Yield apples and pears', 2013
