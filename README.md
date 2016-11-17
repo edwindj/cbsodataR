@@ -39,7 +39,8 @@ Use the `Identifier` from tables to retrieve table information
 
 Or download data
 
-``` 
+```
+> library(dplyr) # to help select data and use the %>% operator
 > get_data('71509ENG') %>% select(2:5) %>% head
 
 Source: local data frame [6 x 4]
