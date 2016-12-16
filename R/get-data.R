@@ -28,7 +28,7 @@
 #' }
 get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA){
   meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)
-  data <- read.csv(file.path(dir, "data.csv"), colClasses="character")
+  data <- read.csv(file.path(dir, "data.csv"), colClasses="character", strip.white = TRUE)
   
   if (recode){
     dims <- names(data)[names(data) %in% names(meta)]
