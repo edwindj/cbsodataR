@@ -12,7 +12,8 @@
 #' @param id Identifier of table, can be found in \code{\link{get_table_list}}
 #' @param ... optional filter statemenets
 #' @param recode Should the categories of the table be recoded with their title
-#' (TRUE) or with their key (FALSE)? Should column names be coded with title (TRUE)
+#' (TRUE) or with their key (FALSE)? 
+#' @param use_column_title Should column names be coded with title (TRUE)
 #' or key (FALSE) 
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
@@ -26,7 +27,7 @@
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
 #'  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 #' }
-get_data <- function(id, ..., recode=TRUE, dir=tempdir(), base_url = CBSOPENDATA){
+get_data <- function(id, ..., recode=TRUE, use_column_title = recode, dir=tempdir(), base_url = CBSOPENDATA){
   meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)
   data <- read.csv(file.path(dir, "data.csv"), colClasses="character", strip.white = TRUE)
   

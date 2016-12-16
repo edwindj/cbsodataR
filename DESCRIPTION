@@ -1,7 +1,7 @@
 Package: cbsodataR
 Type: Package
 Title: Statistics Netherlands (CBS) Open Data API Client
-Version: 0.2.2.9000
+Version: 0.2.3.9000
 Date: 2016-01-19
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
