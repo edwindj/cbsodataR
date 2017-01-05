@@ -4,7 +4,8 @@
 \alias{get_data}
 \title{Get data from Statistics Netherlands (CBS)}
 \usage{
-get_data(id, ..., recode = TRUE, dir = tempdir(), base_url = CBSOPENDATA)
+get_data(id, ..., recode = TRUE, use_column_title = recode,
+  dir = tempdir(), base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link{get_table_list}}}
@@ -12,7 +13,9 @@ get_data(id, ..., recode = TRUE, dir = tempdir(), base_url = CBSOPENDATA)
 \item{...}{optional filter statemenets}
 
 \item{recode}{Should the categories of the table be recoded with their title
-(TRUE) or with their key (FALSE)? Should column names be coded with title (TRUE)
+(TRUE) or with their key (FALSE)?}
+
+\item{use_column_title}{Should column names be coded with title (TRUE)
 or key (FALSE)}
 
 \item{dir}{Directory where the table should be downloaded. Defaults to temporary
