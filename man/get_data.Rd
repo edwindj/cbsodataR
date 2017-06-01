@@ -45,4 +45,3 @@ All data are downloaded using \code{\link{download_table}}
  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 }
 }
-

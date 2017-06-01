@@ -15,4 +15,3 @@ cbs_table object with meta data
 \description{
 Load meta data from a downloaded table
 }
-

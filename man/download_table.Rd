@@ -33,4 +33,3 @@ Download a table from statistics Netherlands
  download_table(id="7196ENG")
 }
 }
-

@@ -21,4 +21,3 @@ cbs_table object containing serveral \code{data.frames} with meta data.
 Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) may improve
 the performance considerably. The meta data of a CBS table is
 }
-

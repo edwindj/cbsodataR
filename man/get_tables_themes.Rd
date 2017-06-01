@@ -20,4 +20,3 @@ A \code{data.frame} with various properties of SN/CBS themes.
 \description{
 Get a the list of tables connected to themes
 }
-

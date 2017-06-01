@@ -9,4 +9,3 @@ cache_clear()
 \description{
 clears the cache
 }
-

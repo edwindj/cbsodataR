@@ -37,4 +37,3 @@ tables_nl <- get_table_list(Language="nl")
 View(tables_nl)
 }
 }
-

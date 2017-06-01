@@ -22,4 +22,3 @@ third party data services implementing the same protocal.}
 \description{
 Gets all data via bulk download. \code{download_data} dumps the data in (international) csv format.
 }
-
