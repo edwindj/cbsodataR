@@ -4,7 +4,7 @@
 
 **`cbsodataR` version 2.4 and later will use `https` by default.**
 
-[![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://cran.r-project.org/web/packages/cbsodataR)
+[![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://CRAN.R-project.org/package=cbsodataR)
 ![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR)
 [![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
