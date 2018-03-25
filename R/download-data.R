@@ -4,11 +4,14 @@
 #' @param id of cbs open data table
 #' @param path of data file, defaults to "<id>/data.csv"
 #' @param ... optional filter statements to select rows of the data,
+#' @param verbose show the underlying downloading of the data
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
-download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL,
-                          base_url = CBSOPENDATA){
+download_data <- function( id, path=file.path(id, "data.csv"), ...
+                         , select=NULL
+                         , verbose = TRUE
+                         , base_url = CBSOPENDATA){
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/UntypedDataSet?$format=json"
                         , list( BASEURL = base_url
                               , BULK = BULK
@@ -23,7 +26,7 @@ download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL,
   # retrieve data
   message("Retrieving data from table '", id ,"'")
   url <- URLencode(url)
-  res <- get_json(url) #jsonlite::fromJSON(url)
+  res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
   write.table( res$value, 
                file=data_file, 
                row.names=FALSE, 
@@ -35,7 +38,7 @@ download_data <- function(id, path=file.path(id, "data.csv"), ..., select=NULL,
   while(!is.null(url)){
     skip <- gsub(".+skip=(\\w+)", "\\1", url)
     message("Reading...")
-    res <- get_json(url) #jsonlite::fromJSON(url)
+    res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
     message("Writing...")
     write.table( res$value
                , file=data_file

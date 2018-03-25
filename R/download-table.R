@@ -18,7 +18,12 @@
 #' # download meta data and data from inflation/Consumer Price Indices
 #'  download_table(id="7196ENG")
 #' }
-download_table <- function(id, ..., dir=id, cache=FALSE, base_url = CBSOPENDATA){
+download_table <- function( id
+                          , ...
+                          , dir=id
+                          , cache = FALSE
+                          , verbose = TRUE
+                          , base_url = CBSOPENDATA){
   #TODO add untyped vs typed download
   meta <- download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
 

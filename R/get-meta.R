@@ -11,7 +11,11 @@
 #' @importFrom jsonlite fromJSON
 #' 
 #' @export
-get_meta <- function(id, cache=FALSE, base_url = CBSOPENDATA){
+get_meta <- function( id
+                    , verbose  = TRUE
+                    , cache    = FALSE
+                    , base_url = CBSOPENDATA
+                    ){
   url <- whisker.render("{{BASEURL}}/{{API}}/{{id}}"
                        , list( BASEURL = base_url
                              , API = API
@@ -20,6 +24,7 @@ get_meta <- function(id, cache=FALSE, base_url = CBSOPENDATA){
                        )
   meta_top <- resolve_resource( url
                               , "Retrieving meta data for table '", id, "'"
+                              , verbose = verbose
                               , cache = cache
                               )
   
@@ -50,8 +55,8 @@ get_meta_from_dir <- function(dir){
   names(meta) <- sub("\\.csv$","", meta_files)
   meta$directory <- dir
   structure( meta
-             , class="cbs_table"
-  )
+           , class="cbs_table"
+           )
 }
 ### testing
 
