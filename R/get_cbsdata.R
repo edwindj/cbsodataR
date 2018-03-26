@@ -17,6 +17,9 @@
 #' or key (FALSE) 
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
+#' @param typed Should the data automatically be converted into integer and numeric?
+#' @param verbose Print extra messages what is happening.
+#' @param include_ID Should the data include the ID column for the rows?
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
 #' @return \code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.
@@ -41,7 +44,7 @@ get_cbs_data <- function( id
   meta <- download_table( id, ...
                         , dir      = dir
                         , cache    = TRUE
-                        , typed = typed
+                        , typed    = typed
                         , verbose  = verbose
                         , base_url = base_url
                         )

@@ -2,9 +2,12 @@
 % Please edit documentation in R/get-table-list.R
 \name{get_table_list}
 \alias{get_table_list}
+\alias{get_cbs_toc}
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
 get_table_list(..., select = NULL, base_url = CBSOPENDATA)
+
+get_cbs_toc(..., select = NULL, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{...}{filter statement to select rows, e.g. Language="nl"}

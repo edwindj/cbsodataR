@@ -3,7 +3,8 @@
 #' Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) may improve
 #' the performance considerably. The meta data of a CBS table is 
 #' @param id internal id of CBS table, can be retrieved with \code{\link{get_table_list}}
-#' @param cache should the result be cached? C
+#' @param verbose Print extra messages what is happening.
+#' @param cache should the result be cached? 
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
 #' @return cbs_table object containing serveral \code{data.frames} with meta data.  
@@ -34,7 +35,8 @@ get_meta <- function( id
   
   meta <- lapply( meta_top$url
                 , resolve_resource, "Retrieving "
-                , url, cache=cache
+                , url
+                , cache   = cache
                 , verbose = verbose
                 )
   names(meta) <- meta_top$name

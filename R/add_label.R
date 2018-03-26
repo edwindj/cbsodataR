@@ -1,7 +1,7 @@
 # utility function adding labels to columns
 add_label <- function(x, meta){
   props <- meta$DataProperties
-  labels <- setNames(props$Title, props$Key)
+  labels <- stats::setNames(props$Title, props$Key)
   for (n in names(x)){
     lbl <- unname(labels[n])
     if (is.na(lbl) || is.null(lbl)){
@@ -11,7 +11,6 @@ add_label <- function(x, meta){
   }
   x
 }
-
 
 #View(add_label(x, meta))
 #x <- get_cbs_data("81819NED")

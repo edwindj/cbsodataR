@@ -16,6 +16,8 @@ download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
 
 \item{select}{optional names of columns to be returned.}
 
+\item{typed}{Should the data automatically be converted into integer and numeric?}
+
 \item{verbose}{show the underlying downloading of the data}
 
 \item{base_url}{optionally specify a different server. Useful for

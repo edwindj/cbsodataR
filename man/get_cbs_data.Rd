@@ -16,14 +16,20 @@ get_cbs_data(id, ..., recode = FALSE, typed = TRUE,
 \item{recode}{Should the categories of the table be recoded with their title
 (TRUE) or with their key (FALSE)?}
 
+\item{typed}{Should the data automatically be converted into integer and numeric?}
+
 \item{use_column_title}{Should column names be coded with title (TRUE)
 or key (FALSE)}
 
 \item{dir}{Directory where the table should be downloaded. Defaults to temporary
 directory}
 
+\item{verbose}{Print extra messages what is happening.}
+
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
+
+\item{include_ID}{Should the data include the ID column for the rows?}
 }
 \value{
 \code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.

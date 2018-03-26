@@ -9,7 +9,9 @@ get_meta(id, verbose = TRUE, cache = FALSE, base_url = CBSOPENDATA)
 \arguments{
 \item{id}{internal id of CBS table, can be retrieved with \code{\link{get_table_list}}}
 
-\item{cache}{should the result be cached? C}
+\item{verbose}{Print extra messages what is happening.}
+
+\item{cache}{should the result be cached?}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}

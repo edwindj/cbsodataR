@@ -37,7 +37,9 @@ get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
   tables
 }
 
-
+#' @export
+#' @rdname get_table_list
+get_cbs_toc <- get_table_list
 ## testing
 
 # library(dplyr)

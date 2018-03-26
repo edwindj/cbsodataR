@@ -16,6 +16,10 @@ download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
 
 \item{cache}{If metadata is cached use that, otherwise download meta data}
 
+\item{verbose}{Print extra messages what is happening.}
+
+\item{typed}{Should the data automatically be converted into integer and numeric?}
+
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.
 

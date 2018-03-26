@@ -4,7 +4,8 @@
 \alias{download_meta}
 \title{Dumps the meta data into a directory}
 \usage{
-download_meta(id, dir = id, ..., cache = FALSE, base_url = CBSOPENDATA)
+download_meta(id, dir = id, ..., verbose = FALSE, cache = FALSE,
+  base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{Id of CBS open data table}
@@ -13,6 +14,8 @@ download_meta(id, dir = id, ..., cache = FALSE, base_url = CBSOPENDATA)
 By default it creates a sub directory with the name of the id}
 
 \item{...}{not used}
+
+\item{verbose}{Print extra messages what is happening.}
 
 \item{cache}{Should meta data be cached?}
 
