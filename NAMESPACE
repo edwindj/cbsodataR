@@ -3,6 +3,7 @@
 S3method(print,cbs_table)
 export(cache_clear)
 export(download_table)
+export(get_cbs_data)
 export(get_data)
 export(get_meta)
 export(get_meta_from_dir)

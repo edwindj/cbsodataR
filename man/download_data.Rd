@@ -5,7 +5,7 @@
 \title{Gets all data from a cbs table.}
 \usage{
 download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
-  base_url = CBSOPENDATA)
+  typed = FALSE, verbose = TRUE, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{of cbs open data table}
@@ -15,6 +15,8 @@ download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
 \item{...}{optional filter statements to select rows of the data,}
 
 \item{select}{optional names of columns to be returned.}
+
+\item{verbose}{show the underlying downloading of the data}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}

@@ -32,7 +32,11 @@ get_meta <- function( id
   meta_idx = !(meta_top$name %in% c("TypedDataSet", "UntypedDataSet"))
   meta_top <- meta_top[meta_idx,]
   
-  meta <- lapply(meta_top$url, resolve_resource, "Retrieving ", url, cache=cache)
+  meta <- lapply( meta_top$url
+                , resolve_resource, "Retrieving "
+                , url, cache=cache
+                , verbose = verbose
+                )
   names(meta) <- meta_top$name
   structure( meta
            , class="cbs_table"

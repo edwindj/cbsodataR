@@ -10,12 +10,15 @@
 #' third party data services implementing the same protocal.
 download_data <- function( id, path=file.path(id, "data.csv"), ...
                          , select=NULL
+                         , typed = FALSE
                          , verbose = TRUE
                          , base_url = CBSOPENDATA){
-  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/UntypedDataSet?$format=json"
+  DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
+  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
                         , list( BASEURL = base_url
                               , BULK = BULK
                               , id = id
+                              , DATASET = DATASET
                         )
   )
   url <- paste0(url, get_query(..., select=select))
@@ -24,7 +27,9 @@ download_data <- function( id, path=file.path(id, "data.csv"), ...
   data_file <- file(path, open = "wt")  
   
   # retrieve data
-  message("Retrieving data from table '", id ,"'")
+  if (verbose){
+    message("Retrieving data from table '", id ,"'")
+  }
   url <- URLencode(url)
   res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
   write.table( res$value, 

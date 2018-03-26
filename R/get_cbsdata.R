@@ -25,18 +25,32 @@
 #' \dontrun{
 #' 
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
-#'  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+#'  get_cbs_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 #' }
 get_cbs_data <- function( id
                         , ...
-                        , recode=TRUE
+                        , recode           = FALSE
+                        , typed            = TRUE
                         , use_column_title = recode
-                        , dir=tempdir()
-                        , verbose = FALSE
-                        , base_url = CBSOPENDATA
+                        , dir              = tempdir()
+                        , verbose          = FALSE
+                        , base_url         = CBSOPENDATA
+                        , include_ID       = FALSE
                         ){
-  meta <- download_table(id, ..., dir=dir, cache=TRUE, verbose = verbose, base_url = base_url)
-  data <- read.csv(file.path(dir, "data.csv"), colClasses="character", strip.white = TRUE)
+  
+  meta <- download_table( id, ...
+                        , dir      = dir
+                        , cache    = TRUE
+                        , typed = typed
+                        , verbose  = verbose
+                        , base_url = base_url
+                        )
+  
+  data <- read.csv(file.path(dir, "data.csv"), strip.white = TRUE)
+  if (!include_ID){
+    data <- data[-1]
+  }
+  
   
   if (recode){
     dims <- names(data)[names(data) %in% names(meta)]
@@ -57,7 +71,8 @@ get_cbs_data <- function( id
     # convert columns to correct type.
   }
   
-  class(data) <- c('tbl', 'tbl_df', 'data.frame')
+  data <- add_label(data, meta)
+  class(data) <- c('tbl_df', 'tbl','data.frame')
   data
 }
 

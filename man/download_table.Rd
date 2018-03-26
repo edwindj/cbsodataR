@@ -4,7 +4,8 @@
 \alias{download_table}
 \title{Download a table from statistics Netherlands}
 \usage{
-download_table(id, ..., dir = id, cache = FALSE, base_url = CBSOPENDATA)
+download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
+  typed = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link{get_table_list}})}

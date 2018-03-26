@@ -23,11 +23,17 @@ download_table <- function( id
                           , dir=id
                           , cache = FALSE
                           , verbose = TRUE
+                          , typed = FALSE
                           , base_url = CBSOPENDATA){
   #TODO add untyped vs typed download
   meta <- download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
 
-  download_data(id=id, path=file.path(dir, "data.csv"), ..., base_url = base_url)
+  download_data( id=id, path=file.path(dir, "data.csv")
+               , ...
+               , typed    = typed
+               , verbose  = verbose
+               , base_url = base_url
+               )
   meta$directory <- dir
   # maybe we should generate a yaml or datapackage.json file?
   invisible(meta)
