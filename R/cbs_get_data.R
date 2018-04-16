@@ -13,8 +13,7 @@
 #' @param ... optional filter statemenets
 #' @param recode Should the categories of the table be recoded with their title
 #' (TRUE) or with their key (FALSE)? 
-#' @param use_column_title Should column names be coded with title (TRUE)
-#' or key (FALSE) 
+#' @param add_column_labels Should column titles be added as a label (TRUE) which are visible in \code{View}
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory
 #' @param typed Should the data automatically be converted into integer and numeric?
@@ -30,15 +29,17 @@
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
 #'  get_cbs_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 #' }
-get_cbs_data <- function( id
+cbs_get_data <- function( id
                         , ...
-                        , recode           = FALSE
-                        , typed            = TRUE
-                        , use_column_title = recode
-                        , dir              = tempdir()
-                        , verbose          = FALSE
-                        , base_url         = CBSOPENDATA
-                        , include_ID       = FALSE
+                        , add_codes         = ""
+                        , recode            = FALSE
+                        , typed             = TRUE
+                        , add_column_labels = TRUE
+                        , add_labels        = NULL
+                        , dir               = tempdir()
+                        , verbose           = FALSE
+                        , base_url          = CBSOPENDATA
+                        , include_ID        = FALSE
                         ){
   
   meta <- download_table( id, ...
@@ -54,29 +55,14 @@ get_cbs_data <- function( id
     data <- data[-1]
   }
   
-  
-  if (recode){
-    dims <- names(data)[names(data) %in% names(meta)]
-    for (d in dims){
-      x <- as.factor(data[[d]])
-      dim <- meta[[d]]
-      levels(x) <- dim$Title[match(levels(x), dim$Key)]
-      data[[d]] <- x
-    }
-    columns <- meta$DataProperties
-    
-    m <- match(columns$Key, colnames(data), nomatch = 0)
-    
-    # can cause duplicated names!
-    #colnames(data)[m] <- columns$Title[m > 0]
-    
-    # TODO recode column names from meta$DataProperties and
-    # convert columns to correct type.
+  data <- store_labels(data, meta)
+
+  if (add_column_labels){
+    data <- add_var_labels(data, meta)
   }
   
-  data <- add_label(data, meta)
   class(data) <- c('tbl_df', 'tbl','data.frame')
   data
 }
 
-#get_cbs_data("81819NED")
+#x <- cbs_get_data("81819NED")

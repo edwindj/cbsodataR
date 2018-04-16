@@ -28,9 +28,9 @@
 #'  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 #' }
 get_data <- function(id, ..., recode=TRUE, use_column_title = recode, dir=tempdir(), base_url = CBSOPENDATA){
+  .Deprecated("cbs_get_data")
   meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)
   data <- read.csv(file.path(dir, "data.csv"), colClasses="character", strip.white = TRUE)
-  
   if (recode){
     dims <- names(data)[names(data) %in% names(meta)]
     for (d in dims){

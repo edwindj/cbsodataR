@@ -9,64 +9,15 @@
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
+#' @name download_data-deprecated
 download_data <- function( id, path=file.path(id, "data.csv"), ...
                          , select=NULL
                          , typed = FALSE
                          , verbose = TRUE
                          , base_url = CBSOPENDATA
                          ){
-  DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
-  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
-                        , list( BASEURL = base_url
-                              , BULK    = BULK
-                              , id      = id
-                              , DATASET = DATASET
-                        )
-  )
-  url <- paste0(url, get_query(..., select=select))
-  
-  dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
-  data_file <- file(path, open = "wt")  
-  
-  # retrieve data
-  if (verbose){
-    message("Retrieving data from table '", id ,"'")
-  }
-  url <- URLencode(url)
-  res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
-  write.table( res$value, 
-               file=data_file, 
-               row.names=FALSE, 
-               na="",
-               sep=","
-             )
-  url <- res$odata.nextLink
-
-  while(!is.null(url)){
-    skip <- gsub(".+skip=(\\w+)", "\\1", url)
-    
-    if (verbose) {
-      message("Reading...")
-    }
-    
-    res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
-    
-    if (verbose){
-      message("Writing...")
-    }
-    
-    write.table( res$value
-               , file=data_file
-               , row.names=FALSE
-               , col.names = FALSE
-               , na=""
-               , sep=","
-               )
-    url <- res$odata.nextLink
-    #break
-  }
-  close(data_file)
-  message("Done!")
+  .Deprecated("cbs_download_data")
+  cbs_download_data(id, path = path, select = select, typed = typed, verbose = verbose, base_url = base_url)
 }
 
 #testing

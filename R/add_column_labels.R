@@ -1,5 +1,5 @@
 # utility function adding labels to columns
-add_label <- function(x, meta){
+add_var_labels <- function(x, meta){
   props <- meta$DataProperties
   labels <- stats::setNames(props$Title, props$Key)
   for (n in names(x)){

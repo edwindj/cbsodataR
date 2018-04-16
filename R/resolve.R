@@ -10,7 +10,7 @@ resolve_resource <- function(url, ..., verbose = TRUE, cache=TRUE){
     }
   }
   
-  message(...," ", url)
+  if (verbose) { message(...," ", url) }
   # od <- httr::GET(url, httr::accept_json())
   # httr::stop_for_status(od, task = httr::http_status(od)$message)
   # res <- httr::content(od, "text", encoding="UTF-8")

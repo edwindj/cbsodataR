@@ -25,8 +25,13 @@
 #' tables_nl <- get_table_list(Language="nl")
 #' View(tables_nl)
 #' }
-get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
-  .Deprecated("cbs_get_toc")
+cbs_get_toc <- function(...
+                       , select     = NULL
+                       , verbose    = FALSE
+                       , cache      = TRUE
+                       , base_url   = CBSOPENDATA
+                       , include_ID = FALSE
+                       ){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"
                        , list( BASEURL = base_url
                              , CATALOG = CATALOG
@@ -34,6 +39,13 @@ get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
                        )
   url <- paste0(url, get_query(..., select=select))
   
-  tables <- resolve_resource(url, "Retrieving tables from")
+  tables <- resolve_resource(url, "Retrieving tables from", verbose = verbose, cache = cache)
+  class(tables) <- c("tbl_df", "tbl", class(tables))
+  if (!include_ID){
+    tables <- tables[, names(tables) != "ID"]
+  }
   tables
 }
+
+# library(dplyr)
+# tables <- get_table_list(Language="nl", select=c("ShortTitle","Summary"))

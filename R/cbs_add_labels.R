@@ -1,0 +1,34 @@
+#' For each column with codes add label column to data set
+#' 
+#' Adds cbs labels to the dataset that was retrieved using \code{\link{get_cbs_data}}.
+#' Code columns will be translated into label columns for each of the column that was supplied. By default all
+#' code columns will be accompagnied with a label column.
+#' @export
+#' @param x \code{data.frame} retrieved using \code{\link{get_cbs_data}}.
+#' @param columns \code{character} with the names of the columns for which labels will be added
+cbs_add_label_columns <- function(x, columns = colnames(x), ...){
+  add <- list()
+  nms <- colnames(x)
+  for (n in columns){
+    values <- x[[n]]
+    
+    if (is.null(values)){
+      warning("Column '", n, "' does not exist.")
+      next
+    }
+    
+    lbls <- attr(x[[n]], "labels")
+    if (is.null(lbls)){
+        next
+    }
+    lbl <- paste0(n, "_label")
+    x[[lbl]] <- factor(values, levels=unname(lbls), labels=names(lbls))
+    add[[n]] <- lbl
+  }
+  # rearrange column order
+  cols <- unlist(lapply(nms, function(n){c(n, add[[n]])}))
+  x[,cols]
+}
+
+# x <- cbs_get_data("81819NED")
+# cbs_add_label_columns(x)
