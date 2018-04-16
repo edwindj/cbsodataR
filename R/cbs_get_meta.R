@@ -2,12 +2,12 @@
 #' 
 #' Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) improves
 #' the performance considerably. The meta data of a CBS table is 
-#' @param id internal id of CBS table, can be retrieved with \code{\link{get_table_list}}
+#' @param id internal id of CBS table, can be retrieved with \code{\link{cbs_get_toc}}
 #' @param verbose Print extra messages what is happening.
 #' @param cache should the result be cached? 
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
-#' @return cbs_table object containing serveral \code{data.frames} with meta data.  
+#' third party data services implementing the same protocol.
+#' @return cbs_table object containing several \code{data.frames} with meta data.  
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' 
@@ -69,7 +69,7 @@ cbs_get_meta_from_dir <- function(dir){
 
 
 #dump_meta("81819NED")
-#get_meta_from_dir("D:/data/StatLine/00370/")
+#cbs_get_meta_from_dir("D:/data/StatLine/00370/")
 
 ### testing
-#meta <- get_meta("81819NED")
+#meta <- cbs_get_meta("81819NED")

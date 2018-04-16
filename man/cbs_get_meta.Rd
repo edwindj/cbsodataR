@@ -7,17 +7,17 @@
 cbs_get_meta(id, verbose = FALSE, cache = TRUE, base_url = CBSOPENDATA)
 }
 \arguments{
-\item{id}{internal id of CBS table, can be retrieved with \code{\link{get_table_list}}}
+\item{id}{internal id of CBS table, can be retrieved with \code{\link{cbs_get_toc}}}
 
 \item{verbose}{Print extra messages what is happening.}
 
 \item{cache}{should the result be cached?}
 
 \item{base_url}{optionally specify a different server. Useful for
-third party data services implementing the same protocal.}
+third party data services implementing the same protocol.}
 }
 \value{
-cbs_table object containing serveral \code{data.frames} with meta data.
+cbs_table object containing several \code{data.frames} with meta data.
 }
 \description{
 Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) improves

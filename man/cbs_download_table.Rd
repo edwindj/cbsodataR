@@ -8,9 +8,9 @@ cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
   typed = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
-\item{id}{Identifier of CBS table (can be retrieved from \code{\link{get_table_list}})}
+\item{id}{Identifier of CBS table (can be retrieved from \code{\link{cbs_get_toc}})}
 
-\item{...}{Parameters passed on to \code{\link{download_data}}}
+\item{...}{Parameters passed on to \code{\link{cbs_download_data}}}
 
 \item{dir}{Directory where table should be downloaded}
 
@@ -23,7 +23,7 @@ cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.
 
-\code{download_table} retrieves all raw meta data and data and stores these as csv
+\code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
 files in the directory specified by \code{dir}. It is possible to add a filter. 
 A filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned.}

@@ -28,16 +28,5 @@ download_table <- function( id
                           , typed = FALSE
                           , base_url = CBSOPENDATA){
   .Deprecated("cbs_download_table")
-  meta <- download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
-
-  download_data( id   = id
-               , path = file.path(dir, "data.csv")
-               , ...
-               , typed    = typed
-               , verbose  = verbose
-               , base_url = base_url
-               )
-  meta$directory <- dir
-  # maybe we should generate a yaml or datapackage.json file?
-  invisible(meta)
+  cbs_download_table(id = id, ..., dir =dir, cache =cache, verbose = verbose, typed = typed, base_url = base_url)
 }

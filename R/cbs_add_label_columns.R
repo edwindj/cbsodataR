@@ -6,6 +6,14 @@
 #' @export
 #' @param x \code{data.frame} retrieved using \code{\link{get_cbs_data}}.
 #' @param columns \code{character} with the names of the columns for which labels will be added
+#' 
+#' #' @examples 
+#' \dontrun{
+#' 
+#' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
+#'  x <- cbs_get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+#'  cbs_add_label_columns(x)
+#' }
 cbs_add_label_columns <- function(x, columns = colnames(x), ...){
   add <- list()
   nms <- colnames(x)

@@ -21,7 +21,7 @@ cbs_download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
 \item{verbose}{show the underlying downloading of the data}
 
 \item{base_url}{optionally specify a different server. Useful for
-third party data services implementing the same protocal.}
+third party data services implementing the same protocol.}
 }
 \description{
 Gets all data via bulk download. \code{download_data} dumps the data in (international) csv format.

@@ -8,7 +8,7 @@
 #' @param verbose show the underlying downloading of the data
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
+#' third party data services implementing the same protocol.
 cbs_download_data <- function( id, path=file.path(id, "data.csv"), ...
                          , select=NULL
                          , typed = TRUE

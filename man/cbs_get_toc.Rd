@@ -20,21 +20,21 @@ third party data services implementing the same protocal.}
 \code{data.frame} with identifiers, titles and descriptions of tables
 }
 \description{
-\code{get_table_list} by default a list of all tables and all columns will be retrieved.
+\code{cbs_get_toc} by default a list of all tables and all columns will be retrieved.
 You can restrict the query by supplying multiple filter statements or by specifying the
 columns that should be returned.
 }
 \note{
-\code{get_table_list} will cache results, so subsequent calls will be much faster.
+\code{cbs_get_toc} will cache results, so subsequent calls will be much faster.
 }
 \examples{
 \dontrun{
 
 # get list of english tables
-tables_en <- get_table_list(Language="en")
+tables_en <- cbs_get_toc(Language="en")
 
 # get list of dutch tables
-tables_nl <- get_table_list(Language="nl")
+tables_nl <- cbs_get_toc(Language="nl")
 View(tables_nl)
 }
 }

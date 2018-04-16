@@ -13,9 +13,6 @@ cbs_get_data(id, ..., add_codes = "", recode = FALSE, typed = TRUE,
 
 \item{...}{optional filter statemenets}
 
-\item{recode}{Should the categories of the table be recoded with their title
-(TRUE) or with their key (FALSE)?}
-
 \item{typed}{Should the data automatically be converted into integer and numeric?}
 
 \item{add_column_labels}{Should column titles be added as a label (TRUE) which are visible in \code{View}}
@@ -48,6 +45,6 @@ All data are downloaded using \code{\link{download_table}}
 \dontrun{
 
 # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
- get_cbs_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+ cbs_get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 }
 }
