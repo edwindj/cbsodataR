@@ -4,12 +4,12 @@
 \alias{cbs_get_data}
 \title{Get data from Statistics Netherlands (CBS)}
 \usage{
-cbs_get_data(id, ..., add_codes = "", recode = FALSE, typed = TRUE,
-  add_column_labels = TRUE, add_labels = NULL, dir = tempdir(),
-  verbose = FALSE, base_url = CBSOPENDATA, include_ID = FALSE)
+cbs_get_data(id, ..., typed = TRUE, add_column_labels = TRUE,
+  dir = tempdir(), verbose = FALSE, base_url = CBSOPENDATA,
+  include_ID = FALSE)
 }
 \arguments{
-\item{id}{Identifier of table, can be found in \code{\link{get_table_list}}}
+\item{id}{Identifier of table, can be found in \code{\link{cbs_get_toc}}}
 
 \item{...}{optional filter statemenets}
 
@@ -32,14 +32,14 @@ third party data services implementing the same protocol.}
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of tables
-can be retrieved with \code{\link{get_cbs_toc}}. 
+can be retrieved with \code{\link{cbs_get_toc}}. 
 Optionaly the data can be filtered on category values. 
 The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned. Note that the values
 have to be raw (un-recoded) values.
 }
 \note{
-All data are downloaded using \code{\link{download_table}}
+All data are downloaded using \code{\link{cbs_download_table}}
 }
 \examples{
 \dontrun{

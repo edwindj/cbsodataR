@@ -1,15 +1,15 @@
 #' Get data from Statistics Netherlands (CBS)
 #' 
 #' Retrieves data from a table of Statistics Netherlands. A list of tables
-#' can be retrieved with \code{\link{get_cbs_toc}}. 
+#' can be retrieved with \code{\link{cbs_get_toc}}. 
 #' Optionaly the data can be filtered on category values. 
 #' The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 #' Rows with values that are not part of the character vector are not returned. Note that the values
 #' have to be raw (un-recoded) values.
 #' 
-#' @note All data are downloaded using \code{\link{download_table}}
+#' @note All data are downloaded using \code{\link{cbs_download_table}}
 #' 
-#' @param id Identifier of table, can be found in \code{\link{get_table_list}}
+#' @param id Identifier of table, can be found in \code{\link{cbs_get_toc}}
 #' @param ... optional filter statemenets
 #' @param add_column_labels Should column titles be added as a label (TRUE) which are visible in \code{View}
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
@@ -29,11 +29,8 @@
 #' }
 cbs_get_data <- function( id
                         , ...
-                        , add_codes         = ""
-                        , recode            = FALSE
                         , typed             = TRUE
                         , add_column_labels = TRUE
-                        , add_labels        = NULL
                         , dir               = tempdir()
                         , verbose           = FALSE
                         , base_url          = CBSOPENDATA

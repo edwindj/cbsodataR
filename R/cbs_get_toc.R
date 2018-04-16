@@ -9,6 +9,9 @@
 #' @param ... filter statement to select rows, e.g. Language="nl"
 #' @param select \code{character} columns to be returned, by default all columns
 #' will be returned.
+#' @param verbose \code{logical} prints the calls to the webservice
+#' @param cache \code{logical} should the result be cached?
+#' @param include_ID \code{logical} column needed by OData but with no current use.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
 #' @return \code{data.frame} with identifiers, titles and descriptions of tables

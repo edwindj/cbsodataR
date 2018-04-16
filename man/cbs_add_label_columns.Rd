@@ -7,20 +7,22 @@
 cbs_add_label_columns(x, columns = colnames(x), ...)
 }
 \arguments{
-\item{x}{\code{data.frame} retrieved using \code{\link{get_cbs_data}}.}
+\item{x}{\code{data.frame} retrieved using \code{\link{cbs_get_data}}.}
 
-\item{columns}{\code{character} with the names of the columns for which labels will be added
+\item{columns}{\code{character} with the names of the columns for which labels will be added}
 
-#' @examples 
+\item{...}{not used.}
+}
+\description{
+Adds cbs labels to the dataset that was retrieved using \code{\link{cbs_get_data}}.
+Code columns will be translated into label columns for each of the column that was supplied. By default all
+code columns will be accompagnied with a label column.
+}
+\examples{
 \dontrun{
 
 # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
  x <- cbs_get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
  cbs_add_label_columns(x)
-}}
 }
-\description{
-Adds cbs labels to the dataset that was retrieved using \code{\link{get_cbs_data}}.
-Code columns will be translated into label columns for each of the column that was supplied. By default all
-code columns will be accompagnied with a label column.
 }

@@ -13,8 +13,14 @@ cbs_get_toc(..., select = NULL, verbose = FALSE, cache = TRUE,
 \item{select}{\code{character} columns to be returned, by default all columns
 will be returned.}
 
+\item{verbose}{\code{logical} prints the calls to the webservice}
+
+\item{cache}{\code{logical} should the result be cached?}
+
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}
+
+\item{include_ID}{\code{logical} column needed by OData but with no current use.}
 }
 \value{
 \code{data.frame} with identifiers, titles and descriptions of tables
