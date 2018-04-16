@@ -8,8 +8,13 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+```{r, include=FALSE}
+library(dplyr)
+```
+
 ```{r init, echo=FALSE, message=FALSE}
-library(dplyr, quietly = T)
+library(dplyr)
 library(cbsodataR)
 ```
 
@@ -19,24 +24,23 @@ library(cbsodataR)
 For long SN has put its data on the web in its online database 
 [StatLine](http://statline.cbs.nl/Statweb/?LA=en).
 Since 2014 this data base has an open data web API based on the OData protocol.
-The *cbsodata* package allows for retrieving data right into R. 
+The *cbsodataR* package allows for retrieving data right into R. 
 
 ## Table information
 
-A list of tables can be retrieved using the `get_table_list` function.
+A list of tables can be retrieved using the `cbs_get_toc` function.
 
-```{r get_table_list, message=FALSE}
-tables <- get_table_list(Language="en") # retrieve only enlgish tables
+```{r cbs_get_toc, message=FALSE}
+toc <- cbs_get_toc(Language="en") # retrieve only enlgish tables
 
-tables %>% 
-  select(Identifier, ShortTitle) %>% 
-  head 
+toc %>% 
+  select(Identifier, ShortTitle) 
 ```
 
 Using an "Identifier" from `get_table_list` information on the table can be retrieved with `get_meta` 
 
 ```{r get_meta, message=FALSE}
-m <- get_meta('71509ENG')
+m <- cbs_get_meta('71509ENG')
 m
 ```
 The meta object contains all metadata properties of cbsodata (see the [original documentation](http://www.cbs.nl/NR/rdonlyres/2561A2B7-CE51-47B9-A838-9968EF67FFB0/0/2014handleidingcbsopendataservices.pdf)) in the form of data.frames. Each data.frame describes properties of the SN table.
@@ -47,19 +51,20 @@ names(m)
 
 ## Data download
 
-With `get_data` data can be retrieved. By default all data for this table will be downloaded in a temporary directory.
-```{r, get_data2, message=FALSE}
-get_data('71509ENG') %>% 
-  select(2:5) %>%  # select column 2 to 5 (for demonstration purpose)
-  head
+With `cbs_get_data` data can be retrieved. By default all data for this table will be downloaded in a temporary directory.
+```{r, cbs_get_data2, message=FALSE}
+cbs_get_data('71509ENG') %>% 
+  select(1:4) %>%  # demonstration purpose
+  head()
 ```
 
-The data will be automatically recoded with titles for the categories. If needed the original data can be retained with 
-`recode=FALSE`
+The first columns are categorical columns: they contain codes. The labels for these columns can be added with
+the function `cbs_add_label_columns`. 
 
 ```{r, get_data, message=FALSE}
-get_data('71509ENG', recode = FALSE) %>% 
-  select(2:5) %>% 
+cbs_get_data('71509ENG') %>%
+  cbs_add_label_columns() %>% 
+  select(1:4) %>% 
   head
 ```
 
@@ -68,11 +73,13 @@ get_data('71509ENG', recode = FALSE) %>%
 It is possible restrict the download using filter statements. This may shorten the download time considerably.
 
 ```{r, get_data3, message=FALSE}
-  get_data('71509ENG', Periods='2000JJ00') %>% 
-  select(2:5) %>% 
-  head
+  cbs_get_data('71509ENG', Periods='2000JJ00') %>% 
+  select(1:4) %>% 
+  head()
 ```
 
 
+# Download data
 
+Data can also be donwloaded explicitly by using `cbs_donwload_table`
 

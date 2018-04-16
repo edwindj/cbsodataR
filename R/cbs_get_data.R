@@ -37,7 +37,7 @@ cbs_get_data <- function( id
                         , include_ID        = FALSE
                         ){
   
-  meta <- download_table( id, ...
+  meta <- cbs_download_table( id, ...
                         , dir      = dir
                         , cache    = TRUE
                         , typed    = typed
