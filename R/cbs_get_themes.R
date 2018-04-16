@@ -14,10 +14,10 @@
 #' @examples 
 #' \dontrun{
 #' # get list of all themes
-#' get_themes()
+#' cbs+get_themes()
 #' 
 #' # get list of all dutch themes from the Catalog "CBS"
-#' get_themes(Language="nl", Catalog="CBS")
+#' cbs_get_themes(Language="nl", Catalog="CBS")
 #' }
 #' @importFrom whisker whisker.render
 cbs_get_themes <- function(..., select=NULL, verbose = TRUE, cache = FALSE, base_url = CBSOPENDATA){
