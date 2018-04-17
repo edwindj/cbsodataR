@@ -4,12 +4,17 @@
 \alias{cbs_get_tables_themes}
 \title{Get a the list of tables connected to themes}
 \usage{
-cbs_get_tables_themes(..., select = NULL, base_url = CBSOPENDATA)
+cbs_get_tables_themes(..., select = NULL, verbose = FALSE, cache = TRUE,
+  base_url = CBSOPENDATA)
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_tables_themes(ID=10)}.}
 
 \item{select}{\code{character} vector with names of wanted properties. default is all}
+
+\item{verbose}{Print extra messages what is happening.}
+
+\item{cache}{Should the result be cached?}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}

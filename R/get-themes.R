@@ -3,6 +3,8 @@
 #' Returns a list of all cbs themes. 
 #' @param ... Use this to add a filter to the query e.g. \code{get_themes(ID=10)}.  
 #' @param select \code{character} vector with names of wanted properties. default is all
+#' @param verbose Print extra messages what is happening.
+#' @param cache Should the result be cached?
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
 #' @return A \code{data.frame} with various properties of SN/CBS themes.

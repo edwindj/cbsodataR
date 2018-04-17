@@ -14,6 +14,8 @@ cbs_get_themes(..., select = NULL, verbose = TRUE, cache = FALSE,
 
 \item{verbose}{Print extra messages what is happening.}
 
+\item{cache}{Should the result be cached?}
+
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
 }

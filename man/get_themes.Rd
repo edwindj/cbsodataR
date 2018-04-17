@@ -12,6 +12,10 @@ get_themes(..., select = NULL, verbose = TRUE, cache = FALSE,
 
 \item{select}{\code{character} vector with names of wanted properties. default is all}
 
+\item{verbose}{Print extra messages what is happening.}
+
+\item{cache}{Should the result be cached?}
+
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocal.}
 }
