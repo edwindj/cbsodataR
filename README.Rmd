@@ -19,9 +19,9 @@ Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfer
 
 Python user?  Use [cbsodata](https://github.com/J535D165/cbsodata).
 
-## API change
+## API change (0.3+)
 
-** Version 0.3 has changed the api of the funtions. Old functions (should) still work, but generate warnings to switch to the new api. **
+**In version 0.3  the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.**
 
 # Installation
 
@@ -36,11 +36,12 @@ The latest development version of `cbsodata` can installed using `devtools`.
 devtools::install_github("edwindj/cbsodataR")
 ```
 
-# Usage
+# Usage (version 0.3+)
 
 Retrieve list a tables.
 
 ```{r}
+library(cbsodataR)
 toc <- cbs_get_toc("Language" = "en")
 head(toc)
 ```
