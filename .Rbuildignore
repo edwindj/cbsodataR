@@ -4,3 +4,4 @@
 ^appveyor\.yml$
 TODO.md
 ^docs$
+^README\.

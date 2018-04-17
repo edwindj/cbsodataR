@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{cbsodataR, all data of Statistics Netherlands (CBS)}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include=FALSE}
@@ -20,7 +20,7 @@ For long SN has put its data on the web in its online database
 Since 2014 this data base has an open data web API based on the OData protocol.
 The *cbsodataR* package allows for retrieving data right into R. 
 
-## Table information
+## Table of Contents
 
 A list of tables can be retrieved using the `cbs_get_toc` function.
 
@@ -28,7 +28,7 @@ A list of tables can be retrieved using the `cbs_get_toc` function.
 library(dplyr) # not needed, but used in examples below
 library(cbsodataR)
 
-toc <- cbs_get_toc(Language="en") # retrieve only enlgish tables
+toc <- cbs_get_toc(Language="en") # retrieve only english tables
 
 toc %>% 
   select(Identifier, ShortTitle) 
@@ -37,13 +37,13 @@ toc %>%
 Using an "Identifier" from `cbs_get_toc` information on the table can be retrieved with `cbs_get_meta` 
 
 ```{r get_meta, message=FALSE}
-m <- cbs_get_meta('71509ENG')
-m
+apples <- cbs_get_meta('71509ENG')
+apples
 ```
 The meta object contains all metadata properties of cbsodata (see the [original documentation](http://www.cbs.nl/NR/rdonlyres/2561A2B7-CE51-47B9-A838-9968EF67FFB0/0/2014handleidingcbsopendataservices.pdf)) in the form of data.frames. Each data.frame describes properties of the SN table.
 
 ```{r, meta2}
-names(m)
+names(apples)
 ```
 
 ## Data download
@@ -78,5 +78,5 @@ It is possible restrict the download using filter statements. This may shorten t
 
 # Download data
 
-Data can also be donwloaded explicitly by using `cbs_donwload_table`
+Data can also be donwloaded explicitly by using `cbs_download_table`
 
