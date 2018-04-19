@@ -56,6 +56,11 @@ cbs_get_data <- function( id
     data <- add_var_labels(data, meta)
   }
   
+  is_time <- meta$DataProperties$Key[meta$DataProperties$Type == "TimeDimension"]
+  if (length(is_time)){
+    attr(data[[is_time]], "is_time") <- TRUE
+  }
+  
   class(data) <- c('tbl_df', 'tbl','data.frame')
   data
 }

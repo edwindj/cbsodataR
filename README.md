@@ -31,7 +31,7 @@ devtools::install_github("edwindj/cbsodataR")
 Usage (version 0.3+)
 ====================
 
-Retrieve list a tables.
+Retrieve a table of contents with all SN tables.
 
 ``` r
 library(cbsodataR)
@@ -113,4 +113,4 @@ apples %>%
     ## 10                   1 Total Netherlands         2006JJ00 2006         
     ## # ... with 95 more rows
 
-For more information, see \`vignette("")
+For more information, see `vignette("cbsodataR")`

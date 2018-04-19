@@ -38,7 +38,7 @@ devtools::install_github("edwindj/cbsodataR")
 
 # Usage (version 0.3+)
 
-Retrieve list a tables.
+Retrieve a table of contents with all SN tables.
 
 ```{r}
 library(cbsodataR)
@@ -69,4 +69,4 @@ apples %>%
   select(1:4)
 ```
 
-For more information, see `vignette("")
+For more information, see `vignette("cbsodataR")`
