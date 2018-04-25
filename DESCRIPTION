@@ -12,7 +12,6 @@ BugReports: https://github.com/edwindj/cbsodataR/issues
 Imports:
     whisker,
     jsonlite,
-    yaml, 
     utils, httr
 Suggests:
     knitr,
