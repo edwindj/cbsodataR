@@ -1,6 +1,7 @@
 #' extract the default selection from a cbsodata meta object
 #' 
 #' @param x meta object
+#' @param ... for future use
 cbs_default_selection <- function(x, ...){
   #toc$DefaultSelection
   params <- get_params(x$TableInfos$DefaultSelection)

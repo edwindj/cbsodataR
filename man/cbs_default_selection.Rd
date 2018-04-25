@@ -8,6 +8,8 @@ cbs_default_selection(x, ...)
 }
 \arguments{
 \item{x}{meta object}
+
+\item{...}{for future use}
 }
 \description{
 extract the default selection from a cbsodata meta object

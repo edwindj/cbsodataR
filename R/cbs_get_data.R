@@ -15,7 +15,8 @@
 #' @note All data are downloaded using \code{\link{cbs_download_table}}
 #' 
 #' @param id Identifier of table, can be found in \code{\link{cbs_get_toc}}
-#' @param ... optional filter statemenets
+#' @param ... optional filter statements
+#' @param select \code{character} optional, columns to select
 #' @param add_column_labels Should column titles be added as a label (TRUE) which are visible in \code{View}
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
 #' directory

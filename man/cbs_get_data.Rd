@@ -11,7 +11,9 @@ cbs_get_data(id, ..., select = NULL, typed = TRUE,
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link{cbs_get_toc}}}
 
-\item{...}{optional filter statemenets}
+\item{...}{optional filter statements}
+
+\item{select}{\code{character} optional, columns to select}
 
 \item{typed}{Should the data automatically be converted into integer and numeric?}
 
