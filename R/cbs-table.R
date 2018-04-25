@@ -23,6 +23,13 @@ print.cbs_table <- function(x, ...){
   dims <- dp[grep("Dimension", dp$Type),]
   
   cat(paste0("  ", dims$Key, ": '", dims$Title, "'", collapse = "\n"), "\n")
+  cat("\nRetrieve a default data selection with:\n\t")
+  print(as.expression(x))
+}
+
+#' @export
+as.expression.cbs_table <- function(x, ...){
+  as.call(c(quote(cbs_get_data), cbs_default_selection(x)))
 }
 
 # testing 1, 2, 3
