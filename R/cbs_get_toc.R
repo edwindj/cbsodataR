@@ -7,6 +7,7 @@
 #' @note \code{cbs_get_toc} will cache results, so subsequent calls will be much faster.
 #' 
 #' @param ... filter statement to select rows, e.g. Language="nl"
+#' @param convert_dates convert the columns with date-time information into DateTime (default \code{TRUE})
 #' @param select \code{character} columns to be returned, by default all columns
 #' will be returned.
 #' @param verbose \code{logical} prints the calls to the webservice
@@ -29,11 +30,12 @@
 #' View(tables_nl)
 #' }
 cbs_get_toc <- function(...
-                       , select     = NULL
-                       , verbose    = FALSE
-                       , cache      = TRUE
-                       , base_url   = CBSOPENDATA
-                       , include_ID = FALSE
+                       , convert_dates = TRUE
+                       , select        = NULL
+                       , verbose       = FALSE
+                       , cache         = TRUE
+                       , base_url      = CBSOPENDATA
+                       , include_ID    = FALSE
                        ){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"
                        , list( BASEURL = base_url
@@ -46,6 +48,11 @@ cbs_get_toc <- function(...
   class(tables) <- c("tbl_df", "tbl", class(tables))
   if (!include_ID){
     tables <- tables[, names(tables) != "ID"]
+  }
+  
+  if (convert_dates){
+    date_cols <- c("Updated","Modified", "MetaDataModified")
+    tables[,date_cols] <- lapply(tables[,date_cols], as.POSIXct)
   }
   tables
 }

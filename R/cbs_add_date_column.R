@@ -69,7 +69,7 @@ cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
   x <- x[c(1:i, i, i:ncol(x))]
   idx <- c(i+1, i+2)
   x[idx] <- list(period, type1)
-  names(x)[idx] <- paste0(period_name, c("_date","_freq"))
+  names(x)[idx] <- paste0(period_name, paste0("_", c(date_type,"freq")))
   x
 }
 

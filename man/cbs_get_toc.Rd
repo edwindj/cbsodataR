@@ -4,11 +4,13 @@
 \alias{cbs_get_toc}
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
-cbs_get_toc(..., select = NULL, verbose = FALSE, cache = TRUE,
-  base_url = CBSOPENDATA, include_ID = FALSE)
+cbs_get_toc(..., convert_dates = TRUE, select = NULL, verbose = FALSE,
+  cache = TRUE, base_url = CBSOPENDATA, include_ID = FALSE)
 }
 \arguments{
 \item{...}{filter statement to select rows, e.g. Language="nl"}
+
+\item{convert_dates}{convert the columns with date-time information into DateTime (default \code{TRUE})}
 
 \item{select}{\code{character} columns to be returned, by default all columns
 will be returned.}
