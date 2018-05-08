@@ -1,3 +1,7 @@
+version 0.3.0.9000
+
+- fixed cbs_get_toc with select argument (issue #12). Thanks to Rob van Harrevelt.
+
 version 0.3
 
 - changed api: all (new) functions are prefixed with `cbs_` to have a more clean programming interface. 
