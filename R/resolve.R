@@ -28,8 +28,9 @@ get_json <- function(url, verbose = TRUE){
   if (verbose){
     print(url)
   }
-  od <- httr::GET(url, httr::accept_json())
-  httr::stop_for_status(od, task = httr::http_status(od)$message)
-  res <- httr::content(od, "text", encoding="UTF-8")
-  jsonlite::fromJSON(res)
+  jsonlite::read_json(url, simplifyVector = TRUE)
+  # od <- httr::GET(url, httr::accept_json())
+  # httr::stop_for_status(od, task = httr::http_status(od)$message)
+  # res <- httr::content(od, "text", encoding="UTF-8")
+  # jsonlite::fromJSON(res)
 }
