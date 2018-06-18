@@ -96,7 +96,7 @@ cbs_get_data('71509ENG') %>%
 It is possible restrict the download using filter statements. This may shorten the download time considerably.
 
 ```{r, get_data3, message=FALSE}
-  cbs_get_data('71509ENG', Periods='2000JJ00') %>% 
+  cbs_get_data('71509ENG', Periods=c('2000JJ00','2001JJ00')) %>% 
   select(1:4) %>% 
   head()
 ```
