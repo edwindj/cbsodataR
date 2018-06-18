@@ -1,5 +1,5 @@
-version 0.3.0.9000
-
+version 0.3.1
+- removed httr and changed to jsonlite::read_json. httr gave problems with some Windows configurations.
 - fixed cbs_get_toc with select argument (issue #12). Thanks to Rob van Harrevelt.
 
 version 0.3
