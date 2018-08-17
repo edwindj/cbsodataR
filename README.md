@@ -1,20 +1,26 @@
 
-Statistics Netherlands (www.cbs.nl) opendata API client for R
-=============================================================
+# Statistics Netherlands (www.cbs.nl) opendata API client for R
 
-[![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://CRAN.R-project.org/package=cbsodataR) ![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR) [![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
+[![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://CRAN.R-project.org/package=cbsodataR)
+![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR) [![Travis-CI
+Build
+Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
 
-Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) (dutch) of Statistics Netherlands (cbs.nl) with *R*.
+Retrieve data from the [open data
+interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
+(dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
 Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
 
-API change (0.3+)
------------------
+## API change (0.3+)
 
-**In version 0.3 the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.**
+**In version 0.3 the api of the functions has changed. Old functions
+(should) still work, but generate warnings asking to switch to the new
+api.**
 
-Installation
-============
+# Installation
 
 From CRAN
 
@@ -22,14 +28,14 @@ From CRAN
 install.packages("cbsodataR")
 ```
 
-The latest development version of `cbsodata` can installed using `devtools`.
+The latest development version of `cbsodata` can installed using
+`devtools`.
 
 ``` r
 devtools::install_github("edwindj/cbsodataR")
 ```
 
-Usage (version 0.3+)
-====================
+# Usage (version 0.3+)
 
 Retrieve a table of contents with all SN tables.
 
@@ -92,17 +98,17 @@ apples %>%
 
     ## # A tibble: 105 x 4
     ##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-    ##                  <int> <fct>                    <int>              <int>
-    ##  1                   1 1997JJ00                   420                 43
-    ##  2                   1 1998JJ00                   518                 40
-    ##  3                   1 1999JJ00                   568                 39
-    ##  4                   1 2000JJ00                   461                 27
-    ##  5                   1 2001JJ00                   408                 30
-    ##  6                   1 2002JJ00                   354                 17
-    ##  7                   1 2003JJ00                   359                 17
-    ##  8                   1 2004JJ00                   436                 14
-    ##  9                   1 2005JJ00                   359                 12
-    ## 10                   1 2006JJ00                   365                 11
+    ##    <chr>               <chr>                    <int>              <int>
+    ##  1 1                   1997JJ00                   420                 43
+    ##  2 1                   1998JJ00                   518                 40
+    ##  3 1                   1999JJ00                   568                 39
+    ##  4 1                   2000JJ00                   461                 27
+    ##  5 1                   2001JJ00                   408                 30
+    ##  6 1                   2002JJ00                   354                 17
+    ##  7 1                   2003JJ00                   359                 17
+    ##  8 1                   2004JJ00                   436                 14
+    ##  9 1                   2005JJ00                   359                 12
+    ## 10 1                   2006JJ00                   365                 11
     ## # ... with 95 more rows
 
 add label columns:
@@ -115,17 +121,17 @@ apples %>%
 
     ## # A tibble: 105 x 4
     ##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-    ##                  <int> <fct>                     <fct>    <fct>        
-    ##  1                   1 Total Netherlands         1997JJ00 1997         
-    ##  2                   1 Total Netherlands         1998JJ00 1998         
-    ##  3                   1 Total Netherlands         1999JJ00 1999         
-    ##  4                   1 Total Netherlands         2000JJ00 2000         
-    ##  5                   1 Total Netherlands         2001JJ00 2001         
-    ##  6                   1 Total Netherlands         2002JJ00 2002         
-    ##  7                   1 Total Netherlands         2003JJ00 2003         
-    ##  8                   1 Total Netherlands         2004JJ00 2004         
-    ##  9                   1 Total Netherlands         2005JJ00 2005         
-    ## 10                   1 Total Netherlands         2006JJ00 2006         
+    ##    <chr>               <fct>                     <chr>    <fct>        
+    ##  1 1                   Total Netherlands         1997JJ00 1997         
+    ##  2 1                   Total Netherlands         1998JJ00 1998         
+    ##  3 1                   Total Netherlands         1999JJ00 1999         
+    ##  4 1                   Total Netherlands         2000JJ00 2000         
+    ##  5 1                   Total Netherlands         2001JJ00 2001         
+    ##  6 1                   Total Netherlands         2002JJ00 2002         
+    ##  7 1                   Total Netherlands         2003JJ00 2003         
+    ##  8 1                   Total Netherlands         2004JJ00 2004         
+    ##  9 1                   Total Netherlands         2005JJ00 2005         
+    ## 10 1                   Total Netherlands         2006JJ00 2006         
     ## # ... with 95 more rows
 
 For more information, see `vignette("cbsodataR")`
