@@ -9,20 +9,23 @@
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-cbs_download_data <- function( id, path=file.path(id, "data.csv"), ...
-                         , select=NULL
-                         , typed = TRUE
-                         , verbose = FALSE
+cbs_download_data <- function( id
+                         , path     = file.path(id, "data.csv")
+                         , ...
+                         , select   = NULL
+                         , typed    = TRUE
+                         , verbose  = FALSE
                          , base_url = CBSOPENDATA
                          ){
+  
   DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
-                        , list( BASEURL = base_url
-                              , BULK    = BULK
-                              , id      = id
-                              , DATASET = DATASET
-                        )
-  )
+                       , list( BASEURL = base_url
+                             , BULK    = BULK
+                             , id      = id
+                             , DATASET = DATASET
+                             )
+                       )
   url <- paste0(url, get_query(..., select=select))
   
   dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
