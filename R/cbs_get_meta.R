@@ -23,6 +23,7 @@ cbs_get_meta <- function( id
                                 , id = id
                         )
   )
+  
   meta_top <- resolve_resource( url
                                 , "Retrieving meta data for table '", id, "'"
                                 , verbose = verbose

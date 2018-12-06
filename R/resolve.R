@@ -26,9 +26,16 @@ resolve_resource <- function(url, ..., verbose = TRUE, cache=TRUE){
 
 get_json <- function(url, verbose = TRUE){
   if (verbose){
-    print(url)
+    cat(url)
   }
-  jsonlite::read_json(url, simplifyVector = TRUE)
+  
+  tryCatch({
+    jsonlite::read_json(url, simplifyVector = TRUE)},
+    error = function(e){
+       warning("Failing: ", url, "\nRetrying...", call. = FALSE)
+       jsonlite::read_json(url, simplifyVector = TRUE)
+     }
+    )
   # od <- httr::GET(url, httr::accept_json())
   # httr::stop_for_status(od, task = httr::http_status(od)$message)
   # res <- httr::content(od, "text", encoding="UTF-8")
