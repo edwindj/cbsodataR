@@ -4,6 +4,7 @@
 \alias{get_meta}
 \title{Get metadata of a cbs table}
 \usage{
+
 get_meta(id, verbose = TRUE, cache = FALSE, base_url = CBSOPENDATA)
 }
 \arguments{
