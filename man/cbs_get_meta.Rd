@@ -4,7 +4,8 @@
 \alias{cbs_get_meta}
 \title{Get metadata of a cbs table}
 \usage{
-cbs_get_meta(id, verbose = FALSE, cache = TRUE, base_url = CBSOPENDATA)
+cbs_get_meta(id, verbose = FALSE, cache = TRUE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{id}{internal id of CBS table, can be retrieved with \code{\link{cbs_get_toc}}}

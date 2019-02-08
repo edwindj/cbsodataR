@@ -5,7 +5,8 @@
 \title{Get data from Statistics Netherlands (CBS)}
 \usage{
 get_data(id, ..., recode = TRUE, use_column_title = recode,
-  dir = tempdir(), base_url = CBSOPENDATA)
+  dir = tempdir(), base_url = getOption("cbsodataR.base_url",
+  BASE_URL))
 }
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link{get_table_list}}}

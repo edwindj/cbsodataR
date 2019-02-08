@@ -41,7 +41,7 @@ cbs_get_data <- function( id
                         , add_column_labels = TRUE
                         , dir               = tempdir()
                         , verbose           = FALSE
-                        , base_url          = CBSOPENDATA
+                        , base_url          = getOption("cbsodataR.base_url", BASE_URL)
                         , include_ID        = FALSE
                         ){
   

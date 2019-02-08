@@ -4,8 +4,10 @@
 \alias{cbs_get_toc}
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
-cbs_get_toc(..., convert_dates = TRUE, select = NULL, verbose = FALSE,
-  cache = TRUE, base_url = CBSOPENDATA, include_ID = FALSE)
+cbs_get_toc(..., convert_dates = TRUE, select = NULL,
+  verbose = FALSE, cache = TRUE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL),
+  include_ID = FALSE)
 }
 \arguments{
 \item{...}{filter statement to select rows, e.g. Language="nl"}

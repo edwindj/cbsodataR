@@ -15,7 +15,7 @@ cbs_download_data <- function( id
                          , select   = NULL
                          , typed    = TRUE
                          , verbose  = FALSE
-                         , base_url = CBSOPENDATA
+                         , base_url = getOption("cbsodataR.base_url", BASE_URL)
                          ){
   
   DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"

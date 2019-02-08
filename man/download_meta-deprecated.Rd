@@ -6,7 +6,7 @@
 \title{Dumps the meta data into a directory}
 \usage{
 download_meta(id, dir = id, ..., verbose = FALSE, cache = FALSE,
-  base_url = CBSOPENDATA)
+  base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{id}{Id of CBS open data table}

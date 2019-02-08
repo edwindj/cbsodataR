@@ -5,7 +5,7 @@
 \title{Download a table from statistics Netherlands}
 \usage{
 cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
-  typed = FALSE, base_url = CBSOPENDATA)
+  typed = FALSE, base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link{cbs_get_toc}})}

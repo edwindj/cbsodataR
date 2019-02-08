@@ -6,7 +6,8 @@
 \usage{
 cbs_get_data(id, ..., select = NULL, typed = TRUE,
   add_column_labels = TRUE, dir = tempdir(), verbose = FALSE,
-  base_url = CBSOPENDATA, include_ID = FALSE)
+  base_url = getOption("cbsodataR.base_url", BASE_URL),
+  include_ID = FALSE)
 }
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link{cbs_get_toc}}}

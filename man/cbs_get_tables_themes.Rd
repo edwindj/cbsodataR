@@ -4,8 +4,8 @@
 \alias{cbs_get_tables_themes}
 \title{Get a the list of tables connected to themes}
 \usage{
-cbs_get_tables_themes(..., select = NULL, verbose = FALSE, cache = TRUE,
-  base_url = CBSOPENDATA)
+cbs_get_tables_themes(..., select = NULL, verbose = FALSE,
+  cache = TRUE, base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_tables_themes(ID=10)}.}

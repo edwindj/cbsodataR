@@ -25,7 +25,9 @@
 #' tables_nl <- get_table_list(Language="nl")
 #' View(tables_nl)
 #' }
-get_table_list <- function(..., select=NULL, base_url = CBSOPENDATA){
+get_table_list <- function( ..., select=NULL
+                          , base_url = getOption("cbsodataR.base_url", BASE_URL)
+                          ){
   .Deprecated("cbs_get_toc")
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"
                        , list( BASEURL = base_url

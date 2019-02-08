@@ -9,7 +9,9 @@
 #' @param base_url optionally allow to specify a different server. Useful for
 #' third party data services implementing the same protocol.
 #' @name download_meta-deprecated
-download_meta <- function(id, dir=id, ..., verbose = FALSE, cache=FALSE, base_url = CBSOPENDATA){
+download_meta <- function( id, dir=id, ..., verbose = FALSE, cache=FALSE
+                         , base_url = getOption("cbsodataR.base_url", BASE_URL)
+                         ){
   .Deprecated("cbs_download_meta")
   cbs_download_meta(id = id , dir = dir, ..., verbose = verbose, cache = cache, base_url = base_url)
 }

@@ -34,7 +34,7 @@ cbs_get_toc <- function(...
                        , select        = NULL
                        , verbose       = FALSE
                        , cache         = TRUE
-                       , base_url      = CBSOPENDATA
+                       , base_url      = getOption("cbsodataR.base_url", BASE_URL)
                        , include_ID    = FALSE
                        ){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables?$format=json"

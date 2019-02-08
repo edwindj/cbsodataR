@@ -6,7 +6,8 @@
 \title{Gets all data from a cbs table.}
 \usage{
 download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
-  typed = FALSE, verbose = TRUE, base_url = CBSOPENDATA)
+  typed = FALSE, verbose = TRUE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{id}{of cbs open data table}

@@ -26,7 +26,7 @@ cbs_download_table <- function( id
                           , cache = FALSE
                           , verbose = TRUE
                           , typed = FALSE
-                          , base_url = CBSOPENDATA){
+                          , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   meta <- cbs_download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
 
   cbs_download_data( id   = id

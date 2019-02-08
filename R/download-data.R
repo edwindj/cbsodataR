@@ -14,7 +14,7 @@ download_data <- function( id, path=file.path(id, "data.csv"), ...
                          , select=NULL
                          , typed = FALSE
                          , verbose = TRUE
-                         , base_url = CBSOPENDATA
+                         , base_url = getOption("cbsodataR.base_url", BASE_URL)
                          ){
   .Deprecated("cbs_download_data")
   cbs_download_data(id, path = path, select = select, typed = typed, verbose = verbose, base_url = base_url)

@@ -4,8 +4,9 @@
 \alias{cbs_download_data}
 \title{Gets all data from a cbs table.}
 \usage{
-cbs_download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
-  typed = TRUE, verbose = FALSE, base_url = CBSOPENDATA)
+cbs_download_data(id, path = file.path(id, "data.csv"), ...,
+  select = NULL, typed = TRUE, verbose = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{id}{of cbs open data table}

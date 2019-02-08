@@ -1,4 +1,7 @@
 version 0.3.2
+
+- Added a new function cbs_get_data_from_link to allow for retrieving data using a link created with the opendata portal. Thanks to Albert Pieters for the suggestion
+- Improved the base_url default value.
 - fixed a bug in cbs_get_data, key columns were not always loaded as character columns (issue #15). Thanks 
 to @VincentKars
 

@@ -2,7 +2,7 @@
 #'@docType package
 NULL
 
-CBSOPENDATA = "https://opendata.cbs.nl"
+BASE_URL = "https://opendata.cbs.nl"
 API = "ODataApi/odata"
 BULK = "ODataFeed/odata"
 

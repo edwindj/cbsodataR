@@ -1,18 +1,24 @@
 
-DEEPLINK <- "https://opendata.cbs.nl/deeplinkservice/deeplink"
+# TODO check if base_url is implemented internally for deeplinking
+#DEEPLINK <- "https://opendata.cbs.nl/deeplinkservice/deeplink"
 #deeplink <- "https://opendata.cbs.nl/dataportaal/#/CBS/nl/dataset/81573NED/table?dl=17022"
+#deeplink <- "https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB"
 
 #' resolve a deeplink created in the opendata portal
 #' 
 #' @param deeplink url to the deeplink in the opendataportal
+#' @param ... used in the query
+#' @param base_url optionally specify a different server. Useful for
+#' third party data services implementing the same protocol.
 #' @return information object with table id, select, filter and query statement.
-resolve_deeplink <- function(deeplink){
+resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base_url", BASE_URL)){
   
   id <- sub(".*/dataset/(\\w+)/.*", "\\1", deeplink)
   query <- sub(".*\\?(.*)", "\\1", deeplink)
   dl <- url_params(query)$dl
   
-  text <- readLines(file.path(DEEPLINK, dl), warn = FALSE)
+  
+  text <- readLines(file.path(base_url, "deeplinkservice/deeplink", dl), warn = FALSE)
   text <- gsub("\"", "", text)
   info <- url_params(text)
   info$id <- id
@@ -25,6 +31,7 @@ resolve_deeplink <- function(deeplink){
           , id = info$id
           , info$filter
           , list(select = info$select)
+          , list(...)
           )
   info$query <- as.call(cgd)
   info
@@ -40,7 +47,9 @@ url_params <- function(query){
 }
 
 resolve_filter <- function(filter){
-  filter <- info$filter
+  if (is.null(filter)){
+    return(NULL)
+  }
   a <- strsplit(filter, "\\s+and\\s+")[[1]]
   a <- gsub("\\(|\\)", "", a)
   a <- strsplit(a, "\\s+or\\s+")
@@ -55,6 +64,9 @@ resolve_filter <- function(filter){
 }
 
 resolve_select <- function(select){
+  if (is.null(select)){
+    return(NULL)
+  }
   strsplit(select, ", ")[[1]]
 }
 # TODO split stuff on filter and select

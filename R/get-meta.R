@@ -15,7 +15,7 @@
 get_meta <- function( id
                     , verbose  = TRUE
                     , cache    = FALSE
-                    , base_url = CBSOPENDATA
+                    , base_url = getOption("cbsodataR.base_url", BASE_URL)
                     ){
   .Deprecated("cbs_get_meta")
   url <- whisker.render("{{BASEURL}}/{{API}}/{{id}}"

@@ -54,6 +54,19 @@ cbs_get_data('71509ENG') %>%
   select(1:4) %>%  # demonstration purpose
   head()
 ```
+## Data download from a link
+
+The opendata portal of CBS (https://opendata.cbs.nl/dataportaal/#/CBS/en) allows for finding a table and making
+a selection within this table manually. Such a selection can be stored in a hyperlink (click the "share" button).
+This link can also be used with `cbsodataR` using the `cbs_get_data_from_link` function. For example
+the link https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB refers to a certain selection within the table.
+
+```{r}
+cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
+  select(1:4) %>% 
+  head()
+```
+
 
 ### Adding category labels
 

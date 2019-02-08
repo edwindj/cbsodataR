@@ -21,7 +21,8 @@
 #' cbs_get_themes(Language="nl", Catalog="CBS")
 #' }
 #' @importFrom whisker whisker.render
-cbs_get_themes <- function(..., select=NULL, verbose = TRUE, cache = FALSE, base_url = CBSOPENDATA){
+cbs_get_themes <- function(..., select=NULL, verbose = TRUE, cache = FALSE
+                          , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Themes?$format=json"
                        , list( BASEURL = base_url
                              , CATALOG = CATALOG
@@ -41,7 +42,8 @@ cbs_get_themes <- function(..., select=NULL, verbose = TRUE, cache = FALSE, base
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocal.
 #' @return A \code{data.frame} with various properties of SN/CBS themes.
-cbs_get_tables_themes <- function(..., select=NULL, verbose = FALSE, cache = TRUE, base_url = CBSOPENDATA){
+cbs_get_tables_themes <- function(..., select=NULL, verbose = FALSE, cache = TRUE
+                                 , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   url <- whisker.render("{{BASEURL}}/{{CATALOG}}/Tables_Themes?$format=json"
                         , list( BASEURL = base_url
                                 , CATALOG = CATALOG

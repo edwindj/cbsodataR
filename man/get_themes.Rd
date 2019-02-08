@@ -5,7 +5,7 @@
 \title{Get list of all cbs thematic entries.}
 \usage{
 get_themes(..., select = NULL, verbose = TRUE, cache = FALSE,
-  base_url = CBSOPENDATA)
+  base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_themes(ID=10)}.}

@@ -8,7 +8,9 @@
 #' @return meta data object
 #' @param base_url optionally allow to specify a different server. Useful for
 #' third party data services implementing the same protocol.
-cbs_download_meta <- function(id, dir=id, ..., verbose = FALSE, cache=FALSE, base_url = CBSOPENDATA){
+cbs_download_meta <- function( id, dir=id, ..., verbose = FALSE, cache=FALSE
+                             , base_url = getOption("cbsodataR.base_url", BASE_URL)
+                             ){
   dir.create(path=dir, showWarnings = FALSE, recursive = TRUE)
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd))

@@ -27,7 +27,8 @@
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
 #'  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
 #' }
-get_data <- function(id, ..., recode=TRUE, use_column_title = recode, dir=tempdir(), base_url = CBSOPENDATA){
+get_data <- function( id, ..., recode=TRUE, use_column_title = recode, dir=tempdir()
+                    , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   .Deprecated("cbs_get_data")
   meta <- download_table(id, ..., dir=dir, cache=TRUE, base_url = base_url)
   data <- read.csv(file.path(dir, "data.csv"), colClasses="character", strip.white = TRUE)
