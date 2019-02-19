@@ -13,10 +13,10 @@ vignette: >
 library(dplyr)
 ```
 
-[Statistics Netherlands (CBS)](http://www.cbs.nl) is the office that produces all official statistics of the Netherlands. 
+[Statistics Netherlands (CBS)](https://www.cbs.nl) is the office that produces all official statistics of the Netherlands. 
 
 For long SN has put its data on the web in its online database 
-[StatLine](http://statline.cbs.nl/Statweb/?LA=en).
+[StatLine](https://statline.cbs.nl/Statweb/?LA=en).
 Since 2014 this data base has an open data web API based on the OData protocol.
 The *cbsodataR* package allows for retrieving data right into R. 
 
@@ -40,7 +40,7 @@ Using an "Identifier" from `cbs_get_toc` information on the table can be retriev
 apples <- cbs_get_meta('71509ENG')
 apples
 ```
-The meta object contains all metadata properties of cbsodata (see the [original documentation](http://www.cbs.nl/NR/rdonlyres/2561A2B7-CE51-47B9-A838-9968EF67FFB0/0/2014handleidingcbsopendataservices.pdf)) in the form of data.frames. Each data.frame describes properties of the SN table.
+The meta object contains all metadata properties of cbsodata (see the [original documentation](https://www.cbs.nl/-/media/_pdf/2017/13/handleiding-cbs-open-data-services.pdf?la=nl-nl)) in the form of data.frames. Each data.frame describes properties of the SN table.
 
 ```{r, meta2}
 names(apples)
@@ -58,8 +58,7 @@ cbs_get_data('71509ENG') %>%
 
 The opendata portal of CBS (https://opendata.cbs.nl/dataportaal/#/CBS/en) allows for finding a table and making
 a selection within this table manually. Such a selection can be stored in a hyperlink (click the "share" button).
-This link can also be used with `cbsodataR` using the `cbs_get_data_from_link` function. For example
-the link https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB refers to a certain selection within the table.
+This link can also be used with `cbsodataR` using the `cbs_get_data_from_link` function. 
 
 ```{r}
 cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
