@@ -2,12 +2,19 @@ language: r
 
 warnings_are_errors: true
 sudo: required
+cache: packages
 
 r_packages:
   - dplyr
   - rmarkdown
+  - pkgdown
 
 notifications:
   email:
     on_success: change
     on_failure: change
+
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true

@@ -32,6 +32,7 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
           , info$filter
           , list(select = info$select)
           , list(...)
+          , base_url = base_url
           )
   info$query <- as.call(cgd)
   info

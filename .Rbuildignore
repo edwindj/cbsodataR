@@ -1,3 +1,5 @@
+^Meta$
+^doc$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
@@ -5,3 +7,5 @@
 TODO.md
 ^docs$
 ^README\.
+^_pkgdown\.yml$
+^pkgdown$
