@@ -33,7 +33,7 @@
 <meta property="og:title" content="Get metadata of a cbs table — cbs_get_meta" />
 
 <meta property="og:description" content="Retrieve the meta data of a CBS open data table.  Caching (cache=TRUE) improves
-the performance considerably. The meta data of a CBS table is" />
+the performance considerably." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,7 +114,7 @@ the performance considerably. The meta data of a CBS table is" />
     <div class="ref-description">
     
     <p>Retrieve the meta data of a CBS open data table.  Caching (<code>cache=TRUE</code>) improves
-the performance considerably. The meta data of a CBS table is</p>
+the performance considerably.</p>
     
     </div>
 
@@ -147,6 +147,24 @@ third party data services implementing the same protocol.</p></td>
 
     <p>cbs_table object containing several <code>data.frames</code> with meta data.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The meta data of a CBS table is determined by the web api of Statistics 
+Netherlands. <code>cbsodataR</code> stays close to this API. 
+Each cbsodataR table may have the following metadata items, 
+which are all <code>data.frame</code>s :</p>
+<ul>
+<li><p><code>TableInfos</code>: contains the descriptive publication metadata 
+    of the table, such as <code>Title</code>, <code>Description</code>, <code>Summary</code> etc.</p></li>
+<li><p><code>DataProperties</code>: contains the <code>Title</code>, <code>Description</code>,
+    <code>Unit</code> etc. of each column in the dataset that is downloaded with 
+    <code><a href='cbs_get_data.html'>cbs_get_data</a></code>.</p></li>
+<li><p><code>CategoryGroups</code>: hierarchical groupings of the code columns.</p></li>
+<li><p><code>&lt;code column&gt;</code>: for each code column a <code>data.frame</code> that contains
+  the <code>Title</code>, <code>Key</code>, <code>Description</code> etc. of each code / category
+  in the table. e.g. <code>Perioden</code> for time codes.</p></li>
+</ul>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -155,6 +173,8 @@ third party data services implementing the same protocol.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
