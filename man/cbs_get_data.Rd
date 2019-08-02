@@ -31,7 +31,8 @@ third party data services implementing the same protocol.}
 \item{include_ID}{Should the data include the ID column for the rows?}
 }
 \value{
-\code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.
+\code{data.frame} with the requested data. Note that a csv copy of
+ the data is stored in \code{dir}.
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of available tables

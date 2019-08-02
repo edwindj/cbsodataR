@@ -21,12 +21,15 @@ cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
 \item{typed}{Should the data automatically be converted into integer and numeric?}
 
 \item{base_url}{optionally specify a different server. Useful for
-third party data services implementing the same protocal.
+third party data services implementing the same protocol.}
+}
+\value{
+meta data object of `id` \code{\link{cbs_get_meta}}.
 
 \code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
 files in the directory specified by \code{dir}. It is possible to add a filter. 
 A filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
-Rows with values that are not part of the character vector are not returned.}
+Rows with values that are not part of the character vector are not returned.
 }
 \description{
 Download a table from statistics Netherlands

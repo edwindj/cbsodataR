@@ -22,5 +22,23 @@ cbs_table object containing several \code{data.frames} with meta data.
 }
 \description{
 Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) improves
-the performance considerably. The meta data of a CBS table is
+the performance considerably.
+}
+\details{
+The meta data of a CBS table is determined by the web api of Statistics 
+Netherlands. \code{cbsodataR} stays close to this API. 
+Each cbsodataR table may have the following metadata items, 
+which are all \code{data.frame}s :
+
+\itemize{
+  \item \code{TableInfos}: contains the descriptive publication metadata 
+    of the table, such as \code{Title}, \code{Description}, \code{Summary} etc.
+  \item \code{DataProperties}: contains the \code{Title}, \code{Description},
+    \code{Unit} etc. of each column in the dataset that is downloaded with 
+    \code{\link{cbs_get_data}}.
+  \item \code{CategoryGroups}: hierarchical groupings of the code columns.
+  \item \code{<code column>}: for each code column a \code{data.frame} that contains
+  the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
+  in the table. e.g. \code{Perioden} for time codes.
+}
 }

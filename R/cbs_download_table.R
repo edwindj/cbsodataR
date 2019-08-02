@@ -7,7 +7,8 @@
 #' @param verbose Print extra messages what is happening.
 #' @param cache If metadata is cached use that, otherwise download meta data
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
+#' third party data services implementing the same protocol.
+#' @return meta data object of `id` \code{\link{cbs_get_meta}}.
 #' 
 #' \code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
 #' files in the directory specified by \code{dir}. It is possible to add a filter. 

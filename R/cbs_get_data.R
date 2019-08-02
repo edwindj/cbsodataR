@@ -25,7 +25,8 @@
 #' @param include_ID Should the data include the ID column for the rows?
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return \code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.
+#' @return \code{data.frame} with the requested data. Note that a csv copy of
+#'  the data is stored in \code{dir}.
 #' @export
 #' @seealso \code{\link{cbs_get_meta}}, \code{\link{cbs_download_data}}
 #' @examples 

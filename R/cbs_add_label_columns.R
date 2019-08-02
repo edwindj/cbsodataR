@@ -1,12 +1,16 @@
 #' For each column with codes add label column to data set
 #' 
 #' Adds cbs labels to the dataset that was retrieved using \code{\link{cbs_get_data}}.
-#' Code columns will be translated into label columns for each of the column that was supplied. By default all
-#' code columns will be accompagnied with a label column.
+#' 
+#' Code columns will be translated into label columns for each of the column that was supplied. 
+#' By default all code columns will be accompagnied with a label column. The name
+#' of each label column will be `<codecolumnname>_label`.
 #' @export
 #' @param x \code{data.frame} retrieved using \code{\link{cbs_get_data}}.
 #' @param columns \code{character} with the names of the columns for which labels will be added
 #' @param ... not used.
+#' @return the original data.frame \code{x} with extra label 
+#' columns. (see description)
 #' 
 #' @examples 
 #' \dontrun{
