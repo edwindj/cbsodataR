@@ -64,7 +64,7 @@ the performance considerably." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9.9000</span>
       </span>
     </div>
 
@@ -145,15 +145,15 @@ third party data services implementing the same protocol.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>cbs_table object containing several <code>data.frames</code> with meta data.</p>
+    <p>cbs_table object containing several <code>data.frames</code> with meta data
+(see details)</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The meta data of a CBS table is determined by the web api of Statistics
 Netherlands. <code>cbsodataR</code> stays close to this API.
 Each cbsodataR table may have the following metadata items,
-which are all <code>data.frame</code>s :</p>
-<ul>
+which are all <code>data.frame</code>s :</p><ul>
 <li><p><code>TableInfos</code>: contains the descriptive publication metadata
 of the table, such as <code>Title</code>, <code>Description</code>, <code>Summary</code> etc.</p></li>
 <li><p><code>DataProperties</code>: contains the <code>Title</code>, <code>Description</code>,

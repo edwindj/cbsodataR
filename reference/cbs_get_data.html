@@ -34,11 +34,7 @@
 
 <meta property="og:description" content="Retrieves data from a table of Statistics Netherlands. A list of available tables
 can be retrieved with cbs_get_toc(). Use the Identifier column of
-cbs_get_toc as id in cbs_get_data and cbs_get_meta.
-Optionaly the data can be filtered on category values.
-The filter is specified with &amp;lt;column_name&amp;gt; = &amp;lt;values&amp;gt; in which &amp;lt;values&amp;gt; is a character vector.
-Rows with values that are not part of the character vector are not returned. Note that the values
-have to be raw (un-recoded) values." />
+cbs_get_toc as id in cbs_get_data and cbs_get_meta." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +65,7 @@ have to be raw (un-recoded) values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9.9000</span>
       </span>
     </div>
 
@@ -120,11 +116,7 @@ have to be raw (un-recoded) values." />
     
     <p>Retrieves data from a table of Statistics Netherlands. A list of available tables
 can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>. Use the <code>Identifier</code> column of
-<code>cbs_get_toc</code> as <code>id</code> in <code>cbs_get_data</code> and <code>cbs_get_meta</code>.
-Optionaly the data can be filtered on category values.
-The filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
-Rows with values that are not part of the character vector are not returned. Note that the values
-have to be raw (un-recoded) values.</p>
+<code>cbs_get_toc</code> as <code>id</code> in <code>cbs_get_data</code> and <code>cbs_get_meta</code>.</p>
     
     </div>
 
@@ -142,7 +134,7 @@ have to be raw (un-recoded) values.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>optional filter statements</p></td>
+      <td><p>optional filter statements, see details.</p></td>
     </tr>
     <tr>
       <th>select</th>
@@ -183,7 +175,12 @@ the data is stored in <code>dir</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>By default the columns will be converted to their type (<code>typed=TRUE</code>).
+    <p>To reduce the download time, optionaly the data can be filtered on category values:
+for large tables (&gt; 100k records) this is a wise thing to do.</p>
+<p>The filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
+Rows with values that are not part of the character vector are not returned. Note that the values
+have to be raw (un-recoded) values.</p>
+<p>By default the columns will be converted to their type (<code>typed=TRUE</code>).
 CBS uses multiple types of missing (unknown, surpressed, not measured, missing): users
 wanting all these nuances can use <code>typed=FALSE</code> which results in character columns.</p>
     
@@ -193,13 +190,21 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>, <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>, <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p>
+<p>Other data retrieval: <code><a href='cbs_add_date_column.html'>cbs_add_date_column</a></code>,
+  <code><a href='cbs_add_label_columns.html'>cbs_add_label_columns</a></code>,
+  <code><a href='cbs_download_data.html'>cbs_download_data</a></code>,
+  <code><a href='cbs_extract_table_id.html'>cbs_extract_table_id</a></code>,
+  <code><a href='cbs_get_data_from_link.html'>cbs_get_data_from_link</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># get data for main (000000) Consumer Price Index (7196ENG) for March 2000, </span>
- <span class='fu'>cbs_get_data</span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>, <span class='kw'>Periods</span><span class='kw'>=</span><span class='st'>"2000MM03"</span>, <span class='kw'>CPI</span><span class='kw'>=</span><span class='st'>"000000"</span>)
+ <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+             , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+             )
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

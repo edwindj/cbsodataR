@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve a data.frame with requested cbs tables — get_table_list • cbsodataR</title>
+<title>Get data from Statistics Netherlands (CBS) — get_data-deprecated • cbsodataR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Retrieve a data.frame with requested cbs tables — get_table_list" />
+<meta property="og:title" content="Get data from Statistics Netherlands (CBS) — get_data-deprecated" />
 
-<meta property="og:description" content="This method is deprecated in favor of cbs_get_toc()." />
+<meta property="og:description" content="This method is deprecated in favor of cbs_get_data()" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,52 +105,86 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve a data.frame with requested cbs tables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/get-table-list.R'><code>R/get-table-list.R</code></a></small>
-    <div class="hidden name"><code>get_table_list.Rd</code></div>
+    <h1>Get data from Statistics Netherlands (CBS)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/get-data.R'><code>R/get-data.R</code></a></small>
+    <div class="hidden name"><code>get_data-deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This method is deprecated in favor of <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>.</p>
+    <p>This method is deprecated in favor of <code><a href='cbs_get_data.html'>cbs_get_data()</a></code></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_table_list</span>(<span class='no'>...</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>))</pre>
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='no'>id</span>, <span class='no'>...</span>, <span class='kw'>recode</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use_column_title</span> <span class='kw'>=</span> <span class='no'>recode</span>,
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(), <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>,
+  <span class='no'>BASE_URL</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>filter statement to select rows, e.g. Language="nl"</p></td>
+      <th>id</th>
+      <td><p>Identifier of table, can be found in <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code></p></td>
     </tr>
     <tr>
-      <th>select</th>
-      <td><p><code>character</code> columns to be returned, by default all columns
-will be returned.</p></td>
+      <th>...</th>
+      <td><p>optional filter statements, see details.</p></td>
+    </tr>
+    <tr>
+      <th>recode</th>
+      <td><p>recodes all codes in the code columns with their <code>Title</code> as found
+in the metadata</p></td>
+    </tr>
+    <tr>
+      <th>use_column_title</th>
+      <td><p>not used.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Directory where the table should be downloaded. Defaults to temporary
+directory</p></td>
     </tr>
     <tr>
       <th>base_url</th>
       <td><p>optionally specify a different server. Useful for
-third party data services implementing the same protocal.</p></td>
+third party data services implementing the same protocol.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code> with identifiers, titles and descriptions of tables</p>
+    <p><code>data.frame</code> with the requested data. Note that a csv copy of
+the data is stored in <code>dir</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>To reduce the download time, optionaly the data can be filtered on category values:
+for large tables (&gt; 100k records) this is a wise thing to do.</p>
+<p>The filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
+Rows with values that are not part of the character vector are not returned. Note that the values
+have to be raw (un-recoded) values.</p>
+<p>By default the columns will be converted to their type (<code>typed=TRUE</code>).
+CBS uses multiple types of missing (unknown, surpressed, not measured, missing): users
+wanting all these nuances can use <code>typed=FALSE</code> which results in character columns.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>, <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p>
+<p>Other data retrieval: <code><a href='cbs_add_date_column.html'>cbs_add_date_column</a></code>,
+  <code><a href='cbs_add_label_columns.html'>cbs_add_label_columns</a></code>,
+  <code><a href='cbs_download_data.html'>cbs_download_data</a></code>,
+  <code><a href='cbs_extract_table_id.html'>cbs_extract_table_id</a></code>,
+  <code><a href='cbs_get_data_from_link.html'>cbs_get_data_from_link</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># get list of english tables</span>
-<span class='no'>tables_en</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"en"</span>)
-
-<span class='co'># get list of dutch tables</span>
-<span class='no'>tables_nl</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"nl"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/View'>View</a></span>(<span class='no'>tables_nl</span>)
+<span class='co'># get data for main (000000) Consumer Price Index (7196ENG) for March 2000, </span>
+ <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+             , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+             )
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -159,6 +193,10 @@ third party data services implementing the same protocal.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

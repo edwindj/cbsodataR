@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve a data.frame with requested cbs tables — get_table_list • cbsodataR</title>
+<title>Download a table from statistics Netherlands — download_table-deprecated • cbsodataR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Retrieve a data.frame with requested cbs tables — get_table_list" />
+<meta property="og:title" content="Download a table from statistics Netherlands — download_table-deprecated" />
 
-<meta property="og:description" content="This method is deprecated in favor of cbs_get_toc()." />
+<meta property="og:description" content="This method is deprecated in favor of cbs_download_table()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,52 +105,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve a data.frame with requested cbs tables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/get-table-list.R'><code>R/get-table-list.R</code></a></small>
-    <div class="hidden name"><code>get_table_list.Rd</code></div>
+    <h1>Download a table from statistics Netherlands</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/download-table.R'><code>R/download-table.R</code></a></small>
+    <div class="hidden name"><code>download_table-deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This method is deprecated in favor of <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>.</p>
+    <p>This method is deprecated in favor of <code><a href='cbs_download_table.html'>cbs_download_table()</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_table_list</span>(<span class='no'>...</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>))</pre>
+    <pre class="usage"><span class='fu'>download_table</span>(<span class='no'>id</span>, <span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='no'>id</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>typed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>filter statement to select rows, e.g. Language="nl"</p></td>
+      <th>id</th>
+      <td><p>Identifier of CBS table (can be retrieved from <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>)</p></td>
     </tr>
     <tr>
-      <th>select</th>
-      <td><p><code>character</code> columns to be returned, by default all columns
-will be returned.</p></td>
+      <th>...</th>
+      <td><p>Parameters passed on to <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Directory where table should be downloaded</p></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>If metadata is cached use that, otherwise download meta data</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Print extra messages what is happening.</p></td>
+    </tr>
+    <tr>
+      <th>typed</th>
+      <td><p>Should the data automatically be converted into integer and numeric?</p></td>
     </tr>
     <tr>
       <th>base_url</th>
       <td><p>optionally specify a different server. Useful for
-third party data services implementing the same protocal.</p></td>
+third party data services implementing the same protocol.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code> with identifiers, titles and descriptions of tables</p>
+    <p>meta data object of <code>id</code> <code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># get list of english tables</span>
-<span class='no'>tables_en</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"en"</span>)
-
-<span class='co'># get list of dutch tables</span>
-<span class='no'>tables_nl</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"nl"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/View'>View</a></span>(<span class='no'>tables_nl</span>)
+<span class='co'># download meta data and data from inflation/Consumer Price Indices</span>
+ <span class='fu'>download_table</span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

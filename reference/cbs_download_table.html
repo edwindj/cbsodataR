@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="Download a table from statistics Netherlands — cbs_download_table" />
 
-<meta property="og:description" content="Download a table from statistics Netherlands" />
+<meta property="og:description" content="cbs_download_table downloads the data and metadata of
+a table from statistics Netherlands and stores it in csv format.
+`" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9.9000</span>
       </span>
     </div>
 
@@ -112,7 +114,9 @@
 
     <div class="ref-description">
     
-    <p>Download a table from statistics Netherlands</p>
+    <p><code>cbs_download_table</code> downloads the data and metadata of
+a table from statistics Netherlands and stores it in <code>csv</code> format.
+`</p>
     
     </div>
 
@@ -156,16 +160,12 @@ third party data services implementing the same protocol.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>meta data object of <code>id</code> <code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>.</p>
-<p><code>cbs_download_table</code> retrieves all raw meta data and data and stores these as csv
-files in the directory specified by <code>dir</code>. It is possible to add a filter.
-A filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
-Rows with values that are not part of the character vector are not returned.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># download meta data and data from inflation/Consumer Price Indices</span>
- <span class='fu'><a href='download_table.html'>download_table</a></span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>)
+ <span class='fu'><a href='download_table-deprecated.html'>download_table</a></span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
