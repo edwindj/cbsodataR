@@ -126,7 +126,7 @@ the performance considerably.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>internal id of CBS table, can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc</a></code></p></td>
+      <td><p>internal id of CBS table, can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code></p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -149,20 +149,20 @@ third party data services implementing the same protocol.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The meta data of a CBS table is determined by the web api of Statistics 
-Netherlands. <code>cbsodataR</code> stays close to this API. 
-Each cbsodataR table may have the following metadata items, 
+    <p>The meta data of a CBS table is determined by the web api of Statistics
+Netherlands. <code>cbsodataR</code> stays close to this API.
+Each cbsodataR table may have the following metadata items,
 which are all <code>data.frame</code>s :</p>
 <ul>
-<li><p><code>TableInfos</code>: contains the descriptive publication metadata 
-    of the table, such as <code>Title</code>, <code>Description</code>, <code>Summary</code> etc.</p></li>
+<li><p><code>TableInfos</code>: contains the descriptive publication metadata
+of the table, such as <code>Title</code>, <code>Description</code>, <code>Summary</code> etc.</p></li>
 <li><p><code>DataProperties</code>: contains the <code>Title</code>, <code>Description</code>,
-    <code>Unit</code> etc. of each column in the dataset that is downloaded with 
-    <code><a href='cbs_get_data.html'>cbs_get_data</a></code>.</p></li>
+<code>Unit</code> etc. of each column in the dataset that is downloaded with
+<code><a href='cbs_get_data.html'>cbs_get_data()</a></code>.</p></li>
 <li><p><code>CategoryGroups</code>: hierarchical groupings of the code columns.</p></li>
 <li><p><code>&lt;code column&gt;</code>: for each code column a <code>data.frame</code> that contains
-  the <code>Title</code>, <code>Key</code>, <code>Description</code> etc. of each code / category
-  in the table. e.g. <code>Perioden</code> for time codes.</p></li>
+the <code>Title</code>, <code>Key</code>, <code>Description</code> etc. of each code / category
+in the table. e.g. <code>Perioden</code> for time codes.</p></li>
 </ul>
     
 

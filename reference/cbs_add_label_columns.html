@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="For each column with codes add label column to data set — cbs_add_label_columns" />
 
-<meta property="og:description" content="Adds cbs labels to the dataset that was retrieved using cbs_get_data." />
+<meta property="og:description" content="Adds cbs labels to the dataset that was retrieved using cbs_get_data()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,7 +112,7 @@
 
     <div class="ref-description">
     
-    <p>Adds cbs labels to the dataset that was retrieved using <code><a href='cbs_get_data.html'>cbs_get_data</a></code>.</p>
+    <p>Adds cbs labels to the dataset that was retrieved using <code><a href='cbs_get_data.html'>cbs_get_data()</a></code>.</p>
     
     </div>
 
@@ -123,7 +123,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code>data.frame</code> retrieved using <code><a href='cbs_get_data.html'>cbs_get_data</a></code>.</p></td>
+      <td><p><code>data.frame</code> retrieved using <code><a href='cbs_get_data.html'>cbs_get_data()</a></code>.</p></td>
     </tr>
     <tr>
       <th>columns</th>
@@ -137,14 +137,14 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the original data.frame <code>x</code> with extra label 
+    <p>the original data.frame <code>x</code> with extra label
 columns. (see description)</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Code columns will be translated into label columns for each of the column that was supplied. 
-By default all code columns will be accompagnied with a label column. The name
-of each label column will be `&lt;codecolumnname&gt;_label`.</p>
+    <p>Code columns will be translated into label columns for each of the column that was supplied.</p>
+<p>By default all code columns will be accompagnied with a label column. The name
+of each label column will be <code>&lt;codecolumnname&gt;_label</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

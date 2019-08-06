@@ -34,7 +34,7 @@
 
 <meta property="og:description" content="Time periods in data of CBS are coded: yyyyXXww (e.g. 2018JJ00, 2018MM10, 2018KW02),
 which contains year (yyyy), type (XX) and index (ww). cbs_add_date_column converts
-these codes into a Date or numeric. In addition it adds
+these codes into a Date() or numeric. In addition it adds
 a frequency column denoting the type of the column." />
 <meta name="twitter:card" content="summary" />
 
@@ -117,7 +117,7 @@ a frequency column denoting the type of the column." />
     
     <p>Time periods in data of CBS are coded: yyyyXXww (e.g. 2018JJ00, 2018MM10, 2018KW02),
 which contains year (yyyy), type (XX) and index (ww). <code>cbs_add_date_column</code> converts
-these codes into a <code><a href='https://www.rdocumentation.org/packages/base/topics/Dates'>Date</a></code> or <code>numeric</code>. In addition it adds
+these codes into a <code><a href='https://www.rdocumentation.org/packages/base/topics/Dates'>Date()</a></code> or <code>numeric</code>. In addition it adds
 a frequency column denoting the type of the column.</p>
     
     </div>
@@ -129,14 +129,14 @@ a frequency column denoting the type of the column.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code>data.frame</code> retrieved using <code><a href='cbs_get_data.html'>cbs_get_data</a></code></p></td>
+      <td><p><code>data.frame</code> retrieved using <code><a href='cbs_get_data.html'>cbs_get_data()</a></code></p></td>
     </tr>
     <tr>
       <th>date_type</th>
-      <td><p>Type of date column: "Date", "numeric. Numeric creates a fractional 
-number which signs the "middle" of the period. e.g. 2018JJ00 -&gt; 2018.5 and 
+      <td><p>Type of date column: "Date", "numeric. Numeric creates a fractional
+number which signs the "middle" of the period. e.g. 2018JJ00 -&gt; 2018.5 and
 2018KW01 -&gt; 2018.167. This is for the following reasons: otherwise 2018.0 could mean
-2018, 2018 Q1 or 2018 Jan, and furthermore 2018.75 is a bit strange for 2018 Q4. 
+2018, 2018 Q1 or 2018 Jan, and furthermore 2018.75 is a bit strange for 2018 Q4.
 If all codes in the dataset have frequency "Y" the numeric output will be <code>integer</code>.</p></td>
     </tr>
     <tr>
@@ -147,7 +147,7 @@ If all codes in the dataset have frequency "Y" the numeric output will be <code>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>original dataset with two added columns: <code>&lt;period&gt;_date</code> and 
+    <p>original dataset with two added columns: <code>&lt;period&gt;_date</code> and
 <code>&lt;period&gt;_freq</code>. This last column is a factor with levels: <code>Y</code>, <code>Q</code> and <code>M</code></p>
     
 

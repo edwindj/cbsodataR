@@ -124,11 +124,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>Identifier of CBS table (can be retrieved from <code><a href='cbs_get_toc.html'>cbs_get_toc</a></code>)</p></td>
+      <td><p>Identifier of CBS table (can be retrieved from <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>)</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Parameters passed on to <code><a href='cbs_download_data.html'>cbs_download_data</a></code></p></td>
+      <td><p>Parameters passed on to <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -155,9 +155,9 @@ third party data services implementing the same protocol.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>meta data object of `id` <code><a href='cbs_get_meta.html'>cbs_get_meta</a></code>.</p>
+    <p>meta data object of <code>id</code> <code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>.</p>
 <p><code>cbs_download_table</code> retrieves all raw meta data and data and stores these as csv
-files in the directory specified by <code>dir</code>. It is possible to add a filter. 
+files in the directory specified by <code>dir</code>. It is possible to add a filter.
 A filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
 Rows with values that are not part of the character vector are not returned.</p>
     
