@@ -8,9 +8,9 @@ cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
   typed = FALSE, base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
-\item{id}{Identifier of CBS table (can be retrieved from \code{\link{cbs_get_toc}})}
+\item{id}{Identifier of CBS table (can be retrieved from \code{\link[=cbs_get_toc]{cbs_get_toc()}})}
 
-\item{...}{Parameters passed on to \code{\link{cbs_download_data}}}
+\item{...}{Parameters passed on to \code{\link[=cbs_download_data]{cbs_download_data()}}}
 
 \item{dir}{Directory where table should be downloaded}
 
@@ -24,10 +24,10 @@ cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
 third party data services implementing the same protocol.}
 }
 \value{
-meta data object of `id` \code{\link{cbs_get_meta}}.
+meta data object of \code{id} \code{\link[=cbs_get_meta]{cbs_get_meta()}}.
 
 \code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
-files in the directory specified by \code{dir}. It is possible to add a filter. 
+files in the directory specified by \code{dir}. It is possible to add a filter.
 A filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned.
 }

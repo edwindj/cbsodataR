@@ -60,7 +60,7 @@ get_meta_from_dir <- function(dir){
   meta_files <- list.files(".", "*.csv")
   meta_files <- meta_files[meta_files != "data.csv"]
       
-  meta <- lapply(meta_files, read.csv, colClasses="character")
+  # meta <- lapply(meta_files, read.csv, colClasses="character")
   names(meta) <- sub("\\.csv$","", meta_files)
   meta$directory <- dir
   structure( meta

@@ -1,18 +1,19 @@
 #' Convert the time variable into either a date or numeric. 
 #' 
 #' Time periods in data of CBS are coded: yyyyXXww (e.g. 2018JJ00, 2018MM10, 2018KW02),
-#' which contains year (yyyy), type (XX) and index (ww). \code{cbs_add_date_column} converts
-#' these codes into a \code{\link{Date}} or \code{numeric}. In addition it adds
+#' which contains year (yyyy), type (XX) and index (ww). `cbs_add_date_column` converts
+#' these codes into a [Date()] or `numeric`. In addition it adds
 #' a frequency column denoting the type of the column.
-#' @param x \code{data.frame} retrieved using \code{\link{cbs_get_data}}
+#' @param x `data.frame` retrieved using [cbs_get_data()]
+#' 
 #' @param date_type Type of date column: "Date", "numeric. Numeric creates a fractional 
 #' number which signs the "middle" of the period. e.g. 2018JJ00 -> 2018.5 and 
 #' 2018KW01 -> 2018.167. This is for the following reasons: otherwise 2018.0 could mean
 #' 2018, 2018 Q1 or 2018 Jan, and furthermore 2018.75 is a bit strange for 2018 Q4. 
-#' If all codes in the dataset have frequency "Y" the numeric output will be \code{integer}.
+#' If all codes in the dataset have frequency "Y" the numeric output will be `integer`.
 #' @param ... future use. 
-#' @return original dataset with two added columns: \code{<period>_date} and 
-#' \code{<period>_freq}. This last column is a factor with levels: \code{Y}, \code{Q} and \code{M}
+#' @return original dataset with two added columns: `<period>_date` and 
+#' `<period>_freq`. This last column is a factor with levels: `Y`, `Q` and `M`
 #' @export
 cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
   # retrieve period column (using timedimension)

@@ -1,7 +1,7 @@
 #' extract the id of a cbs table from the statline url
-#' @param url \code{character} with hyperlink to StatLine table
+#' @param url `character` with hyperlink to StatLine table
 #' @param ... future use.
-#' @return \code{character} with id, will be NA if not found.
+#' @return `character` with id, will be NA if not found.
 cbs_extract_table_id <- function(url, ...){
   toc <- cbs_get_toc(...)
   

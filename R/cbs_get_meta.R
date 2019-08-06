@@ -1,31 +1,31 @@
 #' Get metadata of a cbs table
 #' 
-#' Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) improves
+#' Retrieve the meta data of a CBS open data table.  Caching (`cache=TRUE`) improves
 #' the performance considerably. 
 #' 
 #' The meta data of a CBS table is determined by the web api of Statistics 
-#' Netherlands. \code{cbsodataR} stays close to this API. 
+#' Netherlands. `cbsodataR` stays close to this API. 
 #' Each cbsodataR table may have the following metadata items, 
-#' which are all \code{data.frame}s :
+#' which are all `data.frame`s :
 #' 
 #' \itemize{
-#'   \item \code{TableInfos}: contains the descriptive publication metadata 
-#'     of the table, such as \code{Title}, \code{Description}, \code{Summary} etc.
-#'   \item \code{DataProperties}: contains the \code{Title}, \code{Description},
-#'     \code{Unit} etc. of each column in the dataset that is downloaded with 
-#'     \code{\link{cbs_get_data}}.
-#'   \item \code{CategoryGroups}: hierarchical groupings of the code columns.
-#'   \item \code{<code column>}: for each code column a \code{data.frame} that contains
-#'   the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
-#'   in the table. e.g. \code{Perioden} for time codes.
+#'   \item `TableInfos`: contains the descriptive publication metadata 
+#'     of the table, such as `Title`, `Description`, `Summary` etc.
+#'   \item `DataProperties`: contains the `Title`, `Description`,
+#'     `Unit` etc. of each column in the dataset that is downloaded with 
+#'     [cbs_get_data()].
+#'   \item `CategoryGroups`: hierarchical groupings of the code columns.
+#'   \item `<code column>`: for each code column a `data.frame` that contains
+#'   the `Title`, `Key`, `Description` etc. of each code / category
+#'   in the table. e.g. `Perioden` for time codes.
 #' }
 #' 
-#' @param id internal id of CBS table, can be retrieved with \code{\link{cbs_get_toc}}
+#' @param id internal id of CBS table, can be retrieved with [cbs_get_toc()]
 #' @param verbose Print extra messages what is happening.
 #' @param cache should the result be cached? 
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return cbs_table object containing several \code{data.frames} with meta data.  
+#' @return cbs_table object containing several `data.frames` with meta data.  
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' 

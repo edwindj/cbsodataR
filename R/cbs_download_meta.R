@@ -1,5 +1,5 @@
 #' Dumps the meta data into a directory
-#' @param id Id of CBS open data table (see \code{\link{cbs_get_toc}})
+#' @param id Id of CBS open data table (see [cbs_get_toc()])
 #' @param dir Directory in which data should be stored. 
 #' By default it creates a sub directory with the name of the id
 #' @param ... not used

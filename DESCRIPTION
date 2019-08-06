@@ -9,6 +9,7 @@ Description: The data and meta data from Statistics
 License: GPL-2
 URL: https://github.com/edwindj/cbsodataR
 BugReports: https://github.com/edwindj/cbsodataR/issues
+Encoding: UTF-8
 Imports:
     whisker,
     jsonlite,
@@ -20,3 +21,4 @@ Suggests:
     shiny
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)

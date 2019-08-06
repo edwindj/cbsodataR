@@ -1,18 +1,18 @@
 #' Download a table from statistics Netherlands
 #' 
-#' @param id Identifier of CBS table (can be retrieved from \code{\link{cbs_get_toc}})
+#' @param id Identifier of CBS table (can be retrieved from [cbs_get_toc()])
 #' @param dir Directory where table should be downloaded
-#' @param ... Parameters passed on to \code{\link{cbs_download_data}}
+#' @param ... Parameters passed on to [cbs_download_data()]
 #' @param typed Should the data automatically be converted into integer and numeric?
 #' @param verbose Print extra messages what is happening.
 #' @param cache If metadata is cached use that, otherwise download meta data
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return meta data object of `id` \code{\link{cbs_get_meta}}.
+#' @return meta data object of `id` [cbs_get_meta()].
 #' 
-#' \code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
-#' files in the directory specified by \code{dir}. It is possible to add a filter. 
-#' A filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
+#' `cbs_download_table` retrieves all raw meta data and data and stores these as csv
+#' files in the directory specified by `dir`. It is possible to add a filter. 
+#' A filter is specified with `<column_name> = <values>` in which `<values>` is a character vector.
 #' Rows with values that are not part of the character vector are not returned.
 #' @export
 #' @examples 

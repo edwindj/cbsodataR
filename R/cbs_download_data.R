@@ -1,6 +1,8 @@
 #' Gets all data from a cbs table.
 #' 
-#' Gets all data via bulk download. \code{download_data} dumps the data in (international) csv format.
+#' Gets all data via bulk download. `download_data` dumps the data in 
+#' (international) csv format.
+#' 
 #' @param id of cbs open data table
 #' @param path of data file, defaults to "<id>/data.csv"
 #' @param ... optional filter statements to select rows of the data,

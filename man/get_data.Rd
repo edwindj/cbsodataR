@@ -9,7 +9,7 @@ get_data(id, ..., recode = TRUE, use_column_title = recode,
   BASE_URL))
 }
 \arguments{
-\item{id}{Identifier of table, can be found in \code{\link{get_table_list}}}
+\item{id}{Identifier of table, can be found in \code{\link[=get_table_list]{get_table_list()}}}
 
 \item{...}{optional filter statemenets}
 
@@ -30,14 +30,14 @@ third party data services implementing the same protocol.}
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of tables
-can be retrieved with \code{\link{get_table_list}}. 
-Optionaly the data can be filtered on category values. 
+can be retrieved with \code{\link[=get_table_list]{get_table_list()}}.
+Optionaly the data can be filtered on category values.
 The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned. Note that the values
 have to be raw (un-recoded) values.
 }
 \note{
-All data are downloaded using \code{\link{download_table}}
+All data are downloaded using \code{\link[=download_table]{download_table()}}
 }
 \examples{
 \dontrun{

@@ -8,7 +8,7 @@ cbs_get_meta(id, verbose = FALSE, cache = TRUE,
   base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
-\item{id}{internal id of CBS table, can be retrieved with \code{\link{cbs_get_toc}}}
+\item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
 
 \item{verbose}{Print extra messages what is happening.}
 
@@ -25,20 +25,20 @@ Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) im
 the performance considerably.
 }
 \details{
-The meta data of a CBS table is determined by the web api of Statistics 
-Netherlands. \code{cbsodataR} stays close to this API. 
-Each cbsodataR table may have the following metadata items, 
+The meta data of a CBS table is determined by the web api of Statistics
+Netherlands. \code{cbsodataR} stays close to this API.
+Each cbsodataR table may have the following metadata items,
 which are all \code{data.frame}s :
 
 \itemize{
-  \item \code{TableInfos}: contains the descriptive publication metadata 
-    of the table, such as \code{Title}, \code{Description}, \code{Summary} etc.
-  \item \code{DataProperties}: contains the \code{Title}, \code{Description},
-    \code{Unit} etc. of each column in the dataset that is downloaded with 
-    \code{\link{cbs_get_data}}.
-  \item \code{CategoryGroups}: hierarchical groupings of the code columns.
-  \item \code{<code column>}: for each code column a \code{data.frame} that contains
-  the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
-  in the table. e.g. \code{Perioden} for time codes.
+\item \code{TableInfos}: contains the descriptive publication metadata
+of the table, such as \code{Title}, \code{Description}, \code{Summary} etc.
+\item \code{DataProperties}: contains the \code{Title}, \code{Description},
+\code{Unit} etc. of each column in the dataset that is downloaded with
+\code{\link[=cbs_get_data]{cbs_get_data()}}.
+\item \code{CategoryGroups}: hierarchical groupings of the code columns.
+\item \code{<code column>}: for each code column a \code{data.frame} that contains
+the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
+in the table. e.g. \code{Perioden} for time codes.
 }
 }

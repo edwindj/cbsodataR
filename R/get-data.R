@@ -1,15 +1,15 @@
 #' Get data from Statistics Netherlands (CBS)
 #' 
 #' Retrieves data from a table of Statistics Netherlands. A list of tables
-#' can be retrieved with \code{\link{get_table_list}}. 
+#' can be retrieved with [get_table_list()]. 
 #' Optionaly the data can be filtered on category values. 
-#' The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
+#' The filter is specified with `<column_name> = <values>` in which `<values>` is a character vector.
 #' Rows with values that are not part of the character vector are not returned. Note that the values
 #' have to be raw (un-recoded) values.
 #' 
-#' @note All data are downloaded using \code{\link{download_table}}
+#' @note All data are downloaded using [download_table()]
 #' 
-#' @param id Identifier of table, can be found in \code{\link{get_table_list}}
+#' @param id Identifier of table, can be found in [get_table_list()]
 #' @param ... optional filter statemenets
 #' @param recode Should the categories of the table be recoded with their title
 #' (TRUE) or with their key (FALSE)? 
@@ -19,7 +19,7 @@
 #' directory
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return \code{data.frame} with the requested data. Note that a csv copy of the data is stored in \code{dir}.
+#' @return `data.frame` with the requested data. Note that a csv copy of the data is stored in `dir`.
 #' @export
 #' @examples 
 #' \dontrun{

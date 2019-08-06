@@ -12,13 +12,13 @@ cbs_get_data_from_link(link, message = TRUE, ...,
 
 \item{message}{\code{logical} Should the query be printed (default TRUE)}
 
-\item{...}{passed on to \code{\link{cbs_get_data}}}
+\item{...}{passed on to \code{\link[=cbs_get_data]{cbs_get_data()}}}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
 }
 \value{
-Same as \code{\link{cbs_get_data}}
+Same as \code{\link[=cbs_get_data]{cbs_get_data()}}
 }
 \description{
 Retrieve data from a

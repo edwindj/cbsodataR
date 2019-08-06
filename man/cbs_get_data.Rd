@@ -10,7 +10,7 @@ cbs_get_data(id, ..., select = NULL, typed = TRUE,
   include_ID = FALSE)
 }
 \arguments{
-\item{id}{Identifier of table, can be found in \code{\link{cbs_get_toc}}}
+\item{id}{Identifier of table, can be found in \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
 
 \item{...}{optional filter statements}
 
@@ -32,13 +32,13 @@ third party data services implementing the same protocol.}
 }
 \value{
 \code{data.frame} with the requested data. Note that a csv copy of
- the data is stored in \code{dir}.
+the data is stored in \code{dir}.
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of available tables
-can be retrieved with \code{\link{cbs_get_toc}}. Use the \code{Identifier} column of 
+can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}. Use the \code{Identifier} column of
 \code{cbs_get_toc} as \code{id} in \code{cbs_get_data} and \code{cbs_get_meta}.
-Optionaly the data can be filtered on category values. 
+Optionaly the data can be filtered on category values.
 The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned. Note that the values
 have to be raw (un-recoded) values.
@@ -49,7 +49,7 @@ CBS uses multiple types of missing (unknown, surpressed, not measured, missing):
 wanting all these nuances can use \code{typed=FALSE} which results in character columns.
 }
 \note{
-All data are downloaded using \code{\link{cbs_download_table}}
+All data are downloaded using \code{\link[=cbs_download_table]{cbs_download_table()}}
 }
 \examples{
 \dontrun{
@@ -59,5 +59,5 @@ All data are downloaded using \code{\link{cbs_download_table}}
 }
 }
 \seealso{
-\code{\link{cbs_get_meta}}, \code{\link{cbs_download_data}}
+\code{\link[=cbs_get_meta]{cbs_get_meta()}}, \code{\link[=cbs_download_data]{cbs_download_data()}}
 }

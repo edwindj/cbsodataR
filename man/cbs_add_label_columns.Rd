@@ -7,23 +7,24 @@
 cbs_add_label_columns(x, columns = colnames(x), ...)
 }
 \arguments{
-\item{x}{\code{data.frame} retrieved using \code{\link{cbs_get_data}}.}
+\item{x}{\code{data.frame} retrieved using \code{\link[=cbs_get_data]{cbs_get_data()}}.}
 
 \item{columns}{\code{character} with the names of the columns for which labels will be added}
 
 \item{...}{not used.}
 }
 \value{
-the original data.frame \code{x} with extra label 
+the original data.frame \code{x} with extra label
 columns. (see description)
 }
 \description{
-Adds cbs labels to the dataset that was retrieved using \code{\link{cbs_get_data}}.
+Adds cbs labels to the dataset that was retrieved using \code{\link[=cbs_get_data]{cbs_get_data()}}.
 }
 \details{
-Code columns will be translated into label columns for each of the column that was supplied. 
+Code columns will be translated into label columns for each of the column that was supplied.
+
 By default all code columns will be accompagnied with a label column. The name
-of each label column will be `<codecolumnname>_label`.
+of each label column will be \code{<codecolumnname>_label}.
 }
 \examples{
 \dontrun{

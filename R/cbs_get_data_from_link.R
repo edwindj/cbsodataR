@@ -1,11 +1,11 @@
 #' Retrieve data from a 
 #' 
 #' @param link url/hyperlink to opendata table made with the StatLine App
-#' @param message \code{logical} Should the query be printed (default TRUE)
-#' @param ... passed on to \code{\link{cbs_get_data}}
+#' @param message `logical` Should the query be printed (default TRUE)
+#' @param ... passed on to [cbs_get_data()]
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return Same as \code{\link{cbs_get_data}}
+#' @return Same as [cbs_get_data()]
 #' @export
 cbs_get_data_from_link <- function( link, message = TRUE, ...
                                   , base_url = getOption("cbsodataR.base_url", BASE_URL)){

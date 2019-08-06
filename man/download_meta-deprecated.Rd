@@ -11,7 +11,7 @@ download_meta(id, dir = id, ..., verbose = FALSE, cache = FALSE,
 \arguments{
 \item{id}{Id of CBS open data table}
 
-\item{dir}{Directory in which data should be stored. 
+\item{dir}{Directory in which data should be stored.
 By default it creates a sub directory with the name of the id}
 
 \item{...}{not used}
