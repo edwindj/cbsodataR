@@ -3,7 +3,10 @@
 #' Retrieves data from a table of Statistics Netherlands. A list of available tables
 #' can be retrieved with [cbs_get_toc()]. Use the `Identifier` column of 
 #' `cbs_get_toc` as `id` in `cbs_get_data` and `cbs_get_meta`.
-#' Optionaly the data can be filtered on category values. 
+#' 
+#' To reduce the download time, optionaly the data can be filtered on category values: 
+#' for large tables (> 100k records) this is a wise thing to do.
+#' 
 #' The filter is specified with `<column_name> = <values>` in which `<values>` is a character vector.
 #' Rows with values that are not part of the character vector are not returned. Note that the values
 #' have to be raw (un-recoded) values.
@@ -15,7 +18,7 @@
 #' @note All data are downloaded using [cbs_download_table()]
 #' 
 #' @param id Identifier of table, can be found in [cbs_get_toc()]
-#' @param ... optional filter statements
+#' @param ... optional filter statements, see details.
 #' @param select `character` optional, columns to select
 #' @param add_column_labels Should column titles be added as a label (TRUE) which are visible in `View`
 #' @param dir Directory where the table should be downloaded. Defaults to temporary
@@ -29,11 +32,15 @@
 #'  the data is stored in `dir`.
 #' @export
 #' @seealso [cbs_get_meta()], [cbs_download_data()]
+#' @family data retrieval
 #' @examples 
 #' \dontrun{
 #' 
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
-#'  cbs_get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+#'  cbs_get_data( id      = "7196ENG"      # table id
+#'              , Periods = "2000MM03"     # March 2000
+#'              , CPI     = "000000"       # Category code for total 
+#'              )
 #' }
 cbs_get_data <- function( id
                         , ...

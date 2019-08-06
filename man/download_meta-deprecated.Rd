@@ -9,7 +9,7 @@ download_meta(id, dir = id, ..., verbose = FALSE, cache = FALSE,
   base_url = getOption("cbsodataR.base_url", BASE_URL))
 }
 \arguments{
-\item{id}{Id of CBS open data table}
+\item{id}{Id of CBS open data table (see \code{\link[=cbs_get_toc]{cbs_get_toc()}})}
 
 \item{dir}{Directory in which data should be stored.
 By default it creates a sub directory with the name of the id}
@@ -27,5 +27,5 @@ third party data services implementing the same protocol.}
 meta data object
 }
 \description{
-Dumps the meta data into a directory
+This method is deprecated in favor of \code{\link[=cbs_download_meta]{cbs_download_meta()}}.
 }

@@ -2,6 +2,7 @@
 #' @param url `character` with hyperlink to StatLine table
 #' @param ... future use.
 #' @return `character` with id, will be NA if not found.
+#' @family data retrieval
 cbs_extract_table_id <- function(url, ...){
   toc <- cbs_get_toc(...)
   

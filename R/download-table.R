@@ -1,25 +1,9 @@
 #' Download a table from statistics Netherlands
 #' 
-#' @param id Identifier of CBS table (can be retrieved from [get_table_list()])
-#' @param dir Directory where table should be downloaded
-#' @param ... Parameters passed on to [download_data()]
-#' @param typed Should the data automatically be converted into integer and numeric?
-#' @param verbose Print extra messages what is happening.
-#' @param cache If metadata is cached use that, otherwise download meta data
-#' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
-#' 
-#' `download_table` retrieves all raw meta data and data and stores these as csv
-#' files in the directory specified by `dir`. It is possible to add a filter. 
-#' A filter is specified with `<column_name> = <values>` in which `<values>` is a character vector.
-#' Rows with values that are not part of the character vector are not returned.
+#' This method is deprecated in favor of [cbs_download_table()].
 #' @export
-#' @examples 
-#' \dontrun{
-#' 
-#' # download meta data and data from inflation/Consumer Price Indices
-#'  download_table(id="7196ENG")
-#' }
+#' @inherit cbs_download_table
+#' @name download_table-deprecated 
 download_table <- function( id
                           , ...
                           , dir=id

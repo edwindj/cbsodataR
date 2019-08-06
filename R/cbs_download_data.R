@@ -11,6 +11,8 @@
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
+#' @family downlaad
+#' @family data retrieval
 cbs_download_data <- function( id
                          , path     = file.path(id, "data.csv")
                          , ...

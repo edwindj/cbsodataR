@@ -1,32 +1,12 @@
 #' Get data from Statistics Netherlands (CBS)
 #' 
-#' Retrieves data from a table of Statistics Netherlands. A list of tables
-#' can be retrieved with [get_table_list()]. 
-#' Optionaly the data can be filtered on category values. 
-#' The filter is specified with `<column_name> = <values>` in which `<values>` is a character vector.
-#' Rows with values that are not part of the character vector are not returned. Note that the values
-#' have to be raw (un-recoded) values.
-#' 
-#' @note All data are downloaded using [download_table()]
-#' 
-#' @param id Identifier of table, can be found in [get_table_list()]
-#' @param ... optional filter statemenets
-#' @param recode Should the categories of the table be recoded with their title
-#' (TRUE) or with their key (FALSE)? 
-#' @param use_column_title Should column names be coded with title (TRUE)
-#' or key (FALSE) 
-#' @param dir Directory where the table should be downloaded. Defaults to temporary
-#' directory
-#' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocol.
-#' @return `data.frame` with the requested data. Note that a csv copy of the data is stored in `dir`.
+#' This method is deprecated in favor of [cbs_get_data()]
+#' @inherit cbs_get_data
+#' @name get_data-deprecated
+#' @param recode recodes all codes in the code columns with their `Title` as found
+#' in the metadata
+#' @param use_column_title not used.
 #' @export
-#' @examples 
-#' \dontrun{
-#' 
-#' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
-#'  get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
-#' }
 get_data <- function( id, ..., recode=TRUE, use_column_title = recode, dir=tempdir()
                     , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   .Deprecated("cbs_get_data")

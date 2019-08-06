@@ -1,4 +1,5 @@
 #' Dumps the meta data into a directory
+#' 
 #' @param id Id of CBS open data table (see [cbs_get_toc()])
 #' @param dir Directory in which data should be stored. 
 #' By default it creates a sub directory with the name of the id
@@ -8,6 +9,8 @@
 #' @return meta data object
 #' @param base_url optionally allow to specify a different server. Useful for
 #' third party data services implementing the same protocol.
+#' @family meta data
+#' @family download
 cbs_download_meta <- function( id, dir=id, ..., verbose = FALSE, cache=FALSE
                              , base_url = getOption("cbsodataR.base_url", BASE_URL)
                              ){

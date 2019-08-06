@@ -34,3 +34,11 @@ of each label column will be \code{<codecolumnname>_label}.
  cbs_add_label_columns(x)
 }
 }
+\seealso{
+Other data retrieval: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_download_data}},
+  \code{\link{cbs_extract_table_id}},
+  \code{\link{cbs_get_data_from_link}},
+  \code{\link{cbs_get_data}}
+}
+\concept{data retrieval}

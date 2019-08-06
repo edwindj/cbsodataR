@@ -1,14 +1,8 @@
 #' Gets all data from a cbs table.
 #' 
-#' Gets all data via bulk download. `download_data` dumps the data in (international) csv format.
-#' @param id of cbs open data table
-#' @param path of data file, defaults to "<id>/data.csv"
-#' @param ... optional filter statements to select rows of the data,
-#' @param typed Should the data automatically be converted into integer and numeric?
-#' @param verbose show the underlying downloading of the data
-#' @param select optional names of columns to be returned.
-#' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
+#' This method is deprecated in favor of [cbs_download_data()].
+#' 
+#' @inherit cbs_download_data 
 #' @name download_data-deprecated
 download_data <- function( id, path=file.path(id, "data.csv"), ...
                          , select=NULL

@@ -27,3 +27,11 @@ which contains year (yyyy), type (XX) and index (ww). \code{cbs_add_date_column}
 these codes into a \code{\link[=Date]{Date()}} or \code{numeric}. In addition it adds
 a frequency column denoting the type of the column.
 }
+\seealso{
+Other data retrieval: \code{\link{cbs_add_label_columns}},
+  \code{\link{cbs_download_data}},
+  \code{\link{cbs_extract_table_id}},
+  \code{\link{cbs_get_data_from_link}},
+  \code{\link{cbs_get_data}}
+}
+\concept{data retrieval}

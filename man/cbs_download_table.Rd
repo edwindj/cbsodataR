@@ -25,14 +25,11 @@ third party data services implementing the same protocol.}
 }
 \value{
 meta data object of \code{id} \code{\link[=cbs_get_meta]{cbs_get_meta()}}.
-
-\code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
-files in the directory specified by \code{dir}. It is possible to add a filter.
-A filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
-Rows with values that are not part of the character vector are not returned.
 }
 \description{
-Download a table from statistics Netherlands
+\code{cbs_download_table} downloads the data and metadata of
+a table from statistics Netherlands and stores it in \code{csv} format.
+`
 }
 \examples{
 \dontrun{
@@ -41,3 +38,10 @@ Download a table from statistics Netherlands
  download_table(id="7196ENG")
 }
 }
+\concept{download
+
+`cbs_download_table` retrieves all raw meta data and data and stores these as csv
+files in the directory specified by `dir`. It is possible to add a filter. 
+A filter is specified with `<column_name> = <values>` in which `<values>` 
+is a character vector.
+Rows with values that are not part of the character vector are not returned.}

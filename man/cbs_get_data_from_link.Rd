@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbs_get_data_from_link.R
 \name{cbs_get_data_from_link}
 \alias{cbs_get_data_from_link}
-\title{Retrieve data from a}
+\title{Retrieve data from a link created from the StatLine app.}
 \usage{
 cbs_get_data_from_link(link, message = TRUE, ...,
   base_url = getOption("cbsodataR.base_url", BASE_URL))
@@ -12,14 +12,22 @@ cbs_get_data_from_link(link, message = TRUE, ...,
 
 \item{message}{\code{logical} Should the query be printed (default TRUE)}
 
-\item{...}{passed on to \code{\link[=cbs_get_data]{cbs_get_data()}}}
+\item{...}{passed on to \code{\link{cbs_get_data}}}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
 }
 \value{
-Same as \code{\link[=cbs_get_data]{cbs_get_data()}}
+Same as \code{\link{cbs_get_data}}
 }
 \description{
-Retrieve data from a
+Retrieve data from a link created from the StatLine app.
 }
+\seealso{
+Other data retrieval: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_add_label_columns}},
+  \code{\link{cbs_download_data}},
+  \code{\link{cbs_extract_table_id}},
+  \code{\link{cbs_get_data}}
+}
+\concept{data retrieval}

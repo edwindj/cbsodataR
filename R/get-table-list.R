@@ -1,10 +1,6 @@
 #' Retrieve a data.frame with requested cbs tables
 #' 
-#' `get_table_list` by default a list of all tables and all columns will be retrieved.
-#' You can restrict the query by supplying multiple filter statements or by specifying the
-#' columns that should be returned.
-#' 
-#' @note `get_table_list` will cache results, so subsequent calls will be much faster.
+#' This method is deprecated in favor of [cbs_get_toc()].
 #' 
 #' @param ... filter statement to select rows, e.g. Language="nl"
 #' @param select `character` columns to be returned, by default all columns

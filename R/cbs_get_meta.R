@@ -8,24 +8,24 @@
 #' Each cbsodataR table may have the following metadata items, 
 #' which are all `data.frame`s :
 #' 
-#' \itemize{
-#'   \item `TableInfos`: contains the descriptive publication metadata 
+#' * `TableInfos`: contains the descriptive publication metadata 
 #'     of the table, such as `Title`, `Description`, `Summary` etc.
-#'   \item `DataProperties`: contains the `Title`, `Description`,
+#' * `DataProperties`: contains the `Title`, `Description`,
 #'     `Unit` etc. of each column in the dataset that is downloaded with 
 #'     [cbs_get_data()].
-#'   \item `CategoryGroups`: hierarchical groupings of the code columns.
-#'   \item `<code column>`: for each code column a `data.frame` that contains
+#' * `CategoryGroups`: hierarchical groupings of the code columns.
+#' * `<code column>`: for each code column a `data.frame` that contains
 #'   the `Title`, `Key`, `Description` etc. of each code / category
 #'   in the table. e.g. `Perioden` for time codes.
-#' }
+#' 
 #' 
 #' @param id internal id of CBS table, can be retrieved with [cbs_get_toc()]
 #' @param verbose Print extra messages what is happening.
 #' @param cache should the result be cached? 
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
-#' @return cbs_table object containing several `data.frames` with meta data.  
+#' @return cbs_table object containing several `data.frames` with meta data 
+#' (see details)
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
 #' 

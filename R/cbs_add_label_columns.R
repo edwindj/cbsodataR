@@ -12,7 +12,7 @@
 #' @param ... not used.
 #' @return the original data.frame `x` with extra label 
 #' columns. (see description)
-#' 
+#' @family data retrieval
 #' @examples 
 #' \dontrun{
 #' 

@@ -1,16 +1,8 @@
-#' Get metadata of a cbs table
+#' Get meta data from table
 #' 
-#' Retrieve the meta data of a CBS open data table.  Caching (\code{cache=TRUE}) may improve
-#' the performance considerably. The meta data of a CBS table is 
-#' @param id internal id of CBS table, can be retrieved with \code{\link{get_table_list}}
-#' @param verbose Print extra messages what is happening.
-#' @param cache should the result be cached? 
-#' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
-#' @return cbs_table object containing serveral \code{data.frames} with meta data.  
-#' @importFrom whisker whisker.render
-#' @importFrom jsonlite fromJSON
-#' 
+#' This method is deprecated in favor of [cbs_get_meta()]
+#' @inherit cbs_get_meta
+#' @name get_meta-deprecated
 #' @export
 get_meta <- function( id
                     , verbose  = TRUE
