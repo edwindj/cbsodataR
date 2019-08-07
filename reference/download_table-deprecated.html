@@ -157,6 +157,19 @@ third party data services implementing the same protocol.</p></td>
 
     <p>meta data object of <code>id</code> <code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>cbs_download_table</code> retrieves all raw meta data and data and stores these as csv
+files in the directory specified by <code>dir</code>. It is possible to add a filter.
+A filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code>
+is a character vector.
+Rows with values that are not part of the character vector are not returned.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other download: <code><a href='cbs_download_data.html'>cbs_download_data</a></code>,
+  <code><a href='cbs_download_meta.html'>cbs_download_meta</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
@@ -170,6 +183,10 @@ third party data services implementing the same protocol.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
