@@ -28,5 +28,13 @@ meta data object
 \description{
 Dumps the meta data into a directory
 }
+\seealso{
+Other meta data: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_add_label_columns}},
+  \code{\link{cbs_get_meta}}
+
+Other download: \code{\link{cbs_download_data}},
+  \code{\link{cbs_download_table}}
+}
 \concept{download}
 \concept{meta data}

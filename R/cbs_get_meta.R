@@ -28,7 +28,7 @@
 #' (see details)
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
-#' 
+#' @family meta data
 #' @export
 cbs_get_meta <- function( id
                       , verbose  = FALSE

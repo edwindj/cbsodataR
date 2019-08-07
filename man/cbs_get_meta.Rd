@@ -42,3 +42,9 @@ the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
 in that column. e.g. \code{Perioden} for time codes \code{c("2019JJ00","2018JJ00")}.
 }
 }
+\seealso{
+Other meta data: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_add_label_columns}},
+  \code{\link{cbs_download_meta}}
+}
+\concept{meta data}

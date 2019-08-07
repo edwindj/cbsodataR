@@ -14,6 +14,7 @@
 #' @return the original data.frame `x` with extra label 
 #' columns. (see description)
 #' @family data retrieval
+#' @family meta data
 #' @examples 
 #' \dontrun{
 #' 

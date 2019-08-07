@@ -16,6 +16,7 @@
 #' `<period>_freq`. This last column is a factor with levels: `Y`, `Q` and `M`
 #' @export
 #' @family data retrieval
+#' @family meta data
 cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
   # retrieve period column (using timedimension)
   period_name <- names(unlist(sapply(x, attr, "is_time")))

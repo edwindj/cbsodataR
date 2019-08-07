@@ -44,5 +44,10 @@ Other data retrieval: \code{\link{cbs_add_date_column}},
   \code{\link{cbs_extract_table_id}},
   \code{\link{cbs_get_data_from_link}},
   \code{\link{cbs_get_data}}
+
+Other meta data: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_download_meta}},
+  \code{\link{cbs_get_meta}}
 }
 \concept{data retrieval}
+\concept{meta data}

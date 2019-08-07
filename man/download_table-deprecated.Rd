@@ -30,10 +30,21 @@ meta data object of \code{id} \code{\link[=cbs_get_meta]{cbs_get_meta()}}.
 \description{
 This method is deprecated in favor of \code{\link[=cbs_download_table]{cbs_download_table()}}.
 }
+\details{
+\code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
+files in the directory specified by \code{dir}. It is possible to add a filter.
+A filter is specified with \code{<column_name> = <values>} in which \code{<values>}
+is a character vector.
+Rows with values that are not part of the character vector are not returned.
+}
 \examples{
 \dontrun{
 
 # download meta data and data from inflation/Consumer Price Indices
  download_table(id="7196ENG")
 }
+}
+\seealso{
+Other download: \code{\link{cbs_download_data}},
+  \code{\link{cbs_download_meta}}
 }

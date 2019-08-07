@@ -29,6 +29,9 @@ third party data services implementing the same protocol.}
 This method is deprecated in favor of \code{\link[=cbs_download_data]{cbs_download_data()}}.
 }
 \seealso{
+Other download: \code{\link{cbs_download_meta}},
+  \code{\link{cbs_download_table}}
+
 Other data retrieval: \code{\link{cbs_add_date_column}},
   \code{\link{cbs_add_label_columns}},
   \code{\link{cbs_extract_table_id}},

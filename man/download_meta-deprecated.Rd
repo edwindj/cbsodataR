@@ -29,3 +29,11 @@ meta data object
 \description{
 This method is deprecated in favor of \code{\link[=cbs_download_meta]{cbs_download_meta()}}.
 }
+\seealso{
+Other meta data: \code{\link{cbs_add_date_column}},
+  \code{\link{cbs_add_label_columns}},
+  \code{\link{cbs_get_meta}}
+
+Other download: \code{\link{cbs_download_data}},
+  \code{\link{cbs_download_table}}
+}
