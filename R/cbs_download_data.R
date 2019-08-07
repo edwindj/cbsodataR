@@ -1,6 +1,6 @@
 #' Gets all data from a cbs table.
 #' 
-#' Gets all data via bulk download. `download_data` dumps the data in 
+#' Gets all data via bulk download. `cbs_download_data` dumps the data in 
 #' (international) csv format.
 #' 
 #' @param id of cbs open data table
@@ -13,6 +13,7 @@
 #' third party data services implementing the same protocol.
 #' @family downlaad
 #' @family data retrieval
+#' @export
 cbs_download_data <- function( id
                          , path     = file.path(id, "data.csv")
                          , ...

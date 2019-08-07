@@ -47,6 +47,6 @@ get_query <- function(..., select=NULL){
 
 
 #column_filter("Periode", c(2000, 2001))
-#get_filter(list(Periode=2001:2003), id="2")
+#get_filter(Periode=2001:2003, id="2")
 #get_query(list(Periode=2001:2003))
 

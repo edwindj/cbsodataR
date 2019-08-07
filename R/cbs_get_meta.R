@@ -5,18 +5,18 @@
 #' 
 #' The meta data of a CBS table is determined by the web api of Statistics 
 #' Netherlands. `cbsodataR` stays close to this API. 
-#' Each cbsodataR table may have the following metadata items, 
+#' Each cbsodataR object has the following metadata items, 
 #' which are all `data.frame`s :
 #' 
-#' * `TableInfos`: contains the descriptive publication metadata 
+#' * `$TableInfos`: data.frame with the descriptive publication metadata 
 #'     of the table, such as `Title`, `Description`, `Summary` etc.
-#' * `DataProperties`: contains the `Title`, `Description`,
+#' * `$DataProperties`: data.frame with the `Title`, `Description`,
 #'     `Unit` etc. of each column in the dataset that is downloaded with 
 #'     [cbs_get_data()].
-#' * `CategoryGroups`: hierarchical groupings of the code columns.
-#' * `<code column>`: for each code column a `data.frame` that contains
+#' * `$CategoryGroups`: hierarchical groupings of the code columns.
+#' * `$<code column>`: for each code column a `data.frame` with
 #'   the `Title`, `Key`, `Description` etc. of each code / category
-#'   in the table. e.g. `Perioden` for time codes.
+#'   in that column. e.g. `Perioden` for time codes `c("2019JJ00","2018JJ00")`.
 #' 
 #' 
 #' @param id internal id of CBS table, can be retrieved with [cbs_get_toc()]

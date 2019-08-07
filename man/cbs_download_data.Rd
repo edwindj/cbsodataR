@@ -25,7 +25,7 @@ cbs_download_data(id, path = file.path(id, "data.csv"), ...,
 third party data services implementing the same protocol.}
 }
 \description{
-Gets all data via bulk download. \code{download_data} dumps the data in
+Gets all data via bulk download. \code{cbs_download_data} dumps the data in
 (international) csv format.
 }
 \seealso{

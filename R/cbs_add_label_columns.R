@@ -2,10 +2,11 @@
 #' 
 #' Adds cbs labels to the dataset that was retrieved using [cbs_get_data()].
 #' 
-#' Code columns will be translated into label columns for each of the column that was supplied. 
+#' Code columns will be translated into label columns for each of the column 
+#' that was supplied. 
 #' 
 #' By default all code columns will be accompagnied with a label column. The name
-#' of each label column will be `<codecolumnname>_label`.
+#' of each label column will be `<code_column>_label`.
 #' @export
 #' @param x `data.frame` retrieved using [cbs_get_data()].
 #' @param columns `character` with the names of the columns for which labels will be added
@@ -17,7 +18,10 @@
 #' \dontrun{
 #' 
 #' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
-#'  x <- cbs_get_data(id="7196ENG", Periods="2000MM03", CPI="000000")
+#'  x <- cbs_get_data( id      = "7196ENG"
+#'                   , Periods = "2000MM03"  # March 2000
+#'                   , CPI     = "000000"    # main price index
+#'                   )
 #'  cbs_add_label_columns(x)
 #' }
 cbs_add_label_columns <- function(x, columns = colnames(x), ...){

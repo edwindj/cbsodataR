@@ -11,6 +11,7 @@
 #' third party data services implementing the same protocol.
 #' @family meta data
 #' @family download
+#' @export
 cbs_download_meta <- function( id, dir=id, ..., verbose = FALSE, cache=FALSE
                              , base_url = getOption("cbsodataR.base_url", BASE_URL)
                              ){
