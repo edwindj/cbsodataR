@@ -7,19 +7,12 @@ Build
 Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
-[![Mentioned in Awesome Official Statistics ](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
 
 Retrieve data from the [open data
 interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
 (dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
 Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
-
-## API change (0.3+)
-
-**In version 0.3 the api of the functions has changed. Old functions
-(should) still work, but generate warnings asking to switch to the new
-api.**
 
 # Installation
 
@@ -49,13 +42,13 @@ head(toc)
     ## # A tibble: 6 x 25
     ##   Updated             Identifier Title ShortTitle ShortDescription Summary
     ##   <dttm>              <chr>      <chr> <chr>      <chr>            <chr>  
-    ## 1 2018-03-21 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 2 2018-02-28 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 3 2018-02-08 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
-    ## 4 2017-03-31 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…
-    ## 5 2018-03-29 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …
-    ## 6 2018-03-30 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…
-    ## # ... with 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
+    ## 1 2019-04-05 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
+    ## 2 2019-04-05 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
+    ## 3 2019-03-29 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
+    ## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…
+    ## 5 2019-03-29 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …
+    ## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…
+    ## # … with 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
     ## #   ReasonDelivery <chr>, ExplanatoryText <chr>, OutputStatus <chr>,
     ## #   Source <chr>, Language <chr>, Catalog <chr>, Frequency <chr>,
     ## #   Period <chr>, SummaryAndLinks <chr>, ApiUrl <chr>, FeedUrl <chr>,
@@ -68,7 +61,7 @@ Use the `Identifier` from tables to retrieve table information
 cbs_get_meta('71509ENG')
 ```
 
-    ## 71509ENG: 'Yield apples and pears', 2017
+    ## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017
     ##   FruitFarmingRegions: 'Fruit farming regions'
     ##   Periods: 'Periods' 
     ## 
@@ -110,7 +103,7 @@ apples %>%
     ##  8 1                   2004JJ00                   436                 14
     ##  9 1                   2005JJ00                   359                 12
     ## 10 1                   2006JJ00                   365                 11
-    ## # ... with 95 more rows
+    ## # … with 95 more rows
 
 add label columns:
 
@@ -133,6 +126,12 @@ apples %>%
     ##  8 1                   Total Netherlands         2004JJ00 2004         
     ##  9 1                   Total Netherlands         2005JJ00 2005         
     ## 10 1                   Total Netherlands         2006JJ00 2006         
-    ## # ... with 95 more rows
+    ## # … with 95 more rows
 
 For more information, see `vignette("cbsodataR")`
+
+## API change (0.3+)
+
+**In version 0.3 the api of the functions has changed. Old functions
+(should) still work, but generate warnings asking to switch to the new
+api.**
