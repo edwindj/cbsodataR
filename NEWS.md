@@ -1,5 +1,6 @@
 version 0.3.4
 - updated documentation
+- fixed issue #22 when table has no DefaultSelection, thanks to @sarahouweling.
 
 version 0.3.2
 - Added a new function cbs_get_data_from_link to allow for retrieving data using a link created with the opendata portal. Thanks to Albert Pieters for the suggestion
