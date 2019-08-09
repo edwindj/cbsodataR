@@ -19,10 +19,6 @@ Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfer
 
 Python user?  Use [cbsodata](https://github.com/J535D165/cbsodata).
 
-## API change (0.3+)
-
-**In version 0.3  the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.**
-
 # Installation
 
 From CRAN
@@ -70,3 +66,7 @@ apples %>%
 ```
 
 For more information, see `vignette("cbsodataR")`
+
+## API change (0.3+)
+
+**In version 0.3  the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.**
