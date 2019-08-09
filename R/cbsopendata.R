@@ -5,7 +5,7 @@
 #' [vignette](https://edwindj.github.io/cbsodataR/articles/cbsodataR.html): 
 #' `vignette("cbsodataR", package="cbsodataR")`. 
 #' The functions [cbs_get_toc()]
-#' and [cbs_get_data()] should you get going.
+#' and [cbs_get_data()] should get you going.
 #' 
 #' @section Catalog function:
 #' 
