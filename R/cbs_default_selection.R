@@ -21,7 +21,9 @@ cbs_default_selection <- function(x, ...){
   })
   
   names(codes) <- vars
-  codes$select <- strsplit(params$`$select`, ", ")[[1]]
+  if(!is.null(params$`$select`)){
+    codes$select <- strsplit(params$`$select`, ", ")[[1]]
+  }
   c(id = x$TableInfos$Identifier, codes)
 }
 
