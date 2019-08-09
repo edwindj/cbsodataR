@@ -106,12 +106,79 @@
       <small>Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="version-0-3-4" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-3-4" class="anchor"></a>version 0.3.4<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>updated documentation</p></li>
+<li><p>fixed issue <a href='https://github.com/edwindj/cbsodataR/issues/22'>#22</a> when table has no DefaultSelection, thanks to <a href='https://github.com/sarahouweling'>@sarahouweling</a>.</p></li>
+</ul>
+</div>
+    <div id="version-0-3-2" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-3-2" class="anchor"></a>version 0.3.2<small> 2019-02-21 </small>
+</h1>
+<ul>
+<li><p>Added a new function cbs_get_data_from_link to allow for retrieving data using a link created with the opendata portal. Thanks to Albert Pieters for the suggestion</p></li>
+<li><p>Improved the base_url default value.</p></li>
+<li><p>fixed a bug in cbs_get_data, key columns were not always loaded as character columns (issue <a href='https://github.com/edwindj/cbsodataR/issues/15'>#15</a>). Thanks to <a href='https://github.com/VincentKars'>@VincentKars</a></p></li>
+</ul>
+</div>
+    <div id="version-0-3-1" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-3-1" class="anchor"></a>version 0.3.1<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>removed httr and changed to jsonlite::read_json. httr gave problems with some Windows configurations.</p></li>
+<li><p>fixed cbs_get_toc with select argument (issue <a href='https://github.com/edwindj/cbsodataR/issues/12'>#12</a>). Thanks to Rob van Harrevelt.</p></li>
+</ul>
+</div>
+    <div id="version-0-3" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-3" class="anchor"></a>version 0.3<small> 2018-04-30 </small>
+</h1>
+<ul>
+<li><p>changed api: all (new) functions are prefixed with <code>cbs_</code> to have a more clean programming interface.</p></li>
+<li><p>old functions are still available and working but are deprecated.</p></li>
+<li><p><code>verbose=FALSE</code> and <code>cache=TRUE</code> by default: (for new functions).</p></li>
+<li><p><code>get_table_list</code> renamed to <code>cbs_get_toc</code></p></li>
+<li><p>data by default is <code>typed</code>: converted to the numeric representation (was not the case)</p></li>
+<li><p>data is not recoded anymore, but label columns can be added to the data set by using <code>cbs_add_label_columns</code>.</p></li>
+<li><p><code>View</code> shows the column title.</p></li>
+<li><p><code>cbs_add_date_column</code> adds a column with the period converted to <code>Date</code> or <code>numeric</code>.</p></li>
+</ul>
+</div>
+    <div id="version-0-2-3" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-2-3" class="anchor"></a>version 0.2.3<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>added with strip.whitespace to <code>get_data</code> (issue <a href='https://github.com/edwindj/cbsodataR/issues/4'>#4</a>), suggestion of Jonathan de Bruin</p></li>
+<li><p>changed address of opendata to https variant.</p></li>
+</ul>
+</div>
+    <div id="version-0-2-2" class="section level1">
+<h1 class="page-header">
+<a href="#version-0-2-2" class="anchor"></a>version 0.2.2<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>used <code>httr</code>: better performance and error handling of failed connections.</p></li>
+<li><p>add <code>get_tables_themes</code> : suggestion of Wietse Dol.</p></li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#version-0-3-4">0.3.4</a></li>
+        <li><a href="#version-0-3-2">0.3.2</a></li>
+        <li><a href="#version-0-3-1">0.3.1</a></li>
+        <li><a href="#version-0-3">0.3</a></li>
+        <li><a href="#version-0-2-3">0.2.3</a></li>
+        <li><a href="#version-0-2-2">0.2.2</a></li>
       </ul>
     </div>
   </div>
