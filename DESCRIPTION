@@ -5,7 +5,7 @@ Version: 0.3.4
 Authors@R: c(person("Edwin", "de Jonge", email="edwindjonge@gmail.com", role = c("aut","cre")),
     person("Sara", "Houweling", role=c("ctb")))
 Description: The data and meta data from Statistics
-    Netherlands (www.cbs.nl) can be browsed and downloaded. The client uses
+    Netherlands (<https://www.cbs.nl>) can be browsed and downloaded. The client uses
     the open data API of Statistics Netherlands.
 License: GPL-2
 URL: https://github.com/edwindj/cbsodataR
