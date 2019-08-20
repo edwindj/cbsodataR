@@ -16,7 +16,7 @@ library(dplyr)
 [Statistics Netherlands (CBS)](https://www.cbs.nl) is the office that produces all official statistics of the Netherlands. 
 
 For long SN has put its data on the web in its online database 
-[StatLine](https://statline.cbs.nl/Statweb/?LA=en).
+[StatLine](https://opendata.cbs.nl/statline#/CBS/en/).
 Since 2014 this data base has an open data web API based on the OData protocol.
 The *cbsodataR* package allows for retrieving data right into R. 
 
