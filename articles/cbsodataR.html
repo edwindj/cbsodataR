@@ -74,7 +74,7 @@
       <h1>cbsodataR, all data of Statistics Netherlands (CBS)</h1>
                         <h4 class="author">Edwin de Jonge</h4>
             
-            <h4 class="date">2019-08-09</h4>
+            <h4 class="date">2019-08-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/master/vignettes/cbsodataR.Rmd"><code>vignettes/cbsodataR.Rmd</code></a></small>
       <div class="hidden name"><code>cbsodataR.Rmd</code></div>
@@ -84,7 +84,7 @@
     
     
 <p><a href="https://www.cbs.nl">Statistics Netherlands (CBS)</a> is the office that produces all official statistics of the Netherlands.</p>
-<p>For long SN has put its data on the web in its online database <a href="https://statline.cbs.nl/Statweb/?LA=en">StatLine</a>. Since 2014 this data base has an open data web API based on the OData protocol. The <em>cbsodataR</em> package allows for retrieving data right into R.</p>
+<p>For long SN has put its data on the web in its online database <a href="https://opendata.cbs.nl/statline#/CBS/en/">StatLine</a>. Since 2014 this data base has an open data web API based on the OData protocol. The <em>cbsodataR</em> package allows for retrieving data right into R.</p>
 <div id="table-of-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#table-of-contents" class="anchor"></a>Table of Contents</h2>
@@ -96,7 +96,7 @@
 <a class="sourceLine" id="cb1-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">toc <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Identifier, ShortTitle) </a></code></pre></div>
-<pre><code>## # A tibble: 776 x 2
+<pre><code>## # A tibble: 777 x 2
 ##    Identifier ShortTitle                             
 ##    &lt;chr&gt;      &lt;chr&gt;                                  
 ##  1 80783eng   Agriculture; general farm type, region 
@@ -109,7 +109,7 @@
 ##  8 80274eng   Livestock cattle                       
 ##  9 7373eng    Livestock pigs                         
 ## 10 7425eng    Milk supply and dairy production       
-## # … with 766 more rows</code></pre>
+## # … with 767 more rows</code></pre>
 <p>Using an “Identifier” from <code>cbs_get_toc</code> information on the table can be retrieved with <code>cbs_get_meta</code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">apples &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">apples</a></code></pre></div>
