@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Statistics Netherlands (CBS) Open Data API Client • cbsodataR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Statistics Netherlands (CBS) Open Data API Client">
 <meta property="og:description" content="The data and meta data from Statistics
     Netherlands (&lt;https://www.cbs.nl&gt;) can be browsed and downloaded. The client uses
@@ -20,7 +21,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -32,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
       </span>
     </div>
 
@@ -40,15 +41,24 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="articles/cbsodataR.html">Get started</a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/cbsodata.html">cbsodataR, all data of Statistics Netherlands (CBS)</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -57,7 +67,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/edwindj/cbsodataR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,12 +80,10 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
+      </header><div class="row">
+  <div class="contents col-md-9">
+
 <div id="statistics-netherlands-www-cbs-nl-opendata-api-client-for-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#statistics-netherlands-www-cbs-nl-opendata-api-client-for-r" class="anchor"></a>Statistics Netherlands (www.cbs.nl) opendata API client for R</h1></div>
@@ -95,89 +103,90 @@
 <h1 class="hasAnchor">
 <a href="#usage-version-0-3" class="anchor"></a>Usage (version 0.3+)</h1>
 <p>Retrieve a table of contents with all SN tables.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(cbsodataR)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(cbsodataR)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">toc &lt;-<span class="st"> </span><span class="kw"><a href="reference/cbs_get_toc.html">cbs_get_toc</a></span>(<span class="st">"Language"</span> =<span class="st"> "en"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(toc)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 25
-##   Updated             Identifier Title ShortTitle ShortDescription Summary
-##   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;  
-## 1 2019-04-05 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
-## 2 2019-04-05 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
-## 3 2019-03-29 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
-## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…
-## 5 2019-03-29 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …
-## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…
-## # … with 19 more variables: Modified &lt;dttm&gt;, MetaDataModified &lt;dttm&gt;,
-## #   ReasonDelivery &lt;chr&gt;, ExplanatoryText &lt;chr&gt;, OutputStatus &lt;chr&gt;,
-## #   Source &lt;chr&gt;, Language &lt;chr&gt;, Catalog &lt;chr&gt;, Frequency &lt;chr&gt;,
-## #   Period &lt;chr&gt;, SummaryAndLinks &lt;chr&gt;, ApiUrl &lt;chr&gt;, FeedUrl &lt;chr&gt;,
-## #   DefaultPresentation &lt;chr&gt;, DefaultSelection &lt;chr&gt;, GraphTypes &lt;chr&gt;,
-## #   RecordCount &lt;int&gt;, ColumnCount &lt;int&gt;, SearchPriority &lt;chr&gt;</code></pre>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(toc)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## # A tibble: 6 x 25</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">##   Updated             Identifier Title ShortTitle ShortDescription Summary</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">##   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;  </a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">## 1 2019-04-05 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">## 2 2019-04-05 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">## 3 2019-03-29 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">## 5 2019-03-29 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">## # … with 19 more variables: Modified &lt;dttm&gt;, MetaDataModified &lt;dttm&gt;,</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">## #   ReasonDelivery &lt;chr&gt;, ExplanatoryText &lt;chr&gt;, OutputStatus &lt;chr&gt;,</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">## #   Source &lt;chr&gt;, Language &lt;chr&gt;, Catalog &lt;chr&gt;, Frequency &lt;chr&gt;,</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">## #   Period &lt;chr&gt;, SummaryAndLinks &lt;chr&gt;, ApiUrl &lt;chr&gt;, FeedUrl &lt;chr&gt;,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">## #   DefaultPresentation &lt;chr&gt;, DefaultSelection &lt;chr&gt;, GraphTypes &lt;chr&gt;,</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">## #   RecordCount &lt;int&gt;, ColumnCount &lt;int&gt;, SearchPriority &lt;chr&gt;</a></code></pre></div>
 <p>Use the <code>Identifier</code> from tables to retrieve table information</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)</a></code></pre></div>
-<pre><code>## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017
-##   FruitFarmingRegions: 'Fruit farming regions'
-##   Periods: 'Periods' 
-## 
-## Retrieve a default data selection with:
-##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", 
-## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", 
-## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", 
-## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", 
-## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", 
-## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", 
-## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", 
-## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", 
-## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", 
-## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", 
-## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", 
-## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"
-## ))</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">##   FruitFarmingRegions: 'Fruit farming regions'</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">##   Periods: 'Periods' </a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">## </a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">## Retrieve a default data selection with:</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", </a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", </a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", </a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", </a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", </a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", </a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", </a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", </a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", </a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", </a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", </a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">## ))</a></code></pre></div>
 <p>Or download data.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr) <span class="co"># just for example's sake</span></a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr) <span class="co"># just for example's sake</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">apples &lt;-<span class="st"> </span><span class="kw"><a href="reference/cbs_get_data.html">cbs_get_data</a></span>(<span class="st">"71509ENG"</span>) </a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4">apples <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 105 x 4
-##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-##    &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;
-##  1 1                   1997JJ00                   420                 43
-##  2 1                   1998JJ00                   518                 40
-##  3 1                   1999JJ00                   568                 39
-##  4 1                   2000JJ00                   461                 27
-##  5 1                   2001JJ00                   408                 30
-##  6 1                   2002JJ00                   354                 17
-##  7 1                   2003JJ00                   359                 17
-##  8 1                   2004JJ00                   436                 14
-##  9 1                   2005JJ00                   359                 12
-## 10 1                   2006JJ00                   365                 11
-## # … with 95 more rows</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## # A tibble: 105 x 4</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">##    &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">##  1 1                   1997JJ00                   420                 43</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">##  2 1                   1998JJ00                   518                 40</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">##  3 1                   1999JJ00                   568                 39</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">##  4 1                   2000JJ00                   461                 27</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">##  5 1                   2001JJ00                   408                 30</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">##  6 1                   2002JJ00                   354                 17</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">##  7 1                   2003JJ00                   359                 17</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">##  8 1                   2004JJ00                   436                 14</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">##  9 1                   2005JJ00                   359                 12</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">## 10 1                   2006JJ00                   365                 11</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14">## # … with 95 more rows</a></code></pre></div>
 <p>add label columns:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">apples <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 105 x 4
-##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-##    &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        
-##  1 1                   Total Netherlands         1997JJ00 1997         
-##  2 1                   Total Netherlands         1998JJ00 1998         
-##  3 1                   Total Netherlands         1999JJ00 1999         
-##  4 1                   Total Netherlands         2000JJ00 2000         
-##  5 1                   Total Netherlands         2001JJ00 2001         
-##  6 1                   Total Netherlands         2002JJ00 2002         
-##  7 1                   Total Netherlands         2003JJ00 2003         
-##  8 1                   Total Netherlands         2004JJ00 2004         
-##  9 1                   Total Netherlands         2005JJ00 2005         
-## 10 1                   Total Netherlands         2006JJ00 2006         
-## # … with 95 more rows</code></pre>
-<p>For more information, see <code><a href="articles/cbsodataR.html">vignette("cbsodataR")</a></code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">## # A tibble: 105 x 4</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">##    &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">##  1 1                   Total Netherlands         1997JJ00 1997         </a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">##  2 1                   Total Netherlands         1998JJ00 1998         </a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">##  3 1                   Total Netherlands         1999JJ00 1999         </a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">##  4 1                   Total Netherlands         2000JJ00 2000         </a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">##  5 1                   Total Netherlands         2001JJ00 2001         </a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">##  6 1                   Total Netherlands         2002JJ00 2002         </a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">##  7 1                   Total Netherlands         2003JJ00 2003         </a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">##  8 1                   Total Netherlands         2004JJ00 2004         </a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">##  9 1                   Total Netherlands         2005JJ00 2005         </a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">## 10 1                   Total Netherlands         2006JJ00 2006         </a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">## # … with 95 more rows</a></code></pre></div>
+<p>For more information, see <code>vignette("cbsodataR")</code></p>
 <div id="api-change-0-3" class="section level2">
 <h2 class="hasAnchor">
 <a href="#api-change-0-3" class="anchor"></a>API change (0.3+)</h2>
 <p><strong>In version 0.3 the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.</strong></p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -206,8 +215,7 @@
 </ul>
 </div>
 
-      </div>
-
+  </div>
 </div>
 
 
@@ -216,12 +224,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
