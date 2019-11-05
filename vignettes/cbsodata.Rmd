@@ -1,0 +1,14 @@
+---
+title: "cbsodataR, all data of Statistics Netherlands (CBS)"
+author: "Edwin de Jonge"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cbsodataR, all data of Statistics Netherlands (CBS)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r child="cbsodataR.md"}
+```
+

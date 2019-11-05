@@ -1,3 +1,7 @@
+# version 0.3.5
+
+* fixed an issue with the vignette, which was failing when the webservice was offline
+
 # version 0.3.4
 
 * updated documentation
