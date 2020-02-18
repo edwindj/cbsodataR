@@ -2,9 +2,14 @@
 column_filter <- function(key, values){
   if (is.character(values)){
     values <- paste0("'", values, "'")
+    query <- paste0(key, " eq ", values)
+    query <- paste0(query, collapse=" or ")
+  } else if (is_query(values)){
+    query <- values
+    query$key <- key
+  } else {
+    stop("Unsupported query: '", values, ".'")
   }
-  query <- paste0(key, " eq ", values)
-  query <- paste0(query, collapse=" or ")
   query
 }
 

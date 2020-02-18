@@ -48,18 +48,53 @@ url_params <- function(query){
 }
 
 resolve_filter <- function(filter){
+  browser()
   if (is.null(filter)){
     return(NULL)
   }
   a <- strsplit(filter, "\\s+and\\s+")[[1]]
-  a <- gsub("\\(|\\)", "", a)
+  a <- gsub("(^\\s*\\()|(\\)\\s*$)", "", a)
   a <- strsplit(a, "\\s+or\\s+")
-  nms <- sapply(a, function(x){
-    sub("(\\w+) eq .*", "\\1", x[1])
+  a <- lapply(a, function(x){
+    gsub("(^\\s*\\()|(\\)\\s*$)", "", x)
   })
-  cats <-lapply(a, function(x){
-    sub(".*'([^']+)'", "\\1", x)
-  })
+  # todo improve detecting substring
+  nms <- character(length(a))
+  EQ <- "(\\w+) eq '(.*)'"
+  SUBSTRINGOF <- "substringof\\('([^)]+)'\\s*,\\s*(\\w+)\\)"
+  
+  eq_query <- sapply(a, function(x){grep(EQ, x)})
+  substringof_query <- sapply(a, function(x){grep(SUBSTRINGOF, x)})
+
+  cats <- mapply(function(x, eq){
+    if (length(eq)){
+      eq <- sub(EQ, "\\2", x[eq])
+      eq <- substitute(key_eq(eq), list(eq =eq))
+      eq
+    }
+  }, a, eq_query)
+  
+  substrings <- mapply(function(x, ss){
+    if (length(ss)){
+      ss <- sub(SUBSTRINGOF, "\\1", x[ss])
+      ss <- substitute(key_contains(ss), list(ss = ss))
+      ss
+    }
+  }, a, substringof_query)
+  
+  cats <- mapply(function(eq, ss){
+    if (length(eq)){
+      if (length(ss)){
+        substitute(eq | ss, list(eq=eq, ss =ss))
+      } else {
+        eq
+      }
+    } else {
+      ss
+    }
+  }, cats, substrings)
+  
+  
   names(cats) <- nms
   cats
 }
