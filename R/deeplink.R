@@ -94,7 +94,15 @@ resolve_filter <- function(filter){
     }
   }, cats, substrings)
   
-  
+  nms <- mapply(function(x, eq, ss){
+    if (length(eq)){
+      eq <- eq[1]
+      sub(EQ, "\\1", x[eq])
+    } else if (length(ss)){
+      ss <- ss[1]
+      sub(SUBSTRINGOF, "\\2", x[ss])
+    }
+  }, a, eq_query, substringof_query)
   names(cats) <- nms
   cats
 }

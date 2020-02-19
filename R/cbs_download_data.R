@@ -4,7 +4,7 @@
 #' (international) csv format.
 #' 
 #' @param id of cbs open data table
-#' @param path of data file, defaults to "<id>/data.csv"
+#' @param path of data file, defaults to "id/data.csv"
 #' @param ... optional filter statements to select rows of the data,
 #' @param typed Should the data automatically be converted into integer and numeric?
 #' @param verbose show the underlying downloading of the data

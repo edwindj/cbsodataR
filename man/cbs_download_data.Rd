@@ -17,7 +17,7 @@ cbs_download_data(
 \arguments{
 \item{id}{of cbs open data table}
 
-\item{path}{of data file, defaults to "<id>/data.csv"}
+\item{path}{of data file, defaults to "id/data.csv"}
 
 \item{...}{optional filter statements to select rows of the data,}
 

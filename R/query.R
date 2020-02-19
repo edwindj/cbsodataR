@@ -1,36 +1,42 @@
-#' Find codes in colums
+#' Find codes in columss
 #' 
-eq <- function(x, key = NULL){
+#' Find codes in columns
+#' @param x exact codes to be matched in `column`
+#' @param column name of column
+#' @return query object
+#' @family query
+eq <- function(x, column = NULL){
   structure(
     list( x = x
-        , key = key
+        , column = column
         )
         , class=c("eq_query", "query")
   )
 }
 
-#' Detect substring in column `key`
+#' Detect substring in column `column`
 #' 
 #' Detects a substring in a column.
 #' @param x substring to be detected in column
-#' @param key column name
-contains <- function(x, key = NULL){
+#' @param column column name
+#' @family query
+contains <- function(x, column = NULL){
   structure(
     list( x = x
-        , key = key
+        , column = column
         , cmd = "substringof"
         ),
     class = "query"
   )
 }
 
-key_startswith <- function(x, key){
+column_startswith <- function(x, column){
   if (length(x) > 1){
     stop("'x' needs to be a single text")
   }
   structure(
     list( x = x
-        , key = key
+        , column = column
         , cmd = "startswith"
     ),
     class = "query"
@@ -51,38 +57,37 @@ substringof <- contains
   } else {
     res <- list(x,y)
   }
-  key <- x$key
-  structure( list(x = res, key = key)
+  column <- x$column
+  structure( list(x = res, column = column)
            , class=c("or_query", "query")
            )
 }
 
-
-as.character.query <- function(x, key = x$key, ...){
+as.character.query <- function(x, column = x$column, ...){
   query <- sapply(x$x, function(value){
-    whisker.render("{{cmd}}('{{value}}', {{key}})"
-                   , list(cmd = x$cmd, value = value, key = key)
+    whisker.render("{{cmd}}('{{value}}', {{column}})"
+                   , list(cmd = x$cmd, value = value, column = column)
     )
   })
   paste(query, collapse = " or ")
 }
 
-as.character.or_query <- function(x, key = x$key, ...){
-  query <- sapply(x$x, as.character, key = key)
+as.character.or_query <- function(x, column = x$column, ...){
+  query <- sapply(x$x, as.character, column = column)
   query <- paste(query, collapse = " or ")
   paste0("(", query, ")")
 }
 
-as.character.eq_query <- function(x, key = x$key, ...){
+as.character.eq_query <- function(x, column = x$column, ...){
   values <- paste0("'", x$x, "'")
-  query <- paste0(key, " eq ", values)
+  query <- paste0(column, " eq ", values)
   paste(query, collapse = " or ")
 }
 
-#as.character(key_eq(c("NL01", "GM003"),"RegioS"))
+#as.character(column_eq(c("NL01", "GM003"),"RegioS"))
 
-# as.character(key_contains("kw"))
-# as.character(key_startswith("kw"))
+# as.character(column_contains("kw"))
+# as.character(column_startswith("kw"))
 
 #resolve_deeplink("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=32399")
 

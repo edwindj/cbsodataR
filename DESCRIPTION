@@ -19,7 +19,8 @@ Suggests:
     knitr,
     rmarkdown,
     dplyr,
-    shiny
+    shiny,
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
 RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
