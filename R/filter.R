@@ -2,20 +2,10 @@
 column_filter <- function(key, values){
   if (is.character(values)){
     query <- eq(values, key)
-    # values <- paste0("'", values, "'")
-    # query <- paste0(key, " eq ", values)
-    # query <- paste0(query, collapse=" or ")
   } else if (is_query(values)){
-    if (inherits(values, "or_query")){
-      query <- lapply(values, function(q){
-        q$key <- key
-        q
-      })
-      class(query) <- class(values)
-    } else {
       query <- values
       query$key <- key
-    }
+    
   } else {
     stop("Unsupported query: '", values, ".'")
   }
@@ -28,10 +18,9 @@ get_filter <- function(..., filter_list=list(...)){
   if (length(filter_list) == 0){
     return(NULL)
   }
-  
   query <- sapply(names(filter_list), function(key){
     filter <- column_filter(key, filter_list[[key]])
-    paste0("(", filter, ")")
+    paste0("(", as.character(filter,key), ")")
   })
   
   paste0(query, collapse=" and ")

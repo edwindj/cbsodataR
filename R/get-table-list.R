@@ -30,7 +30,7 @@ get_table_list <- function( ..., select=NULL
                              , CATALOG = CATALOG
                              )
                        )
-  url <- paste0(url, get_query(..., select=select))
+  url <- paste0(url, get_query(..., select = select))
   
   tables <- resolve_resource(url, "Retrieving tables from")
   tables

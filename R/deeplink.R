@@ -48,7 +48,6 @@ url_params <- function(query){
 }
 
 resolve_filter <- function(filter){
-  browser()
   if (is.null(filter)){
     return(NULL)
   }
@@ -66,11 +65,11 @@ resolve_filter <- function(filter){
   eq_query <- sapply(a, function(x){grep(EQ, x)})
   substringof_query <- sapply(a, function(x){grep(SUBSTRINGOF, x)})
 
-  cats <- mapply(function(x, eq){
-    if (length(eq)){
-      eq <- sub(EQ, "\\2", x[eq])
-      eq <- substitute(eq(eq), list(eq =eq))
-      eq
+  cats <- mapply(function(x, eqs){
+    if (length(eqs)){
+      eqs <- sub(EQ, "\\2", x[eqs])
+      eqs <- substitute(eq(eqs), list(eqs =eqs))
+      eqs
     }
   }, a, eq_query)
   
@@ -87,7 +86,8 @@ resolve_filter <- function(filter){
       if (length(ss)){
         substitute(eq | ss, list(eq=eq, ss =ss))
       } else {
-        eq
+        # return just the string
+        eq[[2]]
       }
     } else {
       ss
