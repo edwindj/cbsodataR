@@ -10,18 +10,18 @@ describe("query object",{
     expect_equal(as.character(x), "RegioS eq 'NL01' or RegioS eq 'GM0003'")
   })
   
-  it("parses contains", {
-    x <- contains("KW", "Perioden")
+  it("parses has_substring", {
+    x <- has_substring("KW", "Perioden")
     expect_equal(as.character(x), "substringof('KW', Perioden)")
   })
   
-  it("parses two contains", {
-    x <- contains(c("KW", "JJ"), "Perioden")
+  it("parses two has_substring", {
+    x <- has_substring(c("KW", "JJ"), "Perioden")
     expect_equal(as.character(x), "substringof('KW', Perioden) or substringof('JJ', Perioden)")
   })
   
-  it("parses eq | contains", {
-    x <- eq("2019JJ00", "Perioden") | contains("KW", "Perioden")
+  it("parses eq | has_substring", {
+    x <- eq("2019JJ00", "Perioden") | has_substring("KW", "Perioden")
     expect_equal(as.character(x), "(Perioden eq '2019JJ00' or substringof('KW', Perioden))")
   })
 })

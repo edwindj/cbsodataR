@@ -1,6 +1,7 @@
 #' Find codes in columns
 #' 
 #' Find codes in columns
+#' @export
 #' @param x exact codes to be matched in `column`
 #' @param column name of column
 #' @return query object
@@ -17,10 +18,11 @@ eq <- function(x, column = NULL){
 #' Detect substring in column `column`
 #' 
 #' Detects a substring in a column.
+#' @export
 #' @param x substring to be detected in column
 #' @param column column name
 #' @family query
-contains <- function(x, column = NULL){
+has_substring <- function(x, column = NULL){
   structure(
     list( x = x
         , column = column
@@ -46,10 +48,6 @@ column_startswith <- function(x, column){
 is_query <- function(x){
   inherits(x, "query")
 }
-
-#' @rdname contains
-#' @aliases contains
-substringof <- contains
 
 #' @export
 `|.query` <- function(x, y){
@@ -93,6 +91,6 @@ as.character.eq_query <- function(x, column = x$column, ...){
 # as.character(column_contains("kw"))
 # as.character(column_startswith("kw"))
 
-#resolve_deeplink("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=32399")
+resolve_deeplink("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=32399")
 
-#get_query(Perioden = eq("2019JJ00") | contains("KW", "JJ"), RegioS = c("GM0003","NL01"))
+#get_query(Perioden = eq("2019JJ00") | has_substring("KW", "JJ"), RegioS = c("GM0003","NL01"))

@@ -1,6 +1,6 @@
 # version 0.4.0
 
-* added extra query operators: `eq`, `contains` and `|` to support the query syntax of cbsopendata.
+* added extra query operators: `eq`, `has_substring` and `|` to support the query syntax of cbsopendata.
 
 # version 0.3.5
 

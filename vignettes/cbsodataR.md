@@ -1,3 +1,4 @@
+
 [Statistics Netherlands (CBS)](https://www.cbs.nl) is the office that
 produces all official statistics of the Netherlands.
 
@@ -20,7 +21,7 @@ toc %>%
   select(Identifier, ShortTitle) 
 ```
 
-    ## # A tibble: 786 x 2
+    ## # A tibble: 809 x 2
     ##    Identifier ShortTitle                             
     ##    <chr>      <chr>                                  
     ##  1 80783eng   Agriculture; general farm type, region 
@@ -33,7 +34,7 @@ toc %>%
     ##  8 80274eng   Livestock cattle                       
     ##  9 7373eng    Livestock pigs                         
     ## 10 7425eng    Milk supply and dairy production       
-    ## # … with 776 more rows
+    ## # … with 799 more rows
 
 Using an “Identifier” from `cbs_get_toc` information on the table can be
 retrieved with `cbs_get_meta`
@@ -66,8 +67,7 @@ The meta object contains all metadata properties of cbsodata (see the
 [original
 documentation](https://www.cbs.nl/-/media/_pdf/2017/13/handleiding-cbs-open-data-services.pdf?la=nl-nl))
 in the form of data.frames. Each data.frame describes properties of the
-SN
-    table.
+SN table.
 
 ``` r
 names(apples)
@@ -104,8 +104,7 @@ The opendata portal of CBS
 table and making a selection within this table manually. Such a
 selection can be stored in a hyperlink (click the “share” button). This
 link can also be used with `cbsodataR` using the
-`cbs_get_data_from_link`
-function.
+`cbs_get_data_from_link` function.
 
 ``` r
 cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
@@ -193,26 +192,123 @@ cbs_get_data('71509ENG') %>%
     ## 5 2001JJ00            2001 Y           
     ## 6 2002JJ00            2002 Y
 
-## Select and filter
+## Select and filter\`
 
 It is possible restrict the download using filter statements. This may
 shorten the download time considerably.
 
+### Filter
+
+Filter statements for the columns can be used to restrict the download.
+Note the following:
+
+  - To filter you will need to use the values found in the `$Key` column
+    in the `cbs_get_meta` objects. e.g. for year 2020, the code is
+    “2020JJ00”.
+
+<!-- end list -->
+
 ``` r
-  cbs_get_data('71509ENG', Periods=c('2000JJ00','2001JJ00')) %>% 
-  select(1:4) %>% 
-  head()
+apples <- cbs_get_meta('71509ENG')
+names(apples)
 ```
 
-    ## # A tibble: 6 x 4
-    ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-    ##   <chr>               <chr>                    <int>              <int>
-    ## 1 1                   2000JJ00                   461                 27
-    ## 2 1                   2001JJ00                   408                 30
-    ## 3 2                   2000JJ00                    87                  5
-    ## 4 2                   2001JJ00                    75                  5
-    ## 5 4                   2000JJ00                   105                 10
-    ## 6 4                   2001JJ00                    87                  9
+    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
+    ## [4] "FruitFarmingRegions" "Periods"
+
+``` r
+# meta data for column Periods
+head(apples$Periods[,1:2])
+```
+
+    ##        Key Title
+    ## 1 1997JJ00  1997
+    ## 2 1998JJ00  1998
+    ## 3 1999JJ00  1999
+    ## 4 2000JJ00  2000
+    ## 5 2001JJ00  2001
+    ## 6 2002JJ00  2002
+
+``` r
+#meta data for column FruitFarmingRegions
+head(apples$FruitFarmingRegions[,1:2 ])
+```
+
+    ##   Key             Title
+    ## 1   1 Total Netherlands
+    ## 2   2      Region North
+    ## 3   4       Region West
+    ## 4   3    Region Central
+    ## 5   5      Region South
+
+  - To filter for values in a column add `<column_name> = values` to
+    `cbs_get_data` e.g. `Periods = c("2019JJ00", "2020JJ0")`
+
+<!-- end list -->
+
+``` r
+  cbs_get_data( '71509ENG'
+              , Periods=c('2000JJ00','2001JJ00') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # apples$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+  cbs_add_label_columns()
+```
+
+    ## # A tibble: 2 x 5
+    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+    ##   <chr>             <fct>               <chr>    <fct>                     <int>
+    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
+    ## 2 1                 Total Netherlands   2001JJ00 2001                        408
+
+  - To filter for values in a column that have a substring e.g. “JJ” you
+    can use `<column_name> = has_substring(<substring>)` to
+    `cbs_get_data` e.g. `Periods = has_substring("KW")`
+
+<!-- end list -->
+
+``` r
+  cbs_get_data( '71509ENG'
+              , Periods = has_substring('2000') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # cbs_get_meta("71509ENG")$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+    cbs_add_label_columns()
+```
+
+    ## # A tibble: 1 x 5
+    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+    ##   <chr>             <fct>               <chr>    <fct>                     <int>
+    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
+
+  - To combine values and substring use the “|” operator: `Periods =
+    eq("2020JJ00") | has_substring("KW")`
+
+<!-- end list -->
+
+``` r
+  cbs_get_data( '71509ENG'
+              , Periods = eq("2010JJ00") | has_substring('2000') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # cbs_get_meta("71509ENG")$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+    cbs_add_label_columns()
+```
+
+    ## # A tibble: 2 x 5
+    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+    ##   <chr>             <fct>               <chr>    <fct>                     <int>
+    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
+    ## 2 1                 Total Netherlands   2010JJ00 2010                        334
 
 # Download data
 

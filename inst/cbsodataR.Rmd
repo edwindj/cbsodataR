@@ -1,12 +1,9 @@
 ---
-title: "cbsodataR, all data of Statistics Netherlands (CBS)"
-author: "Edwin de Jonge"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{cbsodataR, all data of Statistics Netherlands (CBS)}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: 
+author: 
+date: 
+output: 
+  github_document: default
 ---
 
 ```{r, include=FALSE}
@@ -103,16 +100,69 @@ cbs_get_data('71509ENG') %>%
 
 
 
-## Select and filter
+## Select and filter`
 
 It is possible restrict the download using filter statements. This may shorten the download time considerably.
 
-```{r, get_data3, message=FALSE}
-  cbs_get_data('71509ENG', Periods=c('2000JJ00','2001JJ00')) %>% 
-  select(1:4) %>% 
-  head()
+### Filter
+
+Filter statements for the columns can be used to restrict the download. Note the following:
+
+- To filter you will need to use the values found in the `$Key` column in the `cbs_get_meta` objects. e.g. for year 2020, the code is "2020JJ00".
+
+```{r}
+apples <- cbs_get_meta('71509ENG')
+names(apples)
+# meta data for column Periods
+head(apples$Periods[,1:2])
+#meta data for column FruitFarmingRegions
+head(apples$FruitFarmingRegions[,1:2 ])
 ```
 
+
+- To filter for values in a column add `<column_name> = values` to `cbs_get_data` e.g. `Periods = c("2019JJ00", "2020JJ0")`
+
+
+```{r, get_data3, message=FALSE}
+  cbs_get_data( '71509ENG'
+              , Periods=c('2000JJ00','2001JJ00') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # apples$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+  cbs_add_label_columns()
+```
+
+- To filter for values in a column that have a substring e.g. "JJ" you can use `<column_name> = has_substring(<substring>)` to `cbs_get_data` e.g. `Periods = has_substring("KW")`
+
+```{r}
+  cbs_get_data( '71509ENG'
+              , Periods = has_substring('2000') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # cbs_get_meta("71509ENG")$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+    cbs_add_label_columns()
+
+```
+
+- To combine values and substring use the "|" operator: `Periods = eq("2020JJ00") | has_substring("KW")`
+
+```{r}
+  cbs_get_data( '71509ENG'
+              , Periods = eq("2010JJ00") | has_substring('2000') # selection on Periods column
+              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+              #
+              # restrict the columns to the following as found in
+              # cbs_get_meta("71509ENG")$DataProperties with "select"
+              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+              ) %>% 
+    cbs_add_label_columns()
+```
 
 # Download data
 

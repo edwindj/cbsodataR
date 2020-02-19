@@ -9,13 +9,13 @@ describe("get_filter works",{
     expect_equal(x, "(RegioS eq 'NL01  ' or RegioS eq 'GM0003')")
   })
   
-  it("parses contains",{
-    x <- get_filter(Perioden = contains("KW"))
+  it("parses has_substring",{
+    x <- get_filter(Perioden = has_substring("KW"))
     expect_equal(x, "(substringof('KW', Perioden))")
   })
   
   it("parses multiple columns",{
-    x <- get_filter(Perioden = contains("KW"), RegioS = c("NL01  ", "GM0003"))
+    x <- get_filter(Perioden = has_substring("KW"), RegioS = c("NL01  ", "GM0003"))
     expect_equal(x, "(substringof('KW', Perioden)) and (RegioS eq 'NL01  ' or RegioS eq 'GM0003')")
   })
   

@@ -76,7 +76,7 @@ resolve_filter <- function(filter){
   substrings <- mapply(function(x, ss){
     if (length(ss)){
       ss <- sub(SUBSTRINGOF, "\\1", x[ss])
-      ss <- substitute(contains(ss), list(ss = ss))
+      ss <- substitute(has_substring(ss), list(ss = ss))
       ss
     }
   }, a, substringof_query)
@@ -113,6 +113,4 @@ resolve_select <- function(select){
   }
   strsplit(select, ", ")[[1]]
 }
-# TODO split stuff on filter and select
 
-#resolve_deeplink(deeplink)

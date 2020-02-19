@@ -19,6 +19,6 @@ Find codes in columns
 }
 \seealso{
 Other query: 
-\code{\link{contains}()}
+\code{\link{has_substring}()}
 }
 \concept{query}
