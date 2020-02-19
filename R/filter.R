@@ -1,9 +1,7 @@
 # creates a string that can be used in a $filter query
 column_filter <- function(key, values){
   if (is.character(values)){
-    values <- paste0("'", values, "'")
-    query <- paste0(key, " eq ", values)
-    query <- paste0(query, collapse=" or ")
+    query <- eq(values, key)
   } else if (is_query(values)){
     query <- values
     query$key <- key
@@ -19,10 +17,9 @@ get_filter <- function(..., filter_list=list(...)){
   if (length(filter_list) == 0){
     return(NULL)
   }
-  
   query <- sapply(names(filter_list), function(key){
     filter <- column_filter(key, filter_list[[key]])
-    paste0("(", filter, ")")
+    paste0("(", as.character(filter,key), ")")
   })
   
   paste0(query, collapse=" and ")
