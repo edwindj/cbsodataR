@@ -51,19 +51,21 @@ resolve_filter <- function(filter){
   if (is.null(filter)){
     return(NULL)
   }
+  #browser()
   a <- strsplit(filter, "\\s+and\\s+")[[1]]
-  a <- gsub("(^\\s*\\()|(\\)\\s*$)", "", a)
+  a <- sub("^\\s*\\((.*)\\)\\s*$", "\\1", a)
   a <- strsplit(a, "\\s+or\\s+")
   a <- lapply(a, function(x){
-    gsub("(^\\s*\\()|(\\)\\s*$)", "", x)
+    sub("^\\s*\\((.*)\\)\\s*$", "\\1", x)
   })
+  
   # todo improve detecting substring
   nms <- character(length(a))
   EQ <- "(\\w+) eq '(.*)'"
   SUBSTRINGOF <- "substringof\\('([^)]+)'\\s*,\\s*(\\w+)\\)"
   
-  eq_query <- sapply(a, function(x){grep(EQ, x)})
-  substringof_query <- sapply(a, function(x){grep(SUBSTRINGOF, x)})
+  eq_query <- lapply(a, function(x){grep(EQ, x)})
+  substringof_query <- lapply(a, function(x){grep(SUBSTRINGOF, x)})
 
   cats <- mapply(function(x, eqs){
     if (length(eqs)){
@@ -92,7 +94,7 @@ resolve_filter <- function(filter){
     } else {
       ss
     }
-  }, cats, substrings)
+  }, cats, substrings, SIMPLIFY = FALSE)
   
   nms <- mapply(function(x, eq, ss){
     if (length(eq)){
@@ -103,6 +105,7 @@ resolve_filter <- function(filter){
       sub(SUBSTRINGOF, "\\2", x[ss])
     }
   }, a, eq_query, substringof_query)
+  
   names(cats) <- nms
   cats
 }

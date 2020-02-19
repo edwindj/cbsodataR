@@ -91,6 +91,6 @@ as.character.eq_query <- function(x, column = x$column, ...){
 # as.character(column_contains("kw"))
 # as.character(column_startswith("kw"))
 
-resolve_deeplink("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=32399")
+#resolve_deeplink("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=32399")
 
 #get_query(Perioden = eq("2019JJ00") | has_substring("KW", "JJ"), RegioS = c("GM0003","NL01"))
