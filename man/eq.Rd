@@ -2,7 +2,7 @@
 % Please edit documentation in R/query.R
 \name{eq}
 \alias{eq}
-\title{Find codes in columss}
+\title{Find codes in columns}
 \usage{
 eq(x, column = NULL)
 }

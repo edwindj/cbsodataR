@@ -1,4 +1,4 @@
-#' Find codes in columss
+#' Find codes in columns
 #' 
 #' Find codes in columns
 #' @param x exact codes to be matched in `column`
@@ -51,6 +51,7 @@ is_query <- function(x){
 #' @aliases contains
 substringof <- contains
 
+#' @export
 `|.query` <- function(x, y){
   if (inherits(x, "or_query")){
     res <- c(x$x,list(y))
@@ -63,6 +64,7 @@ substringof <- contains
            )
 }
 
+#' @export
 as.character.query <- function(x, column = x$column, ...){
   query <- sapply(x$x, function(value){
     whisker.render("{{cmd}}('{{value}}', {{column}})"
@@ -72,12 +74,14 @@ as.character.query <- function(x, column = x$column, ...){
   paste(query, collapse = " or ")
 }
 
+#' @export
 as.character.or_query <- function(x, column = x$column, ...){
   query <- sapply(x$x, as.character, column = column)
   query <- paste(query, collapse = " or ")
   paste0("(", query, ")")
 }
 
+#' @export
 as.character.eq_query <- function(x, column = x$column, ...){
   values <- paste0("'", x$x, "'")
   query <- paste0(column, " eq ", values)
