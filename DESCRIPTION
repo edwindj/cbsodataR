@@ -1,7 +1,7 @@
 Package: cbsodataR
 Type: Package
 Title: Statistics Netherlands (CBS) Open Data API Client
-Version: 0.3.5
+Version: 0.4
 Authors@R: c(person("Edwin", "de Jonge", email="edwindjonge@gmail.com", role = c("aut","cre")),
     person("Sara", "Houweling", role=c("ctb")))
 Description: The data and meta data from Statistics
