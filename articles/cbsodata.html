@@ -107,7 +107,7 @@
 <a class="sourceLine" id="cb1-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">toc <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Identifier, ShortTitle) </a></code></pre></div>
-<pre><code>## # A tibble: 786 x 2
+<pre><code>## # A tibble: 809 x 2
 ##    Identifier ShortTitle                             
 ##    &lt;chr&gt;      &lt;chr&gt;                                  
 ##  1 80783eng   Agriculture; general farm type, region 
@@ -120,7 +120,7 @@
 ##  8 80274eng   Livestock cattle                       
 ##  9 7373eng    Livestock pigs                         
 ## 10 7425eng    Milk supply and dairy production       
-## # … with 776 more rows</code></pre>
+## # … with 799 more rows</code></pre>
 <p>Using an “Identifier” from <code>cbs_get_toc</code> information on the table can be retrieved with <code>cbs_get_meta</code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">apples &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">apples</a></code></pre></div>
@@ -236,20 +236,90 @@
 </div>
 <div id="select-and-filter" class="section level2">
 <h2 class="hasAnchor">
-<a href="#select-and-filter" class="anchor"></a>Select and filter</h2>
+<a href="#select-and-filter" class="anchor"></a>Select and filter`</h2>
 <p>It is possible restrict the download using filter statements. This may shorten the download time considerably.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">  <span class="kw"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span>(<span class="st">'71509ENG'</span>, <span class="dt">Periods=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'2000JJ00'</span>,<span class="st">'2001JJ00'</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-##   &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;
-## 1 1                   2000JJ00                   461                 27
-## 2 1                   2001JJ00                   408                 30
-## 3 2                   2000JJ00                    87                  5
-## 4 2                   2001JJ00                    75                  5
-## 5 4                   2000JJ00                   105                 10
-## 6 4                   2001JJ00                    87                  9</code></pre>
+<div id="filter" class="section level3">
+<h3 class="hasAnchor">
+<a href="#filter" class="anchor"></a>Filter</h3>
+<p>Filter statements for the columns can be used to restrict the download. Note the following:</p>
+<ul>
+<li>To filter you will need to use the values found in the <code>$Key</code> column in the <code>cbs_get_meta</code> objects. e.g. for year 2020, the code is “2020JJ00”.</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">apples &lt;-<span class="st"> </span><span class="kw"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(apples)</a></code></pre></div>
+<pre><code>## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
+## [4] "FruitFarmingRegions" "Periods"</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># meta data for column Periods</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(apples<span class="op">$</span>Periods[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</a></code></pre></div>
+<pre><code>##        Key Title
+## 1 1997JJ00  1997
+## 2 1998JJ00  1998
+## 3 1999JJ00  1999
+## 4 2000JJ00  2000
+## 5 2001JJ00  2001
+## 6 2002JJ00  2002</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co">#meta data for column FruitFarmingRegions</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(apples<span class="op">$</span>FruitFarmingRegions[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span> ])</a></code></pre></div>
+<pre><code>##   Key             Title
+## 1   1 Total Netherlands
+## 2   2      Region North
+## 3   4       Region West
+## 4   3    Region Central
+## 5   5      Region South</code></pre>
+<ul>
+<li>To filter for values in a column add <code>&lt;column_name&gt; = values</code> to <code>cbs_get_data</code> e.g. <code>Periods = c("2019JJ00", "2020JJ0")</code>
+</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">  <span class="kw"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span>( <span class="st">'71509ENG'</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">              , <span class="dt">Periods=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'2000JJ00'</span>,<span class="st">'2001JJ00'</span>) <span class="co"># selection on Periods column</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">              , <span class="dt">FruitFarmingRegions =</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">              <span class="co">#</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">              <span class="co"># restrict the columns to the following as found in</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">              <span class="co"># apples$DataProperties with "select"</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7">              , <span class="dt">select =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span>)  </a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">              ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
+## 1 1                 Total Netherlands   2000JJ00 2000                        461
+## 2 1                 Total Netherlands   2001JJ00 2001                        408</code></pre>
+<ul>
+<li>To filter for values in a column that have a substring e.g. “JJ” you can use <code>&lt;column_name&gt; = has_substring(&lt;substring&gt;)</code> to <code>cbs_get_data</code> e.g. <code>Periods = has_substring("KW")</code>
+</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">  <span class="kw"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span>( <span class="st">'71509ENG'</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">              , <span class="dt">Periods =</span> <span class="kw"><a href="../reference/has_substring.html">has_substring</a></span>(<span class="st">'2000'</span>) <span class="co"># selection on Periods column</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">              , <span class="dt">FruitFarmingRegions =</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">              <span class="co">#</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">              <span class="co"># restrict the columns to the following as found in</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">              , <span class="dt">select =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span>)  </a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">              ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="st">    </span><span class="kw"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>()</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
+## 1 1                 Total Netherlands   2000JJ00 2000                        461</code></pre>
+<ul>
+<li>To combine values and substring use the “|” operator: <code>Periods = eq("2020JJ00") | has_substring("KW")</code>
+</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">  <span class="kw"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span>( <span class="st">'71509ENG'</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">              , <span class="dt">Periods =</span> <span class="kw"><a href="../reference/eq.html">eq</a></span>(<span class="st">"2010JJ00"</span>) <span class="op">|</span><span class="st"> </span><span class="kw"><a href="../reference/has_substring.html">has_substring</a></span>(<span class="st">'2000'</span>) <span class="co"># selection on Periods column</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">              , <span class="dt">FruitFarmingRegions =</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">              <span class="co">#</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">              <span class="co"># restrict the columns to the following as found in</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">              , <span class="dt">select =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span>)  </a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">              ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="st">    </span><span class="kw"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
+##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
+## 1 1                 Total Netherlands   2000JJ00 2000                        461
+## 2 1                 Total Netherlands   2010JJ00 2010                        334</code></pre>
+</div>
 </div>
 <div id="download-data" class="section level1">
 <h1 class="hasAnchor">
@@ -267,7 +337,7 @@
 <li><a href="#table-of-contents">Table of Contents</a></li>
       <li><a href="#data-download">Data download</a></li>
       <li><a href="#data-download-from-a-link">Data download from a link</a></li>
-      <li><a href="#select-and-filter">Select and filter</a></li>
+      <li><a href="#select-and-filter">Select and filter`</a></li>
       <li><a href="#download-data">Download data</a></li>
       </ul>
 </div>

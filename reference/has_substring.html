@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find codes in columns — eq • cbsodataR</title>
+<title>Detect substring in column <code>column</code> — has_substring • cbsodataR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Find codes in columns — eq" />
-<meta property="og:description" content="Find codes in columns" />
+<meta property="og:title" content="Detect substring in column <code>column</code> — has_substring" />
+<meta property="og:description" content="Detects a substring in a column." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,44 +120,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find codes in columns</h1>
+    <h1>Detect substring in column <code>column</code></h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/query.R'><code>R/query.R</code></a></small>
-    <div class="hidden name"><code>eq.Rd</code></div>
+    <div class="hidden name"><code>has_substring.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Find codes in columns</p>
+    <p>Detects a substring in a column.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>has_substring</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>exact codes to be matched in <code>column</code></p></td>
+      <td><p>substring to be detected in column</p></td>
     </tr>
     <tr>
       <th>column</th>
-      <td><p>name of column</p></td>
+      <td><p>column name</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>query object</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other query: 
-<code><a href='has_substring.html'>has_substring</a>()</code></p></div>
+<code><a href='eq.html'>eq</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 
