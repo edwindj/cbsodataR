@@ -5,8 +5,12 @@
 \alias{get_meta}
 \title{Get meta data from table}
 \usage{
-get_meta(id, verbose = TRUE, cache = FALSE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+get_meta(
+  id,
+  verbose = TRUE,
+  cache = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
@@ -31,19 +35,20 @@ Netherlands. \code{cbsodataR} stays close to this API.
 Each cbsodataR object has the following metadata items,
 which are all \code{data.frame}s :
 \itemize{
-\item \code{$TableInfos}: data.frame with the descriptive publication metadata
+\item \verb{$TableInfos}: data.frame with the descriptive publication metadata
 of the table, such as \code{Title}, \code{Description}, \code{Summary} etc.
-\item \code{$DataProperties}: data.frame with the \code{Title}, \code{Description},
+\item \verb{$DataProperties}: data.frame with the \code{Title}, \code{Description},
 \code{Unit} etc. of each column in the dataset that is downloaded with
 \code{\link[=cbs_get_data]{cbs_get_data()}}.
-\item \code{$CategoryGroups}: hierarchical groupings of the code columns.
-\item \code{$<code column>}: for each code column a \code{data.frame} with
+\item \verb{$CategoryGroups}: hierarchical groupings of the code columns.
+\item \verb{$<code column>}: for each code column a \code{data.frame} with
 the \code{Title}, \code{Key}, \code{Description} etc. of each code / category
 in that column. e.g. \code{Perioden} for time codes \code{c("2019JJ00","2018JJ00")}.
 }
 }
 \seealso{
-Other meta data: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_download_meta}}
+Other meta data: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_download_meta}()}
 }

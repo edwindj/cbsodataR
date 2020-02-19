@@ -5,9 +5,15 @@
 \alias{download_data}
 \title{Gets all data from a cbs table.}
 \usage{
-download_data(id, path = file.path(id, "data.csv"), ..., select = NULL,
-  typed = FALSE, verbose = TRUE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+download_data(
+  id,
+  path = file.path(id, "data.csv"),
+  ...,
+  select = NULL,
+  typed = FALSE,
+  verbose = TRUE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{of cbs open data table}
@@ -29,12 +35,14 @@ third party data services implementing the same protocol.}
 This method is deprecated in favor of \code{\link[=cbs_download_data]{cbs_download_data()}}.
 }
 \seealso{
-Other download: \code{\link{cbs_download_meta}},
-  \code{\link{cbs_download_table}}
+Other download: 
+\code{\link{cbs_download_meta}()},
+\code{\link{cbs_download_table}()}
 
-Other data retrieval: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data_from_link}},
-  \code{\link{cbs_get_data}}
+Other data retrieval: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data_from_link}()},
+\code{\link{cbs_get_data}()}
 }

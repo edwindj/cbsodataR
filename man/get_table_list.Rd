@@ -4,8 +4,11 @@
 \alias{get_table_list}
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
-get_table_list(..., select = NULL,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+get_table_list(
+  ...,
+  select = NULL,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{...}{filter statement to select rows, e.g. Language="nl"}

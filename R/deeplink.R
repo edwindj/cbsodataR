@@ -69,7 +69,7 @@ resolve_filter <- function(filter){
   cats <- mapply(function(x, eq){
     if (length(eq)){
       eq <- sub(EQ, "\\2", x[eq])
-      eq <- substitute(key_eq(eq), list(eq =eq))
+      eq <- substitute(eq(eq), list(eq =eq))
       eq
     }
   }, a, eq_query)
@@ -77,7 +77,7 @@ resolve_filter <- function(filter){
   substrings <- mapply(function(x, ss){
     if (length(ss)){
       ss <- sub(SUBSTRINGOF, "\\1", x[ss])
-      ss <- substitute(key_contains(ss), list(ss = ss))
+      ss <- substitute(contains(ss), list(ss = ss))
       ss
     }
   }, a, substringof_query)

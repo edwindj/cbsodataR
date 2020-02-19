@@ -4,8 +4,11 @@
 \alias{resolve_deeplink}
 \title{resolve a deeplink created in the opendata portal}
 \usage{
-resolve_deeplink(deeplink, ...,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+resolve_deeplink(
+  deeplink,
+  ...,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{deeplink}{url to the deeplink in the opendataportal}

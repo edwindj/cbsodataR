@@ -1,4 +1,4 @@
-key_eq <- function(x, key = NULL){
+eq <- function(x, key = NULL){
   values <- paste0("'", x, "'")
   query <- paste0(key, " eq ", values)
   structure(as.list(query), class=c("or_query", "query"))
@@ -7,10 +7,9 @@ key_eq <- function(x, key = NULL){
 #' Detect substring in column `key`
 #' 
 #' Detects a substring in a column.
-#' @export
 #' @param x substring to be detected in column
 #' @param key column name
-key_contains <- function(x, key = NULL){
+contains <- function(x, key = NULL){
   if (length(x) > 1){
     stop("'x' needs to be a single text")
   }
@@ -40,10 +39,7 @@ is_query <- function(x){
   inherits(x, "query")
 }
 
-#' @export
-#' @rdname key_contains
-#' @aliases key_contains
-substringof <- key_contains
+substringof <- contains
 
 `|.query` <- function(x, y){
   if (inherits(x, "or_query")){

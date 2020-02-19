@@ -5,9 +5,14 @@
 \alias{get_data}
 \title{Get data from Statistics Netherlands (CBS)}
 \usage{
-get_data(id, ..., recode = TRUE, use_column_title = recode,
-  dir = tempdir(), base_url = getOption("cbsodataR.base_url",
-  BASE_URL))
+get_data(
+  id,
+  ...,
+  recode = TRUE,
+  use_column_title = recode,
+  dir = tempdir(),
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{Identifier of table, can be found in \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
@@ -36,7 +41,7 @@ This method is deprecated in favor of \code{\link[=cbs_get_data]{cbs_get_data()}
 To reduce the download time, optionaly the data can be filtered on category values:
 for large tables (> 100k records) this is a wise thing to do.
 
-The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
+The filter is specified with \verb{<column_name> = <values>} in which \verb{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned. Note that the values
 have to be raw (un-recoded) values.
 
@@ -57,9 +62,10 @@ wanting all these nuances can use \code{typed=FALSE} which results in character 
 \seealso{
 \code{\link[=cbs_get_meta]{cbs_get_meta()}}, \code{\link[=cbs_download_data]{cbs_download_data()}}
 
-Other data retrieval: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_download_data}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data_from_link}}
+Other data retrieval: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data_from_link}()}
 }

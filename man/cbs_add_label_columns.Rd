@@ -25,7 +25,7 @@ Code columns will be translated into label columns for each of the column
 that was supplied.
 
 By default all code columns will be accompagnied with a label column. The name
-of each label column will be \code{<code_column>_label}.
+of each label column will be \verb{<code_column>_label}.
 }
 \examples{
 \dontrun{
@@ -39,15 +39,17 @@ of each label column will be \code{<code_column>_label}.
 }
 }
 \seealso{
-Other data retrieval: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_download_data}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data_from_link}},
-  \code{\link{cbs_get_data}}
+Other data retrieval: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data_from_link}()},
+\code{\link{cbs_get_data}()}
 
-Other meta data: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_download_meta}},
-  \code{\link{cbs_get_meta}}
+Other meta data: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_download_meta}()},
+\code{\link{cbs_get_meta}()}
 }
 \concept{data retrieval}
 \concept{meta data}

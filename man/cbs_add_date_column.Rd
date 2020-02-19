@@ -18,8 +18,8 @@ If all codes in the dataset have frequency "Y" the numeric output will be \code{
 \item{...}{future use.}
 }
 \value{
-original dataset with two added columns: \code{<period>_date} and
-\code{<period>_freq}. This last column is a factor with levels: \code{Y}, \code{Q} and \code{M}
+original dataset with two added columns: \verb{<period>_date} and
+\verb{<period>_freq}. This last column is a factor with levels: \code{Y}, \code{Q} and \code{M}
 }
 \description{
 Time periods in data of CBS are coded: yyyyXXww (e.g. 2018JJ00, 2018MM10, 2018KW02),
@@ -28,15 +28,17 @@ these codes into a \code{\link[=Date]{Date()}} or \code{numeric}. In addition it
 a frequency column denoting the type of the column.
 }
 \seealso{
-Other data retrieval: \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_download_data}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data_from_link}},
-  \code{\link{cbs_get_data}}
+Other data retrieval: 
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data_from_link}()},
+\code{\link{cbs_get_data}()}
 
-Other meta data: \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_download_meta}},
-  \code{\link{cbs_get_meta}}
+Other meta data: 
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_download_meta}()},
+\code{\link{cbs_get_meta}()}
 }
 \concept{data retrieval}
 \concept{meta data}

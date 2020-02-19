@@ -5,8 +5,14 @@
 \alias{download_meta}
 \title{Dumps the meta data into a directory}
 \usage{
-download_meta(id, dir = id, ..., verbose = FALSE, cache = FALSE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+download_meta(
+  id,
+  dir = id,
+  ...,
+  verbose = FALSE,
+  cache = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{Id of CBS open data table (see \code{\link[=cbs_get_toc]{cbs_get_toc()}})}
@@ -30,10 +36,12 @@ meta data object
 This method is deprecated in favor of \code{\link[=cbs_download_meta]{cbs_download_meta()}}.
 }
 \seealso{
-Other meta data: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_get_meta}}
+Other meta data: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_get_meta}()}
 
-Other download: \code{\link{cbs_download_data}},
-  \code{\link{cbs_download_table}}
+Other download: 
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_download_table}()}
 }

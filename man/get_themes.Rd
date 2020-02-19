@@ -4,8 +4,13 @@
 \alias{get_themes}
 \title{Get list of all cbs thematic entries.}
 \usage{
-get_themes(..., select = NULL, verbose = TRUE, cache = FALSE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+get_themes(
+  ...,
+  select = NULL,
+  verbose = TRUE,
+  cache = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{...}{Use this to add a filter to the query e.g. \code{get_themes(ID=10)}.}
@@ -22,7 +27,7 @@ third party data services implementing the same protocal.}
 \value{
 A \code{data.frame} with various properties of SN/CBS themes.
 
-The filter is specified with \code{<column_name> = <values>} in which \code{<values>} is a character vector.
+The filter is specified with \verb{<column_name> = <values>} in which \verb{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned.
 }
 \description{

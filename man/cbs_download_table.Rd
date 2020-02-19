@@ -4,8 +4,15 @@
 \alias{cbs_download_table}
 \title{Download a table from statistics Netherlands}
 \usage{
-cbs_download_table(id, ..., dir = id, cache = FALSE, verbose = TRUE,
-  typed = FALSE, base_url = getOption("cbsodataR.base_url", BASE_URL))
+cbs_download_table(
+  id,
+  ...,
+  dir = id,
+  cache = FALSE,
+  verbose = TRUE,
+  typed = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link[=cbs_get_toc]{cbs_get_toc()}})}
@@ -33,7 +40,7 @@ a table from statistics Netherlands and stores it in \code{csv} format.
 \details{
 \code{cbs_download_table} retrieves all raw meta data and data and stores these as csv
 files in the directory specified by \code{dir}. It is possible to add a filter.
-A filter is specified with \code{<column_name> = <values>} in which \code{<values>}
+A filter is specified with \verb{<column_name> = <values>} in which \verb{<values>}
 is a character vector.
 Rows with values that are not part of the character vector are not returned.
 }
@@ -45,7 +52,8 @@ Rows with values that are not part of the character vector are not returned.
 }
 }
 \seealso{
-Other download: \code{\link{cbs_download_data}},
-  \code{\link{cbs_download_meta}}
+Other download: 
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_download_meta}()}
 }
 \concept{download}

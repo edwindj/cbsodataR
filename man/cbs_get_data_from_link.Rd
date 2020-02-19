@@ -4,8 +4,12 @@
 \alias{cbs_get_data_from_link}
 \title{Retrieve data from a link created from the StatLine app.}
 \usage{
-cbs_get_data_from_link(link, message = TRUE, ...,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+cbs_get_data_from_link(
+  link,
+  message = TRUE,
+  ...,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{link}{url/hyperlink to opendata table made with the StatLine App}
@@ -24,10 +28,11 @@ Same as \code{\link{cbs_get_data}}
 Retrieve data from a link created from the StatLine app.
 }
 \seealso{
-Other data retrieval: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_download_data}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data}}
+Other data retrieval: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_download_data}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data}()}
 }
 \concept{data retrieval}

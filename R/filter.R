@@ -1,12 +1,21 @@
 # creates a string that can be used in a $filter query
 column_filter <- function(key, values){
   if (is.character(values)){
-    values <- paste0("'", values, "'")
-    query <- paste0(key, " eq ", values)
-    query <- paste0(query, collapse=" or ")
+    query <- eq(values, key)
+    # values <- paste0("'", values, "'")
+    # query <- paste0(key, " eq ", values)
+    # query <- paste0(query, collapse=" or ")
   } else if (is_query(values)){
-    query <- values
-    query$key <- key
+    if (inherits(values, "or_query")){
+      query <- lapply(values, function(q){
+        q$key <- key
+        q
+      })
+      class(query) <- class(values)
+    } else {
+      query <- values
+      query$key <- key
+    }
   } else {
     stop("Unsupported query: '", values, ".'")
   }

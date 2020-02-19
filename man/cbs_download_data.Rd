@@ -4,9 +4,15 @@
 \alias{cbs_download_data}
 \title{Gets all data from a cbs table.}
 \usage{
-cbs_download_data(id, path = file.path(id, "data.csv"), ...,
-  select = NULL, typed = TRUE, verbose = FALSE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL))
+cbs_download_data(
+  id,
+  path = file.path(id, "data.csv"),
+  ...,
+  select = NULL,
+  typed = TRUE,
+  verbose = FALSE,
+  base_url = getOption("cbsodataR.base_url", BASE_URL)
+)
 }
 \arguments{
 \item{id}{of cbs open data table}
@@ -29,14 +35,16 @@ Gets all data via bulk download. \code{cbs_download_data} dumps the data in
 (international) csv format.
 }
 \seealso{
-Other download: \code{\link{cbs_download_meta}},
-  \code{\link{cbs_download_table}}
+Other download: 
+\code{\link{cbs_download_meta}()},
+\code{\link{cbs_download_table}()}
 
-Other data retrieval: \code{\link{cbs_add_date_column}},
-  \code{\link{cbs_add_label_columns}},
-  \code{\link{cbs_extract_table_id}},
-  \code{\link{cbs_get_data_from_link}},
-  \code{\link{cbs_get_data}}
+Other data retrieval: 
+\code{\link{cbs_add_date_column}()},
+\code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_extract_table_id}()},
+\code{\link{cbs_get_data_from_link}()},
+\code{\link{cbs_get_data}()}
 }
 \concept{data retrieval}
 \concept{download}
