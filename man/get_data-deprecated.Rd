@@ -51,12 +51,25 @@ wanting all these nuances can use \code{typed=FALSE} which results in character 
 }
 \examples{
 \dontrun{
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = "2000MM03"     # March 2000
+            , CPI     = "000000"       # Category code for total 
+            )
 
-# get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
- cbs_get_data( id      = "7196ENG"      # table id
-             , Periods = "2000MM03"     # March 2000
-             , CPI     = "000000"       # Category code for total 
-             )
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = has_substring("JJ")     # all years
+            , CPI     = "000000"       # Category code for total 
+            )
+
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = c("2000MM03","2001MM03")     # March 2000 amd 2001
+            , CPI     = "000000"       # Category code for total 
+            )
+
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = eq("2000MM03") | has_substring("JJ")     # March 2000 and all years
+            , CPI     = "000000"       # Category code for total 
+            )
 }
 }
 \seealso{
@@ -68,4 +81,8 @@ Other data retrieval:
 \code{\link{cbs_download_data}()},
 \code{\link{cbs_extract_table_id}()},
 \code{\link{cbs_get_data_from_link}()}
+
+Other query: 
+\code{\link{eq}()},
+\code{\link{has_substring}()}
 }

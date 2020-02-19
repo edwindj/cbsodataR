@@ -33,15 +33,8 @@
 #' @export
 #' @seealso [cbs_get_meta()], [cbs_download_data()]
 #' @family data retrieval
-#' @examples 
-#' \dontrun{
-#' 
-#' # get data for main (000000) Consumer Price Index (7196ENG) for March 2000, 
-#'  cbs_get_data( id      = "7196ENG"      # table id
-#'              , Periods = "2000MM03"     # March 2000
-#'              , CPI     = "000000"       # Category code for total 
-#'              )
-#' }
+#' @family query
+#' @example ./example/query.R
 cbs_get_data <- function( id
                         , ...
                         , select            = NULL

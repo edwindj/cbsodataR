@@ -9,3 +9,4 @@ TODO.md
 ^README\.
 ^_pkgdown\.yml$
 ^pkgdown$
+^example$

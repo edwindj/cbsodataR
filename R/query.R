@@ -6,6 +6,7 @@
 #' @param column name of column
 #' @return query object
 #' @family query
+#' @example ./example/query.R
 eq <- function(x, column = NULL){
   structure(
     list( x = x
@@ -22,6 +23,7 @@ eq <- function(x, column = NULL){
 #' @param x substring to be detected in column
 #' @param column column name
 #' @family query
+#' @example ./example/query.R
 has_substring <- function(x, column = NULL){
   structure(
     list( x = x
@@ -61,6 +63,7 @@ is_query <- function(x){
            , class=c("or_query", "query")
            )
 }
+
 
 #' @export
 as.character.query <- function(x, column = x$column, ...){
