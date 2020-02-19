@@ -71,7 +71,7 @@ columns that should be returned." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4</span>
       </span>
     </div>
 
@@ -133,10 +133,15 @@ You can restrict the query by supplying multiple filter statements or by specify
 columns that should be returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_get_toc</span>(<span class='no'>...</span>, <span class='kw'>convert_dates</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>cbs_get_toc</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>convert_dates</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>),
-  <span class='kw'>include_ID</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>include_ID</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4</span>
       </span>
     </div>
 
@@ -129,8 +129,15 @@
     <p>This method is deprecated in favor of <code><a href='cbs_download_table.html'>cbs_download_table()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_table</span>(<span class='no'>id</span>, <span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='no'>id</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>typed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>))</pre>
+    <pre class="usage"><span class='fu'>download_table</span>(
+  <span class='no'>id</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='no'>id</span>,
+  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>typed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,8 +185,9 @@ is a character vector.
 Rows with values that are not part of the character vector are not returned.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other download: <code><a href='cbs_download_data.html'>cbs_download_data</a></code>,
-  <code><a href='cbs_download_meta.html'>cbs_download_meta</a></code></p></div>
+    <div class='dont-index'><p>Other download: 
+<code><a href='cbs_download_data.html'>cbs_download_data</a>()</code>,
+<code><a href='cbs_download_meta.html'>cbs_download_meta</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {

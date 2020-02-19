@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a the list of tables connected to themes — get_tables_themes • cbsodataR</title>
+<title>Find codes in columns — eq • cbsodataR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Get a the list of tables connected to themes — get_tables_themes" />
-<meta property="og:description" content="Get a the list of tables connected to themes" />
+<meta property="og:title" content="Find codes in columns — eq" />
+<meta property="og:description" content="Find codes in columns" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,42 +120,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a the list of tables connected to themes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/get-themes.R'><code>R/get-themes.R</code></a></small>
-    <div class="hidden name"><code>get_tables_themes.Rd</code></div>
+    <h1>Find codes in columns</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/query.R'><code>R/query.R</code></a></small>
+    <div class="hidden name"><code>eq.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a the list of tables connected to themes</p>
+    <p>Find codes in columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_tables_themes</span>(
-  <span class='no'>...</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Use this to add a filter to the query e.g. <code>get_tables_themes(ID=10)</code>.</p></td>
+      <th>x</th>
+      <td><p>exact codes to be matched in <code>column</code></p></td>
     </tr>
     <tr>
-      <th>select</th>
-      <td><p><code>character</code> vector with names of wanted properties. default is all</p></td>
-    </tr>
-    <tr>
-      <th>base_url</th>
-      <td><p>optionally specify a different server. Useful for
-third party data services implementing the same protocal.</p></td>
+      <th>column</th>
+      <td><p>name of column</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> with various properties of SN/CBS themes.</p>
+    <p>query object</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other query: 
+<code><a href='contains.html'>contains</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -163,6 +158,7 @@ third party data services implementing the same protocal.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>
