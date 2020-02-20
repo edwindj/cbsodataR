@@ -11,7 +11,7 @@
 #' 
 #' - `<column_name> = <values>` in which `<values>` is a character vector.
 #' Rows with values that are not part of the character vector are not returned. 
-#' __Note that the values have to be raw (un-recoded) values.__
+#' __Note that the values have to be values from the `$Key` column of the corresponding meta data. These may contain trailing spaces...__
 #' 
 #' - `<column_name> = has_substring(x)` in which x is a character vector. Rows with values that 
 #' do not have a substring that is in x are not returned. Useful substrings are

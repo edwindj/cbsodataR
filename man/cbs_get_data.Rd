@@ -54,7 +54,7 @@ The filter is specified with (see examples below):
 \itemize{
 \item \verb{<column_name> = <values>} in which \verb{<values>} is a character vector.
 Rows with values that are not part of the character vector are not returned.
-\strong{Note that the values have to be raw (un-recoded) values.}
+\strong{Note that the values have to be values from the \verb{$Key} column of the corresponding meta data. These may contain trailing spaces...}
 \item \verb{<column_name> = has_substring(x)} in which x is a character vector. Rows with values that
 do not have a substring that is in x are not returned. Useful substrings are
 "JJ", "KW", "MM" for Periods (years, quarters, months) and "PV", "CR" and "GM"
