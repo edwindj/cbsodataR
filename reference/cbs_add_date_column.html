@@ -175,6 +175,21 @@ If all codes in the dataset have frequency "Y" the numeric output will be <code>
 <code><a href='cbs_download_meta.html'>cbs_download_meta</a>()</code>,
 <code><a href='cbs_get_meta.html'>cbs_get_meta</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+                 , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+                 , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+                 )
+
+<span class='co'># add a Periods_Date column</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_add_date_column</span>(<span class='no'>x</span>)
+<span class='no'>x</span>
+
+<span class='co'># add a Periods_numeric column</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_add_date_column</span>(<span class='no'>x</span>, <span class='kw'>date_type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>)
+<span class='no'>x</span>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -182,6 +197,7 @@ If all codes in the dataset have frequency "Y" the numeric output will be <code>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
