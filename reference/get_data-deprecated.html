@@ -181,7 +181,7 @@ for large tables (&gt; 100k records) this is a wise thing to do.</p>
 <p>The filter is specified with (see examples below):</p><ul>
 <li><p><code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
 Rows with values that are not part of the character vector are not returned.
-<strong>Note that the values have to be raw (un-recoded) values.</strong></p></li>
+<strong>Note that the values have to be values from the <code>$Key</code> column of the corresponding meta data. These may contain trailing spaces...</strong></p></li>
 <li><p><code>&lt;column_name&gt; = has_substring(x)</code> in which x is a character vector. Rows with values that
 do not have a substring that is in x are not returned. Useful substrings are
 "JJ", "KW", "MM" for Periods (years, quarters, months) and "PV", "CR" and "GM"
