@@ -31,5 +31,32 @@ describe("resolve_filter works",{
     f <- resolve_filter("substringof('KW', Periods) or Periods eq '2011JJ00'")
     expect_equal(f, list(Periods = quote(eq("2011JJ00") | has_substring("KW"))))
   })
+})
+
+describe("Eat your own dog food",{
+  eyodf <- function(l){
+    x <- do.call(get_filter, l)
+    resolve_filter(x, quoted = FALSE)
+  }
+  
+  l <- list(Perioden = "2019JJ00")
+  f <- eyodf(l)
+  expect_equal(f, l)
+
+  l <- list(Perioden = c("2019JJ00", "2020JJ00"))
+  f <- eyodf(l)
+  expect_equal(f, l)
+  
+  l <- list(Perioden = has_substring("JJ"))
+  f <- eyodf(l)
+  expect_equal(f, l)
+  
+  l <- list(Perioden = has_substring(c("JJ", "KW")))
+  f <- eyodf(l)
+  expect_equal(f, l)
+  
+  l <- list(Perioden = eq("2019KW04") | has_substring("JJ"))
+  f <- eyodf(l)
+  expect_equal(f, l)
   
 })

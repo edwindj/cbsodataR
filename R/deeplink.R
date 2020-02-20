@@ -51,7 +51,7 @@ OR_CLAUSES <- "\\s+or\\s+"
 AND_CLAUSES <- "\\s+and\\s+"
 BRACKETS <- "^\\s*\\((.*)\\)\\s*$"
 
-resolve_filter <- function(filter){
+resolve_filter <- function(filter, quoted = TRUE){
   if (is.null(filter)){
     return(NULL)
   }
@@ -76,21 +76,31 @@ resolve_filter <- function(filter){
   eq_query <- lapply(a, function(x){grep(EQ, x)})
   substringof_query <- lapply(a, function(x){grep(SUBSTRINGOF, x)})
 
-  cats <- mapply(function(x, eqs){
+  nms <- mapply(function(x, eq, ss){
+    if (length(eq)){
+      eq <- eq[1]
+      sub(EQ, "\\1", x[eq])
+    } else if (length(ss)){
+      ss <- ss[1]
+      sub(SUBSTRINGOF, "\\2", x[ss])
+    }
+  }, a, eq_query, substringof_query)
+  
+  cats <- mapply(function(x, eqs, column){
     if (length(eqs)){
       eqs <- sub(EQ, "\\2", x[eqs])
       eqs <- substitute(eq(eqs), list(eqs =eqs))
       eqs
     }
-  }, a, eq_query)
+  }, a, eq_query, nms)
   
-  substrings <- mapply(function(x, ss){
+  substrings <- mapply(function(x, ss, column){
     if (length(ss)){
       ss <- sub(SUBSTRINGOF, "\\1", x[ss])
       ss <- substitute(has_substring(ss), list(ss = ss))
       ss
     }
-  }, a, substringof_query)
+  }, a, substringof_query, nms)
   
   cats <- mapply(function(eq, ss){
     if (length(eq)){
@@ -105,15 +115,9 @@ resolve_filter <- function(filter){
     }
   }, cats, substrings, SIMPLIFY = FALSE)
   
-  nms <- mapply(function(x, eq, ss){
-    if (length(eq)){
-      eq <- eq[1]
-      sub(EQ, "\\1", x[eq])
-    } else if (length(ss)){
-      ss <- ss[1]
-      sub(SUBSTRINGOF, "\\2", x[ss])
-    }
-  }, a, eq_query, substringof_query)
+  if (!isTRUE(quoted)){
+    cats <- lapply(cats, eval)
+  }
   
   names(cats) <- nms
   cats

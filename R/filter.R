@@ -18,6 +18,7 @@ get_filter <- function(..., filter_list=list(...)){
   if (length(filter_list) == 0){
     return(NULL)
   }
+  #browser()
   query <- sapply(names(filter_list), function(column){
     filter <- column_filter(column, filter_list[[column]])
     paste0("(", as.character(filter, column = column), ")")

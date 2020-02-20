@@ -78,8 +78,8 @@ as.character.query <- function(x, column = x$column, ...){
 #' @export
 as.character.or_query <- function(x, column = x$column, ...){
   query <- sapply(x$x, as.character, column = column)
-  query <- paste(query, collapse = " or ")
-  paste0("(", query, ")")
+  paste(query, collapse = " or ")
+#  paste0("(", query, ")")
 }
 
 #' @export

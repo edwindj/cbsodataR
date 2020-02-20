@@ -22,6 +22,6 @@ describe("query object",{
   
   it("parses eq | has_substring", {
     x <- eq("2019JJ00", "Perioden") | has_substring("KW", "Perioden")
-    expect_equal(as.character(x), "(Perioden eq '2019JJ00' or substringof('KW', Perioden))")
+    expect_equal(as.character(x), "Perioden eq '2019JJ00' or substringof('KW', Perioden)")
   })
 })
