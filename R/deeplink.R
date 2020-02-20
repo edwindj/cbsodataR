@@ -47,16 +47,25 @@ url_params <- function(query){
   as.list(values)
 }
 
+OR_CLAUSES <- "\\s+or\\s+"
+AND_CLAUSES <- "\\s+and\\s+"
+BRACKETS <- "^\\s*\\((.*)\\)\\s*$"
+
 resolve_filter <- function(filter){
   if (is.null(filter)){
     return(NULL)
   }
   #browser()
-  a <- strsplit(filter, "\\s+and\\s+")[[1]]
-  a <- sub("^\\s*\\((.*)\\)\\s*$", "\\1", a)
-  a <- strsplit(a, "\\s+or\\s+")
+  a <- strsplit(filter, AND_CLAUSES)[[1]]
+  
+  # remove matching () at beginning and end
+  a <- sub(BRACKETS, "\\1", a)
+  
+  a <- strsplit(a, OR_CLAUSES)
+  
   a <- lapply(a, function(x){
-    sub("^\\s*\\((.*)\\)\\s*$", "\\1", x)
+    # remove matching () at beginning and end
+    sub(BRACKETS, "\\1", x)
   })
   
   # todo improve detecting substring
@@ -88,7 +97,7 @@ resolve_filter <- function(filter){
       if (length(ss)){
         substitute(eq | ss, list(eq=eq, ss =ss))
       } else {
-        # return just the string
+        # return just the character (more readable)
         eq[[2]]
       }
     } else {
@@ -114,6 +123,6 @@ resolve_select <- function(select){
   if (is.null(select)){
     return(NULL)
   }
-  strsplit(select, ", ")[[1]]
+  strsplit(select, "\\s*,\\s*")[[1]]
 }
 

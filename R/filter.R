@@ -1,10 +1,10 @@
 # creates a string that can be used in a $filter query
-column_filter <- function(key, values){
+column_filter <- function(column, values){
   if (is.character(values)){
-    query <- eq(values, key)
+    query <- eq(values, column)
   } else if (is_query(values)){
       query <- values
-      query$key <- key
+      query$column <- column
     
   } else {
     stop("Unsupported query: '", values, ".'")
@@ -18,9 +18,9 @@ get_filter <- function(..., filter_list=list(...)){
   if (length(filter_list) == 0){
     return(NULL)
   }
-  query <- sapply(names(filter_list), function(key){
-    filter <- column_filter(key, filter_list[[key]])
-    paste0("(", as.character(filter,key), ")")
+  query <- sapply(names(filter_list), function(column){
+    filter <- column_filter(column, filter_list[[column]])
+    paste0("(", as.character(filter, column = column), ")")
   })
   
   paste0(query, collapse=" and ")
