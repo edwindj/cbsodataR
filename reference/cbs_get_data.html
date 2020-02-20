@@ -225,18 +225,22 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
+<span class='co'># useful substrings:</span>
+<span class='co'>## Periods: "JJ": years, "KW": quarters, "MM", months</span>
+<span class='co'>## Regions: "NL", "PV": provinces, "GM": municipalities</span>
+
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
             , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>)     <span class='co'># all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM03"</span>)     <span class='co'># March 2000 amd 2001</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM03"</span>)     <span class='co'># March 2000 ad March 2001</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM03"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>)     <span class='co'># March 2000 and all years</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM03"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># March 2000 and all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 }</div></pre>
