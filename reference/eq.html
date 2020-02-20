@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find codes in columns — eq • cbsodataR</title>
+<title>Detect codes in a column — eq • cbsodataR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,9 @@
 
 
 
-<meta property="og:title" content="Find codes in columns — eq" />
-<meta property="og:description" content="Find codes in columns" />
+<meta property="og:title" content="Detect codes in a column — eq" />
+<meta property="og:description" content="Detects for codes in a column. eq filters the data set at CBS: rows that have
+a code that is not in x are filtered out." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,13 +121,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find codes in columns</h1>
+    <h1>Detect codes in a column</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/query.R'><code>R/query.R</code></a></small>
     <div class="hidden name"><code>eq.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Find codes in columns</p>
+    <p>Detects for codes in a column. <code>eq</code> filters the data set at CBS: rows that have
+a code that is not in <code>x</code> are filtered out.</p>
     </div>
 
     <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -136,7 +138,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>exact codes to be matched in <code>column</code></p></td>
+      <td><p>exact code(s) to be matched in <code>column</code></p></td>
     </tr>
     <tr>
       <th>column</th>

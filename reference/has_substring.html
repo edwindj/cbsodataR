@@ -36,7 +36,8 @@
 
 
 <meta property="og:title" content="Detect substring in column <code>column</code> — has_substring" />
-<meta property="og:description" content="Detects a substring in a column." />
+<meta property="og:description" content="Detects a substring in a column. has_substring filters the dataset at CBS:
+rows that have a code that does not contain (one of) x are filtered out." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,7 +127,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Detects a substring in a column.</p>
+    <p>Detects a substring in a column. <code>has_substring</code> filters the dataset at CBS:
+rows that have a code that does not contain (one of) <code>x</code> are filtered out.</p>
     </div>
 
     <pre class="usage"><span class='fu'>has_substring</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
