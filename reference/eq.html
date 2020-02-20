@@ -172,12 +172,12 @@ a code that is not in <code>x</code> are filtered out.</p>
             )
 
 <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM03"</span>)     <span class='co'># March 2000 ad March 2001</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span>)     <span class='co'># March 2000 and Dec 2001</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'>eq</span>(<span class='st'>"2000MM03"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># March 2000 and all years</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'>eq</span>(<span class='st'>"2000MM01"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 }</div></pre>

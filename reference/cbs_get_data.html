@@ -196,9 +196,17 @@ the data is stored in <code>dir</code>.</p>
 
     <p>To reduce the download time, optionaly the data can be filtered on category values:
 for large tables (&gt; 100k records) this is a wise thing to do.</p>
-<p>The filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
-Rows with values that are not part of the character vector are not returned. Note that the values
-have to be raw (un-recoded) values.</p>
+<p>The filter is specified with (see examples below):</p><ul>
+<li><p><code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code> is a character vector.
+Rows with values that are not part of the character vector are not returned.
+<strong>Note that the values have to be raw (un-recoded) values.</strong></p></li>
+<li><p><code>&lt;column_name&gt; = has_substring(x)</code> in which x is a character vector. Rows with values that
+do not have a substring that is in x are not returned. Useful substrings are
+"JJ", "KW", "MM" for Periods (years, quarters, months) and "PV", "CR" and "GM"
+for Regions (provinces, corops, municipalities).</p></li>
+<li><p><code>&lt;column_name&gt; = eq(&lt;values&gt;) | has_substring(x)</code>, which combines the two statements above.</p></li>
+</ul>
+
 <p>By default the columns will be converted to their type (<code>typed=TRUE</code>).
 CBS uses multiple types of missing (unknown, surpressed, not measured, missing): users
 wanting all these nuances can use <code>typed=FALSE</code> which results in character columns.</p>
@@ -235,12 +243,12 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
             )
 
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM03"</span>)     <span class='co'># March 2000 ad March 2001</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span>)     <span class='co'># March 2000 and Dec 2001</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM03"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># March 2000 and all years</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM01"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 }</div></pre>
