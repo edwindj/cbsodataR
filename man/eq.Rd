@@ -2,12 +2,12 @@
 % Please edit documentation in R/query.R
 \name{eq}
 \alias{eq}
-\title{Find codes in columns}
+\title{Detect codes in a column}
 \usage{
 eq(x, column = NULL)
 }
 \arguments{
-\item{x}{exact codes to be matched in \code{column}}
+\item{x}{exact code(s) to be matched in \code{column}}
 
 \item{column}{name of column}
 }
@@ -15,7 +15,8 @@ eq(x, column = NULL)
 query object
 }
 \description{
-Find codes in columns
+Detects for codes in a column. \code{eq} filters the data set at CBS: rows that have
+a code that is not in \code{x} are filtered out.
 }
 \examples{
 \dontrun{

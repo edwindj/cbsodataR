@@ -12,7 +12,8 @@ has_substring(x, column = NULL)
 \item{column}{column name}
 }
 \description{
-Detects a substring in a column.
+Detects a substring in a column. \code{has_substring} filters the dataset at CBS:
+rows that have a code that does not contain (one of) \code{x} are filtered out.
 }
 \examples{
 \dontrun{

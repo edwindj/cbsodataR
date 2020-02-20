@@ -1,8 +1,9 @@
-#' Find codes in columns
+#' Detect codes in a column
 #' 
-#' Find codes in columns
+#' Detects for codes in a column. `eq` filters the data set at CBS: rows that have 
+#' a code that is not in `x` are filtered out.
 #' @export
-#' @param x exact codes to be matched in `column`
+#' @param x exact code(s) to be matched in `column`
 #' @param column name of column
 #' @return query object
 #' @family query
@@ -18,7 +19,8 @@ eq <- function(x, column = NULL){
 
 #' Detect substring in column `column`
 #' 
-#' Detects a substring in a column.
+#' Detects a substring in a column. `has_substring` filters the dataset at CBS: 
+#' rows that have a code that does not contain (one of) `x` are filtered out. 
 #' @export
 #' @param x substring to be detected in column
 #' @param column column name
