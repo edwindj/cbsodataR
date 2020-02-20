@@ -15,6 +15,7 @@
 #' @return original dataset with two added columns: `<period>_date` and 
 #' `<period>_freq`. This last column is a factor with levels: `Y`, `Q` and `M`
 #' @export
+#' @example ./example/cbs_add_date_column.R
 #' @family data retrieval
 #' @family meta data
 cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
