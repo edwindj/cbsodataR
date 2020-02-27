@@ -105,7 +105,7 @@ resolve_filter <- function(filter, quoted = TRUE){
   cats <- mapply(function(eq, ss){
     if (length(eq)){
       if (length(ss)){
-        substitute(eq | ss, list(eq=eq, ss =ss))
+        substitute( ss | eq, list(eq=eq[[2]], ss =ss))
       } else {
         # return just the character (more readable)
         eq[[2]]
