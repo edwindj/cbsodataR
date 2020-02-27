@@ -6,7 +6,7 @@ as.cbs_table <- function(id, ...){
   if (is.cbs_table(id)){
     return(id)
   }
-  get_meta(id)
+  cbs_get_meta(id, ...)
 }
 
 #' @export
