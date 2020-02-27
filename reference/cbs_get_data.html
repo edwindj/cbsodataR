@@ -247,6 +247,13 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
+<span class='co'># combine either this</span>
+<span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='kw'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
+            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            )
+
+<span class='co'># or this: note the "eq" function</span>
 <span class='fu'>cbs_get_data</span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
             , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM01"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>

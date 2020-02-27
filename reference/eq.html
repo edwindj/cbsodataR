@@ -131,7 +131,7 @@ a code that is not in x are filtered out." />
 a code that is not in <code>x</code> are filtered out.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>allowed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,7 +142,12 @@ a code that is not in <code>x</code> are filtered out.</p>
     </tr>
     <tr>
       <th>column</th>
-      <td><p>name of column</p></td>
+      <td><p>name of column.</p></td>
+    </tr>
+    <tr>
+      <th>allowed</th>
+      <td><p><code>character</code> with allowed values. If supplied it will check if <code>x</code>
+is a code in <code>allowed</code>.</p></td>
     </tr>
     </table>
 
@@ -176,6 +181,13 @@ a code that is not in <code>x</code> are filtered out.</p>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
+<span class='co'># combine either this</span>
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='kw'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
+            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            )
+
+<span class='co'># or this: note the "eq" function</span>
 <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
             , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'>eq</span>(<span class='st'>"2000MM01"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
             , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
