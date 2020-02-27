@@ -1,3 +1,9 @@
+# version 0.4.1.9000
+
+* added warnings when filter selection contains invalid keys.
+
+* `<column> = has_substring(<ss>) | "value"` is now allowed.
+
 # version 0.4.1
 
 * added extra query operators: `eq`, `has_substring` and `|` to support the query syntax of cbsopendata.

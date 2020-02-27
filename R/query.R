@@ -55,6 +55,11 @@ is_query <- function(x){
 
 #' @export
 `|.query` <- function(x, y){
+  
+  if (is.character(y)){
+    y <- eq(y, column = x$column)
+  }
+  
   if (inherits(x, "or_query")){
     res <- c(x$x,list(y))
   } else {
