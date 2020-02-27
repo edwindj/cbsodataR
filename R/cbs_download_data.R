@@ -8,6 +8,7 @@
 #' @param ... optional filter statements to select rows of the data,
 #' @param typed Should the data automatically be converted into integer and numeric?
 #' @param verbose show the underlying downloading of the data
+#' @param show_progress show a progress bar while downloading.
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
 #' third party data services implementing the same protocol.
@@ -71,7 +72,7 @@ cbs_download_data <- function( id
       message("\nReading...")
     } else if (show_progress){
       pb_value <- pb_value + nrow(res$value)
-      setTxtProgressBar(pb, value = pb_value)
+      utils::setTxtProgressBar(pb, value = pb_value)
     } 
     res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
     

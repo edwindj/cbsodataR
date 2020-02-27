@@ -4,7 +4,9 @@
 #' a code that is not in `x` are filtered out.
 #' @export
 #' @param x exact code(s) to be matched in `column`
-#' @param column name of column
+#' @param column name of column.
+#' @param allowed `character` with allowed values. If supplied it will check if `x` 
+#' is a code in `allowed`.
 #' @return query object
 #' @family query
 #' @example ./example/query.R
@@ -39,6 +41,8 @@ eq <- function(x, column = NULL, allowed = NULL){
 #' @export
 #' @param x substring to be detected in column
 #' @param column column name
+#' @param allowed `character` with allowed values. If supplied it will check if `x` 
+#' is a code in `allowed`.
 #' @family query
 #' @example ./example/query.R
 has_substring <- function(x, column = NULL, allowed = NULL){

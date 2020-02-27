@@ -4,12 +4,15 @@
 \alias{has_substring}
 \title{Detect substring in column \code{column}}
 \usage{
-has_substring(x, column = NULL)
+has_substring(x, column = NULL, allowed = NULL)
 }
 \arguments{
 \item{x}{substring to be detected in column}
 
 \item{column}{column name}
+
+\item{allowed}{\code{character} with allowed values. If supplied it will check if \code{x}
+is a code in \code{allowed}.}
 }
 \description{
 Detects a substring in a column. \code{has_substring} filters the dataset at CBS:
@@ -36,6 +39,13 @@ cbs_get_data( id      = "7196ENG"      # table id
             , CPI     = "000000"       # Category code for total 
             )
 
+# combine either this
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = has_substring("JJ") | "2000MM01" # all years and Jan 2001
+            , CPI     = "000000"       # Category code for total 
+            )
+
+# or this: note the "eq" function
 cbs_get_data( id      = "7196ENG"      # table id
             , Periods = eq("2000MM01") | has_substring("JJ") # Jan 2000 and all years
             , CPI     = "000000"       # Category code for total 

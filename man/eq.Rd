@@ -4,12 +4,15 @@
 \alias{eq}
 \title{Detect codes in a column}
 \usage{
-eq(x, column = NULL)
+eq(x, column = NULL, allowed = NULL)
 }
 \arguments{
 \item{x}{exact code(s) to be matched in \code{column}}
 
-\item{column}{name of column}
+\item{column}{name of column.}
+
+\item{allowed}{\code{character} with allowed values. If supplied it will check if \code{x}
+is a code in \code{allowed}.}
 }
 \value{
 query object
@@ -39,6 +42,13 @@ cbs_get_data( id      = "7196ENG"      # table id
             , CPI     = "000000"       # Category code for total 
             )
 
+# combine either this
+cbs_get_data( id      = "7196ENG"      # table id
+            , Periods = has_substring("JJ") | "2000MM01" # all years and Jan 2001
+            , CPI     = "000000"       # Category code for total 
+            )
+
+# or this: note the "eq" function
 cbs_get_data( id      = "7196ENG"      # table id
             , Periods = eq("2000MM01") | has_substring("JJ") # Jan 2000 and all years
             , CPI     = "000000"       # Category code for total 

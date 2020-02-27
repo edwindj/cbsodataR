@@ -11,6 +11,7 @@ cbs_download_data(
   select = NULL,
   typed = TRUE,
   verbose = FALSE,
+  show_progress = interactive(),
   base_url = getOption("cbsodataR.base_url", BASE_URL)
 )
 }
@@ -26,6 +27,8 @@ cbs_download_data(
 \item{typed}{Should the data automatically be converted into integer and numeric?}
 
 \item{verbose}{show the underlying downloading of the data}
+
+\item{show_progress}{show a progress bar while downloading.}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
