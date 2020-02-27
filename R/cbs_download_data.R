@@ -20,10 +20,23 @@ cbs_download_data <- function( id
                          , select   = NULL
                          , typed    = TRUE
                          , verbose  = FALSE
+                         , show_progress = interactive()
                          , base_url = getOption("cbsodataR.base_url", BASE_URL)
                          ){
   
   DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
+  
+  if (show_progress){
+    rc <- get_row_count(id, ...)
+    if (rc == 0){
+      stop("Selection is empty. Please check your filter statements."
+           , call. = FALSE
+      )
+    }
+    pb_value <- 0
+    pb <- utils::txtProgressBar(min = 0, max = rc)
+  }
+  
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
                        , list( BASEURL = base_url
                              , BULK    = BULK
@@ -39,7 +52,8 @@ cbs_download_data <- function( id
   # retrieve data
   if (verbose){
     message("Retrieving data from table '", id ,"'")
-  }
+  } 
+  
   url <- URLencode(url)
   res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
   write.table( res$value, 
@@ -54,14 +68,17 @@ cbs_download_data <- function( id
     skip <- gsub(".+skip=(\\w+)", "\\1", url)
     
     if (verbose) {
-      message("Reading...")
-    }
-    
+      message("\nReading...")
+    } else if (show_progress){
+      pb_value <- pb_value + nrow(res$value)
+      setTxtProgressBar(pb, value = pb_value)
+    } 
     res <- get_json(url, verbose = verbose) #jsonlite::fromJSON(url)
     
     if (verbose){
-      message("Writing...")
-    }
+      message("\nWriting...")
+    } 
+    
     
     write.table( res$value
                , file      = data_file
@@ -74,7 +91,13 @@ cbs_download_data <- function( id
     #break
   }
   close(data_file)
-  if (verbose){ message("Done!") }
+  if (verbose){
+    message("\nDone!") 
+  } 
+  
+  if (show_progress){
+    close(pb)
+  } 
 }
 
 #testing

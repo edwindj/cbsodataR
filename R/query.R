@@ -8,10 +8,25 @@
 #' @return query object
 #' @family query
 #' @example ./example/query.R
-eq <- function(x, column = NULL){
+eq <- function(x, column = NULL, allowed = NULL){
+  values <- x
+  size <- length(x)
+  if (is.character(allowed)){
+    valid <- values %in% allowed
+    if (!all(valid)){
+      warning("Value(s): "
+              , paste0("'", values[!valid],"'", collapse = ", ")
+              , " are not a valid selection for '",column, "'. "
+              , "Consult the meta data."
+              , call. = FALSE
+      )
+    }
+    size <- sum(valid)
+  }
   structure(
     list( x = x
         , column = column
+        , size = size
         )
         , class=c("eq_query", "query")
   )
@@ -26,14 +41,48 @@ eq <- function(x, column = NULL){
 #' @param column column name
 #' @family query
 #' @example ./example/query.R
-has_substring <- function(x, column = NULL){
+has_substring <- function(x, column = NULL, allowed = NULL){
+  size <- length(x) # bad init, but I don't know another way
+
+  if (is.character(allowed)){
+    m <- lapply(x, function(ss){
+      m <- grep(ss, allowed)
+      if (length(m) == 0){
+        warning( "substring: '", ss, "' does not match any keys"
+               , call. = FALSE
+               )
+      }
+      m
+    })
+    m <- unique(unlist(m))
+    size <- length(m)
+  }
+  
   structure(
     list( x = x
         , column = column
         , cmd = "substringof"
+        , size = size
         ),
     class = "query"
   )
+}
+
+check_query <- function(x, allowed=NULL){
+  if (is.null(allowed)){
+    return(x)
+  }
+  
+  if (inherits(x, 'or_query')){
+    x$x <- lapply(x$x, check_query, allowed = allowed)
+    return(x)
+  }
+  
+  if (inherits(x, "eq_query")){
+    return(eq(x$x, column = x$column, allowed = allowed))
+  }
+  
+  has_substring(x$x, column = x$column, allowed = allowed)
 }
 
 column_startswith <- function(x, column){
@@ -61,12 +110,12 @@ is_query <- function(x){
   }
   
   if (inherits(x, "or_query")){
-    res <- c(x$x,list(y))
+    res <- c(x$x, list(y))
   } else {
     res <- list(x,y)
   }
   column <- x$column
-  structure( list(x = res, column = column)
+  structure( list(x = res, column = column, size = x$size + y$size)
            , class=c("or_query", "query")
            )
 }

@@ -1,17 +1,6 @@
 # creates a string that can be used in a $filter query
 column_filter <- function(column, values, allowed = NULL){
   if (is.character(values)){
-    if (is.character(allowed)){
-      valid <- values %in% allowed
-      if (!all(valid)){
-        warning("Value(s): "
-               , paste0("'", values[!valid],"'", collapse = ", ")
-               , " are not a valid selection for '",column, "'. "
-               , "Consult the meta data."
-               , call. = FALSE
-               )
-      }
-    }
     query <- eq(values, column)
   } else if (is_query(values)){
       query <- values
@@ -19,7 +8,7 @@ column_filter <- function(column, values, allowed = NULL){
   } else {
     stop("Unsupported query: '", values, ".'")
   }
-  query
+  check_query(query, allowed = allowed)
 }
 
 # creates a filter string that can be used in $filter query
@@ -28,6 +17,7 @@ get_filter <- function(..., filter_list=list(...), select = NULL, .meta = NULL){
   if (length(filter_list) == 0){
     return(NULL)
   }
+  
   query <- sapply(names(filter_list), function(column){
     filter <- column_filter( column
                            , filter_list[[column]]
