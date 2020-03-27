@@ -4,6 +4,7 @@
 #' @param ... for future use
 cbs_default_selection <- function(x, ...){
   #toc$DefaultSelection
+  parse_odata_link(x$TableInfos$Identifier, x$TableInfos$DefaultSelection)
   params <- get_params(x$TableInfos$DefaultSelection)
   
   filter <- params$`$filter`

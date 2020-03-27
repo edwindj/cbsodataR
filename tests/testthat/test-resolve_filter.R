@@ -29,7 +29,7 @@ describe("resolve_filter works",{
   
   it("parses a substringof or-ed with a value",{
     f <- resolve_filter("substringof('KW', Periods) or Periods eq '2011JJ00'")
-    expect_equal(f, list(Periods = quote(eq("2011JJ00") | has_substring("KW"))))
+    expect_equal(f, list(Periods = quote(has_substring("KW") | "2011JJ00")))
   })
 })
 
@@ -55,7 +55,7 @@ describe("Eat your own dog food",{
   f <- eyodf(l)
   expect_equal(f, l)
   
-  l <- list(Perioden = eq("2019KW04") | has_substring("JJ"))
+  l <- list(Perioden = has_substring("JJ") | "2019KW04")
   f <- eyodf(l)
   expect_equal(f, l)
   

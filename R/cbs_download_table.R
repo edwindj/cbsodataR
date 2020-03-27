@@ -34,7 +34,7 @@ cbs_download_table <- function( id
                           , typed = FALSE
                           , base_url = getOption("cbsodataR.base_url", BASE_URL)){
   meta <- cbs_download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
-
+  
   cbs_download_data( id   = id
                    , path = file.path(dir, "data.csv")
                    , ...

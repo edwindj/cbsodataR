@@ -1,26 +1,29 @@
 # creates a string that can be used in a $filter query
-column_filter <- function(column, values){
+column_filter <- function(column, values, allowed = NULL){
   if (is.character(values)){
     query <- eq(values, column)
   } else if (is_query(values)){
       query <- values
       query$column <- column
-    
   } else {
     stop("Unsupported query: '", values, ".'")
   }
-  query
+  check_query(query, allowed = allowed)
 }
 
 # creates a filter string that can be used in $filter query
 # usage: get_filter(Periode=c(2001))
-get_filter <- function(..., filter_list=list(...)){
+get_filter <- function(..., filter_list=list(...), select = NULL, .meta = NULL){
   if (length(filter_list) == 0){
     return(NULL)
   }
-  #browser()
+  
   query <- sapply(names(filter_list), function(column){
-    filter <- column_filter(column, filter_list[[column]])
+    filter <- column_filter( column
+                           , filter_list[[column]]
+                           # check if values are allowed
+                           , allowed = .meta[[column]][["Key"]]
+                           )
     paste0("(", as.character(filter, column = column), ")")
   })
   

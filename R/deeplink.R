@@ -20,12 +20,13 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
   # appearantly the deeplink service only works on BASE_URL 
   text <- readLines(file.path(BASE_URL, "deeplinkservice/deeplink", dl), warn = FALSE)
   text <- gsub("\"", "", text)
-  info <- url_params(text)
-  info$id <- id
-  info <- info[c("id", "$select", "$filter")]
-  names(info) <- c("id", "select", "filter")
-  info$filter <- resolve_filter(info$filter)
-  info$select <- resolve_select(info$select)
+  info <- parse_odata_link(id, text)
+  # info <- url_params(text)
+  # info$id <- id
+  # info <- info[c("id", "$select", "$filter")]
+  # names(info) <- c("id", "select", "filter")
+  # info$filter <- resolve_filter(info$filter)
+  # info$select <- resolve_select(info$select)
   info$deeplink <- deeplink
   cgd <- c( quote(cbs_get_data)
           , id = info$id
@@ -35,6 +36,17 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
           , base_url = base_url
           )
   info$query <- as.call(cgd)
+  info
+}
+
+parse_odata_link <- function(id, text, ...){
+  info <- url_params(text)
+  info$id <- id
+  info <- info[c("id", "$select", "$filter")]
+  names(info) <- c("id", "select", "filter")
+  browser()
+  info$filter <- resolve_filter(info$filter)
+  info$select <- resolve_select(info$select)
   info
 }
 
@@ -105,7 +117,7 @@ resolve_filter <- function(filter, quoted = TRUE){
   cats <- mapply(function(eq, ss){
     if (length(eq)){
       if (length(ss)){
-        substitute(eq | ss, list(eq=eq, ss =ss))
+        substitute( ss | eq, list(eq=eq[[2]], ss =ss))
       } else {
         # return just the character (more readable)
         eq[[2]]
