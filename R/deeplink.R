@@ -17,8 +17,8 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
   query <- sub(".*\\?(.*)", "\\1", deeplink)
   dl <- url_params(query)$dl
   
-  
-  text <- readLines(file.path(base_url, "deeplinkservice/deeplink", dl), warn = FALSE)
+  # appearantly the deeplink service only works on BASE_URL 
+  text <- readLines(file.path(BASE_URL, "deeplinkservice/deeplink", dl), warn = FALSE)
   text <- gsub("\"", "", text)
   info <- url_params(text)
   info$id <- id
