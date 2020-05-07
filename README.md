@@ -12,6 +12,8 @@ Retrieve data from the [open data
 interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
 (dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
+Interested in the odata4 version of cbsodataR? Try [cbsodata4](https://github.com/statistiekcbs/cbsodata4).
+
 Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
 
 # Installation
@@ -129,9 +131,3 @@ apples %>%
     ## # … with 95 more rows
 
 For more information, see `vignette("cbsodataR")`
-
-## API change (0.3+)
-
-**In version 0.3 the api of the functions has changed. Old functions
-(should) still work, but generate warnings asking to switch to the new
-api.**
