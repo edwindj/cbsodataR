@@ -1,3 +1,7 @@
+# version 0.4.2
+
+* added weeks to cbs_add_date_column, issue #25, thanks to @RichardFromHolland 
+
 # version 0.4.1.9000
 
 * added warnings when filter selection contains invalid keys.
