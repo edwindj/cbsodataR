@@ -41,6 +41,8 @@ cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
   is_year <- type %in% c("JJ")
   is_quarter <- type %in% c("KW")
   is_month <- type %in% c("MM")
+  is_week <- type %in% c("W1")
+  is_week_part <- type %in% c("X0")
   
   
   # date
@@ -51,21 +53,33 @@ cbs_add_date_column <- function(x, date_type = c("Date", "numeric"),...){
     period[is_year] <- ISOdate(year, 1, 1, tz="")[is_year]
     period[is_quarter] <- ISOdate(year, 1 + (number - 1) * 3, 1, tz="")[is_quarter]
     period[is_month] <- ISOdate(year, number, 1, tz="")[is_month]
+    period[is_week] <- {
+       d <- as.Date(paste0(year, "-1-1")) + 7 * (number - 1)
+       # a week starts at monday
+       wday <- as.integer(format(d, "%u"))
+       d <- d + ((7 - wday - 1) %% 7)
+       d
+      }[is_week]
+    period[is_week_part] <- as.Date(paste0(year, "-1-1"))[is_week_part]
     period <- as.Date(period)
   } else if (date_type == "numeric"){
     period <- numeric()
     period[is_year] <- year[is_year] + 0.5
     period[is_quarter] <- (year + (3*(number - 1) + 2) / 12)[is_quarter]
     period[is_month] <- (year + (number - 0.5) / 12)[is_month]
+    period[is_week] <- (year + (number - 0.5)/53)[is_week]
+    period[is_week_part] <- year
     if (all(is_year)){
       period <- as.integer(period)
     }
   }
   
-  type1 <- factor(levels=c("Y","Q", "M"))
+  type1 <- factor(levels=c("Y","Q", "M", "W", "D", "X"))
   type1[is_year] <- "Y"
   type1[is_quarter] <- "Q"
   type1[is_month] <- "M"
+  type1[is_week] <- "W"
+  type1[is_week_part] <- "X"
   type1 <- droplevels(type1)
   
   # put the column just behind the period column

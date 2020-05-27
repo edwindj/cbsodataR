@@ -44,7 +44,6 @@ parse_odata_link <- function(id, text, ...){
   info$id <- id
   info <- info[c("id", "$select", "$filter")]
   names(info) <- c("id", "select", "filter")
-  browser()
   info$filter <- resolve_filter(info$filter)
   info$select <- resolve_select(info$select)
   info
