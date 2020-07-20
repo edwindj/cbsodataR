@@ -14,7 +14,7 @@
 #' @param cache `logical` should the result be cached?
 #' @param include_ID `logical` column needed by OData but with no current use.
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocal.
+#' third party data services implementing the same protocol.
 #' @return `data.frame` with identifiers, titles and descriptions of tables
 #' @importFrom whisker whisker.render
 #' @importFrom jsonlite fromJSON
