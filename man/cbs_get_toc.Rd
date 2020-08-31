@@ -27,7 +27,7 @@ will be returned.}
 \item{cache}{\code{logical} should the result be cached?}
 
 \item{base_url}{optionally specify a different server. Useful for
-third party data services implementing the same protocal.}
+third party data services implementing the same protocol.}
 
 \item{include_ID}{\code{logical} column needed by OData but with no current use.}
 }
