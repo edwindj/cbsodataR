@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download a table from statistics Netherlands — download_table-deprecated • cbsodataR</title>
+<title>Find tables containing certain words — cbs_search • cbsodataR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Download a table from statistics Netherlands — download_table-deprecated" />
-<meta property="og:description" content="This method is deprecated in favor of cbs_download_table()." />
+<meta property="og:title" content="Find tables containing certain words — cbs_search" />
+<meta property="og:description" content="Find tables containing certain words." />
 
 
 
@@ -123,81 +123,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download a table from statistics Netherlands</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/download-table.R'><code>R/download-table.R</code></a></small>
-    <div class="hidden name"><code>download_table-deprecated.Rd</code></div>
+    <h1>Find tables containing certain words</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/cbs_search.R'><code>R/cbs_search.R</code></a></small>
+    <div class="hidden name"><code>cbs_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This method is deprecated in favor of <code><a href='cbs_download_table.html'>cbs_download_table()</a></code>.</p>
+    <p>Find tables containing certain words.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_table</span>(
-  <span class='no'>id</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='no'>id</span>,
-  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>typed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>cbs_search</span>(<span class='no'>query</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"toc"</span>, <span class='st'>"docs"</span>, <span class='st'>"raw"</span>), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
-      <td><p>Identifier of CBS table (can be retrieved from <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>)</p></td>
+      <th>query</th>
+      <td><p><code>character</code> with the words to search for.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Parameters passed on to <code><a href='cbs_download_data.html'>cbs_download_data()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>dir</th>
-      <td><p>Directory where table should be downloaded</p></td>
-    </tr>
-    <tr>
-      <th>cache</th>
-      <td><p>If metadata is cached use that, otherwise download meta data</p></td>
+      <th>type</th>
+      <td><p>format in which the result should be returned, see details</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Print extra messages what is happening.</p></td>
+      <td><p><code>logical</code> should the communication with the server be shown?</p></td>
     </tr>
     <tr>
-      <th>typed</th>
-      <td><p>Should the data automatically be converted into integer and numeric?</p></td>
-    </tr>
-    <tr>
-      <th>base_url</th>
-      <td><p>optionally specify a different server. Useful for
-third party data services implementing the same protocol.</p></td>
+      <th>...</th>
+      <td><p>not used</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>meta data object of <code>id</code> <code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>cbs_download_table</code> retrieves all raw meta data and data and stores these as csv
-files in the directory specified by <code>dir</code>. It is possible to add a filter.
-A filter is specified with <code>&lt;column_name&gt; = &lt;values&gt;</code> in which <code>&lt;values&gt;</code>
-is a character vector.
-Rows with values that are not part of the character vector are not returned.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>The <code>type</code> can be either:</p><ul>
+<li><p><code>toc</code>: the same format as <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code></p></li>
+<li><p><code>docs</code>: the table results from the solr query,</p></li>
+<li><p><code>raw</code>: the complete results from the solr query.</p></li>
+</ul>
 
-    <div class='dont-index'><p>Other download: 
-<code><a href='cbs_download_data.html'>cbs_download_data</a>()</code>,
-<code><a href='cbs_download_meta.html'>cbs_download_meta</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-
-<span class='co'># download meta data and data from inflation/Consumer Price Indices</span>
- <span class='fu'>download_table</span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
