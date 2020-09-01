@@ -128,13 +128,10 @@ toc %&gt;%
 <a href="#search-for-tables" class="anchor"></a>Search for tables</h2>
 <p>Tables can be searched for using the <code>cbs_search</code> function.</p>
 <pre><code>toc_apples &lt;- cbs_search(c("elstar", "apple"), language = "en")
-toc_apples %&gt;% 
-  select(Identifier, Title, score)
+toc_apples[, c("Identifier", "ShortTitle", "score")]
 
-##   Identifier
-## 1   71509ENG
-##                                                                 Title    score
-## 1 Yield and cultivation area apples and pears per region, 1997 - 2017 14.49684</code></pre>
+##   Identifier                          ShortTitle    score
+## 1   71509ENG Yield apples and pears, 1997 - 2017 14.49684</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2 class="hasAnchor">
