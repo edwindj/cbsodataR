@@ -22,6 +22,7 @@ The *cbsodataR* package allows for retrieving data right into R.
 A list of tables can be retrieved using the `cbs_get_toc` function.
 
 ```{r cbs_get_toc, message=FALSE}
+
 library(dplyr) # not needed, but used in examples below
 library(cbsodataR)
 
@@ -29,6 +30,7 @@ toc <- cbs_get_toc(Language="en") # retrieve only english tables
 
 toc %>% 
   select(Identifier, ShortTitle) 
+
 ```
 
 ## Search for tables
@@ -37,8 +39,7 @@ Tables can be searched for using the `cbs_search` function.
 
 ```{r cbs_search, message=FALSE}
 toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
-toc_apples %>% 
-  select(Identifier, Title, score)
+toc_apples[, c("Identifier", "ShortTitle", "score")]
 ```
 
 

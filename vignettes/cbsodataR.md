@@ -41,13 +41,10 @@ Search for tables
 Tables can be searched for using the `cbs_search` function.
 
     toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
-    toc_apples %>% 
-      select(Identifier, Title, score)
+    toc_apples[, c("Identifier", "ShortTitle", "score")]
 
-    ##   Identifier
-    ## 1   71509ENG
-    ##                                                                 Title    score
-    ## 1 Yield and cultivation area apples and pears per region, 1997 - 2017 14.49684
+    ##   Identifier                          ShortTitle    score
+    ## 1   71509ENG Yield apples and pears, 1997 - 2017 14.49684
 
 Metadata
 --------
