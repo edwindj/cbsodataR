@@ -4,12 +4,21 @@
 \alias{cbs_search}
 \title{Find tables containing certain words}
 \usage{
-cbs_search(query, type = c("toc", "docs", "raw"), verbose = FALSE, ...)
+cbs_search(
+  query,
+  language = c("nl", "en"),
+  format = c("toc", "docs", "raw"),
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{query}{\code{character} with the words to search for.}
 
-\item{type}{format in which the result should be returned, see details}
+\item{language}{should the \code{"nl"} (Dutch) or \code{"en"} (English) search index
+be used.}
+
+\item{format}{format in which the result should be returned, see details}
 
 \item{verbose}{\code{logical} should the communication with the server be shown?}
 
@@ -19,10 +28,32 @@ cbs_search(query, type = c("toc", "docs", "raw"), verbose = FALSE, ...)
 Find tables containing certain words.
 }
 \details{
-The \code{type} can be either:
+The \code{format} can be either:
 \itemize{
-\item \code{toc}: the same format as \code{\link[=cbs_get_toc]{cbs_get_toc()}}
+\item \code{toc}: the same format as \code{\link[=cbs_get_toc]{cbs_get_toc()}}, with an extra \code{score} column.
 \item \code{docs}: the table results from the solr query,
 \item \code{raw}: the complete results from the solr query.
+}
+}
+\examples{
+if (interactive()){
+  # search for tables containing the word birth
+  
+  ds_en <- cbs_search("Birth", language="en")
+  head(ds_en$Title, 3)
+  
+  # or in Dutch
+  
+  ds_nl <- cbs_search(c("geboorte,sterfte"), language="nl")
+  head(ds_nl$Title, 3)
+  
+  # docs
+  docs <- cbs_search(c("geboorte,sterfte"), language="nl", format="docs")
+  names(docs)
+  docs[1:2,]
+  
+  #raw 
+  raw_res <- cbs_search(c("geboorte,sterfte"), language="nl", format="raw")
+  raw_res
 }
 }

@@ -2,31 +2,43 @@
 #' 
 #' Find tables containing certain words.
 #' 
-#' The `type` can be either:
+#' The `format` can be either:
 #' 
-#' * `toc`: the same format as [cbs_get_toc()]
+#' * `toc`: the same format as [cbs_get_toc()], with an extra `score` column.
 #' * `docs`: the table results from the solr query, 
 #' * `raw`: the complete results from the solr query.
 #' 
 #' @param query `character` with the words to search for.
-#' @param type format in which the result should be returned, see details
+#' @param language should the `"nl"` (Dutch) or `"en"` (English) search index 
+#' be used.
+#' @param format format in which the result should be returned, see details
 #' @param verbose `logical` should the communication with the server be shown?
 #' @param ... not used
+#' @example ./example/cbs_search.R
 #' @export
-cbs_search <- function(query, type=c("toc","docs", "raw"), verbose = FALSE, ...){
-  type <- match.arg(type)
+cbs_search <- function( query
+                      , language = c("nl","en")
+                      , format=c("toc","docs", "raw")
+                      , verbose = FALSE
+                      , ...
+                      ){
+  
+  format <- match.arg(format)
+  language <- match.arg(language)
   
   query <- paste(query, collapse = " ")
   query <- URLencode(query)
   
-  SEARCH <- file.path(BASE_URL, "solr/CBS_nl/select")
+  catalog <- paste0("CBS_", language)
+  
+  SEARCH <- file.path(BASE_URL, "solr", catalog, "select")
   query_url <- paste0(SEARCH
                      , "?q=", query
                      , "&wt=json"
                      )
   res <- get_json(query_url, verbose = verbose)
   docs <- res$response$docs
-  switch( type
+  switch( format
         , docs = docs
         , raw  = res
         , {

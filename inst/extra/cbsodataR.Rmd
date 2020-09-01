@@ -31,7 +31,21 @@ toc %>%
   select(Identifier, ShortTitle) 
 ```
 
-Using an "Identifier" from `cbs_get_toc` information on the table can be retrieved with `cbs_get_meta` 
+## Search for tables
+
+Tables can be searched for using the `cbs_search` function.
+
+```{r cbs_search, message=FALSE}
+toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
+toc_apples %>% 
+  select(Identifier, Title, score)
+```
+
+
+## Metadata 
+
+Using an "Identifier" from `cbs_get_toc` or `cbs_search` 
+information on the table can be retrieved with `cbs_get_meta` 
 
 ```{r get_meta, message=FALSE}
 apples <- cbs_get_meta('71509ENG')

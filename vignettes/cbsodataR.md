@@ -7,21 +7,20 @@ For long SN has put its data on the web in its online database
 data base has an open data web API based on the OData protocol. The
 *cbsodataR* package allows for retrieving data right into R.
 
-## Table of Contents
+Table of Contents
+-----------------
 
 A list of tables can be retrieved using the `cbs_get_toc` function.
 
-``` r
-library(dplyr) # not needed, but used in examples below
-library(cbsodataR)
+    library(dplyr) # not needed, but used in examples below
+    library(cbsodataR)
 
-toc <- cbs_get_toc(Language="en") # retrieve only english tables
+    toc <- cbs_get_toc(Language="en") # retrieve only english tables
 
-toc %>% 
-  select(Identifier, ShortTitle) 
-```
+    toc %>% 
+      select(Identifier, ShortTitle) 
 
-    ## # A tibble: 809 x 2
+    ## # A tibble: 828 x 2
     ##    Identifier ShortTitle                             
     ##    <chr>      <chr>                                  
     ##  1 80783eng   Agriculture; general farm type, region 
@@ -34,15 +33,30 @@ toc %>%
     ##  8 80274eng   Livestock cattle                       
     ##  9 7373eng    Livestock pigs                         
     ## 10 7425eng    Milk supply and dairy production       
-    ## # … with 799 more rows
+    ## # … with 818 more rows
 
-Using an “Identifier” from `cbs_get_toc` information on the table can be
-retrieved with `cbs_get_meta`
+Search for tables
+-----------------
 
-``` r
-apples <- cbs_get_meta('71509ENG')
-apples
-```
+Tables can be searched for using the `cbs_search` function.
+
+    toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
+    toc_apples %>% 
+      select(Identifier, Title, score)
+
+    ##   Identifier
+    ## 1   71509ENG
+    ##                                                                 Title    score
+    ## 1 Yield and cultivation area apples and pears per region, 1997 - 2017 14.49684
+
+Metadata
+--------
+
+Using an “Identifier” from `cbs_get_toc` or `cbs_search` information on
+the table can be retrieved with `cbs_get_meta`
+
+    apples <- cbs_get_meta('71509ENG')
+    apples
 
     ## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017
     ##   FruitFarmingRegions: 'Fruit farming regions'
@@ -69,23 +83,20 @@ documentation](https://www.cbs.nl/-/media/_pdf/2017/13/handleiding-cbs-open-data
 in the form of data.frames. Each data.frame describes properties of the
 SN table.
 
-``` r
-names(apples)
-```
+    names(apples)
 
     ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
     ## [4] "FruitFarmingRegions" "Periods"
 
-## Data download
+Data download
+-------------
 
 With `cbs_get_data` data can be retrieved. By default all data for this
 table will be downloaded in a temporary directory.
 
-``` r
-cbs_get_data('71509ENG') %>% 
-  select(1:4) %>%  # demonstration purpose
-  head()
-```
+    cbs_get_data('71509ENG') %>% 
+      select(1:4) %>%  # demonstration purpose
+      head()
 
     ## # A tibble: 6 x 4
     ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
@@ -97,20 +108,19 @@ cbs_get_data('71509ENG') %>%
     ## 5 1                   2001JJ00                   408                 30
     ## 6 1                   2002JJ00                   354                 17
 
-## Data download from a link
+Data download from a link
+-------------------------
 
 The opendata portal of CBS
-(<https://opendata.cbs.nl/dataportaal/#/CBS/en>) allows for finding a
-table and making a selection within this table manually. Such a
-selection can be stored in a hyperlink (click the “share” button). This
-link can also be used with `cbsodataR` using the
+(<a href="https://opendata.cbs.nl/dataportaal/#/CBS/en" class="uri">https://opendata.cbs.nl/dataportaal/#/CBS/en</a>)
+allows for finding a table and making a selection within this table
+manually. Such a selection can be stored in a hyperlink (click the
+“share” button). This link can also be used with `cbsodataR` using the
 `cbs_get_data_from_link` function.
 
-``` r
-cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
-  select(1:4) %>% 
-  head()
-```
+    cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
+      select(1:4) %>% 
+      head()
 
     ## Executing:
     ## cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), base_url = "http://opendata.cbs.nl")
@@ -131,12 +141,10 @@ The first columns are categorical columns: they contain codes. The
 labels for these columns can be added with the function
 `cbs_add_label_columns`.
 
-``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_label_columns() %>% 
-  select(1:4) %>% 
-  head()
-```
+    cbs_get_data('71509ENG') %>%
+      cbs_add_label_columns() %>% 
+      select(1:4) %>% 
+      head()
 
     ## # A tibble: 6 x 4
     ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
@@ -155,12 +163,10 @@ time periods: e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3),
 2016MM04 (i.e. 2016 April). With `cbs_add_date_column` the time periods
 will be converted and added to the data:
 
-``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column() %>% 
-  select(2:4) %>% 
-  head()
-```
+    cbs_get_data('71509ENG') %>%
+      cbs_add_date_column() %>% 
+      select(2:4) %>% 
+      head()
 
     ## # A tibble: 6 x 3
     ##   Periods  Periods_Date Periods_freq
@@ -175,12 +181,10 @@ cbs_get_data('71509ENG') %>%
 This can be useful for further time series analysis, but also for
 displaying. It is also possible to convert the dates to numbers:
 
-``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column(date_type = "numeric") %>% 
-  select(2:4) %>% 
-  head()
-```
+    cbs_get_data('71509ENG') %>%
+      cbs_add_date_column(date_type = "numeric") %>% 
+      select(2:4) %>% 
+      head()
 
     ## # A tibble: 6 x 3
     ##   Periods  Periods_numeric Periods_freq
@@ -192,7 +196,8 @@ cbs_get_data('71509ENG') %>%
     ## 5 2001JJ00            2001 Y           
     ## 6 2002JJ00            2002 Y
 
-## Select and filter
+Select and filter\`
+-------------------
 
 It is possible restrict the download using filter statements. This may
 shorten the download time considerably.
@@ -202,24 +207,20 @@ shorten the download time considerably.
 Filter statements for the columns can be used to restrict the download.
 Note the following:
 
-  - To filter you will need to use the values found in the `$Key` column
+-   To filter you will need to use the values found in the `$Key` column
     in the `cbs_get_meta` objects. e.g. for year 2020, the code is
     “2020JJ00”.
 
-<!-- end list -->
+<!-- -->
 
-``` r
-apples <- cbs_get_meta('71509ENG')
-names(apples)
-```
+    apples <- cbs_get_meta('71509ENG')
+    names(apples)
 
     ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
     ## [4] "FruitFarmingRegions" "Periods"
 
-``` r
-# meta data for column Periods
-head(apples$Periods[,1:2])
-```
+    # meta data for column Periods
+    head(apples$Periods[,1:2])
 
     ##        Key Title
     ## 1 1997JJ00  1997
@@ -229,10 +230,8 @@ head(apples$Periods[,1:2])
     ## 5 2001JJ00  2001
     ## 6 2002JJ00  2002
 
-``` r
-#meta data for column FruitFarmingRegions
-head(apples$FruitFarmingRegions[,1:2 ])
-```
+    #meta data for column FruitFarmingRegions
+    head(apples$FruitFarmingRegions[,1:2 ])
 
     ##   Key             Title
     ## 1   1 Total Netherlands
@@ -241,22 +240,20 @@ head(apples$FruitFarmingRegions[,1:2 ])
     ## 4   3    Region Central
     ## 5   5      Region South
 
-  - To filter for values in a column add `<column_name> = values` to
+-   To filter for values in a column add `<column_name> = values` to
     `cbs_get_data` e.g. `Periods = c("2019JJ00", "2020JJ0")`
 
-<!-- end list -->
+<!-- -->
 
-``` r
-  cbs_get_data( '71509ENG'
-              , Periods=c('2000JJ00','2001JJ00') # selection on Periods column
-              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
-              #
-              # restrict the columns to the following as found in
-              # apples$DataProperties with "select"
-              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
-  cbs_add_label_columns()
-```
+      cbs_get_data( '71509ENG'
+                  , Periods=c('2000JJ00','2001JJ00') # selection on Periods column
+                  , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+                  #
+                  # restrict the columns to the following as found in
+                  # apples$DataProperties with "select"
+                  , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+                  ) %>% 
+      cbs_add_label_columns()
 
     ## # A tibble: 2 x 5
     ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
@@ -264,45 +261,41 @@ head(apples$FruitFarmingRegions[,1:2 ])
     ## 1 1                 Total Netherlands   2000JJ00 2000                        461
     ## 2 1                 Total Netherlands   2001JJ00 2001                        408
 
-  - To filter for values in a column that have a substring e.g. “JJ” you
+-   To filter for values in a column that have a substring e.g. “JJ” you
     can use `<column_name> = has_substring(<substring>)` to
     `cbs_get_data` e.g. `Periods = has_substring("KW")`
 
-<!-- end list -->
+<!-- -->
 
-``` r
-  cbs_get_data( '71509ENG'
-              , Periods = has_substring('2000') # selection on Periods column
-              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
-              #
-              # restrict the columns to the following as found in
-              # cbs_get_meta("71509ENG")$DataProperties with "select"
-              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
-    cbs_add_label_columns()
-```
+      cbs_get_data( '71509ENG'
+                  , Periods = has_substring('2000') # selection on Periods column
+                  , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+                  #
+                  # restrict the columns to the following as found in
+                  # cbs_get_meta("71509ENG")$DataProperties with "select"
+                  , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+                  ) %>% 
+        cbs_add_label_columns()
 
     ## # A tibble: 1 x 5
     ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
     ##   <chr>             <fct>               <chr>    <fct>                     <int>
     ## 1 1                 Total Netherlands   2000JJ00 2000                        461
 
-  - To combine values and substring use the “|” operator: `Periods =
-    eq("2020JJ00") | has_substring("KW")`
+-   To combine values and substring use the “\|” operator:
+    `Periods = eq("2020JJ00") | has_substring("KW")`
 
-<!-- end list -->
+<!-- -->
 
-``` r
-  cbs_get_data( '71509ENG'
-              , Periods = eq("2010JJ00") | has_substring('2000') # selection on Periods column
-              , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
-              #
-              # restrict the columns to the following as found in
-              # cbs_get_meta("71509ENG")$DataProperties with "select"
-              , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
-    cbs_add_label_columns()
-```
+      cbs_get_data( '71509ENG'
+                  , Periods = eq("2010JJ00") | has_substring('2000') # selection on Periods column
+                  , FruitFarmingRegions = "1" # selection on FruitFarmingRegions
+                  #
+                  # restrict the columns to the following as found in
+                  # cbs_get_meta("71509ENG")$DataProperties with "select"
+                  , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
+                  ) %>% 
+        cbs_add_label_columns()
 
     ## # A tibble: 2 x 5
     ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
@@ -310,6 +303,7 @@ head(apples$FruitFarmingRegions[,1:2 ])
     ## 1 1                 Total Netherlands   2000JJ00 2000                        461
     ## 2 1                 Total Netherlands   2010JJ00 2010                        334
 
-# Download data
+Download data
+=============
 
 Data can also be downloaded explicitly by using `cbs_download_table`
