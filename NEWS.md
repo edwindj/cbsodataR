@@ -2,6 +2,8 @@
 
 * added `cbs_search` facility, to search for publications containing words.
 
+* removed internal `setwd()` call, fix for issue #28, thx to @jeroenadema 
+
 # version 0.4.2
 
 * added weeks to cbs_add_date_column, issue #25, thanks to @RichardFromHolland 
