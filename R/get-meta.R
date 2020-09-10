@@ -46,11 +46,11 @@ get_meta <- function( id
 #' @export
 get_meta_from_dir <- function(dir){
   .Deprecated("cbs_get_meta_from_dir")
-  wd <- setwd(dir)
-  on.exit(setwd(wd))
+  # wd <- setwd(dir)
+  # on.exit(setwd(wd))
   
-  meta_files <- list.files(".", "*.csv")
-  meta_files <- meta_files[meta_files != "data.csv"]
+  meta_files <- list.files(dir, "*.csv")
+  meta_files <- meta_files[!grepl("data.csv$", meta_files)]
       
   # meta <- lapply(meta_files, read.csv, colClasses="character")
   names(meta) <- sub("\\.csv$","", meta_files)

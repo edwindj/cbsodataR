@@ -16,13 +16,13 @@ cbs_download_meta <- function( id, dir=id, ..., verbose = FALSE, cache=FALSE
                              , base_url = getOption("cbsodataR.base_url", BASE_URL)
                              ){
   dir.create(path=dir, showWarnings = FALSE, recursive = TRUE)
-  oldwd <- setwd(dir)
-  on.exit(setwd(oldwd))
+  # oldwd <- setwd(dir)
+  # on.exit(setwd(oldwd))
   
   meta <- cbs_get_meta(id, cache = cache, verbose = verbose, base_url = base_url)
   
   for (n in names(meta)){
-    file_name <- paste0(n, ".csv")
+    file_name <- file.path(dir, paste0(n, ".csv"))
     if (verbose){
       message("Writing ", file_name, "...")
     }
