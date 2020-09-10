@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -133,11 +133,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_themes</span>(
-  <span class='no'>...</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
+  <span class='kw'>...</span>,
+  select = <span class='kw'>NULL</span>,
+  verbose = <span class='fl'>TRUE</span>,
+  cache = <span class='fl'>FALSE</span>,
+  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -173,13 +173,14 @@ third party data services implementing the same protocal.</p></td>
 Rows with values that are not part of the character vector are not returned.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># get list of all themes</span>
 <span class='fu'>get_themes</span>()
 
 <span class='co'># get list of all dutch themes from the Catalog "CBS"</span>
-<span class='fu'>get_themes</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"nl"</span>, <span class='kw'>Catalog</span><span class='kw'>=</span><span class='st'>"CBS"</span>)
-}</div></pre>
+<span class='fu'>get_themes</span>(Language=<span class='st'>"nl"</span>, Catalog=<span class='st'>"CBS"</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -195,7 +196,7 @@ Rows with values that are not part of the character vector are not returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

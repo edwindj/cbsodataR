@@ -73,7 +73,7 @@ a code that is not in x are filtered out." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@ a code that is not in x are filtered out." />
 a code that is not in <code>x</code> are filtered out.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eq</span>(<span class='no'>x</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>allowed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>eq</span>(<span class='kw'>x</span>, column = <span class='kw'>NULL</span>, allowed = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,38 +164,39 @@ is a code in <code>allowed</code>.</p></td>
 <code><a href='has_substring.html'>has_substring</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
-            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods = <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='co'># useful substrings:</span>
 <span class='co'>## Periods: "JJ": years, "KW": quarters, "MM", months</span>
 <span class='co'>## Regions: "NL", "PV": provinces, "GM": municipalities</span>
-
-<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>)     <span class='co'># all years</span>
-            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+  
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods = <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>)     <span class='co'># all years</span>
+            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
-<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span>)     <span class='co'># March 2000 and Dec 2001</span>
-            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span>)     <span class='co'># March 2000 and Dec 2001</span>
+            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='co'># combine either this</span>
-<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='kw'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
-            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods = <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='op'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
+            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
 
 <span class='co'># or this: note the "eq" function</span>
-<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='fu'>eq</span>(<span class='st'>"2000MM01"</span>) <span class='kw'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
-            , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+<span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods = <span class='fu'>eq</span>(<span class='st'>"2000MM01"</span>) <span class='op'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
+            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
             )
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -211,7 +212,7 @@ is a code in <code>allowed</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

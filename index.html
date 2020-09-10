@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -98,15 +98,19 @@
 <p>From CRAN</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode s"><code class="sourceCode gnuassembler"><a class="sourceLine" id="cb1-1" data-line-number="1">install.packages(<span class="st">"cbsodataR"</span>)</a></code></pre></div>
 <p>The latest development version of <code>cbsodata</code> can installed using <code>devtools</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"edwindj/cbsodataR"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"edwindj/cbsodataR"</span>)
+</pre></div>
 </div>
 <div id="usage-version-0-3" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage-version-0-3" class="anchor"></a>Usage (version 0.3+)</h1>
 <p>Retrieve a table of contents with all SN tables.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">cbsodataR</span>)
-<span class="no">toc</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/cbs_get_toc.html">cbs_get_toc</a></span>(<span class="st">"Language"</span> <span class="kw">=</span> <span class="st">"en"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">toc</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/edwindj/cbsodataR">cbsodataR</a></span>)
+<span class="kw">toc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cbs_get_toc.html">cbs_get_toc</a></span>(<span class="st">"Language"</span> = <span class="st">"en"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">toc</span>)
+</pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## # A tibble: 6 x 25</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">##   Updated             Identifier Title ShortTitle ShortDescription Summary</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">##   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;  </a>
@@ -123,7 +127,9 @@
 <a class="sourceLine" id="cb4-14" data-line-number="14">## #   DefaultPresentation &lt;chr&gt;, DefaultSelection &lt;chr&gt;, GraphTypes &lt;chr&gt;,</a>
 <a class="sourceLine" id="cb4-15" data-line-number="15">## #   RecordCount &lt;int&gt;, ColumnCount &lt;int&gt;, SearchPriority &lt;chr&gt;</a></code></pre></div>
 <p>Use the <code>Identifier</code> from tables to retrieve table information</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="reference/cbs_get_meta.html">cbs_get_meta</a></span>(<span class="st">'71509ENG'</span>)
+</pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">##   FruitFarmingRegions: 'Fruit farming regions'</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">##   Periods: 'Periods' </a>
@@ -143,11 +149,13 @@
 <a class="sourceLine" id="cb6-17" data-line-number="17">## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"</a>
 <a class="sourceLine" id="cb6-18" data-line-number="18">## ))</a></code></pre></div>
 <p>Or download data.</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>) <span class="co"># just for example's sake</span>
-<span class="no">apples</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/cbs_get_data.html">cbs_get_data</a></span>(<span class="st">"71509ENG"</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>) <span class="co"># just for example's sake</span>
+<span class="kw">apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cbs_get_data.html">cbs_get_data</a></span>(<span class="st">"71509ENG"</span>) 
 
-<span class="no">apples</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="fl">1</span>:<span class="fl">4</span>)</pre></div>
+<span class="kw">apples</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>)
+</pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## # A tibble: 105 x 4</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">##    &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</a>
@@ -163,9 +171,11 @@
 <a class="sourceLine" id="cb8-13" data-line-number="13">## 10 1                   2006JJ00                   365                 11</a>
 <a class="sourceLine" id="cb8-14" data-line-number="14">## # … with 95 more rows</a></code></pre></div>
 <p>add label columns:</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="no">apples</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="fl">1</span>:<span class="fl">4</span>)</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="kw">apples</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span>() <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>)
+</pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">## # A tibble: 105 x 4</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">##    &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </a>
@@ -228,7 +238,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

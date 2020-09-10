@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -133,11 +133,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>cbs_search</span>(
-  <span class='no'>query</span>,
-  <span class='kw'>language</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"nl"</span>, <span class='st'>"en"</span>),
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"toc"</span>, <span class='st'>"docs"</span>, <span class='st'>"raw"</span>),
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
+  <span class='kw'>query</span>,
+  language = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"nl"</span>, <span class='st'>"en"</span>),
+  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"toc"</span>, <span class='st'>"docs"</span>, <span class='st'>"raw"</span>),
+  verbose = <span class='fl'>FALSE</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -176,26 +176,27 @@ be used.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
   <span class='co'># search for tables containing the word birth</span>
-
-  <span class='no'>ds_en</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='st'>"Birth"</span>, <span class='kw'>language</span><span class='kw'>=</span><span class='st'>"en"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>ds_en</span>$<span class='no'>Title</span>, <span class='fl'>3</span>)
-
+  
+  <span class='kw'>ds_en</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='st'>"Birth"</span>, language=<span class='st'>"en"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>ds_en</span><span class='op'>$</span><span class='kw'>Title</span>, <span class='fl'>3</span>)
+  
   <span class='co'># or in Dutch</span>
-
-  <span class='no'>ds_nl</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), <span class='kw'>language</span><span class='kw'>=</span><span class='st'>"nl"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>ds_nl</span>$<span class='no'>Title</span>, <span class='fl'>3</span>)
-
+  
+  <span class='kw'>ds_nl</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), language=<span class='st'>"nl"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>ds_nl</span><span class='op'>$</span><span class='kw'>Title</span>, <span class='fl'>3</span>)
+  
   <span class='co'># docs</span>
-  <span class='no'>docs</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), <span class='kw'>language</span><span class='kw'>=</span><span class='st'>"nl"</span>, <span class='kw'>format</span><span class='kw'>=</span><span class='st'>"docs"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>docs</span>)
-  <span class='no'>docs</span>[<span class='fl'>1</span>:<span class='fl'>2</span>,]
-
+  <span class='kw'>docs</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), language=<span class='st'>"nl"</span>, format=<span class='st'>"docs"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>docs</span>)
+  <span class='kw'>docs</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,]
+  
   <span class='co'>#raw </span>
-  <span class='no'>raw_res</span> <span class='kw'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), <span class='kw'>language</span><span class='kw'>=</span><span class='st'>"nl"</span>, <span class='kw'>format</span><span class='kw'>=</span><span class='st'>"raw"</span>)
-  <span class='no'>raw_res</span>
-}</div></pre>
+  <span class='kw'>raw_res</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), language=<span class='st'>"nl"</span>, format=<span class='st'>"raw"</span>)
+  <span class='kw'>raw_res</span>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -211,7 +212,7 @@ be used.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

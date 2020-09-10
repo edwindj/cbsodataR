@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -133,9 +133,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_table_list</span>(
-  <span class='no'>...</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
+  <span class='kw'>...</span>,
+  select = <span class='kw'>NULL</span>,
+  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,15 +162,16 @@ third party data services implementing the same protocal.</p></td>
     <p><code>data.frame</code> with identifiers, titles and descriptions of tables</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
 <span class='co'># get list of english tables</span>
-<span class='no'>tables_en</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"en"</span>)
+<span class='kw'>tables_en</span> <span class='op'>&lt;-</span> <span class='fu'>get_table_list</span>(Language=<span class='st'>"en"</span>)
 
 <span class='co'># get list of dutch tables</span>
-<span class='no'>tables_nl</span> <span class='kw'>&lt;-</span> <span class='fu'>get_table_list</span>(<span class='kw'>Language</span><span class='kw'>=</span><span class='st'>"nl"</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span>(<span class='no'>tables_nl</span>)
-}</div></pre>
+<span class='kw'>tables_nl</span> <span class='op'>&lt;-</span> <span class='fu'>get_table_list</span>(Language=<span class='st'>"nl"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span>(<span class='kw'>tables_nl</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -186,7 +187,7 @@ third party data services implementing the same protocal.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

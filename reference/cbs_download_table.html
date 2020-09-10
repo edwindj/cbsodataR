@@ -73,7 +73,7 @@ a table from statistics Netherlands and stores it in csv format." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -135,13 +135,13 @@ a table from statistics Netherlands and stores it in <code>csv</code> format.</p
     </div>
 
     <pre class="usage"><span class='fu'>cbs_download_table</span>(
-  <span class='no'>id</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='no'>id</span>,
-  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>typed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>base_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='no'>BASE_URL</span>)
+  <span class='kw'>id</span>,
+  <span class='kw'>...</span>,
+  dir = <span class='kw'>id</span>,
+  cache = <span class='fl'>FALSE</span>,
+  verbose = <span class='fl'>TRUE</span>,
+  typed = <span class='fl'>FALSE</span>,
+  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -195,11 +195,12 @@ Rows with values that are not part of the character vector are not returned.</p>
 <code><a href='cbs_download_meta.html'>cbs_download_meta</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
 <span class='co'># download meta data and data from inflation/Consumer Price Indices</span>
- <span class='fu'><a href='download_table-deprecated.html'>download_table</a></span>(<span class='kw'>id</span><span class='kw'>=</span><span class='st'>"7196ENG"</span>)
-}</div></pre>
+ <span class='fu'><a href='download_table-deprecated.html'>download_table</a></span>(id=<span class='st'>"7196ENG"</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -215,7 +216,7 @@ Rows with values that are not part of the character vector are not returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

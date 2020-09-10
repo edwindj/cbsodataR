@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -132,7 +132,7 @@
     <p>Adds cbs labels to the dataset that was retrieved using <code><a href='cbs_get_data.html'>cbs_get_data()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_add_label_columns</span>(<span class='no'>x</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>x</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>cbs_add_label_columns</span>(<span class='kw'>x</span>, columns = <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>x</span>), <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,15 +175,16 @@ of each label column will be <code>&lt;code_column&gt;_label</code>.</p>
 <code><a href='cbs_get_meta.html'>cbs_get_meta</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
 <span class='co'># get data for main (000000) Consumer Price Index (7196ENG) for March 2000, </span>
- <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( <span class='kw'>id</span>      <span class='kw'>=</span> <span class='st'>"7196ENG"</span>
-                  , <span class='kw'>Periods</span> <span class='kw'>=</span> <span class='st'>"2000MM03"</span>  <span class='co'># March 2000</span>
-                  , <span class='kw'>CPI</span>     <span class='kw'>=</span> <span class='st'>"000000"</span>    <span class='co'># main price index</span>
+ <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>
+                  , Periods = <span class='st'>"2000MM03"</span>  <span class='co'># March 2000</span>
+                  , CPI     = <span class='st'>"000000"</span>    <span class='co'># main price index</span>
                   )
- <span class='fu'>cbs_add_label_columns</span>(<span class='no'>x</span>)
-}</div></pre>
+ <span class='fu'>cbs_add_label_columns</span>(<span class='kw'>x</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -199,7 +200,7 @@ of each label column will be <code>&lt;code_column&gt;_label</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
