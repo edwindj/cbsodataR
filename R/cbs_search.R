@@ -9,6 +9,7 @@
 #' * `raw`: the complete results from the solr query.
 #' 
 #' @param query `character` with the words to search for.
+#' @param catalog the subset in which the table is to be found see [cbs_get_catalogs()].
 #' @param language should the `"nl"` (Dutch) or `"en"` (English) search index 
 #' be used.
 #' @param format format in which the result should be returned, see details
@@ -29,9 +30,18 @@ cbs_search <- function( query
   query <- paste(query, collapse = " ")
   query <- URLencode(query)
   
-  catalog <- paste(catalog, language, sep = "_")
+  cats <- cbs_get_catalogs()
+  if (!(catalog %in% cats$catalog)){
+    stop("catalog has invalid value. Must be one of: "
+           , paste0('"',cats$catalog, '"',collapse = ", ")
+           , "."
+           , call. = FALSE
+           )
+  }
+
+  catalog_la <- paste(catalog, language, sep = "_")
   
-  SEARCH <- file.path(BASE_URL, "solr", catalog, "select")
+  SEARCH <- file.path(BASE_URL, "solr", catalog_la, "select")
   query_url <- paste0(SEARCH
                      , "?q=", query
                      , "&wt=json"
@@ -42,7 +52,7 @@ cbs_search <- function( query
         , docs = docs
         , raw  = res
         , {
-          toc <- cbs_get_toc()
+          toc <- cbs_get_datasets(catalog = catalog, ...)
           idx <- match(docs$PublicationKey, toc$Identifier)
           toc <- toc[idx,]
           cbind(score = docs$score, toc)

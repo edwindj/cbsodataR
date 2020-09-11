@@ -16,6 +16,8 @@ cbs_search(
 \arguments{
 \item{query}{\code{character} with the words to search for.}
 
+\item{catalog}{the subset in which the table is to be found see \code{\link[=cbs_get_catalogs]{cbs_get_catalogs()}}.}
+
 \item{language}{should the \code{"nl"} (Dutch) or \code{"en"} (English) search index
 be used.}
 
