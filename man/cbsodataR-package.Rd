@@ -18,6 +18,8 @@ and \code{\link[=cbs_get_data]{cbs_get_data()}} should get you going.
 \itemize{
 \item \code{\link[=cbs_get_toc]{cbs_get_toc()}}, returns a data.frame with table of contents (toc): the publication
 meta data for all available tables
+\item \code{\link[=cbs_search]{cbs_search()}}, returns a data.frame with tables that contain the given
+search word.
 }
 }
 

@@ -17,19 +17,19 @@
 #' @example ./example/cbs_search.R
 #' @export
 cbs_search <- function( query
-                      , language = c("nl","en")
+                      , catalog = "CBS"
+                      , language = "nl"
                       , format=c("toc","docs", "raw")
                       , verbose = FALSE
                       , ...
                       ){
   
   format <- match.arg(format)
-  language <- match.arg(language)
-  
+
   query <- paste(query, collapse = " ")
   query <- URLencode(query)
   
-  catalog <- paste0("CBS_", language)
+  catalog <- paste(catalog, language, sep = "_")
   
   SEARCH <- file.path(BASE_URL, "solr", catalog, "select")
   query_url <- paste0(SEARCH

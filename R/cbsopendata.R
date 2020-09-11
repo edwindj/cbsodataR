@@ -12,6 +12,9 @@
 #' - [cbs_get_toc()], returns a data.frame with table of contents (toc): the publication
 #' meta data for all available tables
 #' 
+#' - [cbs_search()], returns a data.frame with tables that contain the given 
+#' search word.
+#' 
 #' @section Data retrieval:
 #' 
 #' - [cbs_get_data()], returns the data of a specific opendata/StatLine table

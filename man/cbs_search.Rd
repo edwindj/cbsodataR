@@ -6,7 +6,8 @@
 \usage{
 cbs_search(
   query,
-  language = c("nl", "en"),
+  catalog = "CBS",
+  language = "nl",
   format = c("toc", "docs", "raw"),
   verbose = FALSE,
   ...
