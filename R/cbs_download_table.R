@@ -11,6 +11,7 @@
 #' 
 #' @param id Identifier of CBS table (can be retrieved from [cbs_get_toc()])
 #' @param dir Directory where table should be downloaded
+#' @param catalog catalog id, can be retrieved with [cbs_get_datasets()]
 #' @param ... Parameters passed on to [cbs_download_data()]
 #' @param typed Should the data automatically be converted into integer and numeric?
 #' @param verbose Print extra messages what is happening.
@@ -27,16 +28,23 @@
 #'  download_table(id="7196ENG")
 #' }
 cbs_download_table <- function( id
+                          , catalog = "CBS"
                           , ...
                           , dir=id
                           , cache = FALSE
                           , verbose = TRUE
                           , typed = FALSE
                           , base_url = getOption("cbsodataR.base_url", BASE_URL)){
-  meta <- cbs_download_meta(id=id, dir=dir, cache=cache, base_url = base_url)
+  meta <- cbs_download_meta( id=id
+                           , catalog = catalog
+                           , dir=dir
+                           , cache=cache
+                           , base_url = base_url
+                           )
   
   cbs_download_data( id   = id
                    , path = file.path(dir, "data.csv")
+                   , catalog = catalog
                    , ...
                    , typed    = typed
                    , verbose  = verbose

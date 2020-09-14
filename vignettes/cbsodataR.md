@@ -10,14 +10,16 @@ data base has an open data web API based on the OData protocol. The
 Table of Contents
 -----------------
 
-A list of tables can be retrieved using the `cbs_get_toc` function.
+A list of tables can be retrieved using the `cbs_get_datasets`
+(`cbs_get_toc`) function.
 
     library(dplyr) # not needed, but used in examples below
     library(cbsodataR)
 
-    toc <- cbs_get_toc(Language="en") # retrieve only english tables
+    datasets <- cbs_get_datasets() 
 
-    toc %>% 
+    datasets %>% 
+      filter(Language == "en") %>% # only English tables
       select(Identifier, ShortTitle) 
 
     ## # A tibble: 828 x 2
@@ -43,14 +45,27 @@ Tables can be searched for using the `cbs_search` function.
     toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
     toc_apples[, c("Identifier", "ShortTitle", "score")]
 
-    ##   Identifier                          ShortTitle    score
-    ## 1   71509ENG Yield apples and pears, 1997 - 2017 14.49684
+    ## # A tibble: 1 x 3
+    ##   Identifier ShortTitle                          score
+    ##   <chr>      <chr>                               <dbl>
+    ## 1 71509ENG   Yield apples and pears, 1997 - 2017  14.5
+
+Other catalogs
+--------------
+
+Other catalogs with data are available:
+
+    catalogs <- cbs_get_catalogs()
+    catalogs$Identifier
+
+    ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
+    ##  [7] "Politie"  "MVstat"   "AZW"      "InterReg"
 
 Metadata
 --------
 
-Using an “Identifier” from `cbs_get_toc` or `cbs_search` information on
-the table can be retrieved with `cbs_get_meta`
+Using an “Identifier” from `cbs_get_datasets` or `cbs_search`
+information on the table can be retrieved with `cbs_get_meta`
 
     apples <- cbs_get_meta('71509ENG')
     apples

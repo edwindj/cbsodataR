@@ -6,13 +6,16 @@
 \usage{
 cbs_get_meta(
   id,
+  catalog = "CBS",
   verbose = FALSE,
   cache = TRUE,
   base_url = getOption("cbsodataR.base_url", BASE_URL)
 )
 }
 \arguments{
-\item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
+\item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
+
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{verbose}{Print extra messages what is happening.}
 

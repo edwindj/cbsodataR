@@ -7,6 +7,7 @@
 cbs_download_meta(
   id,
   dir = id,
+  catalog = "CBS",
   ...,
   verbose = FALSE,
   cache = FALSE,
@@ -18,6 +19,8 @@ cbs_download_meta(
 
 \item{dir}{Directory in which data should be stored.
 By default it creates a sub directory with the name of the id}
+
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{...}{not used}
 

@@ -9,11 +9,18 @@
 #' 
 #' @section Catalog function:
 #' 
+#' - [cbs_get_datasets()] returns a data.frame with table of contents (toc): the publication
+#'  meta data for available tables, can also include the extra tables not directly available
+#'  in StatLine (dataderden)
+#'  
+#' - [cbs_get_catalogs()], returns data.frame with the available (extra) catalogs.
+#' 
 #' - [cbs_get_toc()], returns a data.frame with table of contents (toc): the publication
-#' meta data for all available tables
+#' meta data for available tables within the standard CBS
 #' 
 #' - [cbs_search()], returns a data.frame with tables that contain the given 
 #' search word.
+#' 
 #' 
 #' @section Data retrieval:
 #' 

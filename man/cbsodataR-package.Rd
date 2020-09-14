@@ -16,8 +16,12 @@ and \code{\link[=cbs_get_data]{cbs_get_data()}} should get you going.
 \section{Catalog function}{
 
 \itemize{
+\item \code{\link[=cbs_get_datasets]{cbs_get_datasets()}} returns a data.frame with table of contents (toc): the publication
+meta data for available tables, can also include the extra tables not directly available
+in StatLine (dataderden)
+\item \code{\link[=cbs_get_catalogs]{cbs_get_catalogs()}}, returns data.frame with the available (extra) catalogs.
 \item \code{\link[=cbs_get_toc]{cbs_get_toc()}}, returns a data.frame with table of contents (toc): the publication
-meta data for all available tables
+meta data for available tables within the standard CBS
 \item \code{\link[=cbs_search]{cbs_search()}}, returns a data.frame with tables that contain the given
 search word.
 }

@@ -7,6 +7,7 @@
 cbs_get_data(
   id,
   ...,
+  catalog = "CBS",
   select = NULL,
   typed = TRUE,
   add_column_labels = TRUE,
@@ -20,6 +21,8 @@ cbs_get_data(
 \item{id}{Identifier of table, can be found in \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
 
 \item{...}{optional filter statements, see details.}
+
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{select}{\code{character} optional, columns to select}
 

@@ -10,14 +10,15 @@
 #' @inheritParams cbs_get_toc
 #' @param catalog which set of tables should be returned? [cbs_get_catalogs()] 
 #' or supply `NULL` for all tables.
+#' @example ./example/cbs_get_datasets.R
 #' @export
-cbs_get_datasets <- function( ...
-                            , catalog       = "CBS"
+cbs_get_datasets <- function( catalog       = "CBS"
                             , convert_dates = TRUE
                             , select        = NULL
                             , verbose       = FALSE
                             , cache         = TRUE
                             , base_url      = getOption("cbsodataR.base_url", BASE_URL)
+                            , ...
                             ){
   toc <- .cache$cbs_get_datasets
   if (is.null(toc)){
@@ -44,7 +45,14 @@ cbs_get_datasets <- function( ...
     .cache$cbs_get_datasets <- toc
   }
   if (!is.null(catalog)){
-    #browser()
+    cats <- unique(toc$Catalog)
+    if (!(catalog %in% cats)){
+      stop("Invalid value for `catalog`, should be one of: "
+          , paste0('"', cats ,'"', collapse = ", ")
+          , 'or `NULL`'
+          , call. = FALSE 
+          )
+    }
     toc <- toc[toc$Catalog == catalog, ]
   }
   toc

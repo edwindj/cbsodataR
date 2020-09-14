@@ -4,6 +4,7 @@
 #' (international) csv format.
 #' 
 #' @param id of cbs open data table
+#' @param catalog catalog id, can be retrieved with [cbs_get_datasets()]
 #' @param path of data file, defaults to "id/data.csv"
 #' @param ... optional filter statements to select rows of the data,
 #' @param typed Should the data automatically be converted into integer and numeric?
@@ -17,27 +18,27 @@
 #' @export
 cbs_download_data <- function( id
                          , path     = file.path(id, "data.csv")
+                         , catalog  = catalog
                          , ...
                          , select   = NULL
                          , typed    = TRUE
                          , verbose  = FALSE
-                         , show_progress = interactive()
+                         , show_progress = interactive() && !verbose
                          , base_url = getOption("cbsodataR.base_url", BASE_URL)
                          ){
   
   DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
-  
   if (show_progress){
-    rc <- get_row_count(id, ...)
+    rc <- get_row_count(id, catalog = catalog, ...)
     if (rc == 0){
       stop("Selection is empty. Please check your filter statements."
            , call. = FALSE
       )
     }
     pb_value <- 0
-    pb <- utils::txtProgressBar(min = 0, max = rc)
+    pb <- utils::txtProgressBar(min = 0, max = rc, style = 3)
   }
-  
+  base_url <- get_base_url(catalog, base_url)
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
                        , list( BASEURL = base_url
                              , BULK    = BULK
@@ -97,6 +98,7 @@ cbs_download_data <- function( id
   } 
   
   if (show_progress){
+    utils::setTxtProgressBar(pb, value = rc)
     close(pb)
   } 
 }

@@ -8,7 +8,7 @@ cbs_search(
   query,
   catalog = "CBS",
   language = "nl",
-  format = c("toc", "docs", "raw"),
+  format = c("datasets", "docs", "raw"),
   verbose = FALSE,
   ...
 )
@@ -16,7 +16,8 @@ cbs_search(
 \arguments{
 \item{query}{\code{character} with the words to search for.}
 
-\item{catalog}{the subset in which the table is to be found see \code{\link[=cbs_get_catalogs]{cbs_get_catalogs()}}.}
+\item{catalog}{the subset in which the table is to be found, see
+\code{\link[=cbs_get_catalogs]{cbs_get_catalogs()}}, set to \code{NULL} to query all catalogs.}
 
 \item{language}{should the \code{"nl"} (Dutch) or \code{"en"} (English) search index
 be used.}
@@ -33,7 +34,7 @@ Find tables containing certain words.
 \details{
 The \code{format} can be either:
 \itemize{
-\item \code{toc}: the same format as \code{\link[=cbs_get_toc]{cbs_get_toc()}}, with an extra \code{score} column.
+\item \code{datasets}: the same format as \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}, with an extra \code{score} column.
 \item \code{docs}: the table results from the solr query,
 \item \code{raw}: the complete results from the solr query.
 }
@@ -43,13 +44,20 @@ if (interactive()){
   # search for tables containing the word birth
   
   ds_en <- cbs_search("Birth", language="en")
-  head(ds_en$Title, 3)
+  ds_en[1:3, c("Identifier", "ShortTitle")]
   
   # or in Dutch
   
-  ds_nl <- cbs_search(c("geboorte,sterfte"), language="nl")
-  head(ds_nl$Title, 3)
+  ds_nl <- cbs_search(c("geboorte"), language="nl")
+  ds_nl[1:3, c("Identifier", "ShortTitle")]
   
+  # Search in an other catalog
+  ds_rivm <- cbs_search(c("geboorte"), catalog = "RIVM", language="nl")
+  ds_rivm[1:3, c("Identifier", "ShortTitle")]
+  
+  # search in all catalogs
+  ds_all <- cbs_search(c("geboorte"), catalog = NULL, language="nl")
+
   # docs
   docs <- cbs_search(c("geboorte,sterfte"), language="nl", format="docs")
   names(docs)

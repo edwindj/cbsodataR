@@ -38,9 +38,17 @@ Retrieve a table of contents with all SN tables.
 
 ```{r}
 library(cbsodataR)
-toc <- cbs_get_toc("Language" = "en")
-head(toc)
+ds <- cbs_get_datasets("Language" = "en")
+head(ds)
 ```
+
+or do a search:
+
+```{r}
+res <- cbs_search("apple", language="en")
+res[1:3, c(1:4)]
+```
+
 
 Use the `Identifier` from tables to retrieve table information
 
@@ -66,7 +74,3 @@ apples %>%
 ```
 
 For more information, see `vignette("cbsodataR")`
-
-## API change (0.3+)
-
-**In version 0.3  the api of the functions has changed. Old functions (should) still work, but generate warnings asking to switch to the new api.**

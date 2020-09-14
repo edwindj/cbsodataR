@@ -19,7 +19,8 @@
 #'   in that column. e.g. `Perioden` for time codes `c("2019JJ00","2018JJ00")`.
 #' 
 #' 
-#' @param id internal id of CBS table, can be retrieved with [cbs_get_toc()]
+#' @param id internal id of CBS table, can be retrieved with [cbs_get_datasets()]
+#' @param catalog catalog id, can be retrieved with [cbs_get_datasets()]
 #' @param verbose Print extra messages what is happening.
 #' @param cache should the result be cached? 
 #' @param base_url optionally specify a different server. Useful for
@@ -31,10 +32,12 @@
 #' @family meta data
 #' @export
 cbs_get_meta <- function( id
+                      , catalog  = "CBS"
                       , verbose  = FALSE
                       , cache    = TRUE
                       , base_url = getOption("cbsodataR.base_url", BASE_URL)
 ){
+  base_url <- get_base_url(catalog, base_url)
   url <- whisker.render("{{BASEURL}}/{{API}}/{{id}}"
                         , list( BASEURL = base_url
                                 , API = API

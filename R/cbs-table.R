@@ -2,11 +2,11 @@ is.cbs_table <- function(x, ...){
   inherits(x, "cbs_table")
 }
 
-as.cbs_table <- function(id, ...){
+as.cbs_table <- function(id, catalog = "CBS", ...){
   if (is.cbs_table(id)){
     return(id)
   }
-  cbs_get_meta(id, ...)
+  cbs_get_meta(id, catalog = catalog, ...)
 }
 
 #' @export

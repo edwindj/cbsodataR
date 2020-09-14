@@ -5,18 +5,16 @@
 \title{Retrieve a data.frame with requested cbs tables}
 \usage{
 cbs_get_datasets(
-  ...,
   catalog = "CBS",
   convert_dates = TRUE,
   select = NULL,
   verbose = FALSE,
   cache = TRUE,
-  base_url = getOption("cbsodataR.base_url", BASE_URL)
+  base_url = getOption("cbsodataR.base_url", BASE_URL),
+  ...
 )
 }
 \arguments{
-\item{...}{filter statement to select rows, e.g. Language="nl"}
-
 \item{catalog}{which set of tables should be returned? \code{\link[=cbs_get_catalogs]{cbs_get_catalogs()}}
 or supply \code{NULL} for all tables.}
 
@@ -31,6 +29,8 @@ will be returned.}
 
 \item{base_url}{optionally specify a different server. Useful for
 third party data services implementing the same protocol.}
+
+\item{...}{filter statement to select rows, e.g. Language="nl"}
 }
 \description{
 \code{cbs_get_datasets} by default a list of all tables and all columns will be retrieved.
@@ -40,4 +40,17 @@ columns that should be returned.
 \details{
 Note that setting \code{catalog} to \code{NULL} results in a datasets list with all tables including
 the extra catalogs.
+}
+\examples{
+if (interactive()){
+  # retrieve the datasets in the "CBS" catalog
+  ds <- cbs_get_datasets()
+  ds[1:5, c("Identifier", "ShortTitle")]
+  
+  # retrieve de datasets in the "AZW" catalog
+  ds_azw <- cbs_get_datasets(catalog = "AZW")
+  
+  # to retrieve all datasets of all catalogs, supply "NULL"
+  ds_all <- cbs_get_datasets(catalog = NULL)
+}
 }

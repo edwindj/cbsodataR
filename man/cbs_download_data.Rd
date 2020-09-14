@@ -7,11 +7,12 @@
 cbs_download_data(
   id,
   path = file.path(id, "data.csv"),
+  catalog = catalog,
   ...,
   select = NULL,
   typed = TRUE,
   verbose = FALSE,
-  show_progress = interactive(),
+  show_progress = interactive() && !verbose,
   base_url = getOption("cbsodataR.base_url", BASE_URL)
 )
 }
@@ -19,6 +20,8 @@ cbs_download_data(
 \item{id}{of cbs open data table}
 
 \item{path}{of data file, defaults to "id/data.csv"}
+
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{...}{optional filter statements to select rows of the data,}
 

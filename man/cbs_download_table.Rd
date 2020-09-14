@@ -6,6 +6,7 @@
 \usage{
 cbs_download_table(
   id,
+  catalog = "CBS",
   ...,
   dir = id,
   cache = FALSE,
@@ -16,6 +17,8 @@ cbs_download_table(
 }
 \arguments{
 \item{id}{Identifier of CBS table (can be retrieved from \code{\link[=cbs_get_toc]{cbs_get_toc()}})}
+
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{...}{Parameters passed on to \code{\link[=cbs_download_data]{cbs_download_data()}}}
 

@@ -28,6 +28,7 @@
 #' @note All data are downloaded using [cbs_download_table()]
 #' 
 #' @param id Identifier of table, can be found in [cbs_get_toc()]
+#' @param catalog catalog id, can be retrieved with [cbs_get_datasets()]
 #' @param ... optional filter statements, see details.
 #' @param select `character` optional, columns to select
 #' @param add_column_labels Should column titles be added as a label (TRUE) which are visible in `View`
@@ -47,6 +48,7 @@
 #' @example ./example/query.R
 cbs_get_data <- function( id
                         , ...
+                        , catalog           = "CBS"
                         , select            = NULL
                         , typed             = TRUE
                         , add_column_labels = TRUE
@@ -55,9 +57,9 @@ cbs_get_data <- function( id
                         , base_url          = getOption("cbsodataR.base_url", BASE_URL)
                         , include_ID        = FALSE
                         ){
-  
   meta <- cbs_download_table( id
                         , ...
+                        , catalog  = catalog
                         , select   = select
                         , dir      = dir
                         , cache    = TRUE

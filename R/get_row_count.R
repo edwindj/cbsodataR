@@ -1,5 +1,5 @@
-get_row_count <- function(id, ...){
-  meta <- as.cbs_table(id)
+get_row_count <- function(id, catalog = "CBS", ...){
+  meta <- as.cbs_table(id, catalog = catalog)
   
   dp <- meta$DataProperties
   dims <- dp[grep("Topic", dp$Type, invert = TRUE),]

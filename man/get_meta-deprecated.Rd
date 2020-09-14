@@ -13,7 +13,7 @@ get_meta(
 )
 }
 \arguments{
-\item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
+\item{id}{internal id of CBS table, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{verbose}{Print extra messages what is happening.}
 
