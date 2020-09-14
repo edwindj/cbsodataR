@@ -85,7 +85,7 @@
       <h1 data-toc-skip>cbsodataR, all data of Statistics Netherlands (CBS)</h1>
                         <h4 class="author">Edwin de Jonge</h4>
             
-            <h4 class="date">2020-09-10</h4>
+            <h4 class="date">2020-09-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/master/vignettes/cbsodata.Rmd"><code>vignettes/cbsodata.Rmd</code></a></small>
       <div class="hidden name"><code>cbsodata.Rmd</code></div>
@@ -99,13 +99,14 @@
 <div id="table-of-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#table-of-contents" class="anchor"></a>Table of Contents</h2>
-<p>A list of tables can be retrieved using the <code>cbs_get_toc</code> function.</p>
+<p>A list of tables can be retrieved using the <code>cbs_get_datasets</code> (<code>cbs_get_toc</code>) function.</p>
 <pre><code><a href="https://dplyr.tidyverse.org">library(dplyr) # not needed, but used in examples below
 library(cbsodataR)
 
-toc &lt;- cbs_get_toc(Language="en") # retrieve only english tables
+datasets &lt;- cbs_get_datasets() 
 
-toc %&gt;% 
+datasets %&gt;% 
+  filter(Language == "en") %&gt;% # only English tables
   select(Identifier, ShortTitle) 
 
 ## # A tibble: 828 x 2
@@ -130,13 +131,25 @@ toc %&gt;%
 <pre><code>toc_apples &lt;- cbs_search(c("elstar", "apple"), language = "en")
 toc_apples[, c("Identifier", "ShortTitle", "score")]
 
-##   Identifier                          ShortTitle    score
-## 1   71509ENG Yield apples and pears, 1997 - 2017 14.49684</code></pre>
+## # A tibble: 1 x 3
+##   Identifier ShortTitle                          score
+##   &lt;chr&gt;      &lt;chr&gt;                               &lt;dbl&gt;
+## 1 71509ENG   Yield apples and pears, 1997 - 2017  14.5</code></pre>
+</div>
+<div id="other-catalogs" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-catalogs" class="anchor"></a>Other catalogs</h2>
+<p>Other catalogs with data are available:</p>
+<pre><code>catalogs &lt;- cbs_get_catalogs()
+catalogs$Identifier
+
+##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
+##  [7] "Politie"  "MVstat"   "AZW"      "InterReg"</code></pre>
 </div>
 <div id="metadata" class="section level2">
 <h2 class="hasAnchor">
 <a href="#metadata" class="anchor"></a>Metadata</h2>
-<p>Using an “Identifier” from <code>cbs_get_toc</code> or <code>cbs_search</code> information on the table can be retrieved with <code>cbs_get_meta</code></p>
+<p>Using an “Identifier” from <code>cbs_get_datasets</code> or <code>cbs_search</code> information on the table can be retrieved with <code>cbs_get_meta</code></p>
 <pre><code>apples &lt;- cbs_get_meta('71509ENG')
 apples
 
@@ -373,7 +386,7 @@ head(apples$FruitFarmingRegions[,1:2 ])
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

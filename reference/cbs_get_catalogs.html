@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download all data from Statistics Netherlands / CBS — cbsodataR-package • cbsodataR</title>
+<title>Retrieves the possible catalog values that can be used for retrieving data — cbs_get_catalogs • cbsodataR</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,8 @@
 
 
 
-<meta property="og:title" content="Download all data from Statistics Netherlands / CBS — cbsodataR-package" />
-<meta property="og:description" content="cbsodataR allows to download all official statistics of Statistics
-Netherlands (CBS) into R. For a introduction please visit the
-vignette:
-vignette(&quot;cbsodataR&quot;, package=&quot;cbsodataR&quot;).
-The functions cbs_get_toc()
-and cbs_get_data() should get you going." />
+<meta property="og:title" content="Retrieves the possible catalog values that can be used for retrieving data — cbs_get_catalogs" />
+<meta property="og:description" content="Retrieves the possible catalog values that can be used for retrieving data" />
 
 
 
@@ -128,77 +123,50 @@ and cbs_get_data() should get you going." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download all data from Statistics Netherlands / CBS</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/cbsopendata.R'><code>R/cbsopendata.R</code></a></small>
-    <div class="hidden name"><code>cbsodataR-package.Rd</code></div>
+    <h1>Retrieves the possible catalog values that can be used for retrieving data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/R/cbs_get_catalogs.R'><code>R/cbs_get_catalogs.R</code></a></small>
+    <div class="hidden name"><code>cbs_get_catalogs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>cbsodataR</code> allows to download all official statistics of Statistics
-Netherlands (CBS) into R. For a introduction please visit the
-<a href='https://edwindj.github.io/cbsodataR/articles/cbsodataR.html'>vignette</a>:
-<code>vignette("cbsodataR", package="cbsodataR")</code>.
-The functions <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>
-and <code><a href='cbs_get_data.html'>cbs_get_data()</a></code> should get you going.</p>
+    <p>Retrieves the possible catalog values that can be used for retrieving data</p>
     </div>
 
+    <pre class="usage"><span class='fu'>cbs_get_catalogs</span>(<span class='kw'>...</span>, base_url = <span class='kw'>BASE_URL</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>filter statement to select rows, e.g. Language="nl"</p></td>
+    </tr>
+    <tr>
+      <th>base_url</th>
+      <td><p>optionally specify a different server. Useful for
+third party data services implementing the same protocol.</p></td>
+    </tr>
+    </table>
 
 
-    <h2 class="hasAnchor" id="catalog-function"><a class="anchor" href="#catalog-function"></a>Catalog function</h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>catalogs</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_catalogs</span>()
 
-    
+<span class='co'># Identifier of catalog can be used to query</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>catalogs</span><span class='op'>$</span><span class='kw'>Identifier</span>)
+</div><div class='output co'>#&gt;  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
+#&gt;  [7] "Politie"  "MVstat"   "AZW"      "InterReg"</div><div class='input'>
 
-<ul>
-<li><p><code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code> returns a data.frame with table of contents (toc): the publication
-meta data for available tables, can also include the extra tables not directly available
-in StatLine (dataderden)</p></li>
-<li><p><code><a href='cbs_get_catalogs.html'>cbs_get_catalogs()</a></code>, returns data.frame with the available (extra) catalogs.</p></li>
-<li><p><code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>, returns a data.frame with table of contents (toc): the publication
-meta data for available tables within the standard CBS</p></li>
-<li><p><code><a href='cbs_search.html'>cbs_search()</a></code>, returns a data.frame with tables that contain the given
-search word.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="data-retrieval"><a class="anchor" href="#data-retrieval"></a>Data retrieval</h2>
-
-    
-
-<ul>
-<li><p><code><a href='cbs_get_data.html'>cbs_get_data()</a></code>, returns the data of a specific opendata/StatLine table</p></li>
-<li><p><code><a href='cbs_download_table.html'>cbs_download_table()</a></code>, saves the data (and metadata) as csv files
-into a directory</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="meta-data"><a class="anchor" href="#meta-data"></a>Meta data</h2>
-
-    
-
-<ul>
-<li><p><code><a href='cbs_get_meta.html'>cbs_get_meta()</a></code>, returns the meta data objects of a specific opendata / StatLine
-table .</p></li>
-<li><p><code><a href='cbs_add_date_column.html'>cbs_add_date_column()</a></code>, converts date/period codes into <code>DateTime</code> objects
-in the data set that was downloaded.</p></li>
-<li><p><code><a href='cbs_add_label_columns.html'>cbs_add_label_columns()</a></code>, adds labels to the code columns in the data that
-was downloaded.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/edwindj/cbsodataR'>https://github.com/edwindj/cbsodataR</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/edwindj/cbsodataR/issues'>https://github.com/edwindj/cbsodataR/issues</a></p></li>
-</ul>
-
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p><strong>Maintainer</strong>: Edwin de Jonge <a href='mailto:edwindjonge@gmail.com'>edwindjonge@gmail.com</a></p>
-<p>Other contributors:</p><ul>
-<li><p>Sara Houweling [contributor]</p></li>
-</ul>
-
-
-
+<span class='kw'>ds_rivm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cbs_get_datasets.html'>cbs_get_datasets</a></span>(catalog = <span class='st'>"RIVM"</span>)
+<span class='kw'>ds_rivm</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>,<span class='st'>"ShortTitle"</span>)]
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 2</span><span>
+#&gt;   Identifier ShortTitle                           
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                
+#&gt; </span><span style='color: #555555;'>1</span><span> 50066NED   Blootstelling aan geluid 2016        
+#&gt; </span><span style='color: #555555;'>2</span><span> 50052NED   Gezondheid per wijk en buurt 2016    
+#&gt; </span><span style='color: #555555;'>3</span><span> 50077NED   Gezondheidsmonitor Jeugd 2019; regio 
+#&gt; </span><span style='color: #555555;'>4</span><span> 50017NED   Participatie; activiteiten, kenmerken
+#&gt; </span><span style='color: #555555;'>5</span><span> 50039NED   Overledenen; doodsoorzaak (VTV)      </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

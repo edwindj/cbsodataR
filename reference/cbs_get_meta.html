@@ -136,6 +136,7 @@ the performance considerably.</p>
 
     <pre class="usage"><span class='fu'>cbs_get_meta</span>(
   <span class='kw'>id</span>,
+  catalog = <span class='st'>"CBS"</span>,
   verbose = <span class='fl'>FALSE</span>,
   cache = <span class='fl'>TRUE</span>,
   base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>)
@@ -146,7 +147,11 @@ the performance considerably.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>internal id of CBS table, can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code></p></td>
+      <td><p>internal id of CBS table, can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>catalog</th>
+      <td><p>catalog id, can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code></p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -206,7 +211,7 @@ in that column. e.g. <code>Perioden</code> for time codes <code><a href='https:/
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

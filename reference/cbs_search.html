@@ -134,8 +134,9 @@
 
     <pre class="usage"><span class='fu'>cbs_search</span>(
   <span class='kw'>query</span>,
-  language = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"nl"</span>, <span class='st'>"en"</span>),
-  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"toc"</span>, <span class='st'>"docs"</span>, <span class='st'>"raw"</span>),
+  catalog = <span class='st'>"CBS"</span>,
+  language = <span class='st'>"nl"</span>,
+  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"datasets"</span>, <span class='st'>"docs"</span>, <span class='st'>"raw"</span>),
   verbose = <span class='fl'>FALSE</span>,
   <span class='kw'>...</span>
 )</pre>
@@ -146,6 +147,11 @@
     <tr>
       <th>query</th>
       <td><p><code>character</code> with the words to search for.</p></td>
+    </tr>
+    <tr>
+      <th>catalog</th>
+      <td><p>the subset in which the table is to be found, see
+<code><a href='cbs_get_catalogs.html'>cbs_get_catalogs()</a></code>, set to <code>NULL</code> to query all catalogs.</p></td>
     </tr>
     <tr>
       <th>language</th>
@@ -169,7 +175,7 @@ be used.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>format</code> can be either:</p><ul>
-<li><p><code>toc</code>: the same format as <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>, with an extra <code>score</code> column.</p></li>
+<li><p><code>datasets</code>: the same format as <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code>, with an extra <code>score</code> column.</p></li>
 <li><p><code>docs</code>: the table results from the solr query,</p></li>
 <li><p><code>raw</code>: the complete results from the solr query.</p></li>
 </ul>
@@ -180,13 +186,20 @@ be used.</p></td>
   <span class='co'># search for tables containing the word birth</span>
   
   <span class='kw'>ds_en</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='st'>"Birth"</span>, language=<span class='st'>"en"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>ds_en</span><span class='op'>$</span><span class='kw'>Title</span>, <span class='fl'>3</span>)
+  <span class='kw'>ds_en</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>, <span class='st'>"ShortTitle"</span>)]
   
   <span class='co'># or in Dutch</span>
   
-  <span class='kw'>ds_nl</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), language=<span class='st'>"nl"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>ds_nl</span><span class='op'>$</span><span class='kw'>Title</span>, <span class='fl'>3</span>)
+  <span class='kw'>ds_nl</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte"</span>), language=<span class='st'>"nl"</span>)
+  <span class='kw'>ds_nl</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>, <span class='st'>"ShortTitle"</span>)]
   
+  <span class='co'># Search in an other catalog</span>
+  <span class='kw'>ds_rivm</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte"</span>), catalog = <span class='st'>"RIVM"</span>, language=<span class='st'>"nl"</span>)
+  <span class='kw'>ds_rivm</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>, <span class='st'>"ShortTitle"</span>)]
+  
+  <span class='co'># search in all catalogs</span>
+  <span class='kw'>ds_all</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte"</span>), catalog = <span class='kw'>NULL</span>, language=<span class='st'>"nl"</span>)
+
   <span class='co'># docs</span>
   <span class='kw'>docs</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_search</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"geboorte,sterfte"</span>), language=<span class='st'>"nl"</span>, format=<span class='st'>"docs"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>docs</span>)
@@ -212,7 +225,7 @@ be used.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
