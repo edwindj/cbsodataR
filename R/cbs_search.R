@@ -36,7 +36,7 @@ cbs_search <- function( query
     cbs_get_catalogs()
   }
   if (is.null(catalog)){
-    message("Search all")
+    #message("Search all")
     l_search <- lapply(cats$Identifier, function(catalog){
       cbs_search(query, catalog=catalog, language = language
                 , format = format, verbose =verbose)

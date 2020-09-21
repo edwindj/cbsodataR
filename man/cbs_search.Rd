@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbs_search.R
 \name{cbs_search}
 \alias{cbs_search}
-\title{Find tables containing certain words}
+\title{Find tables containing search words}
 \usage{
 cbs_search(
   query,
@@ -29,7 +29,7 @@ be used.}
 \item{...}{not used}
 }
 \description{
-Find tables containing certain words.
+Find tables containing search words.
 }
 \details{
 The \code{format} can be either:
