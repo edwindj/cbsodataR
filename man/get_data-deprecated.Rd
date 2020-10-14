@@ -15,7 +15,7 @@ get_data(
 )
 }
 \arguments{
-\item{id}{Identifier of table, can be found in \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
+\item{id}{Identifier of table, can be found in \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{...}{optional filter statements, see details.}
 

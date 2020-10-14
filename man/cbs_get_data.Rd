@@ -18,11 +18,12 @@ cbs_get_data(
 )
 }
 \arguments{
-\item{id}{Identifier of table, can be found in \code{\link[=cbs_get_toc]{cbs_get_toc()}}}
+\item{id}{Identifier of table, can be found in \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
 
 \item{...}{optional filter statements, see details.}
 
-\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}}
+\item{catalog}{catalog id, can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}
+(set \code{catalog=NULL} to see all catalogs)}
 
 \item{select}{\code{character} optional, columns to select}
 
@@ -46,8 +47,8 @@ the data is stored in \code{dir}.
 }
 \description{
 Retrieves data from a table of Statistics Netherlands. A list of available tables
-can be retrieved with \code{\link[=cbs_get_toc]{cbs_get_toc()}}. Use the \code{Identifier} column of
-\code{cbs_get_toc} as \code{id} in \code{cbs_get_data} and \code{cbs_get_meta}.
+can be retrieved with \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}. Use the \code{Identifier} column of
+\code{cbs_get_datssets} as \code{id} in \code{cbs_get_data} and \code{cbs_get_meta}.
 }
 \details{
 To reduce the download time, optionaly the data can be filtered on category values:

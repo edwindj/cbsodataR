@@ -1,5 +1,6 @@
-get_row_count <- function(id, catalog = "CBS", ...){
-  meta <- as.cbs_table(id, catalog = catalog)
+get_row_count <- function(id, catalog = "CBS", ...
+                         , base_url = getOption("cbsodataR.base_url", BASE_URL)){
+  meta <- as.cbs_table(id, catalog = catalog, base_url = base_url)
   
   dp <- meta$DataProperties
   dims <- dp[grep("Topic", dp$Type, invert = TRUE),]

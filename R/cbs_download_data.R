@@ -29,7 +29,7 @@ cbs_download_data <- function( id
   
   DATASET <- if (typed) "TypedDataSet" else "UntypedDataSet"
   if (show_progress){
-    rc <- get_row_count(id, catalog = catalog, ...)
+    rc <- get_row_count(id, catalog = catalog, ..., base_url = base_url)
     if (rc == 0){
       stop("Selection is empty. Please check your filter statements."
            , call. = FALSE

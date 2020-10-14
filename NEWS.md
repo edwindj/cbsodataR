@@ -1,3 +1,7 @@
+# version 0.5.2
+
+*  fixed issue #29 with retrieving dataderden.cbs.nl, thanks to Mirjam Zengers for reporting
+
 # version 0.5.0
 
 * added `cbs_search` facility, to search for publications containing words.
