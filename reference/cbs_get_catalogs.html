@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -150,23 +150,17 @@ third party data services implementing the same protocol.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>catalogs</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_catalogs</span>()
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='kw'>catalogs</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_catalogs</span>()
 
 <span class='co'># Identifier of catalog can be used to query</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>catalogs</span><span class='op'>$</span><span class='kw'>Identifier</span>)
-</div><div class='output co'>#&gt;  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
-#&gt;  [7] "Politie"  "MVstat"   "AZW"      "InterReg"</div><div class='input'>
+
 
 <span class='kw'>ds_rivm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cbs_get_datasets.html'>cbs_get_datasets</a></span>(catalog = <span class='st'>"RIVM"</span>)
 <span class='kw'>ds_rivm</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>,<span class='st'>"ShortTitle"</span>)]
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 2</span><span>
-#&gt;   Identifier ShortTitle                           
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                
-#&gt; </span><span style='color: #555555;'>1</span><span> 50066NED   Blootstelling aan geluid 2016        
-#&gt; </span><span style='color: #555555;'>2</span><span> 50052NED   Gezondheid per wijk en buurt 2016    
-#&gt; </span><span style='color: #555555;'>3</span><span> 50077NED   Gezondheidsmonitor Jeugd 2019; regio 
-#&gt; </span><span style='color: #555555;'>4</span><span> 50017NED   Participatie; activiteiten, kenmerken
-#&gt; </span><span style='color: #555555;'>5</span><span> 50039NED   Overledenen; doodsoorzaak (VTV)      </div></span></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

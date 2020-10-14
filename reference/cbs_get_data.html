@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="Get data from Statistics Netherlands (CBS) — cbs_get_data" />
 <meta property="og:description" content="Retrieves data from a table of Statistics Netherlands. A list of available tables
-can be retrieved with cbs_get_toc(). Use the Identifier column of
-cbs_get_toc as id in cbs_get_data and cbs_get_meta." />
+can be retrieved with cbs_get_datasets(). Use the Identifier column of
+cbs_get_datssets as id in cbs_get_data and cbs_get_meta." />
 
 
 
@@ -74,7 +74,7 @@ cbs_get_toc as id in cbs_get_data and cbs_get_meta." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -132,8 +132,8 @@ cbs_get_toc as id in cbs_get_data and cbs_get_meta." />
 
     <div class="ref-description">
     <p>Retrieves data from a table of Statistics Netherlands. A list of available tables
-can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>. Use the <code>Identifier</code> column of
-<code>cbs_get_toc</code> as <code>id</code> in <code>cbs_get_data</code> and <code>cbs_get_meta</code>.</p>
+can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code>. Use the <code>Identifier</code> column of
+<code>cbs_get_datssets</code> as <code>id</code> in <code>cbs_get_data</code> and <code>cbs_get_meta</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>cbs_get_data</span>(
@@ -154,7 +154,7 @@ can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>.
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>Identifier of table, can be found in <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code></p></td>
+      <td><p>Identifier of table, can be found in <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -162,7 +162,8 @@ can be retrieved with <code><a href='cbs_get_toc.html'>cbs_get_toc()</a></code>.
     </tr>
     <tr>
       <th>catalog</th>
-      <td><p>catalog id, can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code></p></td>
+      <td><p>catalog id, can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</a></code>
+(set <code>catalog=NULL</code> to see all catalogs)</p></td>
     </tr>
     <tr>
       <th>select</th>
