@@ -1,11 +1,9 @@
 
-Statistics Netherlands (www.cbs.nl) opendata API client for R
-=============================================================
+# Statistics Netherlands (www.cbs.nl) opendata API client for R
 
 [![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://CRAN.R-project.org/package=cbsodataR)
-![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR) [![Travis-CI
-Build
-Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
+![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR) [![R build
+status](https://github.com/edwindj/cbsodataR/workflows/R-CMD-check/badge.svg)](https://github.com/edwindj/cbsodataR/actions)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
 
@@ -15,36 +13,40 @@ interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
 
 Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
 
-Installation
-============
+# Installation
 
 From CRAN
 
-    install.packages("cbsodataR")
+``` s
+install.packages("cbsodataR")
+```
 
 The latest development version of `cbsodata` can installed using
 `devtools`.
 
-    devtools::install_github("edwindj/cbsodataR")
+``` r
+devtools::install_github("edwindj/cbsodataR")
+```
 
-Usage (version 0.3+)
-====================
+# Usage (version 0.3+)
 
 Retrieve a table of contents with all SN tables.
 
-    library(cbsodataR)
-    ds <- cbs_get_datasets("Language" = "en")
-    head(ds)
+``` r
+library(cbsodataR)
+ds <- cbs_get_datasets("Language" = "en")
+head(ds)
+```
 
     ## # A tibble: 6 x 25
     ##   Updated             Identifier Title ShortTitle ShortDescription Summary
     ##   <dttm>              <chr>      <chr> <chr>      <chr>            <chr>  
-    ## 1 2020-07-15 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 2 2020-03-03 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 3 2020-07-03 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
+    ## 1 2020-11-20 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
+    ## 2 2020-11-20 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
+    ## 3 2021-01-29 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
     ## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…
     ## 5 2020-04-28 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …
-    ## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…
+    ## 6 2020-06-30 00:00:00 83981ENG   Live… Livestock… "\nThis table c… "Manur…
     ## # … with 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
     ## #   ReasonDelivery <chr>, ExplanatoryText <chr>, OutputStatus <chr>,
     ## #   Source <chr>, Language <chr>, Catalog <chr>, Frequency <chr>, Period <chr>,
@@ -54,21 +56,23 @@ Retrieve a table of contents with all SN tables.
 
 or do a search:
 
-    res <- cbs_search("apple", language="en")
-    res[1:3, c(1:4)]
+``` r
+res <- cbs_search("apple", language="en")
+res[1:3, c(1:4)]
+```
 
-    ##       score    Updated Identifier
-    ## 1 15.981406 2019-04-12   71509ENG
-    ## 2 10.216403 2019-04-12   70671ENG
-    ## 3  1.418945 2015-05-22   81894ENG
-    ##                                                                 Title
-    ## 1 Yield and cultivation area apples and pears per region, 1997 - 2017
-    ## 2           Fruit culture; area fruit orchards, sort fruit, 1992-2016
-    ## 3                 Health accounts; providers and financing, 2005-2013
+    ## # A tibble: 3 x 4
+    ##   score Updated             Identifier Title                                    
+    ##   <dbl> <dttm>              <chr>      <chr>                                    
+    ## 1 16.0  2019-04-12 00:00:00 71509ENG   Yield and cultivation area apples and pe…
+    ## 2 10.2  2019-04-12 00:00:00 70671ENG   Fruit culture; area fruit orchards, sort…
+    ## 3  1.42 2015-05-22 00:00:00 81894ENG   Health accounts; providers and financing…
 
 Use the `Identifier` from tables to retrieve table information
 
-    cbs_get_meta('71509ENG')
+``` r
+cbs_get_meta('71509ENG')
+```
 
     ## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017
     ##   FruitFarmingRegions: 'Fruit farming regions'
@@ -91,11 +95,13 @@ Use the `Identifier` from tables to retrieve table information
 
 Or download data.
 
-    library(dplyr) # just for example's sake
-    apples <- cbs_get_data("71509ENG") 
+``` r
+library(dplyr) # just for example's sake
+apples <- cbs_get_data("71509ENG") 
 
-    apples %>% 
-      select(1:4)
+apples %>% 
+  select(1:4)
+```
 
     ## # A tibble: 105 x 4
     ##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
@@ -114,9 +120,11 @@ Or download data.
 
 add label columns:
 
-    apples %>% 
-      cbs_add_label_columns() %>% 
-      select(1:4)
+``` r
+apples %>% 
+  cbs_add_label_columns() %>% 
+  select(1:4)
+```
 
     ## # A tibble: 105 x 4
     ##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
