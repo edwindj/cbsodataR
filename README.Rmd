@@ -11,7 +11,7 @@ library(dplyr)
 
 [![version](http://www.r-pkg.org/badges/version/cbsodataR)](https://CRAN.R-project.org/package=cbsodataR)
 ![downloads](http://cranlogs.r-pkg.org/badges/cbsodataR)
-[![Travis-CI Build Status](https://travis-ci.org/edwindj/cbsodataR.png?branch=master)](https://travis-ci.org/edwindj/cbsodataR)
+ [![R build status](https://github.com/edwindj/cbsodataR/workflows/R-CMD-check/badge.svg)](https://github.com/edwindj/cbsodataR/actions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
 
 

@@ -10,3 +10,4 @@ TODO.md
 ^_pkgdown\.yml$
 ^pkgdown$
 ^example$
+^\.github$
