@@ -81,7 +81,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -107,7 +107,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -134,17 +134,17 @@
 (international) csv format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_download_data</span>(
-  <span class='kw'>id</span>,
-  path = <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>id</span>, <span class='st'>"data.csv"</span>),
-  catalog = <span class='kw'>catalog</span>,
-  <span class='kw'>...</span>,
-  select = <span class='kw'>NULL</span>,
-  typed = <span class='fl'>TRUE</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  show_progress = <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='kw'>verbose</span>,
-  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>cbs_download_data</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>id</span>, <span class='st'>"data.csv"</span><span class='op'>)</span>,
+  catalog <span class='op'>=</span> <span class='va'>catalog</span>,
+  <span class='va'>...</span>,
+  select <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  show_progress <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='va'>verbose</span>,
+  base_url <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"cbsodataR.base_url"</span>, <span class='va'>BASE_URL</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

@@ -82,7 +82,7 @@ columns that should be returned." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,7 +108,7 @@ columns that should be returned." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,15 +136,15 @@ You can restrict the query by supplying multiple filter statements or by specify
 columns that should be returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_get_datasets</span>(
-  catalog = <span class='st'>"CBS"</span>,
-  convert_dates = <span class='fl'>TRUE</span>,
-  select = <span class='kw'>NULL</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  cache = <span class='fl'>TRUE</span>,
-  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>),
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>cbs_get_datasets</span><span class='op'>(</span>
+  catalog <span class='op'>=</span> <span class='st'>"CBS"</span>,
+  convert_dates <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  select <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  cache <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  base_url <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"cbsodataR.base_url"</span>, <span class='va'>BASE_URL</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,17 +188,17 @@ third party data services implementing the same protocol.</p></td>
 the extra catalogs.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
   <span class='co'># retrieve the datasets in the "CBS" catalog</span>
-  <span class='kw'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span>()
-  <span class='kw'>ds</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Identifier"</span>, <span class='st'>"ShortTitle"</span>)]
+  <span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='va'>ds</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Identifier"</span>, <span class='st'>"ShortTitle"</span><span class='op'>)</span><span class='op'>]</span>
   
   <span class='co'># retrieve de datasets in the "AZW" catalog</span>
-  <span class='kw'>ds_azw</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span>(catalog = <span class='st'>"AZW"</span>)
+  <span class='va'>ds_azw</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span><span class='op'>(</span>catalog <span class='op'>=</span> <span class='st'>"AZW"</span><span class='op'>)</span>
   
   <span class='co'># to retrieve all datasets of all catalogs, supply "NULL"</span>
-  <span class='kw'>ds_all</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span>(catalog = <span class='kw'>NULL</span>)
-}
+  <span class='va'>ds_all</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_get_datasets</span><span class='op'>(</span>catalog <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

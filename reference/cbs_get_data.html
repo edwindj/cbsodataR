@@ -82,7 +82,7 @@ cbs_get_datssets as id in cbs_get_data and cbs_get_meta." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,7 +108,7 @@ cbs_get_datssets as id in cbs_get_data and cbs_get_meta." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,18 +136,18 @@ can be retrieved with <code><a href='cbs_get_datasets.html'>cbs_get_datasets()</
 <code>cbs_get_datssets</code> as <code>id</code> in <code>cbs_get_data</code> and <code>cbs_get_meta</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_get_data</span>(
-  <span class='kw'>id</span>,
-  <span class='kw'>...</span>,
-  catalog = <span class='st'>"CBS"</span>,
-  select = <span class='kw'>NULL</span>,
-  typed = <span class='fl'>TRUE</span>,
-  add_column_labels = <span class='fl'>TRUE</span>,
-  dir = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(),
-  verbose = <span class='fl'>FALSE</span>,
-  base_url = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"cbsodataR.base_url"</span>, <span class='kw'>BASE_URL</span>),
-  include_ID = <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>cbs_get_data</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  <span class='va'>...</span>,
+  catalog <span class='op'>=</span> <span class='st'>"CBS"</span>,
+  select <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  add_column_labels <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  base_url <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"cbsodataR.base_url"</span>, <span class='va'>BASE_URL</span><span class='op'>)</span>,
+  include_ID <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -236,38 +236,38 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
 <code><a href='has_substring.html'>has_substring</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>cbs_get_data</span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , Periods = <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
-            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-            )
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>cbs_get_data</span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods <span class='op'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+            , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            <span class='op'>)</span>
 
 <span class='co'># useful substrings:</span>
 <span class='co'>## Periods: "JJ": years, "KW": quarters, "MM", months</span>
 <span class='co'>## Regions: "NL", "PV": provinces, "GM": municipalities</span>
   
-<span class='fu'>cbs_get_data</span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , Periods = <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>)     <span class='co'># all years</span>
-            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-            )
+<span class='fu'>cbs_get_data</span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods <span class='op'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span><span class='op'>(</span><span class='st'>"JJ"</span><span class='op'>)</span>     <span class='co'># all years</span>
+            , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            <span class='op'>)</span>
 
-<span class='fu'>cbs_get_data</span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , Periods = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span>)     <span class='co'># March 2000 and Dec 2001</span>
-            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-            )
+<span class='fu'>cbs_get_data</span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2000MM03"</span>,<span class='st'>"2001MM12"</span><span class='op'>)</span>     <span class='co'># March 2000 and Dec 2001</span>
+            , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            <span class='op'>)</span>
 
 <span class='co'># combine either this</span>
-<span class='fu'>cbs_get_data</span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , Periods = <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='op'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
-            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-            )
+<span class='fu'>cbs_get_data</span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods <span class='op'>=</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span><span class='op'>(</span><span class='st'>"JJ"</span><span class='op'>)</span> <span class='op'>|</span> <span class='st'>"2000MM01"</span> <span class='co'># all years and Jan 2001</span>
+            , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            <span class='op'>)</span>
 
 <span class='co'># or this: note the "eq" function</span>
-<span class='fu'>cbs_get_data</span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-            , Periods = <span class='fu'><a href='eq.html'>eq</a></span>(<span class='st'>"2000MM01"</span>) <span class='op'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span>(<span class='st'>"JJ"</span>) <span class='co'># Jan 2000 and all years</span>
-            , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-            )
-}
+<span class='fu'>cbs_get_data</span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+            , Periods <span class='op'>=</span> <span class='fu'><a href='eq.html'>eq</a></span><span class='op'>(</span><span class='st'>"2000MM01"</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='has_substring.html'>has_substring</a></span><span class='op'>(</span><span class='st'>"JJ"</span><span class='op'>)</span> <span class='co'># Jan 2000 and all years</span>
+            , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+            <span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

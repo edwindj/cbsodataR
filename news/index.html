@@ -79,7 +79,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,74 +126,74 @@
       <small>Source: <a href='https://github.com/edwindj/cbsodataR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="version-0-5-2" class="section level1">
+    <div id="version-052" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.2">
-<a href="#version-0-5-2" class="anchor"></a>version 0.5.2<small> Unreleased </small>
+<a href="#version-052" class="anchor"></a>version 0.5.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>fixed issue <a href='https://github.com/edwindj/cbsodataR/issues/29'>#29</a> with retrieving dataderden.cbs.nl, thanks to Mirjam Zengers for reporting</li>
+<li>fixed issue <a href='https://github.com/edwindj/cbsodataR/issues/29'>#29</a> with retrieving from dataderden.cbs.nl, thanks to Mirjam Zengers for reporting</li>
 </ul>
 </div>
-    <div id="version-0-5-0" class="section level1">
+    <div id="version-050" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.0">
-<a href="#version-0-5-0" class="anchor"></a>version 0.5.0<small> Unreleased </small>
+<a href="#version-050" class="anchor"></a>version 0.5.0<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>added <code>cbs_search</code> facility, to search for publications containing words.</p></li>
 <li><p>removed internal <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> call, fix for issue <a href='https://github.com/edwindj/cbsodataR/issues/28'>#28</a>, thx to <a href='https://github.com/jeroenadema'>@jeroenadema</a></p></li>
 <li>
 <p>added support for other catalogs:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">  <span class="op">-</span><span class="st"> `</span><span class="dt">cbs_get_catalogs</span><span class="st">`</span> and <span class="st">`</span><span class="dt">cbs_get_datasets</span><span class="st">`</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="op">-</span><span class="st"> `</span><span class="dt">cbs_get_data</span><span class="st">`</span> and <span class="st">`</span><span class="dt">cbs_get_meta</span><span class="st">`</span> and the like now have a <span class="st">`</span><span class="dt">catalog</span><span class="st">`</span> argument</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>  <span class="op">-</span><span class="st"> `</span><span class="dt">cbs_get_catalogs</span><span class="st">`</span> and <span class="st">`</span><span class="dt">cbs_get_datasets</span><span class="st">`</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="op">-</span><span class="st"> `</span><span class="dt">cbs_get_data</span><span class="st">`</span> and <span class="st">`</span><span class="dt">cbs_get_meta</span><span class="st">`</span> and the like now have a <span class="st">`</span><span class="dt">catalog</span><span class="st">`</span> argument</span></code></pre></div>
 </li>
 </ul>
 </div>
-    <div id="version-0-4-2" class="section level1">
+    <div id="version-042" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.2">
-<a href="#version-0-4-2" class="anchor"></a>version 0.4.2<small> Unreleased </small>
+<a href="#version-042" class="anchor"></a>version 0.4.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>added weeks to cbs_add_date_column, issue <a href='https://github.com/edwindj/cbsodataR/issues/25'>#25</a>, thanks to <a href='https://github.com/RichardFromHolland'>@RichardFromHolland</a></li>
 </ul>
 </div>
-    <div id="version-0-4-1-9000" class="section level1">
+    <div id="version-0419000" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.1.9000">
-<a href="#version-0-4-1-9000" class="anchor"></a>version 0.4.1.9000<small> Unreleased </small>
+<a href="#version-0419000" class="anchor"></a>version 0.4.1.9000<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>added warnings when filter selection contains invalid keys.</p></li>
 <li><p><code>&lt;column&gt; = has_substring(&lt;ss&gt;) | "value"</code> is now allowed.</p></li>
 </ul>
 </div>
-    <div id="version-0-4-1" class="section level1">
+    <div id="version-041" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.1">
-<a href="#version-0-4-1" class="anchor"></a>version 0.4.1<small> 2020-02-20 </small>
+<a href="#version-041" class="anchor"></a>version 0.4.1<small> 2020-02-20 </small>
 </h1>
 <ul>
 <li><p>added extra query operators: <code>eq</code>, <code>has_substring</code> and <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> to support the query syntax of cbsopendata.</p></li>
 <li><p>updated documentation</p></li>
 </ul>
 </div>
-    <div id="version-0-3-5" class="section level1">
+    <div id="version-035" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.5">
-<a href="#version-0-3-5" class="anchor"></a>version 0.3.5<small> 2019-11-05 </small>
+<a href="#version-035" class="anchor"></a>version 0.3.5<small> 2019-11-05 </small>
 </h1>
 <ul>
 <li>fixed an issue with the vignette, which was failing when the webservice was offline</li>
 </ul>
 </div>
-    <div id="version-0-3-4" class="section level1">
+    <div id="version-034" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.4">
-<a href="#version-0-3-4" class="anchor"></a>version 0.3.4<small> 2019-08-20 </small>
+<a href="#version-034" class="anchor"></a>version 0.3.4<small> 2019-08-20 </small>
 </h1>
 <ul>
 <li><p>updated documentation</p></li>
 <li><p>fixed issue <a href='https://github.com/edwindj/cbsodataR/issues/22'>#22</a> when table has no DefaultSelection, thanks to <a href='https://github.com/sarahouweling'>@sarahouweling</a>.</p></li>
 </ul>
 </div>
-    <div id="version-0-3-2" class="section level1">
+    <div id="version-032" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.2">
-<a href="#version-0-3-2" class="anchor"></a>version 0.3.2<small> 2019-02-21 </small>
+<a href="#version-032" class="anchor"></a>version 0.3.2<small> 2019-02-21 </small>
 </h1>
 <ul>
 <li><p>Added a new function cbs_get_data_from_link to allow for retrieving data using a link created with the opendata portal. Thanks to Albert Pieters for the suggestion</p></li>
@@ -201,18 +201,18 @@
 <li><p>fixed a bug in cbs_get_data, key columns were not always loaded as character columns (issue <a href='https://github.com/edwindj/cbsodataR/issues/15'>#15</a>). Thanks to <a href='https://github.com/VincentKars'>@VincentKars</a></p></li>
 </ul>
 </div>
-    <div id="version-0-3-1" class="section level1">
+    <div id="version-031" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.1">
-<a href="#version-0-3-1" class="anchor"></a>version 0.3.1<small> Unreleased </small>
+<a href="#version-031" class="anchor"></a>version 0.3.1<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>removed httr and changed to jsonlite::read_json. httr gave problems with some Windows configurations.</p></li>
 <li><p>fixed cbs_get_toc with select argument (issue <a href='https://github.com/edwindj/cbsodataR/issues/12'>#12</a>). Thanks to Rob van Harrevelt.</p></li>
 </ul>
 </div>
-    <div id="version-0-3" class="section level1">
+    <div id="version-03" class="section level1">
 <h1 class="page-header" data-toc-text="0.3">
-<a href="#version-0-3" class="anchor"></a>version 0.3<small> 2018-04-30 </small>
+<a href="#version-03" class="anchor"></a>version 0.3<small> 2018-04-30 </small>
 </h1>
 <ul>
 <li><p>changed api: all (new) functions are prefixed with <code>cbs_</code> to have a more clean programming interface.</p></li>
@@ -225,18 +225,18 @@
 <li><p><code>cbs_add_date_column</code> adds a column with the period converted to <code>Date</code> or <code>numeric</code>.</p></li>
 </ul>
 </div>
-    <div id="version-0-2-3" class="section level1">
+    <div id="version-023" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.3">
-<a href="#version-0-2-3" class="anchor"></a>version 0.2.3<small> Unreleased </small>
+<a href="#version-023" class="anchor"></a>version 0.2.3<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>added with strip.whitespace to <code>get_data</code> (issue <a href='https://github.com/edwindj/cbsodataR/issues/4'>#4</a>), suggestion of Jonathan de Bruin</p></li>
 <li><p>changed address of opendata to https variant.</p></li>
 </ul>
 </div>
-    <div id="version-0-2-2" class="section level1">
+    <div id="version-022" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.2">
-<a href="#version-0-2-2" class="anchor"></a>version 0.2.2<small> Unreleased </small>
+<a href="#version-022" class="anchor"></a>version 0.2.2<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>used <code>httr</code>: better performance and error handling of failed connections.</p></li>

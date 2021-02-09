@@ -83,7 +83,7 @@ a frequency column denoting the type of the column." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@ a frequency column denoting the type of the column." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -138,7 +138,7 @@ these codes into a <code><a href='https://rdrr.io/r/base/Dates.html'>Date()</a><
 a frequency column denoting the type of the column.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbs_add_date_column</span>(<span class='kw'>x</span>, date_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"numeric"</span>), <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>cbs_add_date_column</span><span class='op'>(</span><span class='va'>x</span>, date_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Date"</span>, <span class='st'>"numeric"</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,20 +179,20 @@ If all codes in the dataset have frequency "Y" the numeric output will be <code>
 <code><a href='cbs_get_meta.html'>cbs_get_meta</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span>( id      = <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
-                 , Periods = <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
-                 , CPI     = <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
-                 )
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cbs_get_data.html'>cbs_get_data</a></span><span class='op'>(</span> id      <span class='op'>=</span> <span class='st'>"7196ENG"</span>      <span class='co'># table id</span>
+                 , Periods <span class='op'>=</span> <span class='st'>"2000MM03"</span>     <span class='co'># March 2000</span>
+                 , CPI     <span class='op'>=</span> <span class='st'>"000000"</span>       <span class='co'># Category code for total </span>
+                 <span class='op'>)</span>
 
 <span class='co'># add a Periods_Date column</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_add_date_column</span>(<span class='kw'>x</span>)
-<span class='kw'>x</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_add_date_column</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='va'>x</span>
 
 <span class='co'># add a Periods_numeric column</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_add_date_column</span>(<span class='kw'>x</span>, date_type = <span class='st'>"numeric"</span>)
-<span class='kw'>x</span>
-}
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>cbs_add_date_column</span><span class='op'>(</span><span class='va'>x</span>, date_type <span class='op'>=</span> <span class='st'>"numeric"</span><span class='op'>)</span>
+<span class='va'>x</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

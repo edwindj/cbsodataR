@@ -41,7 +41,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +67,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/edwindj/cbsodataR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -84,9 +84,9 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="statistics-netherlands-www-cbs-nl-opendata-api-client-for-r" class="section level1">
+<div id="statistics-netherlands-wwwcbsnl-opendata-api-client-for-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#statistics-netherlands-www-cbs-nl-opendata-api-client-for-r" class="anchor"></a>Statistics Netherlands (www.cbs.nl) opendata API client for R</h1></div>
+<a href="#statistics-netherlands-wwwcbsnl-opendata-api-client-for-r" class="anchor"></a>Statistics Netherlands (www.cbs.nl) opendata API client for R</h1></div>
 
 <p>Retrieve data from the <a href="http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm">open data interface</a> (dutch) of Statistics Netherlands (cbs.nl) with <em>R</em>.</p>
 <p>Python user? Use <a href="https://github.com/J535D165/cbsodata">cbsodata</a>.</p>
@@ -95,106 +95,106 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>From CRAN</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"cbsodataR"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"cbsodataR"</span>)</span></code></pre></div>
 <p>The latest development version of <code>cbsodata</code> can installed using <code>devtools</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"edwindj/cbsodataR"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"edwindj/cbsodataR"</span>)</span></code></pre></div>
 </div>
-<div id="usage-version-0-3" class="section level1">
+<div id="usage-version-03" class="section level1">
 <h1 class="hasAnchor">
-<a href="#usage-version-0-3" class="anchor"></a>Usage (version 0.3+)</h1>
+<a href="#usage-version-03" class="anchor"></a>Usage (version 0.3+)</h1>
 <p>Retrieve a table of contents with all SN tables.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(cbsodataR)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">ds &lt;-<span class="st"> </span><span class="kw">cbs_get_datasets</span>(<span class="st">"Language"</span> =<span class="st"> "en"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">head</span>(ds)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">## # A tibble: 6 x 25</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">##   Updated             Identifier Title ShortTitle ShortDescription Summary</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">##   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;  </a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">## 1 2020-07-15 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">## 2 2020-03-03 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">## 3 2020-07-03 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">## 5 2020-04-28 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">## # … with 19 more variables: Modified &lt;dttm&gt;, MetaDataModified &lt;dttm&gt;,</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">## #   ReasonDelivery &lt;chr&gt;, ExplanatoryText &lt;chr&gt;, OutputStatus &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">## #   Source &lt;chr&gt;, Language &lt;chr&gt;, Catalog &lt;chr&gt;, Frequency &lt;chr&gt;, Period &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">## #   SummaryAndLinks &lt;chr&gt;, ApiUrl &lt;chr&gt;, FeedUrl &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">## #   DefaultPresentation &lt;chr&gt;, DefaultSelection &lt;chr&gt;, GraphTypes &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">## #   RecordCount &lt;int&gt;, ColumnCount &lt;int&gt;, SearchPriority &lt;chr&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(cbsodataR)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>ds &lt;-<span class="st"> </span><span class="kw">cbs_get_datasets</span>(<span class="st">"Language"</span> =<span class="st"> "en"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">head</span>(ds)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">## # A tibble: 6 x 25</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">##   Updated             Identifier Title ShortTitle ShortDescription Summary</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">##   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;  </span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">## 1 2020-07-15 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">## 2 2020-03-03 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">## 3 2020-07-03 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">## 5 2020-04-28 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">## 6 2019-04-12 00:00:00 71509ENG   Yiel… Yield app… "\nThis table p… "yield…</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">## # … with 19 more variables: Modified &lt;dttm&gt;, MetaDataModified &lt;dttm&gt;,</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">## #   ReasonDelivery &lt;chr&gt;, ExplanatoryText &lt;chr&gt;, OutputStatus &lt;chr&gt;,</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">## #   Source &lt;chr&gt;, Language &lt;chr&gt;, Catalog &lt;chr&gt;, Frequency &lt;chr&gt;, Period &lt;chr&gt;,</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">## #   SummaryAndLinks &lt;chr&gt;, ApiUrl &lt;chr&gt;, FeedUrl &lt;chr&gt;,</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">## #   DefaultPresentation &lt;chr&gt;, DefaultSelection &lt;chr&gt;, GraphTypes &lt;chr&gt;,</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">## #   RecordCount &lt;int&gt;, ColumnCount &lt;int&gt;, SearchPriority &lt;chr&gt;</span></span></code></pre></div>
 <p>or do a search:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw">cbs_search</span>(<span class="st">"apple"</span>, <span class="dt">language=</span><span class="st">"en"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">res[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)]</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">##       score    Updated Identifier</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">## 1 15.981406 2019-04-12   71509ENG</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">## 2 10.216403 2019-04-12   70671ENG</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">## 3  1.418945 2015-05-22   81894ENG</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">##                                                                 Title</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">## 1 Yield and cultivation area apples and pears per region, 1997 - 2017</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">## 2           Fruit culture; area fruit orchards, sort fruit, 1992-2016</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">## 3                 Health accounts; providers and financing, 2005-2013</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>res &lt;-<span class="st"> </span><span class="kw">cbs_search</span>(<span class="st">"apple"</span>, <span class="dt">language=</span><span class="st">"en"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>res[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">##       score    Updated Identifier</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">## 1 15.981406 2019-04-12   71509ENG</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">## 2 10.216403 2019-04-12   70671ENG</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## 3  1.418945 2015-05-22   81894ENG</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">##                                                                 Title</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">## 1 Yield and cultivation area apples and pears per region, 1997 - 2017</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">## 2           Fruit culture; area fruit orchards, sort fruit, 1992-2016</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">## 3                 Health accounts; providers and financing, 2005-2013</span></span></code></pre></div>
 <p>Use the <code>Identifier</code> from tables to retrieve table information</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">cbs_get_meta</span>(<span class="st">'71509ENG'</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">##   FruitFarmingRegions: 'Fruit farming regions'</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">##   Periods: 'Periods' </a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">## </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">## Retrieve a default data selection with:</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", </a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", </a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", </a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", </a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", </a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", </a>
-<a class="sourceLine" id="cb5-14" data-line-number="14">## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", </a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", </a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", </a>
-<a class="sourceLine" id="cb5-17" data-line-number="17">## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", </a>
-<a class="sourceLine" id="cb5-18" data-line-number="18">## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", </a>
-<a class="sourceLine" id="cb5-19" data-line-number="19">## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"</a>
-<a class="sourceLine" id="cb5-20" data-line-number="20">## ))</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">cbs_get_meta</span>(<span class="st">'71509ENG'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">##   FruitFarmingRegions: 'Fruit farming regions'</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">##   Periods: 'Periods' </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">## </span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">## Retrieve a default data selection with:</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", </span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", </span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", </span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", </span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", </span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", </span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", </span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", </span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", </span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co">## ))</span></span></code></pre></div>
 <p>Or download data.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(dplyr) <span class="co"># just for example's sake</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">apples &lt;-<span class="st"> </span><span class="kw">cbs_get_data</span>(<span class="st">"71509ENG"</span>) </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">apples <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">## # A tibble: 105 x 4</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">##    &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">##  1 1                   1997JJ00                   420                 43</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">##  2 1                   1998JJ00                   518                 40</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">##  3 1                   1999JJ00                   568                 39</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">##  4 1                   2000JJ00                   461                 27</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">##  5 1                   2001JJ00                   408                 30</a>
-<a class="sourceLine" id="cb6-15" data-line-number="15">##  6 1                   2002JJ00                   354                 17</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16">##  7 1                   2003JJ00                   359                 17</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17">##  8 1                   2004JJ00                   436                 14</a>
-<a class="sourceLine" id="cb6-18" data-line-number="18">##  9 1                   2005JJ00                   359                 12</a>
-<a class="sourceLine" id="cb6-19" data-line-number="19">## 10 1                   2006JJ00                   365                 11</a>
-<a class="sourceLine" id="cb6-20" data-line-number="20">## # … with 95 more rows</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">library</span>(dplyr) <span class="co"># just for example's sake</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>apples &lt;-<span class="st"> </span><span class="kw">cbs_get_data</span>(<span class="st">"71509ENG"</span>) </span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>apples <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">## # A tibble: 105 x 4</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">##    &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">##  1 1                   1997JJ00                   420                 43</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">##  2 1                   1998JJ00                   518                 40</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">##  3 1                   1999JJ00                   568                 39</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">##  4 1                   2000JJ00                   461                 27</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">##  5 1                   2001JJ00                   408                 30</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">##  6 1                   2002JJ00                   354                 17</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">##  7 1                   2003JJ00                   359                 17</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">##  8 1                   2004JJ00                   436                 14</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">##  9 1                   2005JJ00                   359                 12</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">## 10 1                   2006JJ00                   365                 11</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">## # … with 95 more rows</span></span></code></pre></div>
 <p>add label columns:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">apples <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">cbs_add_label_columns</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">## # A tibble: 105 x 4</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">##    &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">##  1 1                   Total Netherlands         1997JJ00 1997         </a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">##  2 1                   Total Netherlands         1998JJ00 1998         </a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">##  3 1                   Total Netherlands         1999JJ00 1999         </a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">##  4 1                   Total Netherlands         2000JJ00 2000         </a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">##  5 1                   Total Netherlands         2001JJ00 2001         </a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">##  6 1                   Total Netherlands         2002JJ00 2002         </a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">##  7 1                   Total Netherlands         2003JJ00 2003         </a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">##  8 1                   Total Netherlands         2004JJ00 2004         </a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">##  9 1                   Total Netherlands         2005JJ00 2005         </a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">## 10 1                   Total Netherlands         2006JJ00 2006         </a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">## # … with 95 more rows</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>apples <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="st">  </span><span class="kw">cbs_add_label_columns</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">## # A tibble: 105 x 4</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">##    &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">##  1 1                   Total Netherlands         1997JJ00 1997         </span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">##  2 1                   Total Netherlands         1998JJ00 1998         </span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">##  3 1                   Total Netherlands         1999JJ00 1999         </span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">##  4 1                   Total Netherlands         2000JJ00 2000         </span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">##  5 1                   Total Netherlands         2001JJ00 2001         </span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">##  6 1                   Total Netherlands         2002JJ00 2002         </span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">##  7 1                   Total Netherlands         2003JJ00 2003         </span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">##  8 1                   Total Netherlands         2004JJ00 2004         </span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">##  9 1                   Total Netherlands         2005JJ00 2005         </span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">## 10 1                   Total Netherlands         2006JJ00 2006         </span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">## # … with 95 more rows</span></span></code></pre></div>
 <p>For more information, see <code>vignette("cbsodataR")</code></p>
 </div>
 
