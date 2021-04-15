@@ -14,6 +14,7 @@
 #' @param language should the `"nl"` (Dutch) or `"en"` (English) search index 
 #' be used.
 #' @param format format in which the result should be returned, see details
+#' @param rows number of rows to be returned
 #' @param verbose `logical` should the communication with the server be shown?
 #' @param ... not used
 #' @example ./example/cbs_search.R
@@ -22,6 +23,7 @@ cbs_search <- function( query
                       , catalog = "CBS"
                       , language = "nl"
                       , format=c("datasets","docs", "raw")
+                      , rows = 10
                       , verbose = FALSE
                       , ...
                       ){
@@ -61,6 +63,7 @@ cbs_search <- function( query
   query_url <- paste0(SEARCH
                      , "?q=", query
                      , "&wt=json"
+                     , "&rows=", rows
                      )
   res <- get_json(query_url, verbose = verbose)
   docs <- res$response$docs

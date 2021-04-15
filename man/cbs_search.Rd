@@ -9,6 +9,7 @@ cbs_search(
   catalog = "CBS",
   language = "nl",
   format = c("datasets", "docs", "raw"),
+  rows = 10,
   verbose = FALSE,
   ...
 )
@@ -23,6 +24,8 @@ cbs_search(
 be used.}
 
 \item{format}{format in which the result should be returned, see details}
+
+\item{rows}{number of rows to be returned}
 
 \item{verbose}{\code{logical} should the communication with the server be shown?}
 
@@ -50,6 +53,10 @@ if (interactive()){
   
   ds_nl <- cbs_search(c("geboorte"), language="nl")
   ds_nl[1:3, c("Identifier", "ShortTitle")]
+
+  # Return defined number of rows
+  ds_rivm <- cbs_search(c("geboorte"), rows = 15, language="nl")
+  ds_rivm[1:3, c("Identifier", "ShortTitle")]
   
   # Search in an other catalog
   ds_rivm <- cbs_search(c("geboorte"), catalog = "RIVM", language="nl")
