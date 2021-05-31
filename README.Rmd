@@ -17,7 +17,18 @@ library(dplyr)
 
 Retrieve data from the [open data interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm) (dutch) of Statistics Netherlands (cbs.nl) with *R*. 
 
-Python user?  Use [cbsodata](https://github.com/J535D165/cbsodata).
+## Note for Windows 7/8 users
+
+The security of the CBS web service has been updated, if you experience 
+problems, you can try the following:
+
+```{r, eval=FALSE}
+Sys.setenv(CURL_SSL_BACKEND = "openssl")
+options("url.method" = "libcurl")
+
+toc <- cbs_get_toc()
+View(toc)
+```
 
 # Installation
 
@@ -74,3 +85,5 @@ apples %>%
 ```
 
 For more information, see `vignette("cbsodataR")`
+
+Python user?  Use [cbsodata](https://github.com/J535D165/cbsodata).

@@ -11,7 +11,18 @@ Retrieve data from the [open data
 interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
 (dutch) of Statistics Netherlands (cbs.nl) with *R*.
 
-Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
+## Note for Windows 7/8 users
+
+The security of the CBS web service has been updated, if you experience
+problems, you can try the following:
+
+``` r
+Sys.setenv(CURL_SSL_BACKEND = "openssl")
+options("url.method" = "libcurl")
+
+toc <- cbs_get_toc()
+View(toc)
+```
 
 # Installation
 
@@ -39,14 +50,14 @@ head(ds)
 ```
 
     ## # A tibble: 6 x 25
-    ##   Updated             Identifier Title ShortTitle ShortDescription Summary
-    ##   <dttm>              <chr>      <chr> <chr>      <chr>            <chr>  
-    ## 1 2020-11-20 00:00:00 80783eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 2 2020-11-20 00:00:00 80784eng   Agri… Agricultu… "\nThis table c… "Agric…
-    ## 3 2021-01-29 00:00:00 7100eng    Arab… Arable cr… "\nThis table p… "Area …
-    ## 4 2019-04-12 00:00:00 70671ENG   Frui… Fruit cul… "\nThis table p… "Culti…
-    ## 5 2020-04-28 00:00:00 37738ENG   Vege… Vegetable… "\nThis table p… "Area …
-    ## 6 2020-06-30 00:00:00 83981ENG   Live… Livestock… "\nThis table c… "Manur…
+    ##   Updated             Identifier Title   ShortTitle  ShortDescription   Summary 
+    ##   <dttm>              <chr>      <chr>   <chr>       <chr>              <chr>   
+    ## 1 2021-03-19 00:00:00 80783eng   Agricu… Agricultur… "\nThis table con… "Agricu…
+    ## 2 2021-03-19 00:00:00 80784eng   Agricu… Agricultur… "\nThis table con… "Agricu…
+    ## 3 2021-03-31 00:00:00 7100eng    Arable… Arable cro… "\nThis table pro… "Area a…
+    ## 4 2019-04-12 00:00:00 70671ENG   Fruit … Fruit cult… "\nThis table pro… "Cultiv…
+    ## 5 2021-03-31 00:00:00 37738ENG   Vegeta… Vegetables… "\nThis table pro… "Area a…
+    ## 6 2021-02-15 00:00:00 83981ENG   Livest… Livestock … "\nThis table com… "Manure…
     ## # … with 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
     ## #   ReasonDelivery <chr>, ExplanatoryText <chr>, OutputStatus <chr>,
     ## #   Source <chr>, Language <chr>, Catalog <chr>, Frequency <chr>, Period <chr>,
@@ -65,7 +76,7 @@ res[1:3, c(1:4)]
     ##   score Updated             Identifier Title                                    
     ##   <dbl> <dttm>              <chr>      <chr>                                    
     ## 1 16.0  2019-04-12 00:00:00 71509ENG   Yield and cultivation area apples and pe…
-    ## 2 10.2  2019-04-12 00:00:00 70671ENG   Fruit culture; area fruit orchards, sort…
+    ## 2 10.3  2019-04-12 00:00:00 70671ENG   Fruit culture; area fruit orchards, sort…
     ## 3  1.42 2015-05-22 00:00:00 81894ENG   Health accounts; providers and financing…
 
 Use the `Identifier` from tables to retrieve table information
@@ -142,3 +153,5 @@ apples %>%
     ## # … with 95 more rows
 
 For more information, see `vignette("cbsodataR")`
+
+Python user? Use [cbsodata](https://github.com/J535D165/cbsodata).
