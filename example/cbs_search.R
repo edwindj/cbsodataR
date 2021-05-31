@@ -8,6 +8,10 @@ if (interactive()){
   
   ds_nl <- cbs_search(c("geboorte"), language="nl")
   ds_nl[1:3, c("Identifier", "ShortTitle")]
+
+  # Return defined number of rows
+  ds_rivm <- cbs_search(c("geboorte"), rows = 15, language="nl")
+  ds_rivm[1:3, c("Identifier", "ShortTitle")]
   
   # Search in an other catalog
   ds_rivm <- cbs_search(c("geboorte"), catalog = "RIVM", language="nl")
