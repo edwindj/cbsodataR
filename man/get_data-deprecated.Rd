@@ -57,6 +57,9 @@ By default the columns will be converted to their type (\code{typed=TRUE}).
 CBS uses multiple types of missing (unknown, surpressed, not measured, missing): users
 wanting all these nuances can use \code{typed=FALSE} which results in character columns.
 }
+\note{
+All data are downloaded using \code{\link[=cbs_download_table]{cbs_download_table()}}
+}
 \examples{
 \dontrun{
 cbs_get_data( id      = "7196ENG"      # table id

@@ -18,25 +18,25 @@ library(cbsodataR)
 
 datasets <- cbs_get_datasets() 
 
-datasets %>% 
-  filter(Language == "en") %>% # only English tables
+datasets |> 
+  filter(Language == "en") |> # only English tables
   select(Identifier, ShortTitle) 
 ```
 
-    ## # A tibble: 842 x 2
+    ## # A tibble: 937 × 2
     ##    Identifier ShortTitle                             
     ##    <chr>      <chr>                                  
     ##  1 80783eng   Agriculture; general farm type, region 
     ##  2 80784eng   Agriculture; labour force, region      
-    ##  3 7100eng    Arable crops; production               
-    ##  4 70671ENG   Fruit culture; area fruit orchards     
-    ##  5 37738ENG   Vegetables; yield per kind of vegetable
-    ##  6 83981ENG   Livestock manure; key figures          
-    ##  7 80274eng   Livestock cattle                       
-    ##  8 7373eng    Livestock pigs                         
-    ##  9 7425eng    Milk supply and dairy production       
-    ## 10 84312ENG   Caribbean NL; students MBO             
-    ## # … with 832 more rows
+    ##  3 85636ENG   Arable crops; production               
+    ##  4 37738ENG   Vegetables; yield per kind of vegetable
+    ##  5 83981ENG   Livestock manure; key figures          
+    ##  6 84952ENG   Livestock                              
+    ##  7 7425eng    Milk supply and dairy production       
+    ##  8 84312ENG   Caribbean NL; students MBO             
+    ##  9 84732ENG   Caribbean NL; pupils and students      
+    ## 10 81154eng   Caribbean NL; electricity and water    
+    ## # ℹ 927 more rows
 
 ## Search for tables
 
@@ -47,10 +47,10 @@ toc_apples <- cbs_search(c("elstar", "apple"), language = "en")
 toc_apples[, c("Identifier", "ShortTitle", "score")]
 ```
 
-    ## # A tibble: 1 x 3
+    ## # A tibble: 1 × 3
     ##   Identifier ShortTitle                          score
     ##   <chr>      <chr>                               <dbl>
-    ## 1 71509ENG   Yield apples and pears, 1997 - 2017  14.5
+    ## 1 71509ENG   Yield apples and pears, 1997 - 2017  2.62
 
 ## Other catalogs
 
@@ -62,7 +62,7 @@ catalogs$Identifier
 ```
 
     ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
-    ##  [7] "Politie"  "MVstat"   "AZW"      "InterReg"
+    ##  [7] "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"
 
 ## Metadata
 
@@ -112,12 +112,12 @@ With `cbs_get_data` data can be retrieved. By default all data for this
 table will be downloaded in a temporary directory.
 
 ``` r
-cbs_get_data('71509ENG') %>% 
-  select(1:4) %>%  # demonstration purpose
+cbs_get_data('71509ENG') |> 
+  select(1:4) |>  # demonstration purpose
   head()
 ```
 
-    ## # A tibble: 6 x 4
+    ## # A tibble: 6 × 4
     ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
     ##   <chr>               <chr>                    <int>              <int>
     ## 1 1                   1997JJ00                   420                 43
@@ -137,15 +137,15 @@ link can also be used with `cbsodataR` using the
 `cbs_get_data_from_link` function.
 
 ``` r
-cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
-  select(1:4) %>% 
+cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") |> 
+  select(1:4) |> 
   head()
 ```
 
     ## Executing:
     ## cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), base_url = "http://opendata.cbs.nl")
 
-    ## # A tibble: 6 x 4
+    ## # A tibble: 6 × 4
     ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
     ##   <chr>               <chr>                    <int>              <int>
     ## 1 1                   1997JJ00                   420                 43
@@ -162,13 +162,13 @@ labels for these columns can be added with the function
 `cbs_add_label_columns`.
 
 ``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_label_columns() %>% 
-  select(1:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_label_columns() |> 
+  select(1:4) |> 
   head()
 ```
 
-    ## # A tibble: 6 x 4
+    ## # A tibble: 6 × 4
     ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
     ##   <chr>               <fct>                     <chr>    <fct>        
     ## 1 1                   Total Netherlands         1997JJ00 1997         
@@ -186,13 +186,13 @@ time periods: e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3),
 will be converted and added to the data:
 
 ``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column() %>% 
-  select(2:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_date_column() |> 
+  select(2:4) |> 
   head()
 ```
 
-    ## # A tibble: 6 x 3
+    ## # A tibble: 6 × 3
     ##   Periods  Periods_Date Periods_freq
     ##   <chr>    <date>       <fct>       
     ## 1 1997JJ00 1997-01-01   Y           
@@ -206,13 +206,13 @@ This can be useful for further time series analysis, but also for
 displaying. It is also possible to convert the dates to numbers:
 
 ``` r
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column(date_type = "numeric") %>% 
-  select(2:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_date_column(date_type = "numeric") |> 
+  select(2:4) |> 
   head()
 ```
 
-    ## # A tibble: 6 x 3
+    ## # A tibble: 6 × 3
     ##   Periods  Periods_numeric Periods_freq
     ##   <chr>              <int> <fct>       
     ## 1 1997JJ00            1997 Y           
@@ -232,9 +232,9 @@ shorten the download time considerably.
 Filter statements for the columns can be used to restrict the download.
 Note the following:
 
--   To filter you will need to use the values found in the `$Key` column
-    in the `cbs_get_meta` objects. e.g. for year 2020, the code is
-    “2020JJ00”.
+- To filter you will need to use the values found in the `$Key` column
+  in the `cbs_get_meta` objects. e.g. for year 2020, the code is
+  “2020JJ00”.
 
 ``` r
 apples <- cbs_get_meta('71509ENG')
@@ -269,8 +269,8 @@ head(apples$FruitFarmingRegions[,1:2 ])
     ## 4   3    Region Central
     ## 5   5      Region South
 
--   To filter for values in a column add `<column_name> = values` to
-    `cbs_get_data` e.g. `Periods = c("2019JJ00", "2020JJ0")`
+- To filter for values in a column add `<column_name> = values` to
+  `cbs_get_data` e.g. `Periods = c("2019JJ00", "2020JJ0")`
 
 ``` r
   cbs_get_data( '71509ENG'
@@ -280,19 +280,20 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # apples$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
   cbs_add_label_columns()
 ```
 
-    ## # A tibble: 2 x 5
-    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-    ##   <chr>             <fct>               <chr>    <fct>                     <int>
-    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
-    ## 2 1                 Total Netherlands   2001JJ00 2001                        408
+    ## # A tibble: 2 × 5
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## 2 1                   Total Netherlands         2001JJ00 2001         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
--   To filter for values in a column that have a substring e.g. “JJ” you
-    can use `<column_name> = has_substring(<substring>)` to
-    `cbs_get_data` e.g. `Periods = has_substring("KW")`
+- To filter for values in a column that have a substring e.g. “JJ” you
+  can use `<column_name> = has_substring(<substring>)` to `cbs_get_data`
+  e.g. `Periods = has_substring("KW")`
 
 ``` r
   cbs_get_data( '71509ENG'
@@ -302,17 +303,18 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # cbs_get_meta("71509ENG")$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
     cbs_add_label_columns()
 ```
 
-    ## # A tibble: 1 x 5
-    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-    ##   <chr>             <fct>               <chr>    <fct>                     <int>
-    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
+    ## # A tibble: 1 × 5
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
--   To combine values and substring use the “\|” operator:
-    `Periods = eq("2020JJ00") | has_substring("KW")`
+- To combine values and substring use the “\|” operator:
+  `Periods = eq("2020JJ00") | has_substring("KW")`
 
 ``` r
   cbs_get_data( '71509ENG'
@@ -322,16 +324,83 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # cbs_get_meta("71509ENG")$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
     cbs_add_label_columns()
 ```
 
-    ## # A tibble: 2 x 5
-    ##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-    ##   <chr>             <fct>               <chr>    <fct>                     <int>
-    ## 1 1                 Total Netherlands   2000JJ00 2000                        461
-    ## 2 1                 Total Netherlands   2010JJ00 2010                        334
+    ## # A tibble: 2 × 5
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## 2 1                   Total Netherlands         2010JJ00 2010         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
 # Download data
 
 Data can also be downloaded explicitly by using `cbs_download_table`
+
+# Map material
+
+`cbsodataR` gives an easy way to retrieve cartographic maps that can be
+used with data that is downloaded with `cbsodataR`.
+
+To see a list of available maps use, the function `cbs_get_maps()`
+
+``` r
+cbs_maps <- cbs_get_maps()
+cbs_maps |> head()
+```
+
+    ##              region year
+    ## 1 arbeidsmarktregio 2014
+    ## 2 arbeidsmarktregio 2015
+    ## 3 arbeidsmarktregio 2016
+    ## 4 arbeidsmarktregio 2017
+    ## 5 arbeidsmarktregio 2018
+    ## 6 arbeidsmarktregio 2019
+    ##                                                                wgs84
+    ## 1 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2014.geojson
+    ## 2 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2015.geojson
+    ## 3 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2016.geojson
+    ## 4 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2017.geojson
+    ## 5 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2018.geojson
+    ## 6 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2019.geojson
+    ##                                                                rd
+    ## 1 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2014.geojson
+    ## 2 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2015.geojson
+    ## 3 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2016.geojson
+    ## 4 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2017.geojson
+    ## 5 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2018.geojson
+    ## 6 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2019.geojson
+
+To use a single map the function `cbs_get_data` can be used.
+
+``` r
+library(sf)
+```
+
+    ## Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE
+
+``` r
+library(ggplot2)
+
+d <- cbs_get_data( "85098NED" # youth care table
+                 , Perioden="2022JJ00" # only figures of 2022
+                 , RegioS=has_substring("GM") # only "gemeente" figures
+                 ) |> 
+  cbs_add_label_columns() |> 
+  mutate( RegioS = trimws(RegioS) # RegioS can contain spaces...(don't get me started)
+        , natura = JongerenMetJeugdhulpInNatura_1
+        )
+
+gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
+gemeente_2022 |>
+  left_join(d, by="RegioS") |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1)+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+
+![](cbsodataR_files/figure-gfm/map-1.png)<!-- -->

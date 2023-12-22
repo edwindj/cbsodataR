@@ -5,3 +5,4 @@ doc
 .RData
 inst/doc
 docs/
+.DS_Store

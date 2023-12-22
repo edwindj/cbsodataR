@@ -49,16 +49,16 @@ ds <- cbs_get_datasets("Language" = "en")
 head(ds)
 ```
 
-    ## # A tibble: 6 x 25
-    ##   Updated             Identifier Title   ShortTitle  ShortDescription   Summary 
-    ##   <dttm>              <chr>      <chr>   <chr>       <chr>              <chr>   
-    ## 1 2021-03-19 00:00:00 80783eng   Agricu… Agricultur… "\nThis table con… "Agricu…
-    ## 2 2021-03-19 00:00:00 80784eng   Agricu… Agricultur… "\nThis table con… "Agricu…
-    ## 3 2021-03-31 00:00:00 7100eng    Arable… Arable cro… "\nThis table pro… "Area a…
-    ## 4 2019-04-12 00:00:00 70671ENG   Fruit … Fruit cult… "\nThis table pro… "Cultiv…
-    ## 5 2021-03-31 00:00:00 37738ENG   Vegeta… Vegetables… "\nThis table pro… "Area a…
-    ## 6 2021-02-15 00:00:00 83981ENG   Livest… Livestock … "\nThis table com… "Manure…
-    ## # … with 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
+    ## # A tibble: 6 × 25
+    ##   Updated             Identifier Title       ShortTitle ShortDescription Summary
+    ##   <dttm>              <chr>      <chr>       <chr>      <chr>            <chr>  
+    ## 1 2023-11-30 00:00:00 80783eng   Agricultur… Agricultu… "\nThis table c… "Agric…
+    ## 2 2023-11-30 00:00:00 80784eng   Agricultur… Agricultu… "\nThis table c… "Agric…
+    ## 3 2023-12-12 00:00:00 85636ENG   Arable cro… Arable cr… "\nThis table p… "area …
+    ## 4 2023-04-03 00:00:00 37738ENG   Vegetables… Vegetable… "\nThis table p… "Area …
+    ## 5 2023-06-30 00:00:00 83981ENG   Livestock … Livestock… "\nThis table c… "Manur…
+    ## 6 2023-10-12 00:00:00 84952ENG   Livestock … Livestock  "\nThis table c… "Lives…
+    ## # ℹ 19 more variables: Modified <dttm>, MetaDataModified <dttm>,
     ## #   ReasonDelivery <chr>, ExplanatoryText <chr>, OutputStatus <chr>,
     ## #   Source <chr>, Language <chr>, Catalog <chr>, Frequency <chr>, Period <chr>,
     ## #   SummaryAndLinks <chr>, ApiUrl <chr>, FeedUrl <chr>,
@@ -72,12 +72,12 @@ res <- cbs_search("apple", language="en")
 res[1:3, c(1:4)]
 ```
 
-    ## # A tibble: 3 x 4
-    ##   score Updated             Identifier Title                                    
-    ##   <dbl> <dttm>              <chr>      <chr>                                    
-    ## 1 16.0  2019-04-12 00:00:00 71509ENG   Yield and cultivation area apples and pe…
-    ## 2 10.3  2019-04-12 00:00:00 70671ENG   Fruit culture; area fruit orchards, sort…
-    ## 3  1.42 2015-05-22 00:00:00 81894ENG   Health accounts; providers and financing…
+    ## # A tibble: 3 × 4
+    ##    score Updated             Identifier Title                                   
+    ##    <dbl> <dttm>              <chr>      <chr>                                   
+    ## 1 0.0503 2023-12-07 00:00:00 85680ENG   Trade in goods; border crossing, SITC (…
+    ## 2 0.0356 2023-12-07 00:00:00 85683ENG   Trade in goods; border crossing, SITC (…
+    ## 3 0.0337 2023-12-07 00:00:00 85682ENG   Trade in goods; border crossing, SITC (…
 
 Use the `Identifier` from tables to retrieve table information
 
@@ -110,11 +110,11 @@ Or download data.
 library(dplyr) # just for example's sake
 apples <- cbs_get_data("71509ENG") 
 
-apples %>% 
+apples |> 
   select(1:4)
 ```
 
-    ## # A tibble: 105 x 4
+    ## # A tibble: 105 × 4
     ##    FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
     ##    <chr>               <chr>                    <int>              <int>
     ##  1 1                   1997JJ00                   420                 43
@@ -127,17 +127,17 @@ apples %>%
     ##  8 1                   2004JJ00                   436                 14
     ##  9 1                   2005JJ00                   359                 12
     ## 10 1                   2006JJ00                   365                 11
-    ## # … with 95 more rows
+    ## # ℹ 95 more rows
 
 add label columns:
 
 ``` r
-apples %>% 
-  cbs_add_label_columns() %>% 
+apples |> 
+  cbs_add_label_columns() |> 
   select(1:4)
 ```
 
-    ## # A tibble: 105 x 4
+    ## # A tibble: 105 × 4
     ##    FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
     ##    <chr>               <fct>                     <chr>    <fct>        
     ##  1 1                   Total Netherlands         1997JJ00 1997         
@@ -150,7 +150,7 @@ apples %>%
     ##  8 1                   Total Netherlands         2004JJ00 2004         
     ##  9 1                   Total Netherlands         2005JJ00 2005         
     ## 10 1                   Total Netherlands         2006JJ00 2006         
-    ## # … with 95 more rows
+    ## # ℹ 95 more rows
 
 For more information, see `vignette("cbsodataR")`
 

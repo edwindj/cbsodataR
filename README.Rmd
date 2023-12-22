@@ -72,15 +72,15 @@ Or download data.
 library(dplyr) # just for example's sake
 apples <- cbs_get_data("71509ENG") 
 
-apples %>% 
+apples |> 
   select(1:4)
 ```
 
 add label columns:
 
 ```{r}
-apples %>% 
-  cbs_add_label_columns() %>% 
+apples |> 
+  cbs_add_label_columns() |> 
   select(1:4)
 ```
 

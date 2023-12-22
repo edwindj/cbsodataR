@@ -1,3 +1,7 @@
+# version 0.6.0.9000
+
+* added two functions for using maps with `cbsodataR`: `cbs_get_maps` and `cbs_get_sf`
+
 # version 0.5.2
 
 *  fixed issue #29 with retrieving from dataderden.cbs.nl, thanks to Mirjam Zengers for reporting

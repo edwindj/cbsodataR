@@ -10,4 +10,5 @@ TODO.md
 ^_pkgdown\.yml$
 ^pkgdown$
 ^example$
+^presentations$
 ^\.github$

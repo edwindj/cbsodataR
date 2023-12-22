@@ -28,8 +28,8 @@ library(cbsodataR)
 
 datasets <- cbs_get_datasets() 
 
-datasets %>% 
-  filter(Language == "en") %>% # only English tables
+datasets |> 
+  filter(Language == "en") |> # only English tables
   select(Identifier, ShortTitle) 
 ```
 
@@ -73,8 +73,8 @@ names(apples)
 With `cbs_get_data` data can be retrieved. By default all data for this table will be downloaded in a temporary directory.
 
 ```{r, cbs_get_data2, message=FALSE}
-cbs_get_data('71509ENG') %>% 
-  select(1:4) %>%  # demonstration purpose
+cbs_get_data('71509ENG') |> 
+  select(1:4) |>  # demonstration purpose
   head()
 ```
 
@@ -85,8 +85,8 @@ a selection within this table manually. Such a selection can be stored in a hype
 This link can also be used with `cbsodataR` using the `cbs_get_data_from_link` function. 
 
 ```{r}
-cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") %>% 
-  select(1:4) %>% 
+cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB") |> 
+  select(1:4) |> 
   head()
 ```
 
@@ -97,9 +97,9 @@ The first columns are categorical columns: they contain codes. The labels for th
 the function `cbs_add_label_columns`. 
 
 ```{r, get_data, message=FALSE}
-cbs_get_data('71509ENG') %>%
-  cbs_add_label_columns() %>% 
-  select(1:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_label_columns() |> 
+  select(1:4) |> 
   head()
 ```
 
@@ -110,18 +110,18 @@ e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3), 2016MM04 (i.e. 2016 April).
 With `cbs_add_date_column` the time periods will be converted and added to the data:
 
 ```{r}
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column() %>% 
-  select(2:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_date_column() |> 
+  select(2:4) |> 
   head()
 ```
 
 This can be useful for further time series analysis, but also for displaying.
 It is also possible to convert the dates to numbers:
 ```{r}
-cbs_get_data('71509ENG') %>%
-  cbs_add_date_column(date_type = "numeric") %>% 
-  select(2:4) %>% 
+cbs_get_data('71509ENG') |>
+  cbs_add_date_column(date_type = "numeric") |> 
+  select(2:4) |> 
   head()
 ```
 
@@ -158,7 +158,7 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # apples$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
   cbs_add_label_columns()
 ```
 
@@ -172,7 +172,7 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # cbs_get_meta("71509ENG")$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
     cbs_add_label_columns()
 
 ```
@@ -187,11 +187,50 @@ head(apples$FruitFarmingRegions[,1:2 ])
               # restrict the columns to the following as found in
               # cbs_get_meta("71509ENG")$DataProperties with "select"
               , select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1")  
-              ) %>% 
+              ) |> 
     cbs_add_label_columns()
 ```
 
 # Download data
 
 Data can also be downloaded explicitly by using `cbs_download_table`
+
+
+# Map material
+
+`cbsodataR` gives an easy way to retrieve cartographic maps that can be used
+with data that is downloaded with `cbsodataR`.
+
+To see a list of available maps use, the function `cbs_get_maps()`
+
+```{r}
+cbs_maps <- cbs_get_maps()
+cbs_maps |> head()
+```
+
+To use a single map the function `cbs_get_data` can be used.
+
+```{r map}
+library(sf)
+library(ggplot2)
+
+d <- cbs_get_data( "85098NED" # youth care table
+                 , Perioden="2022JJ00" # only figures of 2022
+                 , RegioS=has_substring("GM") # only "gemeente" figures
+                 ) |> 
+  cbs_add_label_columns() |> 
+  mutate( RegioS = trimws(RegioS) # RegioS can contain spaces...(don't get me started)
+        , natura = JongerenMetJeugdhulpInNatura_1
+        )
+
+gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
+gemeente_2022 |>
+  left_join(d, by="RegioS") |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1)+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+
 
