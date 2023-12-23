@@ -222,7 +222,7 @@ cbs_get_data('71509ENG') |>
     ## 5 2001JJ00            2001 Y           
     ## 6 2002JJ00            2002 Y
 
-## Select and filter
+## Select and filter\`
 
 It is possible restrict the download using filter statements. This may
 shorten the download time considerably.
@@ -373,7 +373,7 @@ cbs_maps |> head()
     ## 5 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2018.geojson
     ## 6 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2019.geojson
 
-To use a single map the function `cbs_get_sf` can be used.
+To use a single map the function `cbs_get_data` can be used.
 
 ``` r
 library(sf)
@@ -387,15 +387,13 @@ library(ggplot2)
 d <- cbs_get_data( "85098NED" # youth care table
                  , Perioden="2022JJ00" # only figures of 2022
                  , RegioS=has_substring("GM") # only "gemeente" figures
-                 ) |> 
-  cbs_add_label_columns() |> 
-  mutate( RegioS = trimws(RegioS) # RegioS can contain spaces...(don't get me started)
-        , natura = JongerenMetJeugdhulpInNatura_1
-        )
+                 ) 
 
-gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
-gemeente_2022 |>
-  left_join(d, by="RegioS") |> 
+map_with_data <- 
+  cbs_join_sf_with_data("gemeente", 2022, d) |> 
+  transform( natura = JongerenMetJeugdhulpInNatura_1 )
+  
+map_with_data |> 
   ggplot() + 
   geom_sf(aes(fill=natura), color="#FFFFFF99") +
   scale_fill_viridis_c(direction = -1)+ 
@@ -403,4 +401,24 @@ gemeente_2022 |>
   theme_void()
 ```
 
-![](cbsodataR_files/figure-gfm/map-1.png)<!-- -->
+![](cbsodataR_files/figure-gfm/map-1.png)<!-- --> Or this can be done
+manually, so you have more control
+
+``` r
+# retrieve map
+gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
+
+d <- d |> 
+  cbs_add_statcode_column() |> 
+  mutate(natura = JongerenMetJeugdhulpInNatura_1)
+
+gemeente_2022 |>
+  left_join(d, by="statcode") |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1, option = "A")+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+
+![](cbsodataR_files/figure-gfm/map_manual-1.png)<!-- -->

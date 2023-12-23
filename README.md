@@ -7,22 +7,9 @@ status](https://github.com/edwindj/cbsodataR/workflows/R-CMD-check/badge.svg)](h
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/edwindj/cbsodatar?branch=master)](https://ci.appveyor.com/project/edwindj/cbsodatar)
 
-Retrieve data from the [open data
+Retrieve data and spatial maps from the [open data
 interface](http://www.cbs.nl/nl-NL/menu/cijfers/statline/open-data/default.htm)
 (dutch) of Statistics Netherlands (cbs.nl) with *R*.
-
-## Note for Windows 7/8 users
-
-The security of the CBS web service has been updated, if you experience
-problems, you can try the following:
-
-``` r
-Sys.setenv(CURL_SSL_BACKEND = "openssl")
-options("url.method" = "libcurl")
-
-toc <- cbs_get_toc()
-View(toc)
-```
 
 # Installation
 
@@ -39,7 +26,7 @@ The latest development version of `cbsodata` can installed using
 devtools::install_github("edwindj/cbsodataR")
 ```
 
-# Usage (version 0.3+)
+# Usage
 
 Retrieve a table of contents with all SN tables.
 

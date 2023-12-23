@@ -10,8 +10,9 @@
 Netherlands (CBS) into R. For a introduction please visit the
 \href{https://edwindj.github.io/cbsodataR/articles/cbsodataR.html}{vignette}:
 \code{vignette("cbsodataR", package="cbsodataR")}.
-The functions \code{\link[=cbs_get_toc]{cbs_get_toc()}}
+The functions \code{\link[=cbs_get_datasets]{cbs_get_datasets()}}
 and \code{\link[=cbs_get_data]{cbs_get_data()}} should get you going.
+Interested in cartographic maps, see \code{\link[=cbs_get_maps]{cbs_get_maps()}}.
 }
 \section{Catalog function}{
 

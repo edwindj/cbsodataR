@@ -4,8 +4,9 @@
 #' Netherlands (CBS) into R. For a introduction please visit the 
 #' [vignette](https://edwindj.github.io/cbsodataR/articles/cbsodataR.html): 
 #' `vignette("cbsodataR", package="cbsodataR")`. 
-#' The functions [cbs_get_toc()]
-#' and [cbs_get_data()] should get you going.
+#' The functions [cbs_get_datasets()]
+#' and [cbs_get_data()] should get you going. 
+#' Interested in cartographic maps, see [cbs_get_maps()].
 #' 
 #' @section Catalog function:
 #' 

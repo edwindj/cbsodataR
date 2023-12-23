@@ -219,15 +219,32 @@ d <- cbs_get_data( "85098NED" # youth care table
                  , RegioS=has_substring("GM") # only "gemeente" figures
                  ) 
 
-map_with_data <- cbs_join_sf_with_data("gemeente", 2022, d)
-  mutate( natura = JongerenMetJeugdhulpInNatura_1 )
+map_with_data <- 
+  cbs_join_sf_with_data("gemeente", 2022, d) |> 
+  transform( natura = JongerenMetJeugdhulpInNatura_1 )
+  
+map_with_data |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1)+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+Or this can be done manually, so you have more control
 
+```{r map_manual}
+# retrieve map
 gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
+
+d <- d |> 
+  cbs_add_statcode_column() |> 
+  mutate(natura = JongerenMetJeugdhulpInNatura_1)
+
 gemeente_2022 |>
   left_join(d, by="statcode") |> 
   ggplot() + 
   geom_sf(aes(fill=natura), color="#FFFFFF99") +
-  scale_fill_viridis_c(direction = -1)+ 
+  scale_fill_viridis_c(direction = -1, option = "A")+ 
   labs(fill="% youth with care in natura") + 
   theme_void()
 ```

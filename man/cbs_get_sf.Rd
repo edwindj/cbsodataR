@@ -4,12 +4,19 @@
 \alias{cbs_get_sf}
 \title{Retrieve an sf map for plotting}
 \usage{
-cbs_get_sf(region, year, verbose = FALSE)
+cbs_get_sf(
+  region,
+  year,
+  keep_columns = c("statcode", "statnaam"),
+  verbose = FALSE
+)
 }
 \arguments{
 \item{region}{\code{character} name of region}
 
 \item{year}{\code{integer} year of a region}
+
+\item{keep_columns}{\code{character}, set to \code{NULL} to retrieve all columns of the map}
 
 \item{verbose}{if \code{TRUE} the method is verbose}
 }
