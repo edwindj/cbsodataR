@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/edwindj/cbsodataR/">
+  <a href="https://github.com/edwindj/cbsodataR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,293 +75,391 @@
 
       
 
-      </header><script src="cbsodata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>cbsodataR, all data of Statistics Netherlands (CBS)</h1>
-                        <h4 class="author">Edwin de Jonge</h4>
+      <h1 data-toc-skip>cbsodataR, all data of Statistics Netherlands
+(CBS)</h1>
+                        <h4 data-toc-skip class="author">Edwin de
+Jonge</h4>
             
-            <h4 class="date">2021-05-31</h4>
+            <h4 data-toc-skip class="date">2023-12-23</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/master/vignettes/cbsodata.Rmd"><code>vignettes/cbsodata.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/HEAD/vignettes/cbsodata.Rmd" class="external-link"><code>vignettes/cbsodata.Rmd</code></a></small>
       <div class="hidden name"><code>cbsodata.Rmd</code></div>
 
     </div>
 
     
     
-<p><a href="https://www.cbs.nl">Statistics Netherlands (CBS)</a> is the office that produces all official statistics of the Netherlands.</p>
-<p>For long SN has put its data on the web in its online database <a href="https://opendata.cbs.nl/statline#/CBS/en/">StatLine</a>. Since 2014 this data base has an open data web API based on the OData protocol. The <em>cbsodataR</em> package allows for retrieving data right into R.</p>
-<div id="table-of-contents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#table-of-contents" class="anchor"></a>Table of Contents</h2>
-<p>A list of tables can be retrieved using the <code>cbs_get_datasets</code> (<code>cbs_get_toc</code>) function.</p>
+<p><a href="https://www.cbs.nl" class="external-link">Statistics Netherlands (CBS)</a> is the
+office that produces all official statistics of the Netherlands.</p>
+<p>For long SN has put its data on the web in its online database <a href="https://opendata.cbs.nl/statline#/CBS/en/" class="external-link">StatLine</a>. Since
+2014 this data base has an open data web API based on the OData
+protocol. The <em>cbsodataR</em> package allows for retrieving data
+right into R.</p>
+<div class="section level3">
+<h3 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
+</h3>
+<p>A list of tables can be retrieved using the
+<code>cbs_get_datasets</code> (<code>cbs_get_toc</code>) function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># not needed, but used in examples below</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/edwindj/cbsodataR">cbsodataR</a></span><span class="op">)</span>
-
-<span class="va">datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_datasets.html">cbs_get_datasets</a></span><span class="op">(</span><span class="op">)</span> 
-
-<span class="va">datasets</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Language</span> <span class="op">==</span> <span class="st">"en"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># only English tables</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Identifier</span>, <span class="va">ShortTitle</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 842 x 2
-##    Identifier ShortTitle                             
-##    &lt;chr&gt;      &lt;chr&gt;                                  
-##  1 80783eng   Agriculture; general farm type, region 
-##  2 80784eng   Agriculture; labour force, region      
-##  3 7100eng    Arable crops; production               
-##  4 70671ENG   Fruit culture; area fruit orchards     
-##  5 37738ENG   Vegetables; yield per kind of vegetable
-##  6 83981ENG   Livestock manure; key figures          
-##  7 80274eng   Livestock cattle                       
-##  8 7373eng    Livestock pigs                         
-##  9 7425eng    Milk supply and dairy production       
-## 10 84312ENG   Caribbean NL; students MBO             
-## # … with 832 more rows</code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># not needed, but used in examples below</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/edwindj/cbsodataR" class="external-link">cbsodataR</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_datasets.html">cbs_get_datasets</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">datasets</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Language</span> <span class="op">==</span> <span class="st">"en"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># only English tables</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Identifier</span>, <span class="va">ShortTitle</span><span class="op">)</span> </span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 937 × 2</span></span>
+<span><span class="co">##    Identifier ShortTitle                             </span></span>
+<span><span class="co">##    &lt;chr&gt;      &lt;chr&gt;                                  </span></span>
+<span><span class="co">##  1 80783eng   Agriculture; general farm type, region </span></span>
+<span><span class="co">##  2 80784eng   Agriculture; labour force, region      </span></span>
+<span><span class="co">##  3 85636ENG   Arable crops; production               </span></span>
+<span><span class="co">##  4 37738ENG   Vegetables; yield per kind of vegetable</span></span>
+<span><span class="co">##  5 83981ENG   Livestock manure; key figures          </span></span>
+<span><span class="co">##  6 84952ENG   Livestock                              </span></span>
+<span><span class="co">##  7 7425eng    Milk supply and dairy production       </span></span>
+<span><span class="co">##  8 84312ENG   Caribbean NL; students MBO             </span></span>
+<span><span class="co">##  9 84732ENG   Caribbean NL; pupils and students      </span></span>
+<span><span class="co">## 10 81154eng   Caribbean NL; electricity and water    </span></span>
+<span><span class="co">## # ℹ 927 more rows</span></span></code></pre>
 </div>
-<div id="search-for-tables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search-for-tables" class="anchor"></a>Search for tables</h2>
-<p>Tables can be searched for using the <code>cbs_search</code> function.</p>
+<div class="section level3">
+<h3 id="search-for-tables">Search for tables<a class="anchor" aria-label="anchor" href="#search-for-tables"></a>
+</h3>
+<p>Tables can be searched for using the <code>cbs_search</code>
+function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">toc_apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_search.html">cbs_search</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"elstar"</span>, <span class="st">"apple"</span><span class="op">)</span>, language <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span>
-<span class="va">toc_apples</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Identifier"</span>, <span class="st">"ShortTitle"</span>, <span class="st">"score"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   Identifier ShortTitle                          score
-##   &lt;chr&gt;      &lt;chr&gt;                               &lt;dbl&gt;
-## 1 71509ENG   Yield apples and pears, 1997 - 2017  14.5</code></pre>
+<code class="sourceCode R"><span><span class="va">toc_apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_search.html">cbs_search</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"elstar"</span>, <span class="st">"apple"</span><span class="op">)</span>, language <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span></span>
+<span><span class="va">toc_apples</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Identifier"</span>, <span class="st">"ShortTitle"</span>, <span class="st">"score"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 1 × 3</span></span>
+<span><span class="co">##   Identifier ShortTitle                          score</span></span>
+<span><span class="co">##   &lt;chr&gt;      &lt;chr&gt;                               &lt;dbl&gt;</span></span>
+<span><span class="co">## 1 71509ENG   Yield apples and pears, 1997 - 2017  2.62</span></span></code></pre>
 </div>
-<div id="other-catalogs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-catalogs" class="anchor"></a>Other catalogs</h2>
+<div class="section level3">
+<h3 id="other-catalogs">Other catalogs<a class="anchor" aria-label="anchor" href="#other-catalogs"></a>
+</h3>
 <p>Other catalogs with data are available:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">catalogs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_catalogs.html">cbs_get_catalogs</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">catalogs</span><span class="op">$</span><span class="va">Identifier</span></code></pre></div>
-<pre><code>##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
-##  [7] "Politie"  "MVstat"   "AZW"      "InterReg"</code></pre>
+<code class="sourceCode R"><span><span class="va">catalogs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_catalogs.html">cbs_get_catalogs</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">catalogs</span><span class="op">$</span><span class="va">Identifier</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    </span></span>
+<span><span class="co">##  [7] "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"</span></span></code></pre>
 </div>
-<div id="metadata" class="section level2">
-<h2 class="hasAnchor">
-<a href="#metadata" class="anchor"></a>Metadata</h2>
-<p>Using an “Identifier” from <code>cbs_get_datasets</code> or <code>cbs_search</code> information on the table can be retrieved with <code>cbs_get_meta</code></p>
+<div class="section level3">
+<h3 id="metadata">Metadata<a class="anchor" aria-label="anchor" href="#metadata"></a>
+</h3>
+<p>Using an “Identifier” from <code>cbs_get_datasets</code> or
+<code>cbs_search</code> information on the table can be retrieved with
+<code>cbs_get_meta</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span>
-<span class="va">apples</span></code></pre></div>
-<pre><code>## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017
-##   FruitFarmingRegions: 'Fruit farming regions'
-##   Periods: 'Periods' 
-## 
-## Retrieve a default data selection with:
-##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", 
-## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", 
-## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", 
-## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", 
-## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", 
-## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", 
-## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", 
-## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", 
-## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", 
-## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", 
-## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", 
-## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"
-## ))</code></pre>
-<p>The meta object contains all metadata properties of cbsodata (see the <a href="https://www.cbs.nl/-/media/_pdf/2017/13/handleiding-cbs-open-data-services.pdf?la=nl-nl">original documentation</a>) in the form of data.frames. Each data.frame describes properties of the SN table.</p>
+<code class="sourceCode R"><span><span class="va">apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span></span>
+<span><span class="va">apples</span></span></code></pre></div>
+<pre><code><span><span class="co">## 71509ENG: 'Yield apples and pears, 1997 - 2017', 2017</span></span>
+<span><span class="co">##   FruitFarmingRegions: 'Fruit farming regions'</span></span>
+<span><span class="co">##   Periods: 'Periods' </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Retrieve a default data selection with:</span></span>
+<span><span class="co">##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", </span></span>
+<span><span class="co">## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", </span></span>
+<span><span class="co">## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", </span></span>
+<span><span class="co">## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", </span></span>
+<span><span class="co">## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", </span></span>
+<span><span class="co">## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", </span></span>
+<span><span class="co">## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", </span></span>
+<span><span class="co">## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", </span></span>
+<span><span class="co">## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", </span></span>
+<span><span class="co">## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", </span></span>
+<span><span class="co">## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", </span></span>
+<span><span class="co">## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"</span></span>
+<span><span class="co">## ))</span></span></code></pre>
+<p>The meta object contains all metadata properties of cbsodata (see the
+<a href="https://www.cbs.nl/-/media/_pdf/2017/13/handleiding-cbs-open-data-services.pdf?la=nl-nl" class="external-link">original
+documentation</a>) in the form of data.frames. Each data.frame describes
+properties of the SN table.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">apples</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
-## [4] "FruitFarmingRegions" "Periods"</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">apples</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     </span></span>
+<span><span class="co">## [4] "FruitFarmingRegions" "Periods"</span></span></code></pre>
 </div>
-<div id="data-download" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-download" class="anchor"></a>Data download</h2>
-<p>With <code>cbs_get_data</code> data can be retrieved. By default all data for this table will be downloaded in a temporary directory.</p>
+<div class="section level3">
+<h3 id="data-download">Data download<a class="anchor" aria-label="anchor" href="#data-download"></a>
+</h3>
+<p>With <code>cbs_get_data</code> data can be retrieved. By default all
+data for this table will be downloaded in a temporary directory.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># demonstration purpose</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-##   &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;
-## 1 1                   1997JJ00                   420                 43
-## 2 1                   1998JJ00                   518                 40
-## 3 1                   1999JJ00                   568                 39
-## 4 1                   2000JJ00                   461                 27
-## 5 1                   2001JJ00                   408                 30
-## 6 1                   2002JJ00                   354                 17</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span>  <span class="co"># demonstration purpose</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 6 × 4</span></span>
+<span><span class="co">##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</span></span>
+<span><span class="co">## 1 1                   1997JJ00                   420                 43</span></span>
+<span><span class="co">## 2 1                   1998JJ00                   518                 40</span></span>
+<span><span class="co">## 3 1                   1999JJ00                   568                 39</span></span>
+<span><span class="co">## 4 1                   2000JJ00                   461                 27</span></span>
+<span><span class="co">## 5 1                   2001JJ00                   408                 30</span></span>
+<span><span class="co">## 6 1                   2002JJ00                   354                 17</span></span></code></pre>
 </div>
-<div id="data-download-from-a-link" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-download-from-a-link" class="anchor"></a>Data download from a link</h2>
-<p>The opendata portal of CBS (<a href="https://opendata.cbs.nl/dataportaal/#/CBS/en" class="uri">https://opendata.cbs.nl/dataportaal/#/CBS/en</a>) allows for finding a table and making a selection within this table manually. Such a selection can be stored in a hyperlink (click the “share” button). This link can also be used with <code>cbsodataR</code> using the <code>cbs_get_data_from_link</code> function.</p>
+<div class="section level3">
+<h3 id="data-download-from-a-link">Data download from a link<a class="anchor" aria-label="anchor" href="#data-download-from-a-link"></a>
+</h3>
+<p>The opendata portal of CBS (<a href="https://opendata.cbs.nl/dataportaal/#/CBS/en" class="external-link uri">https://opendata.cbs.nl/dataportaal/#/CBS/en</a>) allows for
+finding a table and making a selection within this table manually. Such
+a selection can be stored in a hyperlink (click the “share” button).
+This link can also be used with <code>cbsodataR</code> using the
+<code>cbs_get_data_from_link</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cbs_get_data_from_link.html">cbs_get_data_from_link</a></span><span class="op">(</span><span class="st">"https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Executing:
-## cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), base_url = "http://opendata.cbs.nl")
-
-## # A tibble: 6 x 4
-##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-##   &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;
-## 1 1                   1997JJ00                   420                 43
-## 2 1                   2012JJ00                   282                  3
-## 3 1                   2013JJ00                   314                  4
-## 4 1                   2016JJ00                   317                  2
-## 5 2                   1997JJ00                    86                 10
-## 6 2                   2012JJ00                    34                  0</code></pre>
-<div id="adding-category-labels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#adding-category-labels" class="anchor"></a>Adding category labels</h3>
-<p>The first columns are categorical columns: they contain codes. The labels for these columns can be added with the function <code>cbs_add_label_columns</code>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cbs_get_data_from_link.html">cbs_get_data_from_link</a></span><span class="op">(</span><span class="st">"https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Executing:</span></span>
+<span><span class="co">## cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), base_url = "http://opendata.cbs.nl")</span></span>
+<span></span>
+<span><span class="co">## # A tibble: 6 × 4</span></span>
+<span><span class="co">##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;chr&gt;                    &lt;int&gt;              &lt;int&gt;</span></span>
+<span><span class="co">## 1 1                   1997JJ00                   420                 43</span></span>
+<span><span class="co">## 2 1                   2012JJ00                   282                  3</span></span>
+<span><span class="co">## 3 1                   2013JJ00                   314                  4</span></span>
+<span><span class="co">## 4 1                   2016JJ00                   317                  2</span></span>
+<span><span class="co">## 5 2                   1997JJ00                    86                 10</span></span>
+<span><span class="co">## 6 2                   2012JJ00                    34                  0</span></span></code></pre>
+<div class="section level4">
+<h4 id="adding-category-labels">Adding category labels<a class="anchor" aria-label="anchor" href="#adding-category-labels"></a>
+</h4>
+<p>The first columns are categorical columns: they contain codes. The
+labels for these columns can be added with the function
+<code>cbs_add_label_columns</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-##   &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        
-## 1 1                   Total Netherlands         1997JJ00 1997         
-## 2 1                   Total Netherlands         1998JJ00 1998         
-## 3 1                   Total Netherlands         1999JJ00 1999         
-## 4 1                   Total Netherlands         2000JJ00 2000         
-## 5 1                   Total Netherlands         2001JJ00 2001         
-## 6 1                   Total Netherlands         2002JJ00 2002</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 6 × 4</span></span>
+<span><span class="co">##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </span></span>
+<span><span class="co">## 1 1                   Total Netherlands         1997JJ00 1997         </span></span>
+<span><span class="co">## 2 1                   Total Netherlands         1998JJ00 1998         </span></span>
+<span><span class="co">## 3 1                   Total Netherlands         1999JJ00 1999         </span></span>
+<span><span class="co">## 4 1                   Total Netherlands         2000JJ00 2000         </span></span>
+<span><span class="co">## 5 1                   Total Netherlands         2001JJ00 2001         </span></span>
+<span><span class="co">## 6 1                   Total Netherlands         2002JJ00 2002</span></span></code></pre>
 </div>
-<div id="adding-date-column" class="section level3">
-<h3 class="hasAnchor">
-<a href="#adding-date-column" class="anchor"></a>Adding Date column</h3>
-<p>The period/time columns of Statistics Netherlands (CBS) contain coded time periods: e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3), 2016MM04 (i.e. 2016 April). With <code>cbs_add_date_column</code> the time periods will be converted and added to the data:</p>
+<div class="section level4">
+<h4 id="adding-date-column">Adding Date column<a class="anchor" aria-label="anchor" href="#adding-date-column"></a>
+</h4>
+<p>The period/time columns of Statistics Netherlands (CBS) contain coded
+time periods: e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3),
+2016MM04 (i.e. 2016 April). With <code>cbs_add_date_column</code> the
+time periods will be converted and added to the data:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/cbs_add_date_column.html">cbs_add_date_column</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   Periods  Periods_Date Periods_freq
-##   &lt;chr&gt;    &lt;date&gt;       &lt;fct&gt;       
-## 1 1997JJ00 1997-01-01   Y           
-## 2 1998JJ00 1998-01-01   Y           
-## 3 1999JJ00 1999-01-01   Y           
-## 4 2000JJ00 2000-01-01   Y           
-## 5 2001JJ00 2001-01-01   Y           
-## 6 2002JJ00 2002-01-01   Y</code></pre>
-<p>This can be useful for further time series analysis, but also for displaying. It is also possible to convert the dates to numbers:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/cbs_add_date_column.html">cbs_add_date_column</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 6 × 3</span></span>
+<span><span class="co">##   Periods  Periods_Date Periods_freq</span></span>
+<span><span class="co">##   &lt;chr&gt;    &lt;date&gt;       &lt;fct&gt;       </span></span>
+<span><span class="co">## 1 1997JJ00 1997-01-01   Y           </span></span>
+<span><span class="co">## 2 1998JJ00 1998-01-01   Y           </span></span>
+<span><span class="co">## 3 1999JJ00 1999-01-01   Y           </span></span>
+<span><span class="co">## 4 2000JJ00 2000-01-01   Y           </span></span>
+<span><span class="co">## 5 2001JJ00 2001-01-01   Y           </span></span>
+<span><span class="co">## 6 2002JJ00 2002-01-01   Y</span></span></code></pre>
+<p>This can be useful for further time series analysis, but also for
+displaying. It is also possible to convert the dates to numbers:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/cbs_add_date_column.html">cbs_add_date_column</a></span><span class="op">(</span>date_type <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   Periods  Periods_numeric Periods_freq
-##   &lt;chr&gt;              &lt;int&gt; &lt;fct&gt;       
-## 1 1997JJ00            1997 Y           
-## 2 1998JJ00            1998 Y           
-## 3 1999JJ00            1999 Y           
-## 4 2000JJ00            2000 Y           
-## 5 2001JJ00            2001 Y           
-## 6 2002JJ00            2002 Y</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/cbs_add_date_column.html">cbs_add_date_column</a></span><span class="op">(</span>date_type <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 6 × 3</span></span>
+<span><span class="co">##   Periods  Periods_numeric Periods_freq</span></span>
+<span><span class="co">##   &lt;chr&gt;              &lt;int&gt; &lt;fct&gt;       </span></span>
+<span><span class="co">## 1 1997JJ00            1997 Y           </span></span>
+<span><span class="co">## 2 1998JJ00            1998 Y           </span></span>
+<span><span class="co">## 3 1999JJ00            1999 Y           </span></span>
+<span><span class="co">## 4 2000JJ00            2000 Y           </span></span>
+<span><span class="co">## 5 2001JJ00            2001 Y           </span></span>
+<span><span class="co">## 6 2002JJ00            2002 Y</span></span></code></pre>
 </div>
 </div>
-<div id="select-and-filter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#select-and-filter" class="anchor"></a>Select and filter`</h2>
-<p>It is possible restrict the download using filter statements. This may shorten the download time considerably.</p>
-<div id="filter" class="section level3">
-<h3 class="hasAnchor">
-<a href="#filter" class="anchor"></a>Filter</h3>
-<p>Filter statements for the columns can be used to restrict the download. Note the following:</p>
+<div class="section level3">
+<h3 id="select-and-filter">Select and filter`<a class="anchor" aria-label="anchor" href="#select-and-filter"></a>
+</h3>
+<p>It is possible restrict the download using filter statements. This
+may shorten the download time considerably.</p>
+<div class="section level4">
+<h4 id="filter">Filter<a class="anchor" aria-label="anchor" href="#filter"></a>
+</h4>
+<p>Filter statements for the columns can be used to restrict the
+download. Note the following:</p>
 <ul>
-<li>To filter you will need to use the values found in the <code>$Key</code> column in the <code>cbs_get_meta</code> objects. e.g. for year 2020, the code is “2020JJ00”.</li>
+<li>To filter you will need to use the values found in the
+<code>$Key</code> column in the <code>cbs_get_meta</code> objects.
+e.g. for year 2020, the code is “2020JJ00”.</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">apples</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
-## [4] "FruitFarmingRegions" "Periods"</code></pre>
+<code class="sourceCode R"><span><span class="va">apples</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_meta.html">cbs_get_meta</a></span><span class="op">(</span><span class="st">'71509ENG'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">apples</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     </span></span>
+<span><span class="co">## [4] "FruitFarmingRegions" "Periods"</span></span></code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># meta data for column Periods</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">apples</span><span class="op">$</span><span class="va">Periods</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code>##        Key Title
-## 1 1997JJ00  1997
-## 2 1998JJ00  1998
-## 3 1999JJ00  1999
-## 4 2000JJ00  2000
-## 5 2001JJ00  2001
-## 6 2002JJ00  2002</code></pre>
+<code class="sourceCode R"><span><span class="co"># meta data for column Periods</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">apples</span><span class="op">$</span><span class="va">Periods</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##        Key Title</span></span>
+<span><span class="co">## 1 1997JJ00  1997</span></span>
+<span><span class="co">## 2 1998JJ00  1998</span></span>
+<span><span class="co">## 3 1999JJ00  1999</span></span>
+<span><span class="co">## 4 2000JJ00  2000</span></span>
+<span><span class="co">## 5 2001JJ00  2001</span></span>
+<span><span class="co">## 6 2002JJ00  2002</span></span></code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#meta data for column FruitFarmingRegions</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">apples</span><span class="op">$</span><span class="va">FruitFarmingRegions</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span> <span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code>##   Key             Title
-## 1   1 Total Netherlands
-## 2   2      Region North
-## 3   4       Region West
-## 4   3    Region Central
-## 5   5      Region South</code></pre>
+<code class="sourceCode R"><span><span class="co">#meta data for column FruitFarmingRegions</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">apples</span><span class="op">$</span><span class="va">FruitFarmingRegions</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span> <span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   Key             Title</span></span>
+<span><span class="co">## 1   1 Total Netherlands</span></span>
+<span><span class="co">## 2   2      Region North</span></span>
+<span><span class="co">## 3   4       Region West</span></span>
+<span><span class="co">## 4   3    Region Central</span></span>
+<span><span class="co">## 5   5      Region South</span></span></code></pre>
 <ul>
-<li>To filter for values in a column add <code>&lt;column_name&gt; = values</code> to <code>cbs_get_data</code> e.g. <code>Periods = c("2019JJ00", "2020JJ0")</code>
+<li>To filter for values in a column add
+<code>&lt;column_name&gt; = values</code> to <code>cbs_get_data</code>
+e.g. <code>Periods = c("2019JJ00", "2020JJ0")</code>
 </li>
 </ul>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span>
-              , Periods<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'2000JJ00'</span>,<span class="st">'2001JJ00'</span><span class="op">)</span> <span class="co"># selection on Periods column</span>
-              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span>
-              <span class="co">#</span>
-              <span class="co"># restrict the columns to the following as found in</span>
-              <span class="co"># apples$DataProperties with "select"</span>
-              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  
-              <span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 5
-##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
-## 1 1                 Total Netherlands   2000JJ00 2000                        461
-## 2 1                 Total Netherlands   2001JJ00 2001                        408</code></pre>
+<code class="sourceCode R"><span>  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span></span>
+<span>              , Periods<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'2000JJ00'</span>,<span class="st">'2001JJ00'</span><span class="op">)</span> <span class="co"># selection on Periods column</span></span>
+<span>              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></span>
+<span>              <span class="co">#</span></span>
+<span>              <span class="co"># restrict the columns to the following as found in</span></span>
+<span>              <span class="co"># apples$DataProperties with "select"</span></span>
+<span>              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  </span>
+<span>              <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 2 × 5</span></span>
+<span><span class="co">##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </span></span>
+<span><span class="co">## 1 1                   Total Netherlands         2000JJ00 2000         </span></span>
+<span><span class="co">## 2 1                   Total Netherlands         2001JJ00 2001         </span></span>
+<span><span class="co">## # ℹ 1 more variable: TotalAppleVarieties_1 &lt;int&gt;</span></span></code></pre>
 <ul>
-<li>To filter for values in a column that have a substring e.g. “JJ” you can use <code>&lt;column_name&gt; = has_substring(&lt;substring&gt;)</code> to <code>cbs_get_data</code> e.g. <code>Periods = has_substring("KW")</code>
+<li>To filter for values in a column that have a substring e.g. “JJ” you
+can use
+<code>&lt;column_name&gt; = has_substring(&lt;substring&gt;)</code> to
+<code>cbs_get_data</code>
+e.g. <code>Periods = has_substring("KW")</code>
 </li>
 </ul>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span>
-              , Periods <span class="op">=</span> <span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">'2000'</span><span class="op">)</span> <span class="co"># selection on Periods column</span>
-              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span>
-              <span class="co">#</span>
-              <span class="co"># restrict the columns to the following as found in</span>
-              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span>
-              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  
-              <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 5
-##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
-## 1 1                 Total Netherlands   2000JJ00 2000                        461</code></pre>
+<code class="sourceCode R"><span>  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span></span>
+<span>              , Periods <span class="op">=</span> <span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">'2000'</span><span class="op">)</span> <span class="co"># selection on Periods column</span></span>
+<span>              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></span>
+<span>              <span class="co">#</span></span>
+<span>              <span class="co"># restrict the columns to the following as found in</span></span>
+<span>              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span></span>
+<span>              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  </span>
+<span>              <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 1 × 5</span></span>
+<span><span class="co">##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </span></span>
+<span><span class="co">## 1 1                   Total Netherlands         2000JJ00 2000         </span></span>
+<span><span class="co">## # ℹ 1 more variable: TotalAppleVarieties_1 &lt;int&gt;</span></span></code></pre>
 <ul>
-<li>To combine values and substring use the “|” operator: <code>Periods = eq("2020JJ00") | has_substring("KW")</code>
+<li>To combine values and substring use the “|” operator:
+<code>Periods = eq("2020JJ00") | has_substring("KW")</code>
 </li>
 </ul>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span>
-              , Periods <span class="op">=</span> <span class="fu"><a href="../reference/eq.html">eq</a></span><span class="op">(</span><span class="st">"2010JJ00"</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">'2000'</span><span class="op">)</span> <span class="co"># selection on Periods column</span>
-              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span>
-              <span class="co">#</span>
-              <span class="co"># restrict the columns to the following as found in</span>
-              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span>
-              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  
-              <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 5
-##   FruitFarmingRegi… FruitFarmingRegion… Periods  Periods_label TotalAppleVariet…
-##   &lt;chr&gt;             &lt;fct&gt;               &lt;chr&gt;    &lt;fct&gt;                     &lt;int&gt;
-## 1 1                 Total Netherlands   2000JJ00 2000                        461
-## 2 1                 Total Netherlands   2010JJ00 2010                        334</code></pre>
+<code class="sourceCode R"><span>  <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">'71509ENG'</span></span>
+<span>              , Periods <span class="op">=</span> <span class="fu"><a href="../reference/eq.html">eq</a></span><span class="op">(</span><span class="st">"2010JJ00"</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">'2000'</span><span class="op">)</span> <span class="co"># selection on Periods column</span></span>
+<span>              , FruitFarmingRegions <span class="op">=</span> <span class="st">"1"</span> <span class="co"># selection on FruitFarmingRegions</span></span>
+<span>              <span class="co">#</span></span>
+<span>              <span class="co"># restrict the columns to the following as found in</span></span>
+<span>              <span class="co"># cbs_get_meta("71509ENG")$DataProperties with "select"</span></span>
+<span>              , select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FruitFarmingRegions"</span>, <span class="st">"Periods"</span>, <span class="st">"TotalAppleVarieties_1"</span><span class="op">)</span>  </span>
+<span>              <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 2 × 5</span></span>
+<span><span class="co">##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;fct&gt;                     &lt;chr&gt;    &lt;fct&gt;        </span></span>
+<span><span class="co">## 1 1                   Total Netherlands         2000JJ00 2000         </span></span>
+<span><span class="co">## 2 1                   Total Netherlands         2010JJ00 2010         </span></span>
+<span><span class="co">## # ℹ 1 more variable: TotalAppleVarieties_1 &lt;int&gt;</span></span></code></pre>
 </div>
 </div>
-<div id="download-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#download-data" class="anchor"></a>Download data</h1>
-<p>Data can also be downloaded explicitly by using <code>cbs_download_table</code></p>
+<div class="section level2">
+<h2 id="download-data">Download data<a class="anchor" aria-label="anchor" href="#download-data"></a>
+</h2>
+<p>Data can also be downloaded explicitly by using
+<code>cbs_download_table</code></p>
+</div>
+<div class="section level2">
+<h2 id="map-material">Map material<a class="anchor" aria-label="anchor" href="#map-material"></a>
+</h2>
+<p><code>cbsodataR</code> gives an easy way to retrieve cartographic
+maps that can be used with data that is downloaded with
+<code>cbsodataR</code>.</p>
+<p>To see a list of available maps use, the function
+<code><a href="../reference/cbs_get_maps.html">cbs_get_maps()</a></code></p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cbs_maps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_maps.html">cbs_get_maps</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cbs_maps</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##              region year</span></span>
+<span><span class="co">## 1 arbeidsmarktregio 2014</span></span>
+<span><span class="co">## 2 arbeidsmarktregio 2015</span></span>
+<span><span class="co">## 3 arbeidsmarktregio 2016</span></span>
+<span><span class="co">## 4 arbeidsmarktregio 2017</span></span>
+<span><span class="co">## 5 arbeidsmarktregio 2018</span></span>
+<span><span class="co">## 6 arbeidsmarktregio 2019</span></span>
+<span><span class="co">##                                                                wgs84</span></span>
+<span><span class="co">## 1 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2014.geojson</span></span>
+<span><span class="co">## 2 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2015.geojson</span></span>
+<span><span class="co">## 3 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2016.geojson</span></span>
+<span><span class="co">## 4 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2017.geojson</span></span>
+<span><span class="co">## 5 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2018.geojson</span></span>
+<span><span class="co">## 6 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2019.geojson</span></span>
+<span><span class="co">##                                                                rd</span></span>
+<span><span class="co">## 1 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2014.geojson</span></span>
+<span><span class="co">## 2 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2015.geojson</span></span>
+<span><span class="co">## 3 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2016.geojson</span></span>
+<span><span class="co">## 4 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2017.geojson</span></span>
+<span><span class="co">## 5 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2018.geojson</span></span>
+<span><span class="co">## 6 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2019.geojson</span></span></code></pre>
+<p>To use a single map the function <code>cbs_get_data</code> can be
+used.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">"85098NED"</span> <span class="co"># youth care table</span></span>
+<span>                 , Perioden<span class="op">=</span><span class="st">"2022JJ00"</span> <span class="co"># only figures of 2022</span></span>
+<span>                 , RegioS<span class="op">=</span><span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">"GM"</span><span class="op">)</span> <span class="co"># only "gemeente" figures</span></span>
+<span>                 <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/cbs_add_label_columns.html">cbs_add_label_columns</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span> RegioS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/trimws.html" class="external-link">trimws</a></span><span class="op">(</span><span class="va">RegioS</span><span class="op">)</span> <span class="co"># RegioS can contain spaces...(don't get me started)</span></span>
+<span>        , natura <span class="op">=</span> <span class="va">JongerenMetJeugdhulpInNatura_1</span></span>
+<span>        <span class="op">)</span></span>
+<span></span>
+<span><span class="va">gemeente_2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_sf.html">cbs_get_sf</a></span><span class="op">(</span>region<span class="op">=</span><span class="st">"gemeente"</span>, year<span class="op">=</span><span class="st">"2022"</span><span class="op">)</span></span>
+<span><span class="va">gemeente_2022</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">d</span>, by<span class="op">=</span><span class="st">"RegioS"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill<span class="op">=</span><span class="va">natura</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"#FFFFFF99"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="cbsodataR_files/figure-gfm/map-1.png"><!-- --></p>
 </div>
   </div>
 
@@ -380,11 +474,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Edwin de Jonge.</p>
+  <p></p>
+<p>Developed by Edwin de Jonge.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -392,6 +488,8 @@
 
   
 
+
+  
 
   </body>
 </html>
