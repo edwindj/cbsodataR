@@ -88,6 +88,11 @@ cbs_get_data <- function( id
     attr(data[[is_time]], "is_time") <- TRUE
   }
   
+  is_region <- meta$DataProperties$Key[meta$DataProperties$Type == "GeoDimension"]
+  if (length(is_region)){
+    attr(data[[is_region]], "is_region") <- TRUE
+  }
+  
   class(data) <- c('tbl_df', 'tbl','data.frame')
   data
 }

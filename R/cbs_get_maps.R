@@ -8,7 +8,7 @@ CARTOMAP_TOC <- "https://cartomap.github.io/nl/index.csv"
 #' @return `data.frame` with region, year and links to geojson
 #' @export
 #' @example example/cbs_get_maps.R
-#' @family map
+#' @family cartographic map
 cbs_get_maps <- function(verbose = FALSE, cache = TRUE){
   
   if (isTRUE(cache)){

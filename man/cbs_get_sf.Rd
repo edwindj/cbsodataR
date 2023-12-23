@@ -2,24 +2,32 @@
 % Please edit documentation in R/cbs_get_sf.R
 \name{cbs_get_sf}
 \alias{cbs_get_sf}
-\title{Retrieve a polygon file}
+\title{Retrieve an sf map for plotting}
 \usage{
-cbs_get_sf(region, year, add_regios = TRUE, verbose = FALSE)
+cbs_get_sf(region, year, verbose = FALSE)
 }
 \arguments{
 \item{region}{\code{character} name of region}
 
 \item{year}{\code{integer} year of a region}
 
-\item{add_regios}{if \code{TRUE} the \verb{$statcode} column is copied to a \verb{$RegioS} column}
-
 \item{verbose}{if \code{TRUE} the method is verbose}
 }
 \value{
-\code{\link[sf:sf]{sf::sf()}} object with the polygons of the regions specified.
+\code{\link[sf:sf]{sf::st_sf()}} object with the polygons of the regions specified.
 }
 \description{
-Retrieve a polygon sf object.
+Retrieve a polygon sf object that can be used for plotting.
+This function only provides the region boundaries.
+}
+\details{
+To use the map for plotting:
+\itemize{
+\item add data columns to the sf data.frame returned by \code{cbs_get_sf}, e.g. by
+using \code{dplyr::left_join} or otherwise
+\item use \code{ggplot2},  \code{tmap}, \code{leaflet} or any other plotting library useful for
+plotting spatial data.
+}
 }
 \examples{
 if (interactive()){
@@ -33,12 +41,49 @@ if (interactive()){
   # sf object
   gemeente_map
   
-  # senseless plot
+  # plot the statcodes (included in the map)
   plot(gemeente_map, max.plot = 1)
+  
+  # now connect with some data
+  labor <- cbs_get_data("85268NED"
+                       , Perioden = "2022JJ00" # only 2022
+                       , RegioS = has_substring("PV") # only province
+                       , verbose = TRUE
+                       )
+  
+  # most conveniently
+  provincie_2022_with_data <- cbs_join_sf_with_data("provincie", 2022, labor)
+  
+  # better plotting options are ggplot2 or tmap, 
+  # but keeping dependencies low...
+  provincie_2022_with_data |> 
+    subset(select = Werkloosheidspercentage_13) |> 
+    plot( border ="#FFFFFF99", main="unemployment rate")
+  
+  ## but of course this can also be done by hand:
+  labor <- labor |> 
+    cbs_add_statcode_column()  # add column to connect with map
+  
+  provincie_2022 <- cbs_get_sf("provincie", 2022)
+  
+  # this is a left_join(provincie_2022, labor, by = "statcode")
+  provincie_2022_data <- 
+    within(provincie_2022, {
+      unemployment_rate <- labor$Werkloosheidspercentage_13[match(statcode, labor$statcode)]
+    }) 
+  
+  # better plotting options are ggplot2 or tmap, 
+  # but keeping dependencies low...
+  plot( provincie_2022_data[,c("unemployment_rate")]
+      , border ="#FFFFFF99"
+      , nbreaks = 12
+      )
 }
 }
 \seealso{
-Other map: 
-\code{\link{cbs_get_maps}()}
+Other cartographic map: 
+\code{\link{cbs_add_statcode_column}()},
+\code{\link{cbs_get_maps}()},
+\code{\link{cbs_join_sf_with_data}()}
 }
-\concept{map}
+\concept{cartographic map}

@@ -1,19 +1,28 @@
-#' Retrieve a polygon file
+#' Retrieve an sf map for plotting
 #' 
-#' Retrieve a polygon sf object.
+#' Retrieve a polygon sf object that can be used for plotting.
+#' This function only provides the region boundaries.
+#' 
+#' To use the map for plotting:
+#' 
+#' - add data columns to the sf data.frame returned by `cbs_get_sf`, e.g. by 
+#' using `dplyr::left_join` or otherwise
+#' - use `ggplot2`,  `tmap`, `leaflet` or any other plotting library useful for
+#' plotting spatial data.
 #' @param region `character` name of region
 #' @param year `integer` year of a region
-#' @param add_regios if `TRUE` the `$statcode` column is copied to a `$RegioS` column
 #' @param verbose if `TRUE` the method is verbose
-#' @return [sf::sf()] object with the polygons of the regions specified.
+#' @return [sf::st_sf()] object with the polygons of the regions specified.
 #' @export
 #' @example example/cbs_get_maps.R
-#' @family map
+#' @family cartographic map
 cbs_get_sf <- function( region
                       , year
-                      , add_regios = TRUE
                       , verbose = FALSE
                       ){
+  if (isTRUE(verbose)){
+    message("Note that `cbs_add_statcode` can be used for connecting the map to the data.")
+  }
   
   if (!requireNamespace("sf", quietly = TRUE)){
     message("This function requires package 'sf'.")
@@ -61,8 +70,5 @@ Available are: "
     map_sf <- sf::read_sf(geojson, quiet = !verbose, crs = 28992)
   })
   
-  if (isTRUE(add_regios)){
-    map_sf$RegioS <- map_sf$statcode
-  }
   map_sf
 }
