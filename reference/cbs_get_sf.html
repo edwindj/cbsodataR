@@ -65,7 +65,12 @@ This function only provides the region boundaries.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cbs_get_sf</span><span class="op">(</span><span class="va">region</span>, <span class="va">year</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cbs_get_sf</span><span class="op">(</span></span>
+<span>  <span class="va">region</span>,</span>
+<span>  <span class="va">year</span>,</span>
+<span>  keep_columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"statcode"</span>, <span class="st">"statnaam"</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -76,6 +81,10 @@ This function only provides the region boundaries.</p>
 
 <dt>year</dt>
 <dd><p><code>integer</code> year of a region</p></dd>
+
+
+<dt>keep_columns</dt>
+<dd><p><code>character</code>, set to <code>NULL</code> to retrieve all columns of the map</p></dd>
 
 
 <dt>verbose</dt>
