@@ -31,6 +31,9 @@
     <loc>/reference/cbs_add_label_columns.html</loc>
   </url>
   <url>
+    <loc>/reference/cbs_add_statcode_column.html</loc>
+  </url>
+  <url>
     <loc>/reference/cbs_default_selection.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>/reference/cbs_get_toc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/cbs_join_sf_with_data.html</loc>
   </url>
   <url>
     <loc>/reference/cbs_search.html</loc>

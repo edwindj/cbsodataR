@@ -84,8 +84,10 @@
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p>Other map: 
-<code><a href="cbs_get_sf.html">cbs_get_sf</a>()</code></p></div>
+    <div class="dont-index"><p>Other cartographic map: 
+<code><a href="cbs_add_statcode_column.html">cbs_add_statcode_column</a>()</code>,
+<code><a href="cbs_get_sf.html">cbs_get_sf</a>()</code>,
+<code><a href="cbs_join_sf_with_data.html">cbs_join_sf_with_data</a>()</code></p></div>
     </div>
 
     <div id="ref-examples">
@@ -101,8 +103,43 @@
 <span class="r-in"><span>  <span class="co"># sf object</span></span></span>
 <span class="r-in"><span>  <span class="va">gemeente_map</span></span></span>
 <span class="r-in"><span>  </span></span>
-<span class="r-in"><span>  <span class="co"># senseless plot</span></span></span>
+<span class="r-in"><span>  <span class="co"># plot the statcodes (included in the map)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">gemeente_map</span>, max.plot <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># now connect with some data</span></span></span>
+<span class="r-in"><span>  <span class="va">labor</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span><span class="st">"85268NED"</span></span></span>
+<span class="r-in"><span>                       , Perioden <span class="op">=</span> <span class="st">"2022JJ00"</span> <span class="co"># only 2022</span></span></span>
+<span class="r-in"><span>                       , RegioS <span class="op">=</span> <span class="fu"><a href="has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">"PV"</span><span class="op">)</span> <span class="co"># only province</span></span></span>
+<span class="r-in"><span>                       , verbose <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>                       <span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># most conveniently</span></span></span>
+<span class="r-in"><span>  <span class="va">provincie_2022_with_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_join_sf_with_data.html">cbs_join_sf_with_data</a></span><span class="op">(</span><span class="st">"provincie"</span>, <span class="fl">2022</span>, <span class="va">labor</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># better plotting options are ggplot2 or tmap, </span></span></span>
+<span class="r-in"><span>  <span class="co"># but keeping dependencies low...</span></span></span>
+<span class="r-in"><span>  <span class="va">provincie_2022_with_data</span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span>select <span class="op">=</span> <span class="va">Werkloosheidspercentage_13</span><span class="op">)</span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span> border <span class="op">=</span><span class="st">"#FFFFFF99"</span>, main<span class="op">=</span><span class="st">"unemployment rate"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co">## but of course this can also be done by hand:</span></span></span>
+<span class="r-in"><span>  <span class="va">labor</span> <span class="op">&lt;-</span> <span class="va">labor</span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>    <span class="fu"><a href="cbs_add_statcode_column.html">cbs_add_statcode_column</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># add column to connect with map</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="va">provincie_2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_get_sf.html">cbs_get_sf</a></span><span class="op">(</span><span class="st">"provincie"</span>, <span class="fl">2022</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># this is a left_join(provincie_2022, labor, by = "statcode")</span></span></span>
+<span class="r-in"><span>  <span class="va">provincie_2022_data</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">provincie_2022</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>      <span class="va">unemployment_rate</span> <span class="op">&lt;-</span> <span class="va">labor</span><span class="op">$</span><span class="va">Werkloosheidspercentage_13</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="va">statcode</span>, <span class="va">labor</span><span class="op">$</span><span class="va">statcode</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span>    <span class="op">}</span><span class="op">)</span> </span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># better plotting options are ggplot2 or tmap, </span></span></span>
+<span class="r-in"><span>  <span class="co"># but keeping dependencies low...</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span> <span class="va">provincie_2022_data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unemployment_rate"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span>      , border <span class="op">=</span><span class="st">"#FFFFFF99"</span></span></span>
+<span class="r-in"><span>      , nbreaks <span class="op">=</span> <span class="fl">12</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
