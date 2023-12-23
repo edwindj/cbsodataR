@@ -12,12 +12,14 @@
 #' @param region `character` name of region
 #' @param year `integer` year of a region
 #' @param verbose if `TRUE` the method is verbose
+#' @param keep_columns `character`, set to `NULL` to retrieve all columns of the map
 #' @return [sf::st_sf()] object with the polygons of the regions specified.
 #' @export
 #' @example example/cbs_get_maps.R
 #' @family cartographic map
 cbs_get_sf <- function( region
                       , year
+                      , keep_columns = c("statcode", "statnaam")
                       , verbose = FALSE
                       ){
   if (isTRUE(verbose)){
@@ -69,6 +71,10 @@ Available are: "
   suppressWarnings({
     map_sf <- sf::read_sf(geojson, quiet = !verbose, crs = 28992)
   })
+  
+  if (length(keep_columns)){
+    map_sf <- map_sf[, keep_columns]
+  }
   
   map_sf
 }

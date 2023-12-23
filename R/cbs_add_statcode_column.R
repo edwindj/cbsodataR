@@ -1,6 +1,9 @@
 #' Prepares dataset for making a map
 #' 
-#' Regional data uses the `x$RegioS`` dimension for data. The "codes" for each region
+#' Adds a `statcode` column to the dataset, so it can be more easily joined with
+#' a map retrieved with [cbs_get_sf()].
+#' 
+#' Regional data uses the `x$RegioS` dimension for data. The "codes" for each region
 #' are also used in the cartographic map boundaries of regions as used in [cbs_get_sf()].
 #' Unfortunately the codes in `x$RegioS` can have trailing spaces, and the variable
 #' used in the mapping material is named `statcode`. This method simply adds 

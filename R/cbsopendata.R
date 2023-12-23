@@ -37,6 +37,12 @@
 #' - [cbs_add_label_columns()], adds labels to the code columns in the data that
 #' was downloaded.
 #' 
+#' @section Cartographic maps:
+#' 
+#' - [cbs_get_maps()], returns a data.frame with available CBS maps
+#' - [cbs_join_sf_with_data()], returns an sf object joined with cbs table
+#' - [cbs_get_sf()], returns an sf object without data, e.g. "gemeente_2020".
+#' 
 #'@importFrom utils read.csv write.csv write.table View
 #'@docType package
 "_PACKAGE"

@@ -15,7 +15,15 @@ cbs_add_statcode_column(x, ...)
 original dataset with added \code{statcode} column.
 }
 \description{
-Regional data uses the \verb{x$RegioS`` dimension for data. The "codes" for each region are also used in the cartographic map boundaries of regions as used in [cbs_get_sf()]. Unfortunately the codes in }x$RegioS\verb{can have trailing spaces, and the variable used in the mapping material is named}statcode\verb{. This method simply adds  a }statcode\verb{column with trimmed codes from}RegioS`, making it more easy to
+Adds a \code{statcode} column to the dataset, so it can be more easily joined with
+a map retrieved with \code{\link[=cbs_get_sf]{cbs_get_sf()}}.
+}
+\details{
+Regional data uses the \code{x$RegioS} dimension for data. The "codes" for each region
+are also used in the cartographic map boundaries of regions as used in \code{\link[=cbs_get_sf]{cbs_get_sf()}}.
+Unfortunately the codes in \code{x$RegioS} can have trailing spaces, and the variable
+used in the mapping material is named \code{statcode}. This method simply adds
+a \code{statcode} column with trimmed codes from \code{RegioS}, making it more easy to
 connect a dataset to a cartographic map.
 }
 \examples{

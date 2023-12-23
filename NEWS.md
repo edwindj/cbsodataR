@@ -1,6 +1,7 @@
 # version 0.6.0.9000
 
-* added two functions for using maps with `cbsodataR`: `cbs_get_maps` and `cbs_get_sf`
+* added functions for using maps with `cbsodataR`: `cbs_get_maps`, 
+`cbs_join_sf_with_data` and`cbs_get_sf`
 
 # version 0.5.2
 

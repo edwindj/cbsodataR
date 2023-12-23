@@ -14,10 +14,11 @@
 #' @param x data retrieved with [cbs_get_data()]
 #' @inheritParams cbs_get_sf
 cbs_join_sf_with_data <- function(region, year, x, verbose = FALSE){
-  map <- cbs_get_sf(region = region, year = year, verbose = verbose)
-  
-  # only select the statcode column
-  map <- map[, c("statcode", "statnaam")]
+  map <- cbs_get_sf (region = region
+                   , year = year
+                   , keep_columns = c("statcode", "statnaam")
+                   , verbose = verbose
+                   )
   
   x <- cbs_add_statcode_column(x)
   m <- match(map$statcode, x$statcode)

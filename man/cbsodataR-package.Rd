@@ -48,6 +48,15 @@ was downloaded.
 }
 }
 
+\section{Cartographic maps}{
+
+\itemize{
+\item \code{\link[=cbs_get_maps]{cbs_get_maps()}}, returns a data.frame with available CBS maps
+\item \code{\link[=cbs_join_sf_with_data]{cbs_join_sf_with_data()}}, returns an sf object joined with cbs table
+\item \code{\link[=cbs_get_sf]{cbs_get_sf()}}, returns an sf object without data, e.g. "gemeente_2020".
+}
+}
+
 \seealso{
 Useful links:
 \itemize{
