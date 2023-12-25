@@ -1,4 +1,6 @@
-# version 0.6.0.9000
+# cbsodataR 1.0.0
+
+* bumped version number to 1.0.0 (it's very stable)
 
 * added functions for using maps with `cbsodataR`: `cbs_get_maps`, 
 `cbs_join_sf_with_data` and`cbs_get_sf`.
