@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -106,10 +106,10 @@ Geographical Information System software.</p>
 <p>A simple use case for using maps is thematic cartography: turning
 statistical data on a map into a chart. For this purpose the map
 material, which has a precision of meters typically is turned into a
-picture in which a pixel is (several) 100 meters. The website
-&lt;cartomap.github.io/nl&gt; therefore offers simplified, and thus
-smaller , maps of the CBS map material, that are useful for making plots
-of the Netherlands.</p>
+picture in which a pixel is (several) 100 meters by 100 meters. The
+website <a href="https://cartomap.github.io/nl" class="external-link uri">https://cartomap.github.io/nl</a> therefore offers
+simplified, and thus smaller , maps of the CBS map material, that are
+useful for making plots of the Netherlands.</p>
 <p><code>cbsodataR</code> allows easy access to these maps using the
 following functions:</p>
 <ul>
@@ -287,8 +287,10 @@ in 2022</p>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span> </span>
 <span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="maps_files/figure-gfm/plot%20map-1.png"><!-- --> ###
-Manual process</p>
+<p><img src="maps_files/figure-gfm/plot_map-1.png"><!-- --></p>
+<div class="section level3">
+<h3 id="manual-process">Manual process<a class="anchor" aria-label="anchor" href="#manual-process"></a>
+</h3>
 <p><code>cbs_join_sf_with_data</code> is handy, but if you want more
 control on the process, or want to combine your own map material, the
 following steps can be taken.</p>
@@ -312,6 +314,7 @@ following steps can be taken.</p>
 <span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="maps_files/figure-gfm/map_manual-1.png"><!-- --></p>
+</div>
 </div>
   </div>
 
