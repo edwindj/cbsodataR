@@ -1,0 +1,155 @@
+---
+title: 
+author: 
+date: 
+output: 
+  github_document: default
+---
+
+```{r, include=FALSE}
+library(dplyr)
+```
+
+[Statistics Netherlands (CBS)](https://www.cbs.nl) is the office that produces all official statistics of the Netherlands. 
+
+Besides statistical data, SN also publishes cartographic maps, i.e. administrative
+areas such as "gemeenten" (municipalities), "buurten" (neighborhoods), "wijken" (districts)
+and many more. The main outlet for publishing these CBS specific geospatial data is via
+[Publieke Diensten op de Kaart (PDOK)](https://pdok.nl), which offers a wide 
+range of geospatial API's for accessing map material using Geographical Information
+System software. 
+
+A simple use case for using maps is thematic cartography: turning statistical data
+on a map into a chart. For this purpose the map material, which has a precision of
+meters typically is turned into a picture in which a pixel is (several) 100 meters.
+The website <cartomap.github.io/nl> therefore offers simplified, and thus smaller
+, maps of the CBS
+map material, that are useful for making plots of the Netherlands.
+
+`cbsodataR` allows easy access to these maps using the following functions:
+
+- `cbs_get_maps`, returns a data.frame with all available maps.
+- `cbs_get_sf`, returns a geospatial `sf` object that can be used for plotting
+- `cbs_join_sf_with_data`, returns a geospatial `sf` object combined with the
+data downloaded with `cbs_get_data`.
+
+R offers a range of specialized packages for plotting data on maps such
+as `ggplot2`, `tmap`, `leaflet`, `mapview` and others, and these are to be used 
+when plotting maps. For this example we stick to `ggplot2` to keep things simple
+and refer the user to the help of the other packages.
+
+
+## Available maps
+
+`cbsodataR` gives an easy way to retrieve cartographic maps that can be used
+with data that is downloaded with `cbsodataR`.
+
+To see a list of available maps use, the function `cbs_get_maps()`
+
+```{r}
+library(cbsodataR)
+cbs_maps <- cbs_get_maps()
+# the layout of the data.frame is:
+str(cbs_maps)
+```
+with:
+
+- `$region`: the type of region
+- `$year`: the year in which this region map is valid, regional classification change yearly in NL...
+- `$wgs84`: link to geojson with wgs84 projection
+- `$rd`: link to geojson with rijksdriehoeksstels projection.
+
+At the moment of generating this document, the following regions are available:
+
+```{r, results='asis', echo=FALSE}
+cat("> ")
+cbs_maps$region |> 
+  unique() |> 
+  paste0(collapse = ", ") |> 
+  cat()
+```
+
+
+## Map retrieval: `cbs_get_sf`
+
+To download a map, without any data, the function `cbs_get_sf` can be used.
+
+```{r}
+library(sf)
+gemeente_2023 <- cbs_get_sf("gemeente", 2023)
+```
+
+`gemeente_2023` is a map file with the boundaries of the Dutch municipalities 
+of 2023. Note that is just contains the codes (`$statcode`) and names (`$statnaam`)
+of the munipalities. The names are useful for displaying purposes and the codes
+are useful for join/connecting the map with data on municipalities in 2023.
+
+```{r}
+str(gemeente_2023) # sf object
+plot(gemeente_2023, max.plot = 1) # just plot the statcode kolom.
+```
+
+## Creating a map with data: `cbs_join_sf_with_data`
+
+`cbsodataR` contains a utility function `cbs_join_sf_with_data` that allows for 
+creating a map object with the data you downloaded from cbs. 
+
+Suppose we have downloaded the following dataset:
+
+```{r}
+youth_care_data <- cbs_get_data( "85098NED" # youth care table
+                               , Perioden="2022JJ00" # only figures of 2022
+                               , RegioS=has_substring("GM") # only "gemeente" figures
+                               ) 
+```
+
+Since we have data on municipalities ("gemeente") in 2022, we can create a map
+object containing the downloaded data for the "gemeente"s in 2022
+
+```{r create map}
+map_with_data <- 
+  cbs_join_sf_with_data("gemeente", 2022, youth_care_data) |> 
+  transform( natura = JongerenMetJeugdhulpInNatura_1 )
+
+print(map_with_data)
+```
+
+And this map can be plotted e.g. with `ggplot2`
+
+```{r plot_map}
+library(sf)
+library(ggplot2)
+map_with_data |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1)+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+### Manual process
+
+`cbs_join_sf_with_data` is handy, but if you want more control on the process,
+or want to combine your own map material, the following steps can be taken.
+
+```{r map_manual}
+library(dplyr)
+
+# retrieve map
+gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
+
+# add a statcode column to the dataset so it can be joined to the map.
+youth_care_data <- youth_care_data |> 
+  cbs_add_statcode_column() |> 
+  mutate(natura = JongerenMetJeugdhulpInNatura_1)
+
+# we do a left join 
+gemeente_2022 |>
+  left_join(youth_care_data, by="statcode") |> 
+  ggplot() + 
+  geom_sf(aes(fill=natura), color="#FFFFFF99") +
+  scale_fill_viridis_c(direction = -1, option = "A")+ 
+  labs(fill="% youth with care in natura") + 
+  theme_void()
+```
+
+

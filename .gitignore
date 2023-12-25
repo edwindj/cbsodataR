@@ -6,3 +6,5 @@ doc
 inst/doc
 docs/
 .DS_Store
+/doc/
+/Meta/

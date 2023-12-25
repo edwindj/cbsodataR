@@ -1,0 +1,14 @@
+---
+title: "Cartographic map material from Statistics Netherlands/CBS"
+author: "Edwin de Jonge"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cartographic map material from Statistics Netherlands/CBS}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r child="maps.md"}
+```
+

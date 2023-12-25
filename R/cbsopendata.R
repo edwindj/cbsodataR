@@ -3,7 +3,8 @@
 #' `cbsodataR` allows to download all official statistics of Statistics
 #' Netherlands (CBS) into R. For a introduction please visit the 
 #' [vignette](https://edwindj.github.io/cbsodataR/articles/cbsodataR.html): 
-#' `vignette("cbsodataR", package="cbsodataR")`. 
+#' `vignette("cbsodataR", package="cbsodataR")`. For an introduction on using 
+#' cbs cartographic maps: `vignette("maps", package="cbsodataR")`
 #' The functions [cbs_get_datasets()]
 #' and [cbs_get_data()] should get you going. 
 #' Interested in cartographic maps, see [cbs_get_maps()].
