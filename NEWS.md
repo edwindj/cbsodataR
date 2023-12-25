@@ -1,7 +1,7 @@
 # version 0.6.0.9000
 
 * added functions for using maps with `cbsodataR`: `cbs_get_maps`, 
-`cbs_join_sf_with_data` and`cbs_get_sf`
+`cbs_join_sf_with_data` and`cbs_get_sf`.
 
 # version 0.5.2
 
@@ -21,11 +21,7 @@
 # version 0.4.2
 
 * added weeks to cbs_add_date_column, issue #25, thanks to @RichardFromHolland 
-
-# version 0.4.1.9000
-
 * added warnings when filter selection contains invalid keys.
-
 * `<column> = has_substring(<ss>) | "value"` is now allowed.
 
 # version 0.4.1

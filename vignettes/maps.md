@@ -13,10 +13,10 @@ Geographical Information System software.
 A simple use case for using maps is thematic cartography: turning
 statistical data on a map into a chart. For this purpose the map
 material, which has a precision of meters typically is turned into a
-picture in which a pixel is (several) 100 meters. The website
-\<cartomap.github.io/nl\> therefore offers simplified, and thus smaller
-, maps of the CBS map material, that are useful for making plots of the
-Netherlands.
+picture in which a pixel is (several) 100 meters by 100 meters. The
+website <https://cartomap.github.io/nl> therefore offers simplified, and
+thus smaller , maps of the CBS map material, that are useful for making
+plots of the Netherlands.
 
 `cbsodataR` allows easy access to these maps using the following
 functions:
@@ -204,7 +204,9 @@ map_with_data |>
   theme_void()
 ```
 
-![](maps_files/figure-gfm/plot%20map-1.png)<!-- --> \### Manual process
+![](maps_files/figure-gfm/plot_map-1.png)<!-- -->
+
+### Manual process
 
 `cbs_join_sf_with_data` is handy, but if you want more control on the
 process, or want to combine your own map material, the following steps

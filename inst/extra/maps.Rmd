@@ -21,8 +21,8 @@ System software.
 
 A simple use case for using maps is thematic cartography: turning statistical data
 on a map into a chart. For this purpose the map material, which has a precision of
-meters typically is turned into a picture in which a pixel is (several) 100 meters.
-The website <cartomap.github.io/nl> therefore offers simplified, and thus smaller
+meters typically is turned into a picture in which a pixel is (several) 100 meters by 100 meters.
+The website <https://cartomap.github.io/nl> therefore offers simplified, and thus smaller
 , maps of the CBS
 map material, that are useful for making plots of the Netherlands.
 
@@ -106,7 +106,7 @@ youth_care_data <- cbs_get_data( "85098NED" # youth care table
 Since we have data on municipalities ("gemeente") in 2022, we can create a map
 object containing the downloaded data for the "gemeente"s in 2022
 
-```{r create map}
+```{r create_map}
 map_with_data <- 
   cbs_join_sf_with_data("gemeente", 2022, youth_care_data) |> 
   transform( natura = JongerenMetJeugdhulpInNatura_1 )
@@ -126,6 +126,7 @@ map_with_data |>
   labs(fill="% youth with care in natura") + 
   theme_void()
 ```
+
 ### Manual process
 
 `cbs_join_sf_with_data` is handy, but if you want more control on the process,
