@@ -52,6 +52,9 @@
 <li>
       <a href="../articles/cbsodata.html">cbsodataR, all data of Statistics Netherlands (CBS)</a>
     </li>
+    <li>
+      <a href="../articles/maps.html">Cartographic map material from Statistics Netherlands/CBS</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -83,7 +86,7 @@
                         <h4 data-toc-skip class="author">Edwin de
 Jonge</h4>
             
-            <h4 data-toc-skip class="date">2023-12-23</h4>
+            <h4 data-toc-skip class="date">2023-12-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/HEAD/vignettes/cbsodata.Rmd" class="external-link"><code>vignettes/cbsodata.Rmd</code></a></small>
       <div class="hidden name"><code>cbsodata.Rmd</code></div>
@@ -401,80 +404,6 @@ e.g. <code>Periods = has_substring("KW")</code>
 </h2>
 <p>Data can also be downloaded explicitly by using
 <code>cbs_download_table</code></p>
-</div>
-<div class="section level2">
-<h2 id="map-material">Map material<a class="anchor" aria-label="anchor" href="#map-material"></a>
-</h2>
-<p><code>cbsodataR</code> gives an easy way to retrieve cartographic
-maps that can be used with data that is downloaded with
-<code>cbsodataR</code>.</p>
-<p>To see a list of available maps use, the function
-<code><a href="../reference/cbs_get_maps.html">cbs_get_maps()</a></code></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cbs_maps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_maps.html">cbs_get_maps</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">cbs_maps</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##              region year</span></span>
-<span><span class="co">## 1 arbeidsmarktregio 2014</span></span>
-<span><span class="co">## 2 arbeidsmarktregio 2015</span></span>
-<span><span class="co">## 3 arbeidsmarktregio 2016</span></span>
-<span><span class="co">## 4 arbeidsmarktregio 2017</span></span>
-<span><span class="co">## 5 arbeidsmarktregio 2018</span></span>
-<span><span class="co">## 6 arbeidsmarktregio 2019</span></span>
-<span><span class="co">##                                                                wgs84</span></span>
-<span><span class="co">## 1 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2014.geojson</span></span>
-<span><span class="co">## 2 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2015.geojson</span></span>
-<span><span class="co">## 3 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2016.geojson</span></span>
-<span><span class="co">## 4 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2017.geojson</span></span>
-<span><span class="co">## 5 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2018.geojson</span></span>
-<span><span class="co">## 6 https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2019.geojson</span></span>
-<span><span class="co">##                                                                rd</span></span>
-<span><span class="co">## 1 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2014.geojson</span></span>
-<span><span class="co">## 2 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2015.geojson</span></span>
-<span><span class="co">## 3 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2016.geojson</span></span>
-<span><span class="co">## 4 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2017.geojson</span></span>
-<span><span class="co">## 5 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2018.geojson</span></span>
-<span><span class="co">## 6 https://cartomap.github.io/nl/rd/arbeidsmarktregio_2019.geojson</span></span></code></pre>
-<p>To use a single map the function <code>cbs_get_data</code> can be
-used.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">"85098NED"</span> <span class="co"># youth care table</span></span>
-<span>                 , Perioden<span class="op">=</span><span class="st">"2022JJ00"</span> <span class="co"># only figures of 2022</span></span>
-<span>                 , RegioS<span class="op">=</span><span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">"GM"</span><span class="op">)</span> <span class="co"># only "gemeente" figures</span></span>
-<span>                 <span class="op">)</span> </span>
-<span></span>
-<span><span class="va">map_with_data</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu"><a href="../reference/cbs_join_sf_with_data.html">cbs_join_sf_with_data</a></span><span class="op">(</span><span class="st">"gemeente"</span>, <span class="fl">2022</span>, <span class="va">d</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/transform.html" class="external-link">transform</a></span><span class="op">(</span> natura <span class="op">=</span> <span class="va">JongerenMetJeugdhulpInNatura_1</span> <span class="op">)</span></span>
-<span>  </span>
-<span><span class="va">map_with_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill<span class="op">=</span><span class="va">natura</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"#FFFFFF99"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span> </span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="cbsodataR_files/figure-gfm/map-1.png"><!-- --> Or this
-can be done manually, so you have more control</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># retrieve map</span></span>
-<span><span class="va">gemeente_2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_sf.html">cbs_get_sf</a></span><span class="op">(</span>region<span class="op">=</span><span class="st">"gemeente"</span>, year<span class="op">=</span><span class="st">"2022"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/cbs_add_statcode_column.html">cbs_add_statcode_column</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>natura <span class="op">=</span> <span class="va">JongerenMetJeugdhulpInNatura_1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">gemeente_2022</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">d</span>, by<span class="op">=</span><span class="st">"statcode"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill<span class="op">=</span><span class="va">natura</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"#FFFFFF99"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, option <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span><span class="op">+</span> </span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="cbsodataR_files/figure-gfm/map_manual-1.png"><!-- --></p>
 </div>
   </div>
 
