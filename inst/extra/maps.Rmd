@@ -19,17 +19,20 @@ and many more. The main outlet for publishing these CBS specific geospatial data
 range of geospatial API's for accessing map material using Geographical Information
 System software. 
 
-A simple use case for using maps is thematic cartography: turning statistical data
-on a map into a chart. For this purpose the map material, which has a precision of
-meters typically is turned into a picture in which a pixel is (several) 100 meters by 100 meters.
+A simple use case for using maps is thematic cartography: turning regional 
+statistical data into thematic cartographic map. For this purpose the 
+map with the boundaries of administrative regions, which typically has a precision of
+meters is turned into a picture in which a pixel is (several) 100 meters by 100 meters: 
+the map has more precision than that is needed for a cartographic picture for the
+Netherlands. 
 The website <https://cartomap.github.io/nl> therefore offers simplified, and thus smaller
 , maps of the CBS
 map material, that are useful for making plots of the Netherlands.
 
 `cbsodataR` allows easy access to these maps using the following functions:
 
-- `cbs_get_maps`, returns a data.frame with all available maps.
-- `cbs_get_sf`, returns a geospatial `sf` object that can be used for plotting
+- `cbs_get_maps`, returns a data.frame with all available simplified maps.
+- `cbs_get_sf`, returns a geospatial `sf` object that can be used for plotting.
 - `cbs_join_sf_with_data`, returns a geospatial `sf` object combined with the
 data downloaded with `cbs_get_data`.
 
@@ -37,7 +40,6 @@ R offers a range of specialized packages for plotting data on maps such
 as `ggplot2`, `tmap`, `leaflet`, `mapview` and others, and these are to be used 
 when plotting maps. For this example we stick to `ggplot2` to keep things simple
 and refer the user to the help of the other packages.
-
 
 ## Available maps
 
@@ -55,9 +57,9 @@ str(cbs_maps)
 with:
 
 - `$region`: the type of region
-- `$year`: the year in which this region map is valid, regional classification change yearly in NL...
-- `$wgs84`: link to geojson with wgs84 projection
-- `$rd`: link to geojson with rijksdriehoeksstels projection.
+- `$year`: the year in which this region map is valid, regional classifications change yearly in NL...
+- `$wgs84`: link to geojson with wgs84 projection (epsg:4326).
+- `$rd`: link to geojson with rijksdriehoeksstelsel projection (epsg:28992).
 
 At the moment of generating this document, the following regions are available:
 
@@ -81,8 +83,8 @@ gemeente_2023 <- cbs_get_sf("gemeente", 2023)
 
 `gemeente_2023` is a map file with the boundaries of the Dutch municipalities 
 of 2023. Note that is just contains the codes (`$statcode`) and names (`$statnaam`)
-of the munipalities. The names are useful for displaying purposes and the codes
-are useful for join/connecting the map with data on municipalities in 2023.
+of the municipalities. The names are useful for displaying purposes and the codes
+are useful for joining/connecting the map with data on municipalities in 2023.
 
 ```{r}
 str(gemeente_2023) # sf object
@@ -92,7 +94,7 @@ plot(gemeente_2023, max.plot = 1) # just plot the statcode kolom.
 ## Creating a map with data: `cbs_join_sf_with_data`
 
 `cbsodataR` contains a utility function `cbs_join_sf_with_data` that allows for 
-creating a map object with the data you downloaded from cbs. 
+creating a map object with the data you downloaded from Statistics Netherlands/CBS. 
 
 Suppose we have downloaded the following dataset:
 
@@ -133,7 +135,7 @@ map_with_data |>
 or want to combine your own map material, the following steps can be taken.
 
 ```{r map_manual}
-library(dplyr)
+library(dplyr) # not necessary, but familiar for tidyverse code
 
 # retrieve map
 gemeente_2022 <- cbs_get_sf(region="gemeente", year="2022")
@@ -143,7 +145,7 @@ youth_care_data <- youth_care_data |>
   cbs_add_statcode_column() |> 
   mutate(natura = JongerenMetJeugdhulpInNatura_1)
 
-# we do a left join 
+# the map is left joined with the data (so the result is again an sf object)
 gemeente_2022 |>
   left_join(youth_care_data, by="statcode") |> 
   ggplot() + 
