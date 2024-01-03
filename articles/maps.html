@@ -86,7 +86,7 @@ Netherlands/CBS</h1>
                         <h4 data-toc-skip class="author">Edwin de
 Jonge</h4>
             
-            <h4 data-toc-skip class="date">2023-12-25</h4>
+            <h4 data-toc-skip class="date">2024-01-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/HEAD/vignettes/maps.Rmd" class="external-link"><code>vignettes/maps.Rmd</code></a></small>
       <div class="hidden name"><code>maps.Rmd</code></div>
@@ -104,9 +104,11 @@ outlet for publishing these CBS specific geospatial data is via <a href="https:/
 offers a wide range of geospatial API’s for accessing map material using
 Geographical Information System software.</p>
 <p>A simple use case for using maps is thematic cartography: turning
-statistical data on a map into a chart. For this purpose the map
-material, which has a precision of meters typically is turned into a
-picture in which a pixel is (several) 100 meters by 100 meters. The
+regional statistical data into thematic cartographic map. For this
+purpose the map with the boundaries of administrative regions, which
+typically has a precision of meters is turned into a picture in which a
+pixel is (several) 100 meters by 100 meters: the map has more precision
+than that is needed for a cartographic picture for the Netherlands. The
 website <a href="https://cartomap.github.io/nl" class="external-link uri">https://cartomap.github.io/nl</a> therefore offers
 simplified, and thus smaller , maps of the CBS map material, that are
 useful for making plots of the Netherlands.</p>
@@ -115,10 +117,10 @@ following functions:</p>
 <ul>
 <li>
 <code>cbs_get_maps</code>, returns a data.frame with all available
-maps.</li>
+simplified maps.</li>
 <li>
 <code>cbs_get_sf</code>, returns a geospatial <code>sf</code> object
-that can be used for plotting</li>
+that can be used for plotting.</li>
 <li>
 <code>cbs_join_sf_with_data</code>, returns a geospatial
 <code>sf</code> object combined with the data downloaded with
@@ -153,12 +155,13 @@ maps that can be used with data that is downloaded with
 <code>$region</code>: the type of region</li>
 <li>
 <code>$year</code>: the year in which this region map is valid,
-regional classification change yearly in NL…</li>
+regional classifications change yearly in NL…</li>
 <li>
-<code>$wgs84</code>: link to geojson with wgs84 projection</li>
+<code>$wgs84</code>: link to geojson with wgs84 projection
+(epsg:4326).</li>
 <li>
-<code>$rd</code>: link to geojson with rijksdriehoeksstels
-projection.</li>
+<code>$rd</code>: link to geojson with rijksdriehoeksstelsel
+projection (epsg:28992).</li>
 </ul>
 <p>At the moment of generating this document, the following regions are
 available:</p>
@@ -187,9 +190,9 @@ veiligthuisregio, wijk, zorgkantoorregio</p>
 <p><code>gemeente_2023</code> is a map file with the boundaries of the
 Dutch municipalities of 2023. Note that is just contains the codes
 (<code>$statcode</code>) and names (<code>$statnaam</code>) of the
-munipalities. The names are useful for displaying purposes and the codes
-are useful for join/connecting the map with data on municipalities in
-2023.</p>
+municipalities. The names are useful for displaying purposes and the
+codes are useful for joining/connecting the map with data on
+municipalities in 2023.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">gemeente_2023</span><span class="op">)</span> <span class="co"># sf object</span></span></code></pre></div>
 <pre><code><span><span class="co">## sf [342 × 3] (S3: sf/tbl_df/tbl/data.frame)</span></span>
@@ -211,7 +214,7 @@ are useful for join/connecting the map with data on municipalities in
 </h2>
 <p><code>cbsodataR</code> contains a utility function
 <code>cbs_join_sf_with_data</code> that allows for creating a map object
-with the data you downloaded from cbs.</p>
+with the data you downloaded from Statistics Netherlands/CBS.</p>
 <p>Suppose we have downloaded the following dataset:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">youth_care_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> <span class="st">"85098NED"</span> <span class="co"># youth care table</span></span>
@@ -295,7 +298,7 @@ in 2022</p>
 control on the process, or want to combine your own map material, the
 following steps can be taken.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># not necessary, but familiar for tidyverse code</span></span>
 <span></span>
 <span><span class="co"># retrieve map</span></span>
 <span><span class="va">gemeente_2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_sf.html">cbs_get_sf</a></span><span class="op">(</span>region<span class="op">=</span><span class="st">"gemeente"</span>, year<span class="op">=</span><span class="st">"2022"</span><span class="op">)</span></span>
@@ -305,7 +308,7 @@ following steps can be taken.</p>
 <span>  <span class="fu"><a href="../reference/cbs_add_statcode_column.html">cbs_add_statcode_column</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>natura <span class="op">=</span> <span class="va">JongerenMetJeugdhulpInNatura_1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># we do a left join </span></span>
+<span><span class="co"># the map is left joined with the data (so the result is again an sf object)</span></span>
 <span><span class="va">gemeente_2022</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">youth_care_data</span>, by<span class="op">=</span><span class="st">"statcode"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>

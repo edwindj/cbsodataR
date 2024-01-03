@@ -84,14 +84,13 @@ third party data services implementing the same protocol.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
-<span class="r-in"><span><span class="va">catalogs</span> <span class="op">&lt;-</span> <span class="fu">cbs_get_catalogs</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">catalogs</span> <span class="op">&lt;-</span> <span class="fu">cbs_get_catalogs</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Identifier of catalog can be used to query</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">catalogs</span><span class="op">$</span><span class="va">Identifier</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">ds_rivm</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_get_datasets.html">cbs_get_datasets</a></span><span class="op">(</span>catalog <span class="op">=</span> <span class="st">"RIVM"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">ds_rivm</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Identifier"</span>,<span class="st">"ShortTitle"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span>  <span class="co"># Identifier of catalog can be used to query</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">catalogs</span><span class="op">$</span><span class="va">Identifier</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="va">ds_rivm</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_get_datasets.html">cbs_get_datasets</a></span><span class="op">(</span>catalog <span class="op">=</span> <span class="st">"RIVM"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">ds_rivm</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Identifier"</span>,<span class="st">"ShortTitle"</span><span class="op">)</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
