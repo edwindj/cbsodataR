@@ -1,4 +1,4 @@
-# cbsodataR 1.0.0
+# cbsodataR 1.0.1
 
 * fixed example in `cbs_get_catalogs`, which failed when catalog was temporarily 
 not available.

@@ -16,9 +16,9 @@ purpose the map with the boundaries of administrative regions, which
 typically has a precision of meters is turned into a picture in which a
 pixel is (several) 100 meters by 100 meters: the map has more precision
 than that is needed for a cartographic picture for the Netherlands. The
-website <https://cartomap.github.io/nl> therefore offers simplified, and
-thus smaller , maps of the CBS map material, that are useful for making
-plots of the Netherlands.
+website <https://cartomap.github.io/nl/> therefore offers simplified,
+and thus smaller , maps of the CBS map material, that are useful for
+making plots of the Netherlands.
 
 `cbsodataR` allows easy access to these maps using the following
 functions:

@@ -25,7 +25,7 @@ map with the boundaries of administrative regions, which typically has a precisi
 meters is turned into a picture in which a pixel is (several) 100 meters by 100 meters: 
 the map has more precision than that is needed for a cartographic picture for the
 Netherlands. 
-The website <https://cartomap.github.io/nl> therefore offers simplified, and thus smaller
+The website <https://cartomap.github.io/nl/> therefore offers simplified, and thus smaller
 , maps of the CBS
 map material, that are useful for making plots of the Netherlands.
 
