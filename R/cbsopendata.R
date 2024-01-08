@@ -45,6 +45,12 @@
 #' - [cbs_join_sf_with_data()], returns an sf object joined with cbs table
 #' - [cbs_get_sf()], returns an sf object without data, e.g. "gemeente_2020".
 #' 
+#' @section Copyright use:
+#' The content of CBS opendata is subject to Creative Commons Attribution (CC BY 4.0). 
+#' This means that the re-use of the content is permitted, provided Statistics 
+#' Netherlands is cited as the source. For more information see:
+#' <https://www.cbs.nl/en-gb/about-us/website/copyright>
+#' 
 #'@importFrom utils read.csv write.csv write.table View
 #'@docType package
 "_PACKAGE"

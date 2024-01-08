@@ -1,5 +1,8 @@
 # cbsodataR 1.0.0
 
+* fixed example in `cbs_get_catalogs`, which failed when catalog was temporarily 
+not available.
+
 * bumped version number to 1.0.0 (it's very stable)
 
 * added functions for using maps with `cbsodataR`: `cbs_get_maps`, 

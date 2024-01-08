@@ -46,6 +46,7 @@
 #' @seealso [cbs_get_meta()], [cbs_download_data()]
 #' @family data retrieval
 #' @family query
+#' @inheritSection cbsodataR-package Copyright use
 #' @example ./example/query.R
 cbs_get_data <- function( id
                         , ...

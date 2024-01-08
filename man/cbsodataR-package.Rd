@@ -59,6 +59,14 @@ was downloaded.
 }
 }
 
+\section{Copyright use}{
+
+The content of CBS opendata is subject to Creative Commons Attribution (CC BY 4.0).
+This means that the re-use of the content is permitted, provided Statistics
+Netherlands is cited as the source. For more information see:
+\url{https://www.cbs.nl/en-gb/about-us/website/copyright}
+}
+
 \seealso{
 Useful links:
 \itemize{

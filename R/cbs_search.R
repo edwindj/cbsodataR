@@ -49,10 +49,10 @@ cbs_search <- function( query
   
   if (!(catalog %in% cats$Identifier)){
     stop("catalog has invalid value. Must be one of: "
-           , paste0('"',cats$Identifier, '"',collapse = ", ")
-           , "."
-           , call. = FALSE
-           )
+        , paste0('"',cats$Identifier, '"',collapse = ", ")
+        , "."
+        , call. = FALSE
+        )
   }
 
   catalog_la <- paste(catalog, language, sep = "_")
