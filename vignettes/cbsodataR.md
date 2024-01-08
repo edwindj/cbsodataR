@@ -222,7 +222,7 @@ cbs_get_data('71509ENG') |>
     ## 5 2001JJ00            2001 Y           
     ## 6 2002JJ00            2002 Y
 
-## Select and filter\`
+## Select and filter
 
 It is possible restrict the download using filter statements. This may
 shorten the download time considerably.
