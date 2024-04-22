@@ -71,6 +71,12 @@ cbs_get_data <- function( id
                         )
   dimnames <- names(meta)[names(meta) %in% meta$DataProperties$Key]
   colClasses <- sapply(dimnames, function(x){"character"})
+  
+  if (!isTRUE(typed)){
+    # read in all columns as characters
+    colClasses <- "character"
+  }
+  
   data <- read.csv( file.path(dir, "data.csv")
                   , colClasses = colClasses
                   , strip.white = TRUE)
