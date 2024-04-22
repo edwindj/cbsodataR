@@ -18,7 +18,7 @@
 #' @export
 cbs_download_data <- function( id
                          , path     = file.path(id, "data.csv")
-                         , catalog  = catalog
+                         , catalog  = "CBS"
                          , ...
                          , select   = NULL
                          , typed    = TRUE
