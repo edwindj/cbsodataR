@@ -42,14 +42,17 @@ cbs_get_sf <- function( region
   
   maps <- cbs_get_maps(verbose = verbose)
   
+  allowed_regions <- unique(maps$region)
+  region <- match.arg(region, allowed_regions)
+  
   region_idx <- maps$region == region
   
-  if (sum(region_idx) < 1){
-    stop("'region' must be one of "
-        , paste0("'",unique(maps$region), "'", collapse = ", ")
-        , call. = FALSE
-        )
-  }
+  # if (sum(region_idx) < 1){
+  #   stop("'region' must be one of "
+  #       , paste0("'",unique(maps$region), "'", collapse = ", ")
+  #       , call. = FALSE
+  #       )
+  # }
 
   maps <- maps[region_idx,]
   year_idx <- maps$year == year

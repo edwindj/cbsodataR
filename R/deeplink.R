@@ -29,9 +29,7 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
   # info$select <- resolve_select(info$select)
   info$deeplink <- deeplink
   cgd <- c( quote(cbs_get_data)
-          , id = info$id
-          , info$filter
-          , list(select = info$select)
+          , info
           , list(...)
           , base_url = base_url
           )
@@ -42,9 +40,10 @@ resolve_deeplink <- function(deeplink, ..., base_url = getOption("cbsodataR.base
 parse_odata_link <- function(id, text, ...){
   info <- url_params(text)
   info$id <- id
-  info <- info[c("id", "$select", "$filter")]
-  names(info) <- c("id", "select", "filter")
-  info$filter <- resolve_filter(info$filter)
+  filter <- resolve_filter(info[["$filter"]])
+  info <- info[c("id", "$select")]
+  names(info) <- c("id", "select")
+  info <- c(info, filter)
   info$select <- resolve_select(info$select)
   info
 }

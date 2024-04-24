@@ -4,28 +4,29 @@
 #' @param ... for future use
 cbs_default_selection <- function(x, ...){
   #toc$DefaultSelection
-  parse_odata_link(x$TableInfos$Identifier, x$TableInfos$DefaultSelection)
-  params <- get_params(x$TableInfos$DefaultSelection)
+  parts <- parse_odata_link(x$TableInfos$Identifier, x$TableInfos$DefaultSelection)
+  return(parts)
+  #params <- get_params(x$TableInfos$DefaultSelection)
   
-  filter <- params$`$filter`
-  filter <- strsplit(filter, " and ")[[1]]
-  filter <- strsplit(filter, " or ")
+  #filter <- parts$filter
+  # filter <- strsplit(filter, " and ")[[1]]
+  # filter <- strsplit(filter, " or ")
   
-  vars <- sapply(filter, function(x){
-    sub("\\(\\((\\w+).+", "\\1", x[1])
-  })
-  
-  codes <- sapply(filter, function(x){
-    pat <- ".+eq '(.+)'.+"
-    m <- grepl(pat, x)
-    sub(pat, "\\1", x)[m]
-  })
-  
-  names(codes) <- vars
-  if(!is.null(params$`$select`)){
-    codes$select <- strsplit(params$`$select`, ", ")[[1]]
-  }
-  c(id = x$TableInfos$Identifier, codes)
+  # vars <- sapply(filter, function(x){
+  #   sub("\\(\\((\\w+).+", "\\1", x[1])
+  # })
+  # 
+  # codes <- sapply(filter, function(x){
+  #   pat <- ".+eq '(.+)'.+"
+  #   m <- grepl(pat, x)
+  #   sub(pat, "\\1", x)[m]
+  # })
+  # 
+  # names(codes) <- vars
+  # if(!is.null(params$`$select`)){
+  #   codes$select <- strsplit(params$`$select`, ", ")[[1]]
+  # }
+  # c(id = x$TableInfos$Identifier, codes)
 }
 
 # utility

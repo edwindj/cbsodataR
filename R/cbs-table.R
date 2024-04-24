@@ -29,7 +29,7 @@ print.cbs_table <- function(x, ...){
 
 #' @export
 as.expression.cbs_table <- function(x, ...){
-  as.call(c(quote(cbs_get_data), cbs_default_selection(x)))
+  as.call(c(quote(cbs_get_data), cbs_default_selection(x), list(...)))
 }
 
 # testing 1, 2, 3
