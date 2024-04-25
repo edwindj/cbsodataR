@@ -49,7 +49,7 @@ cbs_maps <- cbs_get_maps()
 str(cbs_maps)
 ```
 
-    ## 'data.frame':    589 obs. of  4 variables:
+    ## 'data.frame':    595 obs. of  4 variables:
     ##  $ region: chr  "arbeidsmarktregio" "arbeidsmarktregio" "arbeidsmarktregio" "arbeidsmarktregio" ...
     ##  $ year  : int  2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 ...
     ##  $ wgs84 : chr  "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2014.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2015.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2016.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2017.geojson" ...
@@ -117,7 +117,7 @@ str(gemeente_2023) # sf object
 plot(gemeente_2023, max.plot = 1) # just plot the statcode kolom.
 ```
 
-![](maps_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](/Users/edwin/Documents/R/cbsodataR/vignettes/maps_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ## Creating a map with data: `cbs_join_sf_with_data`
 
@@ -133,6 +133,8 @@ youth_care_data <- cbs_get_data( "85098NED" # youth care table
                                , RegioS=has_substring("GM") # only "gemeente" figures
                                ) 
 ```
+
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
 Since we have data on municipalities (“gemeente”) in 2022, we can create
 a map object containing the downloaded data for the “gemeente”s in 2022
@@ -151,50 +153,28 @@ print(map_with_data)
     ## Bounding box:  xmin: 13565 ymin: 306960 xmax: 277529 ymax: 619172
     ## Projected CRS: Amersfoort / RD New
     ## First 10 features:
-    ##    statcode      statnaam  RegioS Perioden JongerenMetJeugdhulpInNatura_1
-    ## 1    GM0014     Groningen GM0014  2022JJ00                           15.4
-    ## 2    GM0034        Almere GM0034  2022JJ00                           12.9
-    ## 3    GM0037   Stadskanaal GM0037  2022JJ00                           14.7
-    ## 4    GM0047       Veendam GM0047  2022JJ00                           19.6
-    ## 5    GM0050      Zeewolde GM0050  2022JJ00                           16.9
-    ## 6    GM0059 Achtkarspelen GM0059  2022JJ00                           13.0
-    ## 7    GM0060       Ameland GM0060  2022JJ00                            7.9
-    ## 8    GM0072     Harlingen GM0072  2022JJ00                           13.0
-    ## 9    GM0074    Heerenveen GM0074  2022JJ00                           12.9
-    ## 10   GM0080    Leeuwarden GM0080  2022JJ00                           17.6
-    ##    JongerenMetJeugdhMetVerblInNat_2 JongerenMetJeugdbescherming_3
-    ## 1                               9.5                           1.4
-    ## 2                               7.9                           1.3
-    ## 3                              17.1                           2.4
-    ## 4                              15.9                           2.9
-    ## 5                              10.5                           1.8
-    ## 6                               9.7                           1.3
-    ## 7                                NA                            NA
-    ## 8                              16.0                           1.7
-    ## 9                               9.3                           1.3
-    ## 10                             10.6                           2.0
-    ##    JeugdbeschEnJeugdhMetVerblInNat_4 JongerenMetJeugdreclassering_5 natura
-    ## 1                               46.1                            0.4   15.4
-    ## 2                               41.7                            0.5   12.9
-    ## 3                               59.4                            0.3   14.7
-    ## 4                               56.3                             NA   19.6
-    ## 5                               51.8                            0.4   16.9
-    ## 6                               49.4                             NA   13.0
-    ## 7                                 NA                             NA    7.9
-    ## 8                               46.0                             NA   13.0
-    ## 9                               37.2                            0.2   12.9
-    ## 10                              50.5                            0.4   17.6
-    ##                          geometry
-    ## 1  MULTIPOLYGON (((247394 5893...
-    ## 2  MULTIPOLYGON (((152521 4902...
-    ## 3  MULTIPOLYGON (((264125 5662...
-    ## 4  MULTIPOLYGON (((260432 5704...
-    ## 5  MULTIPOLYGON (((168735 4915...
-    ## 6  MULTIPOLYGON (((211391 5859...
-    ## 7  MULTIPOLYGON (((177842 6084...
-    ## 8  MULTIPOLYGON (((160686 5733...
-    ## 9  MULTIPOLYGON (((191212 5658...
-    ## 10 MULTIPOLYGON (((185116 5876...
+    ##    statcode      statnaam  RegioS Perioden JongerenMetJeugdhulpInNatura_1 JongerenMetJeugdhMetVerblInNat_2 JongerenMetJeugdbescherming_3
+    ## 1    GM0014     Groningen GM0014  2022JJ00                           15.4                              9.5                           1.4
+    ## 2    GM0034        Almere GM0034  2022JJ00                           12.9                              7.9                           1.3
+    ## 3    GM0037   Stadskanaal GM0037  2022JJ00                           14.7                             17.1                           2.4
+    ## 4    GM0047       Veendam GM0047  2022JJ00                           19.6                             15.9                           2.9
+    ## 5    GM0050      Zeewolde GM0050  2022JJ00                           16.9                             10.5                           1.8
+    ## 6    GM0059 Achtkarspelen GM0059  2022JJ00                           13.0                              9.7                           1.3
+    ## 7    GM0060       Ameland GM0060  2022JJ00                            7.9                               NA                            NA
+    ## 8    GM0072     Harlingen GM0072  2022JJ00                           13.0                             16.0                           1.7
+    ## 9    GM0074    Heerenveen GM0074  2022JJ00                           12.9                              9.3                           1.3
+    ## 10   GM0080    Leeuwarden GM0080  2022JJ00                           17.6                             10.6                           2.0
+    ##    JeugdbeschEnJeugdhMetVerblInNat_4 JongerenMetJeugdreclassering_5 natura                       geometry
+    ## 1                               46.1                            0.4   15.4 MULTIPOLYGON (((247394 5893...
+    ## 2                               41.7                            0.5   12.9 MULTIPOLYGON (((152521 4902...
+    ## 3                               59.4                            0.3   14.7 MULTIPOLYGON (((264125 5662...
+    ## 4                               56.3                             NA   19.6 MULTIPOLYGON (((260432 5704...
+    ## 5                               51.8                            0.4   16.9 MULTIPOLYGON (((168735 4915...
+    ## 6                               49.4                             NA   13.0 MULTIPOLYGON (((211391 5859...
+    ## 7                                 NA                             NA    7.9 MULTIPOLYGON (((177842 6084...
+    ## 8                               46.0                             NA   13.0 MULTIPOLYGON (((160686 5733...
+    ## 9                               37.2                            0.2   12.9 MULTIPOLYGON (((191212 5658...
+    ## 10                              50.5                            0.4   17.6 MULTIPOLYGON (((185116 5876...
 
 And this map can be plotted e.g. with `ggplot2`
 
@@ -209,7 +189,7 @@ map_with_data |>
   theme_void()
 ```
 
-![](maps_files/figure-gfm/plot_map-1.png)<!-- -->
+![](/Users/edwin/Documents/R/cbsodataR/vignettes/maps_files/figure-gfm/plot_map-1.png)<!-- -->
 
 ### Manual process
 
@@ -238,4 +218,4 @@ gemeente_2022 |>
   theme_void()
 ```
 
-![](maps_files/figure-gfm/map_manual-1.png)<!-- -->
+![](/Users/edwin/Documents/R/cbsodataR/vignettes/maps_files/figure-gfm/map_manual-1.png)<!-- -->

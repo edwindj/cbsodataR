@@ -23,7 +23,7 @@ datasets |>
   select(Identifier, ShortTitle) 
 ```
 
-    ## # A tibble: 937 × 2
+    ## # A tibble: 962 × 2
     ##    Identifier ShortTitle                             
     ##    <chr>      <chr>                                  
     ##  1 80783eng   Agriculture; general farm type, region 
@@ -36,7 +36,7 @@ datasets |>
     ##  8 84312ENG   Caribbean NL; students MBO             
     ##  9 84732ENG   Caribbean NL; pupils and students      
     ## 10 81154eng   Caribbean NL; electricity and water    
-    ## # ℹ 927 more rows
+    ## # ℹ 952 more rows
 
 ## Search for tables
 
@@ -61,8 +61,7 @@ catalogs <- cbs_get_catalogs()
 catalogs$Identifier
 ```
 
-    ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
-    ##  [7] "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"
+    ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"     "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"
 
 ## Metadata
 
@@ -79,19 +78,18 @@ apples
     ##   Periods: 'Periods' 
     ## 
     ## Retrieve a default data selection with:
-    ##  cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", 
-    ## "4", "3", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", 
-    ## "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", 
-    ## "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", 
-    ## "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "RodeBoskoopRennetApple_10", 
-    ## "OtherAppleVarieties_12", "TotalPearVarieties_13", "Conference_15", 
-    ## "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", 
+    ##  cbs_get_data(id = "71509ENG", select = c("FruitFarmingRegions", 
+    ## "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", 
+    ## "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", 
+    ## "RodeBoskoopRennetApple_10", "OtherAppleVarieties_12", "TotalPearVarieties_13", 
+    ## "Conference_15", "DoyenneDuComice_16", "CookingPears_17", "TriompheDeVienne_18", 
     ## "OtherPearVarieties_19", "TotalAppleVarieties_20", "CoxSOrangePippin_21", 
     ## "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", 
     ## "Jonagold_25", "Jonagored_26", "RodeBoskoopRennetApple_29", "OtherAppleVarieties_31", 
     ## "TotalPearVarieties_32", "Conference_34", "DoyenneDuComice_35", 
     ## "CookingPears_36", "TriompheDeVienne_37", "OtherPearVarieties_38"
-    ## ))
+    ## ), FruitFarmingRegions = c("1", "2", "4", "3", "5"), Periods = c("1997JJ00", 
+    ## "2012JJ00", "2013JJ00", "2016JJ00"))
 
 The meta object contains all metadata properties of cbsodata (see the
 [original
@@ -103,8 +101,7 @@ SN table.
 names(apples)
 ```
 
-    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
-    ## [4] "FruitFarmingRegions" "Periods"
+    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"      "FruitFarmingRegions" "Periods"
 
 ## Data download
 
@@ -116,6 +113,8 @@ cbs_get_data('71509ENG') |>
   select(1:4) |>  # demonstration purpose
   head()
 ```
+
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 4
     ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
@@ -143,17 +142,19 @@ cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/715
 ```
 
     ## Executing:
-    ## cbs_get_data(id = "71509ENG", FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), base_url = "http://opendata.cbs.nl")
+    ## cbs_get_data(id = "71509ENG", select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), deeplink = "https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB",     base_url = "http://opendata.cbs.nl")
+
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 4
-    ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
-    ##   <chr>               <chr>                    <int>              <int>
-    ## 1 1                   1997JJ00                   420                 43
-    ## 2 1                   2012JJ00                   282                  3
-    ## 3 1                   2013JJ00                   314                  4
-    ## 4 1                   2016JJ00                   317                  2
-    ## 5 2                   1997JJ00                    86                 10
-    ## 6 2                   2012JJ00                    34                  0
+    ##      ID FruitFarmingRegions Periods  TotalAppleVarieties_1
+    ##   <int> <chr>               <chr>                    <int>
+    ## 1     0 1                   1997JJ00                   420
+    ## 2    15 1                   2012JJ00                   282
+    ## 3    16 1                   2013JJ00                   314
+    ## 4    19 1                   2016JJ00                   317
+    ## 5    21 2                   1997JJ00                    86
+    ## 6    36 2                   2012JJ00                    34
 
 ### Adding category labels
 
@@ -167,6 +168,8 @@ cbs_get_data('71509ENG') |>
   select(1:4) |> 
   head()
 ```
+
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 4
     ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
@@ -192,6 +195,8 @@ cbs_get_data('71509ENG') |>
   head()
 ```
 
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
+
     ## # A tibble: 6 × 3
     ##   Periods  Periods_Date Periods_freq
     ##   <chr>    <date>       <fct>       
@@ -211,6 +216,8 @@ cbs_get_data('71509ENG') |>
   select(2:4) |> 
   head()
 ```
+
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 3
     ##   Periods  Periods_numeric Periods_freq
@@ -241,8 +248,7 @@ apples <- cbs_get_meta('71509ENG')
 names(apples)
 ```
 
-    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
-    ## [4] "FruitFarmingRegions" "Periods"
+    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"      "FruitFarmingRegions" "Periods"
 
 ``` r
 # meta data for column Periods
@@ -284,12 +290,13 @@ head(apples$FruitFarmingRegions[,1:2 ])
   cbs_add_label_columns()
 ```
 
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
+
     ## # A tibble: 2 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-    ##   <chr>               <fct>                     <chr>    <fct>        
-    ## 1 1                   Total Netherlands         2000JJ00 2000         
-    ## 2 1                   Total Netherlands         2001JJ00 2001         
-    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
+    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
+    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
+    ## 2 1                   Total Netherlands         2001JJ00 2001                            408
 
 - To filter for values in a column that have a substring e.g. “JJ” you
   can use `<column_name> = has_substring(<substring>)` to `cbs_get_data`
@@ -307,11 +314,12 @@ head(apples$FruitFarmingRegions[,1:2 ])
     cbs_add_label_columns()
 ```
 
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
+
     ## # A tibble: 1 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-    ##   <chr>               <fct>                     <chr>    <fct>        
-    ## 1 1                   Total Netherlands         2000JJ00 2000         
-    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
+    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
+    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
 
 - To combine values and substring use the “\|” operator:
   `Periods = eq("2020JJ00") | has_substring("KW")`
@@ -328,12 +336,13 @@ head(apples$FruitFarmingRegions[,1:2 ])
     cbs_add_label_columns()
 ```
 
+    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
+
     ## # A tibble: 2 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
-    ##   <chr>               <fct>                     <chr>    <fct>        
-    ## 1 1                   Total Netherlands         2000JJ00 2000         
-    ## 2 1                   Total Netherlands         2010JJ00 2010         
-    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
+    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
+    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
+    ## 2 1                   Total Netherlands         2010JJ00 2010                            334
 
 # Download data
 
