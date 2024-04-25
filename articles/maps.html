@@ -86,7 +86,7 @@ Netherlands/CBS</h1>
                         <h4 data-toc-skip class="author">Edwin de
 Jonge</h4>
             
-            <h4 data-toc-skip class="date">2024-04-24</h4>
+            <h4 data-toc-skip class="date">2024-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/HEAD/vignettes/maps.Rmd" class="external-link"><code>vignettes/maps.Rmd</code></a></small>
       <div class="hidden name"><code>maps.Rmd</code></div>
@@ -144,7 +144,7 @@ maps that can be used with data that is downloaded with
 <span><span class="va">cbs_maps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cbs_get_maps.html">cbs_get_maps</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co"># the layout of the data.frame is:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">cbs_maps</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## 'data.frame':    589 obs. of  4 variables:</span></span>
+<pre><code><span><span class="co">## 'data.frame':    595 obs. of  4 variables:</span></span>
 <span><span class="co">##  $ region: chr  "arbeidsmarktregio" "arbeidsmarktregio" "arbeidsmarktregio" "arbeidsmarktregio" ...</span></span>
 <span><span class="co">##  $ year  : int  2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 ...</span></span>
 <span><span class="co">##  $ wgs84 : chr  "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2014.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2015.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2016.geojson" "https://cartomap.github.io/nl/wgs84/arbeidsmarktregio_2017.geojson" ...</span></span>
@@ -207,7 +207,7 @@ municipalities in 2023.</p>
 <span><span class="co">##   ..- attr(*, "names")= chr [1:2] "statcode" "statnaam"</span></span></code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">gemeente_2023</span>, max.plot <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># just plot the statcode kolom.</span></span></code></pre></div>
-<p><img src="maps_files/figure-gfm/unnamed-chunk-5-1.png"><!-- --></p>
+<p><img src="../../../../../../Users/edwin/Documents/R/cbsodataR/articles/maps_files/figure-gfm/unnamed-chunk-5-1.png"><!-- --></p>
 </div>
 <div class="section level2">
 <h2 id="creating-a-map-with-data-cbs_join_sf_with_data">Creating a map with data: <code>cbs_join_sf_with_data</code><a class="anchor" aria-label="anchor" href="#creating-a-map-with-data-cbs_join_sf_with_data"></a>
@@ -221,10 +221,11 @@ with the data you downloaded from Statistics Netherlands/CBS.</p>
 <span>                               , Perioden<span class="op">=</span><span class="st">"2022JJ00"</span> <span class="co"># only figures of 2022</span></span>
 <span>                               , RegioS<span class="op">=</span><span class="fu"><a href="../reference/has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">"GM"</span><span class="op">)</span> <span class="co"># only "gemeente" figures</span></span>
 <span>                               <span class="op">)</span> </span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%</span></span></code></pre>
 <p>Since we have data on municipalities (“gemeente”) in 2022, we can
 create a map object containing the downloaded data for the “gemeente”s
 in 2022</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">map_with_data</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="../reference/cbs_join_sf_with_data.html">cbs_join_sf_with_data</a></span><span class="op">(</span><span class="st">"gemeente"</span>, <span class="fl">2022</span>, <span class="va">youth_care_data</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/transform.html" class="external-link">transform</a></span><span class="op">(</span> natura <span class="op">=</span> <span class="va">JongerenMetJeugdhulpInNatura_1</span> <span class="op">)</span></span>
@@ -236,52 +237,30 @@ in 2022</p>
 <span><span class="co">## Bounding box:  xmin: 13565 ymin: 306960 xmax: 277529 ymax: 619172</span></span>
 <span><span class="co">## Projected CRS: Amersfoort / RD New</span></span>
 <span><span class="co">## First 10 features:</span></span>
-<span><span class="co">##    statcode      statnaam  RegioS Perioden JongerenMetJeugdhulpInNatura_1</span></span>
-<span><span class="co">## 1    GM0014     Groningen GM0014  2022JJ00                           15.4</span></span>
-<span><span class="co">## 2    GM0034        Almere GM0034  2022JJ00                           12.9</span></span>
-<span><span class="co">## 3    GM0037   Stadskanaal GM0037  2022JJ00                           14.7</span></span>
-<span><span class="co">## 4    GM0047       Veendam GM0047  2022JJ00                           19.6</span></span>
-<span><span class="co">## 5    GM0050      Zeewolde GM0050  2022JJ00                           16.9</span></span>
-<span><span class="co">## 6    GM0059 Achtkarspelen GM0059  2022JJ00                           13.0</span></span>
-<span><span class="co">## 7    GM0060       Ameland GM0060  2022JJ00                            7.9</span></span>
-<span><span class="co">## 8    GM0072     Harlingen GM0072  2022JJ00                           13.0</span></span>
-<span><span class="co">## 9    GM0074    Heerenveen GM0074  2022JJ00                           12.9</span></span>
-<span><span class="co">## 10   GM0080    Leeuwarden GM0080  2022JJ00                           17.6</span></span>
-<span><span class="co">##    JongerenMetJeugdhMetVerblInNat_2 JongerenMetJeugdbescherming_3</span></span>
-<span><span class="co">## 1                               9.5                           1.4</span></span>
-<span><span class="co">## 2                               7.9                           1.3</span></span>
-<span><span class="co">## 3                              17.1                           2.4</span></span>
-<span><span class="co">## 4                              15.9                           2.9</span></span>
-<span><span class="co">## 5                              10.5                           1.8</span></span>
-<span><span class="co">## 6                               9.7                           1.3</span></span>
-<span><span class="co">## 7                                NA                            NA</span></span>
-<span><span class="co">## 8                              16.0                           1.7</span></span>
-<span><span class="co">## 9                               9.3                           1.3</span></span>
-<span><span class="co">## 10                             10.6                           2.0</span></span>
-<span><span class="co">##    JeugdbeschEnJeugdhMetVerblInNat_4 JongerenMetJeugdreclassering_5 natura</span></span>
-<span><span class="co">## 1                               46.1                            0.4   15.4</span></span>
-<span><span class="co">## 2                               41.7                            0.5   12.9</span></span>
-<span><span class="co">## 3                               59.4                            0.3   14.7</span></span>
-<span><span class="co">## 4                               56.3                             NA   19.6</span></span>
-<span><span class="co">## 5                               51.8                            0.4   16.9</span></span>
-<span><span class="co">## 6                               49.4                             NA   13.0</span></span>
-<span><span class="co">## 7                                 NA                             NA    7.9</span></span>
-<span><span class="co">## 8                               46.0                             NA   13.0</span></span>
-<span><span class="co">## 9                               37.2                            0.2   12.9</span></span>
-<span><span class="co">## 10                              50.5                            0.4   17.6</span></span>
-<span><span class="co">##                          geometry</span></span>
-<span><span class="co">## 1  MULTIPOLYGON (((247394 5893...</span></span>
-<span><span class="co">## 2  MULTIPOLYGON (((152521 4902...</span></span>
-<span><span class="co">## 3  MULTIPOLYGON (((264125 5662...</span></span>
-<span><span class="co">## 4  MULTIPOLYGON (((260432 5704...</span></span>
-<span><span class="co">## 5  MULTIPOLYGON (((168735 4915...</span></span>
-<span><span class="co">## 6  MULTIPOLYGON (((211391 5859...</span></span>
-<span><span class="co">## 7  MULTIPOLYGON (((177842 6084...</span></span>
-<span><span class="co">## 8  MULTIPOLYGON (((160686 5733...</span></span>
-<span><span class="co">## 9  MULTIPOLYGON (((191212 5658...</span></span>
-<span><span class="co">## 10 MULTIPOLYGON (((185116 5876...</span></span></code></pre>
+<span><span class="co">##    statcode      statnaam  RegioS Perioden JongerenMetJeugdhulpInNatura_1 JongerenMetJeugdhMetVerblInNat_2 JongerenMetJeugdbescherming_3</span></span>
+<span><span class="co">## 1    GM0014     Groningen GM0014  2022JJ00                           15.4                              9.5                           1.4</span></span>
+<span><span class="co">## 2    GM0034        Almere GM0034  2022JJ00                           12.9                              7.9                           1.3</span></span>
+<span><span class="co">## 3    GM0037   Stadskanaal GM0037  2022JJ00                           14.7                             17.1                           2.4</span></span>
+<span><span class="co">## 4    GM0047       Veendam GM0047  2022JJ00                           19.6                             15.9                           2.9</span></span>
+<span><span class="co">## 5    GM0050      Zeewolde GM0050  2022JJ00                           16.9                             10.5                           1.8</span></span>
+<span><span class="co">## 6    GM0059 Achtkarspelen GM0059  2022JJ00                           13.0                              9.7                           1.3</span></span>
+<span><span class="co">## 7    GM0060       Ameland GM0060  2022JJ00                            7.9                               NA                            NA</span></span>
+<span><span class="co">## 8    GM0072     Harlingen GM0072  2022JJ00                           13.0                             16.0                           1.7</span></span>
+<span><span class="co">## 9    GM0074    Heerenveen GM0074  2022JJ00                           12.9                              9.3                           1.3</span></span>
+<span><span class="co">## 10   GM0080    Leeuwarden GM0080  2022JJ00                           17.6                             10.6                           2.0</span></span>
+<span><span class="co">##    JeugdbeschEnJeugdhMetVerblInNat_4 JongerenMetJeugdreclassering_5 natura                       geometry</span></span>
+<span><span class="co">## 1                               46.1                            0.4   15.4 MULTIPOLYGON (((247394 5893...</span></span>
+<span><span class="co">## 2                               41.7                            0.5   12.9 MULTIPOLYGON (((152521 4902...</span></span>
+<span><span class="co">## 3                               59.4                            0.3   14.7 MULTIPOLYGON (((264125 5662...</span></span>
+<span><span class="co">## 4                               56.3                             NA   19.6 MULTIPOLYGON (((260432 5704...</span></span>
+<span><span class="co">## 5                               51.8                            0.4   16.9 MULTIPOLYGON (((168735 4915...</span></span>
+<span><span class="co">## 6                               49.4                             NA   13.0 MULTIPOLYGON (((211391 5859...</span></span>
+<span><span class="co">## 7                                 NA                             NA    7.9 MULTIPOLYGON (((177842 6084...</span></span>
+<span><span class="co">## 8                               46.0                             NA   13.0 MULTIPOLYGON (((160686 5733...</span></span>
+<span><span class="co">## 9                               37.2                            0.2   12.9 MULTIPOLYGON (((191212 5658...</span></span>
+<span><span class="co">## 10                              50.5                            0.4   17.6 MULTIPOLYGON (((185116 5876...</span></span></code></pre>
 <p>And this map can be plotted e.g. with <code>ggplot2</code></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">map_with_data</span> <span class="op">|&gt;</span> </span>
@@ -290,14 +269,14 @@ in 2022</p>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span> </span>
 <span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="maps_files/figure-gfm/plot_map-1.png"><!-- --></p>
+<p><img src="../../../../../../Users/edwin/Documents/R/cbsodataR/articles/maps_files/figure-gfm/plot_map-1.png"><!-- --></p>
 <div class="section level3">
 <h3 id="manual-process">Manual process<a class="anchor" aria-label="anchor" href="#manual-process"></a>
 </h3>
 <p><code>cbs_join_sf_with_data</code> is handy, but if you want more
 control on the process, or want to combine your own map material, the
 following steps can be taken.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># not necessary, but familiar for tidyverse code</span></span>
 <span></span>
 <span><span class="co"># retrieve map</span></span>
@@ -316,7 +295,7 @@ following steps can be taken.</p>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, option <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span><span class="op">+</span> </span>
 <span>  <span class="fu">labs</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"% youth with care in natura"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="maps_files/figure-gfm/map_manual-1.png"><!-- --></p>
+<p><img src="../../../../../../Users/edwin/Documents/R/cbsodataR/articles/maps_files/figure-gfm/map_manual-1.png"><!-- --></p>
 </div>
 </div>
   </div>
