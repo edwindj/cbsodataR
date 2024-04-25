@@ -14,11 +14,14 @@ function (x, labels)
     }
     structure(x, labels = labels, class = "labelled")
 }
+
 as_factor <-
 function (x, ...) 
 {
     UseMethod("as_factor")
 }
+
+#' @exportS3Method
 as_factor.labelled <-
 function (x, levels = c("labels", "values"), ordered = FALSE, 
     ...) 
@@ -35,11 +38,15 @@ function (x, levels = c("labels", "values"), ordered = FALSE,
         factor(match(x, labs), levels = unname(labs), labels = names(labs))
     }
 }
+
+#'@export
 as_factor.character <-
 function (x, ...) 
 {
     factor(x, ...)
 }
+
+#'@export
 `[.labelled` <-
 function (x, ...) 
 {

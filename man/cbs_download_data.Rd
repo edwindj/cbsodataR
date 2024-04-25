@@ -7,7 +7,7 @@
 cbs_download_data(
   id,
   path = file.path(id, "data.csv"),
-  catalog = catalog,
+  catalog = "CBS",
   ...,
   select = NULL,
   typed = TRUE,
@@ -49,8 +49,8 @@ Other data retrieval:
 \code{\link{cbs_add_date_column}()},
 \code{\link{cbs_add_label_columns}()},
 \code{\link{cbs_extract_table_id}()},
-\code{\link{cbs_get_data_from_link}()},
-\code{\link{cbs_get_data}()}
+\code{\link{cbs_get_data}()},
+\code{\link{cbs_get_data_from_link}()}
 }
 \concept{data retrieval}
 \concept{download}
