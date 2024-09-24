@@ -4,8 +4,8 @@
 #' 
 #' The unit columns will be named `<topic_column>_unit`, and are a `character`
 #' 
-#' By default all code columns will be accompagnied with a label column. The name
-#' of each label column will be `<code_column>_label`.
+#' By default all topic columns will be with a unit column. The name
+#' of each unit column will be `<code_column>_unit`.
 #' @export
 #' @param x `data.frame` retrieved using [cbs_get_data()].
 #' @param columns `character` with the names of the columns for which labels will be added

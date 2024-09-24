@@ -23,8 +23,8 @@ Adds extra unit columns to the dataset that was retrieved using \code{\link[=cbs
 \details{
 The unit columns will be named \verb{<topic_column>_unit}, and are a \code{character}
 
-By default all code columns will be accompagnied with a label column. The name
-of each label column will be \verb{<code_column>_label}.
+By default all topic columns will be with a unit column. The name
+of each unit column will be \verb{<code_column>_unit}.
 }
 \seealso{
 Other data retrieval: 
