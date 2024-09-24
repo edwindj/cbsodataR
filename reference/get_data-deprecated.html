@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -28,7 +28,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -44,20 +44,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/edwindj/cbsodataR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get data from Statistics Netherlands (CBS)</h1>
-    <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/HEAD/R/get-data.R" class="external-link"><code>R/get-data.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/edwindj/cbsodataR/blob/master/R/get-data.R" class="external-link"><code>R/get-data.R</code></a></small>
     <div class="hidden name"><code>get_data-deprecated.Rd</code></div>
     </div>
 
@@ -78,38 +78,38 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>id</dt>
+
+
+<dl><dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
 <dd><p>Identifier of table, can be found in <code><a href="cbs_get_datasets.html">cbs_get_datasets()</a></code></p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>optional filter statements, see details.</p></dd>
 
 
-<dt>recode</dt>
+<dt id="arg-recode">recode<a class="anchor" aria-label="anchor" href="#arg-recode"></a></dt>
 <dd><p>recodes all codes in the code columns with their <code>Title</code> as found
 in the metadata</p></dd>
 
 
-<dt>use_column_title</dt>
+<dt id="arg-use-column-title">use_column_title<a class="anchor" aria-label="anchor" href="#arg-use-column-title"></a></dt>
 <dd><p>not used.</p></dd>
 
 
-<dt>dir</dt>
+<dt id="arg-dir">dir<a class="anchor" aria-label="anchor" href="#arg-dir"></a></dt>
 <dd><p>Directory where the table should be downloaded. Defaults to temporary
 directory</p></dd>
 
 
-<dt>base_url</dt>
+<dt id="arg-base-url">base_url<a class="anchor" aria-label="anchor" href="#arg-base-url"></a></dt>
 <dd><p>optionally specify a different server. Useful for
 third party data services implementing the same protocol.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p><code>data.frame</code> with the requested data. Note that a csv copy of
+    <p><code>data.frame</code> with the requested data. Note that a csv copy of
 the data is stored in <code>dir</code>.</p>
     </div>
     <div id="details">
@@ -134,7 +134,7 @@ wanting all these nuances can use <code>typed=FALSE</code> which results in char
     </div>
     <div id="copyright-use">
     <h2>Copyright use</h2>
-    
+
 
 <p>The content of CBS opendata is subject to Creative Commons Attribution (CC BY 4.0).
 This means that the re-use of the content is permitted, provided Statistics
@@ -144,20 +144,21 @@ Netherlands is cited as the source. For more information see:
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="cbs_get_meta.html">cbs_get_meta()</a></code>, <code><a href="cbs_download_data.html">cbs_download_data()</a></code></p>
-<p>Other data retrieval: 
+<p>Other data retrieval:
 <code><a href="cbs_add_date_column.html">cbs_add_date_column</a>()</code>,
 <code><a href="cbs_add_label_columns.html">cbs_add_label_columns</a>()</code>,
+<code><a href="cbs_add_unit_column.html">cbs_add_unit_column</a>()</code>,
 <code><a href="cbs_download_data.html">cbs_download_data</a>()</code>,
 <code><a href="cbs_extract_table_id.html">cbs_extract_table_id</a>()</code>,
 <code><a href="cbs_get_data_from_link.html">cbs_get_data_from_link</a>()</code></p>
-<p>Other query: 
+<p>Other query:
 <code><a href="eq.html">eq</a>()</code>,
 <code><a href="has_substring.html">has_substring</a>()</code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> id      <span class="op">=</span> <span class="st">"7196ENG"</span>      <span class="co"># table id</span></span></span>
 <span class="r-in"><span>            , Periods <span class="op">=</span> <span class="st">"2000MM03"</span>     <span class="co"># March 2000</span></span></span>
 <span class="r-in"><span>            , CPI     <span class="op">=</span> <span class="st">"000000"</span>       <span class="co"># Category code for total </span></span></span>
@@ -188,7 +189,7 @@ Netherlands is cited as the source. For more information see:
 <span class="r-in"><span>            , Periods <span class="op">=</span> <span class="fu"><a href="eq.html">eq</a></span><span class="op">(</span><span class="st">"2000MM01"</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="has_substring.html">has_substring</a></span><span class="op">(</span><span class="st">"JJ"</span><span class="op">)</span> <span class="co"># Jan 2000 and all years</span></span></span>
 <span class="r-in"><span>            , CPI     <span class="op">=</span> <span class="st">"000000"</span>       <span class="co"># Category code for total </span></span></span>
 <span class="r-in"><span>            <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -203,15 +204,15 @@ Netherlands is cited as the source. For more information see:
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
