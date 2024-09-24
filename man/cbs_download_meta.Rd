@@ -41,6 +41,7 @@ Dumps the meta data into a directory
 Other meta data: 
 \code{\link{cbs_add_date_column}()},
 \code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_add_unit_column}()},
 \code{\link{cbs_get_meta}()}
 
 Other download: 

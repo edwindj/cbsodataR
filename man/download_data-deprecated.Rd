@@ -42,6 +42,7 @@ Other download:
 Other data retrieval: 
 \code{\link{cbs_add_date_column}()},
 \code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_add_unit_column}()},
 \code{\link{cbs_extract_table_id}()},
 \code{\link{cbs_get_data}()},
 \code{\link{cbs_get_data_from_link}()}

@@ -39,6 +39,7 @@ This method is deprecated in favor of \code{\link[=cbs_download_meta]{cbs_downlo
 Other meta data: 
 \code{\link{cbs_add_date_column}()},
 \code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_add_unit_column}()},
 \code{\link{cbs_get_meta}()}
 
 Other download: 

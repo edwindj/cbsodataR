@@ -88,6 +88,7 @@ cbs_get_data <- function( id
 
   if (add_column_labels){
     data <- add_var_labels(data, meta)
+    data <- add_var_units(data, meta)
   }
   
   is_time <- meta$DataProperties$Key[meta$DataProperties$Type == "TimeDimension"]

@@ -46,6 +46,7 @@ x
 \seealso{
 Other data retrieval: 
 \code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_add_unit_column}()},
 \code{\link{cbs_download_data}()},
 \code{\link{cbs_extract_table_id}()},
 \code{\link{cbs_get_data}()},
@@ -53,6 +54,7 @@ Other data retrieval:
 
 Other meta data: 
 \code{\link{cbs_add_label_columns}()},
+\code{\link{cbs_add_unit_column}()},
 \code{\link{cbs_download_meta}()},
 \code{\link{cbs_get_meta}()}
 }

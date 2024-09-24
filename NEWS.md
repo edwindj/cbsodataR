@@ -6,6 +6,8 @@
 
 * Bug fix for issue #37 cbs_download_data: catalog error, thanks to @guyhill for reporting
 
+* Added `cbs_add_unit_column` to add unit columns to the data set, thanks to Marieke Rensman en Martin van Elp for the suggestion
+
 # cbsodataR 1.0.1
 
 * fixed example in `cbs_get_catalogs`, which failed when catalog was temporarily 
