@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cbsodataR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9000</span>
       </span>
     </div>
 
@@ -78,7 +78,8 @@
 
 
 <dt id="arg-columns">columns<a class="anchor" aria-label="anchor" href="#arg-columns"></a></dt>
-<dd><p><code>character</code> with the names of the columns for which labels will be added</p></dd>
+<dd><p><code>character</code> with the names of the columns for which units will be added,
+non-topic columns will be ignored.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -94,7 +95,7 @@ columns. (see description)</p>
     <h2>Details</h2>
     <p>The unit columns will be named <code>&lt;topic_column&gt;_unit</code>, and are a <code>character</code></p>
 <p>By default all topic columns will be with a unit column. The name
-of each unit column will be <code>&lt;code_column&gt;_unit</code>.</p>
+of each unit column will be <code>&lt;topic_column&gt;_unit</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -112,6 +113,25 @@ of each unit column will be <code>&lt;code_column&gt;_unit</code>.</p>
 <code><a href="cbs_get_meta.html">cbs_get_meta</a>()</code></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="cbs_get_data.html">cbs_get_data</a></span><span class="op">(</span> id      <span class="op">=</span> <span class="st">"7196ENG"</span>      <span class="co"># table id</span></span></span>
+<span class="r-in"><span>                   , Periods <span class="op">=</span> <span class="st">"2000MM03"</span>     <span class="co"># March 2000</span></span></span>
+<span class="r-in"><span>                   , CPI     <span class="op">=</span> <span class="st">"000000"</span>       <span class="co"># Category code for total </span></span></span>
+<span class="r-in"><span>                   , verbose <span class="op">=</span> <span class="cn">TRUE</span>           <span class="co"># show the url that is used</span></span></span>
+<span class="r-in"><span>                   <span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="co"># adds two extra columns</span></span></span>
+<span class="r-in"><span>  <span class="va">x_with_units</span> <span class="op">&lt;-</span> </span></span>
+<span class="r-in"><span>    <span class="va">x</span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>    <span class="fu">cbs_add_unit_column</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="va">x_with_units</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
