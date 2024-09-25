@@ -1,12 +1,12 @@
-# cbsodataR 1.0.2
+# cbsodataR 1.1.0
+
+* Added `cbs_add_unit_column` to add unit columns to the data set, thanks to Marieke Rensman en Martin van Elp for the suggestion
 
 * Bug fix for issue #39 default selection which includes a substring of is not parsed correctly, thanks to @guyhill for reporting
 
 * Bug fix for issue #38 cbs_get_data argument typed=FALSE not working correctly, thanks to @guyhill for reporting
 
 * Bug fix for issue #37 cbs_download_data: catalog error, thanks to @guyhill for reporting
-
-* Added `cbs_add_unit_column` to add unit columns to the data set, thanks to Marieke Rensman en Martin van Elp for the suggestion
 
 # cbsodataR 1.0.1
 

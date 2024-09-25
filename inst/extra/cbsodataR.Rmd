@@ -103,7 +103,7 @@ cbs_get_data('71509ENG') |>
   head()
 ```
 
-### Adding Date column
+### Adding a Date column
 
 The period/time columns of Statistics Netherlands (CBS) contain coded time periods:
 e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3), 2016MM04 (i.e. 2016 April).
@@ -125,6 +125,18 @@ cbs_get_data('71509ENG') |>
   head()
 ```
 
+
+### Adding unit columns 
+
+Each topic in the CBS data can have a unit, e.g. "%" or "mln kg".
+Using `cbs_add_unit_column` for each (specified) topic a unit column will be added.
+
+```{r, add_unit, message=FALSE}
+cbs_get_data('71509ENG') |>
+  cbs_add_unit_column() |> 
+  subset(,1:4) |>
+  head()
+```
 
 
 ## Select and filter

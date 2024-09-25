@@ -5,15 +5,17 @@
 #' The unit columns will be named `<topic_column>_unit`, and are a `character`
 #' 
 #' By default all topic columns will be with a unit column. The name
-#' of each unit column will be `<code_column>_unit`.
+#' of each unit column will be `<topic_column>_unit`.
 #' @export
 #' @param x `data.frame` retrieved using [cbs_get_data()].
-#' @param columns `character` with the names of the columns for which labels will be added
+#' @param columns `character` with the names of the columns for which units will be added, 
+#' non-topic columns will be ignored.
 #' @param ... not used.
 #' @return the original data.frame `x` with extra unit
 #' columns. (see description)
 #' @family data retrieval
 #' @family meta data
+#' @example example/cbs_add_unit_column.R
 cbs_add_unit_column <- function(x, columns=colnames(x), ...){
   add <- list()
   nms <- colnames(x)

@@ -23,7 +23,7 @@ datasets |>
   select(Identifier, ShortTitle) 
 ```
 
-    ## # A tibble: 962 × 2
+    ## # A tibble: 1,005 × 2
     ##    Identifier ShortTitle                             
     ##    <chr>      <chr>                                  
     ##  1 80783eng   Agriculture; general farm type, region 
@@ -36,7 +36,7 @@ datasets |>
     ##  8 84312ENG   Caribbean NL; students MBO             
     ##  9 84732ENG   Caribbean NL; pupils and students      
     ## 10 81154eng   Caribbean NL; electricity and water    
-    ## # ℹ 952 more rows
+    ## # ℹ 995 more rows
 
 ## Search for tables
 
@@ -50,7 +50,7 @@ toc_apples[, c("Identifier", "ShortTitle", "score")]
     ## # A tibble: 1 × 3
     ##   Identifier ShortTitle                          score
     ##   <chr>      <chr>                               <dbl>
-    ## 1 71509ENG   Yield apples and pears, 1997 - 2017  2.62
+    ## 1 71509ENG   Yield apples and pears, 1997 - 2017  2.64
 
 ## Other catalogs
 
@@ -61,7 +61,8 @@ catalogs <- cbs_get_catalogs()
 catalogs$Identifier
 ```
 
-    ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"     "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"
+    ##  [1] "CBS"      "MKB"      "IV3"      "MLZ"      "JM"       "RIVM"    
+    ##  [7] "Politie"  "MVstat"   "AZW"      "InterReg" "SXstat"
 
 ## Metadata
 
@@ -101,7 +102,8 @@ SN table.
 names(apples)
 ```
 
-    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"      "FruitFarmingRegions" "Periods"
+    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
+    ## [4] "FruitFarmingRegions" "Periods"
 
 ## Data download
 
@@ -113,8 +115,6 @@ cbs_get_data('71509ENG') |>
   select(1:4) |>  # demonstration purpose
   head()
 ```
-
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 4
     ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 CoxSOrangePippin_2
@@ -144,8 +144,6 @@ cbs_get_data_from_link("https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/715
     ## Executing:
     ## cbs_get_data(id = "71509ENG", select = c("FruitFarmingRegions", "Periods", "TotalAppleVarieties_1", "CoxSOrangePippin_2", "DelbarestivaleDelcorf_3", "Elstar_4", "GoldenDelicious_5", "Jonagold_6", "Jonagored_7", "Junami_8", "Kanzi_9", "RodeBoskoopRennetApple_10", "Rubens_11", "OtherAppleVarieties_12", "TotalAppleVarieties_20", "CoxSOrangePippin_21", "DelbarestivaleDelcorf_22", "Elstar_23", "GoldenDelicious_24", "Jonagold_25", "Jonagored_26", "Junami_27", "Kanzi_28", "RodeBoskoopRennetApple_29", "Rubens_30", "OtherAppleVarieties_31"), FruitFarmingRegions = c("1", "2", "3", "4", "5"), Periods = c("1997JJ00", "2012JJ00", "2013JJ00", "2016JJ00"), deeplink = "https://opendata.cbs.nl/dataportaal/#/CBS/en/dataset/71509ENG/table?dl=193CB",     base_url = "http://opendata.cbs.nl")
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 6 × 4
     ##      ID FruitFarmingRegions Periods  TotalAppleVarieties_1
     ##   <int> <chr>               <chr>                    <int>
@@ -169,8 +167,6 @@ cbs_get_data('71509ENG') |>
   head()
 ```
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 6 × 4
     ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
     ##   <chr>               <fct>                     <chr>    <fct>        
@@ -181,7 +177,7 @@ cbs_get_data('71509ENG') |>
     ## 5 1                   Total Netherlands         2001JJ00 2001         
     ## 6 1                   Total Netherlands         2002JJ00 2002
 
-### Adding Date column
+### Adding a Date column
 
 The period/time columns of Statistics Netherlands (CBS) contain coded
 time periods: e.g. 2018JJ00 (i.e. 2018), 2018KW03 (i.e. 2018 Q3),
@@ -194,8 +190,6 @@ cbs_get_data('71509ENG') |>
   select(2:4) |> 
   head()
 ```
-
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
 
     ## # A tibble: 6 × 3
     ##   Periods  Periods_Date Periods_freq
@@ -217,8 +211,6 @@ cbs_get_data('71509ENG') |>
   head()
 ```
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 6 × 3
     ##   Periods  Periods_numeric Periods_freq
     ##   <chr>              <int> <fct>       
@@ -228,6 +220,29 @@ cbs_get_data('71509ENG') |>
     ## 4 2000JJ00            2000 Y           
     ## 5 2001JJ00            2001 Y           
     ## 6 2002JJ00            2002 Y
+
+### Adding unit columns
+
+Each topic in the CBS data can have a unit, e.g. “%” or “mln kg”. Using
+`cbs_add_unit_column` for each (specified) topic a unit column will be
+added.
+
+``` r
+cbs_get_data('71509ENG') |>
+  cbs_add_unit_column() |> 
+  subset(,1:4) |>
+  head()
+```
+
+    ## # A tibble: 6 × 4
+    ##   FruitFarmingRegions Periods  TotalAppleVarieties_1 TotalAppleVarieties_1_unit
+    ##   <chr>               <chr>                    <int> <chr>                     
+    ## 1 1                   1997JJ00                   420 mln kg                    
+    ## 2 1                   1998JJ00                   518 mln kg                    
+    ## 3 1                   1999JJ00                   568 mln kg                    
+    ## 4 1                   2000JJ00                   461 mln kg                    
+    ## 5 1                   2001JJ00                   408 mln kg                    
+    ## 6 1                   2002JJ00                   354 mln kg
 
 ## Select and filter
 
@@ -248,7 +263,8 @@ apples <- cbs_get_meta('71509ENG')
 names(apples)
 ```
 
-    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"      "FruitFarmingRegions" "Periods"
+    ## [1] "TableInfos"          "DataProperties"      "CategoryGroups"     
+    ## [4] "FruitFarmingRegions" "Periods"
 
 ``` r
 # meta data for column Periods
@@ -290,13 +306,12 @@ head(apples$FruitFarmingRegions[,1:2 ])
   cbs_add_label_columns()
 ```
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 2 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
-    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
-    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
-    ## 2 1                   Total Netherlands         2001JJ00 2001                            408
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## 2 1                   Total Netherlands         2001JJ00 2001         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
 - To filter for values in a column that have a substring e.g. “JJ” you
   can use `<column_name> = has_substring(<substring>)` to `cbs_get_data`
@@ -314,12 +329,11 @@ head(apples$FruitFarmingRegions[,1:2 ])
     cbs_add_label_columns()
 ```
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 1 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
-    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
-    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
 - To combine values and substring use the “\|” operator:
   `Periods = eq("2020JJ00") | has_substring("KW")`
@@ -336,13 +350,12 @@ head(apples$FruitFarmingRegions[,1:2 ])
     cbs_add_label_columns()
 ```
 
-    ##   |                                                                                                                                            |                                                                                                                                    |   0%  |                                                                                                                                            |====================================================================================================================================| 100%
-
     ## # A tibble: 2 × 5
-    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label TotalAppleVarieties_1
-    ##   <chr>               <fct>                     <chr>    <fct>                         <int>
-    ## 1 1                   Total Netherlands         2000JJ00 2000                            461
-    ## 2 1                   Total Netherlands         2010JJ00 2010                            334
+    ##   FruitFarmingRegions FruitFarmingRegions_label Periods  Periods_label
+    ##   <chr>               <fct>                     <chr>    <fct>        
+    ## 1 1                   Total Netherlands         2000JJ00 2000         
+    ## 2 1                   Total Netherlands         2010JJ00 2010         
+    ## # ℹ 1 more variable: TotalAppleVarieties_1 <int>
 
 # Download data
 
