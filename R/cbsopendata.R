@@ -45,6 +45,30 @@
 #' - [cbs_join_sf_with_data()], returns an sf object joined with cbs table
 #' - [cbs_get_sf()], returns an sf object without data, e.g. "gemeente_2020".
 #' 
+#' @section Specify different server:
+#' 
+#' Besides the official CBS data, there are also third party and preview dataservices
+#' implementing the same protocol. The `base_url` parameter allows to specify a different server.
+#' The `base_url` can either be specified explicitly or set globally with with
+#' `options(cbsodataR.base_url = "http://example.com")`.
+#' Some further tweaking may be necessary for third party services, a download url 
+#' is constructed using: either with:
+#' 
+#' - `<base_url>/<BULK>/<id>/...` for data
+#' - `<base_url>/<API>/<id>/?$format=json` for metadata
+#' 
+#' Default values for `BASEURL`, `BULK` and `API` are set in the package options,
+#' but can be changed with:
+#' 
+#' ```
+#' options(
+#'  cbsodataR.base_url = "https://opendata.cbs.nl",
+#'  cbsodataR.BULK = "ODataFeed/odata",
+#'  cbsodataR.API = "ODataAPI/odata"
+#' )
+#' ```
+#' which are the default values set in the package.
+#' 
 #' @section Copyright use:
 #' The content of CBS opendata is subject to Creative Commons Attribution (CC BY 4.0). 
 #' This means that the re-use of the content is permitted, provided Statistics 

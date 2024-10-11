@@ -34,12 +34,39 @@ cbs_download_data(
 \item{show_progress}{show a progress bar while downloading.}
 
 \item{base_url}{optionally specify a different server. Useful for
-third party data services implementing the same protocol.}
+third party data services implementing the same protocol. See details.}
 }
 \description{
 Gets all data via bulk download. \code{cbs_download_data} dumps the data in
 (international) csv format.
 }
+\section{Specify different server}{
+
+
+Besides the official CBS data, there are also third party and preview dataservices
+implementing the same protocol. The \code{base_url} parameter allows to specify a different server.
+The \code{base_url} can either be specified explicitly or set globally with with
+\code{options(cbsodataR.base_url = "http://example.com")}.
+Some further tweaking may be necessary for third party services, a download url
+is constructed using: either with:
+\itemize{
+\item \verb{<base_url>/<BULK>/<id>/...} for data
+\item \verb{<base_url>/<API>/<id>/?$format=json} for metadata
+}
+
+Default values for \code{BASEURL}, \code{BULK} and \code{API} are set in the package options,
+but can be changed with:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{options(
+ cbsodataR.base_url = "https://opendata.cbs.nl",
+ cbsodataR.BULK = "ODataFeed/odata",
+ cbsodataR.API = "ODataAPI/odata"
+)
+}\if{html}{\out{</div>}}
+
+which are the default values set in the package.
+}
+
 \seealso{
 Other download: 
 \code{\link{cbs_download_meta}()},

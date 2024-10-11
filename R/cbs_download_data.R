@@ -12,7 +12,8 @@
 #' @param show_progress show a progress bar while downloading.
 #' @param select optional names of columns to be returned.
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocol.
+#' third party data services implementing the same protocol. See details.
+#' @inheritSection cbsodataR-package Specify different server
 #' @family download
 #' @family data retrieval
 #' @export
@@ -41,7 +42,7 @@ cbs_download_data <- function( id
   base_url <- get_base_url(catalog, base_url)
   url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
                        , list( BASEURL = base_url
-                             , BULK    = BULK
+                             , BULK = getOption("cbsodataR.BULK", BULK)
                              , id      = id
                              , DATASET = DATASET
                              )

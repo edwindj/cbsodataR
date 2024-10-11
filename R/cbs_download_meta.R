@@ -9,9 +9,10 @@
 #' @param cache Should meta data be cached?
 #' @return meta data object
 #' @param base_url optionally allow to specify a different server. Useful for
-#' third party data services implementing the same protocol.
+#' third party data services implementing the same protocol, see details.
 #' @family meta data
 #' @family download
+#' @inheritSection cbsodataR-package Specify different server
 #' @export
 cbs_download_meta <- function( id
                              , dir=id

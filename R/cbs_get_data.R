@@ -39,7 +39,8 @@
 #' @param verbose Print extra messages what is happening.
 #' @param include_ID Should the data include the ID column for the rows?
 #' @param base_url optionally specify a different server. Useful for
-#' third party data services implementing the same protocol.
+#' third party data services implementing the same protocol, see details.
+#' @inheritSection cbsodataR-package Specify different server
 #' @return `data.frame` with the requested data. Note that a csv copy of
 #'  the data is stored in `dir`.
 #' @export
