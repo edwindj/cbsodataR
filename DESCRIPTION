@@ -11,6 +11,8 @@ License: GPL-2
 URL: https://github.com/edwindj/cbsodataR
 BugReports: https://github.com/edwindj/cbsodataR/issues
 Encoding: UTF-8
+Depends:
+    R (>= 4.1.0)
 Imports:
     whisker,
     jsonlite,
