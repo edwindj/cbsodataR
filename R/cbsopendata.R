@@ -81,7 +81,16 @@
 
 BASE_URL = "https://opendata.cbs.nl"
 API = "ODataApi/odata"
+# api_url <- function(api = getOption("API", API),
+#                     base_url = getOption("BASE_URL", BASE_URL)) {
+#   paste0(base_url, "/", api)
+# }
+
 BULK = "ODataFeed/odata"
+# bulk_url <- function(bulk = getOption("BULK", BULK),
+#                      base_url = getOption("BASE_URL", BASE_URL)) {
+#   paste0(base_url, "/", bulk)
+# }
 
 CATALOG = "ODataCatalog"
 
