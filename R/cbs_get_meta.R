@@ -38,9 +38,8 @@ cbs_get_meta <- function( id
                       , base_url = getOption("cbsodataR.base_url", BASE_URL)
 ){
   base_url <- get_base_url(catalog, base_url)
-  url <- whisker.render("{{BASEURL}}/{{API}}/{{id}}"
-                        , list( BASEURL = base_url
-                                , API = getOption("cbsodataR.API", API)
+  url <- whisker.render("{{APIURL}}/{{id}}"
+                        , list( APIURL = get_api_url(base_url=base_url)
                                 , id = id
                         )
   )

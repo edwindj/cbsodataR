@@ -40,9 +40,8 @@ cbs_download_data <- function( id
     pb <- utils::txtProgressBar(min = 0, max = rc, style = 3)
   }
   base_url <- get_base_url(catalog, base_url)
-  url <- whisker.render("{{BASEURL}}/{{BULK}}/{{id}}/{{DATASET}}?$format=json"
-                       , list( BASEURL = base_url
-                             , BULK = getOption("cbsodataR.BULK", BULK)
+  url <- whisker.render("{{BULKURL}}/{{id}}/{{DATASET}}?$format=json"
+                       , list( BULKURL = get_bulk_url(base_url)
                              , id      = id
                              , DATASET = DATASET
                              )
